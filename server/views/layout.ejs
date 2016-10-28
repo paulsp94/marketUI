@@ -1,0 +1,28 @@
+<html>
+<head>
+  <title> Sample </title>
+</head>
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
+
+
+
+  <body>
+
+  <div id="js-main" class="main_load">
+
+  </div>
+
+
+  <% if (env.production) { %>
+    <script async src="<%= env.assets.main.js %>"></script>
+  <% } else { %>
+    <script src="http://localhost:3000/client/main.js"></script>
+  <% } %>
+
+
+
+  </body>
+</html>
