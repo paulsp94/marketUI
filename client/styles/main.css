@@ -167,11 +167,9 @@ h1{
 }
 .sidebar{
     float: right;
-    /*border: 4px solid grey;*/
-    width: 30%;
-    height: 80%;
+    width: 32%;
+    height: auto;
     margin-top: 2%;
-    /*background-color: #9099a8;*/
 }
 
 .productpage-top{
@@ -223,23 +221,102 @@ h1{
     opacity: 0.9;
 }
 
+
+.submitbutton1{
+    width:30%;
+    height: 100%;
+    background-color: #004489;
+    border-radius: 8px;
+    font-family: "Helvetica Neue Light", "Lucida Grande", "Calibri", "Arial", sans-serif;
+    color: #ffffff;
+    font-size: 14px;
+    /*padding: 1% 5% 5% 5%;*/
+    text-decoration: none;
+    opacity: 0.6;
+    margin-right: 3%;
+}
+
+.submitbutton1:hover{
+    opacity: 0.9;
+}
+
+.submitbutton2{
+    width:30%;
+    height: 30%;
+    background-color: #004489;
+    border-radius: 8px;
+    font-family: "Helvetica Neue Light", "Lucida Grande", "Calibri", "Arial", sans-serif;
+    color: #ffffff;
+    font-size: 14px;
+    /*padding: 1% 5% 5% 5%;*/
+    text-decoration: none;
+    opacity: 0.6;
+    margin-right: 3%;
+
+}
+
+.submitbutton2:hover{
+    opacity: 0.9;
+}
+
+.submitbutton3{
+    width:70%;
+    height: 30%;
+    background-color: #004489;
+    border-radius: 8px;
+    font-family: "Helvetica Neue Light", "Lucida Grande", "Calibri", "Arial", sans-serif;
+    color: #ffffff;
+    font-size: 14px;
+    opacity: 0.6;
+    text-decoration: none;
+    margin-right: 3%;
+    margin-top: 3%;
+}
+
+.submitbutton3:hover{
+    opacity: 0.9;
+}
+
+
+.submitbutton4{
+    width:30%;
+    height: auto;
+    background-color:rgba(204, 204, 204, 0.3);
+    border-radius: 8px;
+    font-family: "Helvetica Neue Light", "Lucida Grande", "Calibri", "Arial", sans-serif;
+    color: #ffffff;
+    font-size: 14px;
+    text-decoration: none;
+    margin-right: 3%;
+    margin-bottom: 3%;
+    border: none;
+}
+
+
+
 .side-header{
-    height: 10%;
+    height: 5%;
 }
 
 .buttons{
-    background-color: #718f91;
+    background-color: transparent;
     width: 30%;
     margin-left: 3%;
     margin-top: 3%;
     border-top:#718f91;
     border-left:#718f91;
     height: 70%;
+    text-decoration: none;
+    border: none;
+    color: blue;
+    font-size: 20px;
+    border-bottom: 5px;
 }
 
 .rating{
-    background-color: #878d8d;
-    height: 8%;
+    height: 15%;
+    text-align: center;
+    opacity: 0.9;
 }
 
 .buttons1{
@@ -251,10 +328,15 @@ h1{
 }
 
 .sidebar-bottom{
-    background-color: #aaaba6;
-    height: 80%;
+    /*background-color: #FCFCFC;*/
+    min-height: 300px;
+    height: auto;
     margin-top: 2%;
     text-align: center;
+    font-size: 16px;
+    background-color:rgba(204, 204, 204, 0.3);
+    color: white;
+    border-radius: 5%;
 }
 
 .container{
@@ -277,6 +359,13 @@ h1{
     background-size: cover;
 }
 
+.htmlsrcimage{
+    border: 4px solid black;
+    height: 40%;
+    width: 100%;
+    background-color: #000;
+}
+
 .headerimg{
     background-color: white;
     border-radius: 50%;
@@ -286,7 +375,6 @@ h1{
 
 .description{
     margin-left: 5%;
-    /*border: 10px solid white;*/
     border-radius: 5px;
     height: auto;
     margin-right: 5%;
@@ -298,8 +386,40 @@ h1{
 }
 
 .code {
-    border: 10px solid black;
+    /*border: 10px solid black;*/
     width: 80%;
     font-size: 20px;
     color: white;
+    margin-right: 5%;
+    padding-left: 2%;
+    margin-top: 3%;
+    margin-left: 5%;
+}
+.Userimage{
+    border-radius: 50%;
+    border: 1px solid white;
+    width: 30%;
+    float: left;
+    margin-left: 3%;
+}
+
+.Userimagecomment{
+    border-radius: 100%;
+    border: 1px solid white;
+    width: 15%;
+    float: left;
+    margin-left: 3%;
+}
+
+.usercommentname{
+    margin-left: 5%;
+    text-align: left;
+}
+
+.usercomments{
+    /*color: black;*/
+    /*margin-left: 5%;*/
+    padding-left: 5%;
+    text-align: left;
+    font-style: italic;
 }

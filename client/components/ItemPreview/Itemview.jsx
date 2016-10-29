@@ -24,6 +24,10 @@ class  Itemview extends React.Component{
             backgroundImage: "url('client/Images/zx.jpg')"
         };
 
+        var divstylelastimage = {
+            backgroundImage: "url('client/Images/lastimg.jpg')"
+        }
+
         var buttonvalue = 'dssf';
 
         if(buttonvalue == ''){
@@ -33,16 +37,14 @@ class  Itemview extends React.Component{
             var button = <button className="submitbutton"> Live Preview <img src ={'client/Images/preview.png'}/> </button>
         }
 
-        var thisIsMyCopy = ' <p> copy copy copy <strong> All the information user want to </strong>';
-
+        var thisIsMyCopy = ' <p> <strong> copy copy copy </strong> <br/> <strong> All the information user paste in Html code will come here </strong> <strong> So user can write anything to show viewers</strong>';
 
         return (
             <div>
-
                 <div className="container">
 
                 <div className="imagecontainer">
-                    <div className="image-user" style={divStyle}>
+                    <div className="image-user" style={divstylelastimage}>
                     </div>
                 </div>
                     {button}
@@ -53,6 +55,12 @@ class  Itemview extends React.Component{
                     <div className="code">
                         <ReactMarkdown source={thisIsMyCopy} />
                     </div>
+
+                    <div className="htmlsrcimage">
+                        <div className="image-user"  style={divStyle}>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         )
