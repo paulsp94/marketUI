@@ -168,14 +168,14 @@ h1{
 }
 .sidebar{
     float: right;
-    width: 35%;
+    width: 32%;
     height: auto;
     margin-right: 3%;
-    padding-left: 2%;
+    margin-left: 3%;
     background-color: white;
-    padding-top: 2%;
     color: black;
     min-height: 700px;
+    padding-top: 3%;
 }
 
 .productpage-top{
@@ -229,7 +229,7 @@ h1{
 
 
 .submitbutton1{
-    width:30%;
+    width:28%;
     height: 100%;
     background-color: #004489;
     /*border-radius: 8px;*/
@@ -239,11 +239,12 @@ h1{
     /*padding: 1% 5% 5% 5%;*/
     text-decoration: none;
     opacity: 0.6;
-    margin-right: 3%;
+    margin-right: 2%;
     text-shadow:none;
     box-shadow:none;
     outline:0;
     border: 1px solid blue;
+    /*margin-left: 2%;*/
 }
 
 .submitbutton1:hover{
@@ -308,6 +309,7 @@ h1{
 
 .side-header{
     height: 5%;
+    text-align: center;
 }
 
 .buttons{
@@ -357,6 +359,7 @@ h1{
     height: auto;
     background-color: white;
     min-height: 700px;
+    padding-top: 3%;
 }
 .imagecontainer{
     height: 33%;

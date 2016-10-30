@@ -22,12 +22,20 @@ class Sidebar extends React.Component{
 
 
         var curr_icon =  <div> <hr/> <div className="sidebar-bottom">
+
+            <h4> <strong> Estimated Integration Time </strong> <br/> </h4>
+            <p> 3-4 Hours </p>
+            <br/>
+
+            <h4> <strong> Complexity </strong> <br/> </h4>
+            <p> 3.5/10 </p>
+            <br/>
             <h4> <strong> Required Packages </strong> <br/> </h4>
 
             <button className="submitbutton4"> Npm </button>
             <button className="submitbutton4"> Bla-Bla </button>
             <button className="submitbutton4"> something Here </button>
-
+            <br/>
             <br/>
             <h4> <strong> Language Compatibilty </strong> <br/> </h4>
 
@@ -47,67 +55,6 @@ class Sidebar extends React.Component{
             <button className="submitbutton4"> CSS </button>
             <button className="submitbutton4"> Javascript </button>
             <button className="submitbutton4"> Jquery </button>
-
-
-            <div className="usercommentname">
-                <h4> <strong> Komaldeep Singh </strong> <br/> </h4>
-            </div>
-            <div className="usercomments">
-                <p>
-                    Standard Demo-Text seit 1500, als ein unbekannter Schriftsteller eine Hand voll Wörter nahm und diese durcheinander warf um ein Musterbuch zu
-                </p>
-            </div>
-            <hr/>
-
-            <hr/>
-            <div className="usercommentname">
-                <h4> <strong> Sonam Malhotra </strong> <br/> </h4>
-            </div>
-            <div className="usercomments">
-                <p>
-                    Mittlerweile gibt es mehrere Versionen des Lorem Ipsum, einige zufällig, andere bewusst (beeinflusst von Witz und des eigenen Geschmacks)
-                </p>
-            </div>
-            <hr/>
-
-            <hr/>
-            <div className="usercommentname">
-                <h4> <strong> Sonam </strong> <br/> </h4>
-            </div>
-            <div className="usercomments">
-                <p>
-                    Can you guide me ? How to improve the performance of this
-                </p>
-            </div>
-            <hr/>
-
-
-            <img className="Userimage" src ={'client/Images/deep.jpg'}/> <br/>
-            <div className="userdescribation">
-                <p>
-                    I have successful Web Developer with Nearly 2 Year experience.
-
-                    Currently working as freelancer/contract Front hand Developer in Germany.
-
-                    My Core Expertise is
-
-                    React.js, Flux, Fetch Api and Redux
-                    Web designing ( Html, css3, JavaScript and jQuery )
-                    Backhand development (Php Laravel framework, MySQL, Firebase)
-                </p>
-                <hr/>
-                <strong>Email-</strong> komaldeep1993@gmail.com<br/>
-
-                <h4> <strong> Experience </strong> <br/> </h4>
-
-                <button className="submitbutton4"> React </button>
-                <button className="submitbutton4"> Html </button>
-                <button className="submitbutton4"> CSS </button>
-                <button className="submitbutton4"> Javascript </button>
-                <button className="submitbutton4"> Jquery </button>
-                <button className="submitbutton4"> Firebase </button>
-
-                </div>
         </div>
         </div>;
 
@@ -150,66 +97,6 @@ class Sidebar extends React.Component{
             <button className="submitbutton4"> CSS </button>
             <button className="submitbutton4"> Javascript </button>
             <button className="submitbutton4"> Jquery </button>
-
-
-            <div className="usercommentname">
-                <h4> <strong> Komaldeep Singh </strong> <br/> </h4>
-            </div>
-            <div className="usercomments">
-                <p>
-                    Standard Demo-Text seit 1500, als ein unbekannter Schriftsteller eine Hand voll Wörter nahm und diese durcheinander warf um ein Musterbuch zu
-                </p>
-            </div>
-            <hr/>
-
-            <hr/>
-            <div className="usercommentname">
-                <h4> <strong> Sonam Malhotra </strong> <br/> </h4>
-            </div>
-            <div className="usercomments">
-                <p>
-                    Mittlerweile gibt es mehrere Versionen des Lorem Ipsum, einige zufällig, andere bewusst (beeinflusst von Witz und des eigenen Geschmacks)
-                </p>
-            </div>
-            <hr/>
-
-            <hr/>
-            <div className="usercommentname">
-                <h4> <strong> Sonam </strong> <br/> </h4>
-            </div>
-            <div className="usercomments">
-                <p>
-                    Can you guide me ? How to improve the performance of this
-                </p>
-            </div>
-            <hr/>
-
-            <img className="Userimage" src ={'client/Images/deep.jpg'}/> <br/>
-            <div className="userdescribation">
-                <p>
-                    I have successful Web Developer with Nearly 2 Year experience.
-
-                    Currently working as freelancer/contract Front hand Developer in Germany.
-
-                    My Core Expertise is
-
-                    React.js, Flux, Fetch Api and Redux
-                    Web designing ( Html, css3, JavaScript and jQuery )
-                    Backhand development (Php Laravel framework, MySQL, Firebase)
-                </p>
-                <hr/>
-                <strong>Email-</strong> komaldeep1993@gmail.com<br/>
-
-                <h4> <strong> Experience </strong> <br/> </h4>
-
-                <button className="submitbutton4"> React </button>
-                <button className="submitbutton4"> Html </button>
-                <button className="submitbutton4"> CSS </button>
-                <button className="submitbutton4"> Javascript </button>
-                <button className="submitbutton4"> Jquery </button>
-                <button className="submitbutton4"> Firebase </button>
-
-            </div>
 
         </div>
         </div>;
@@ -333,7 +220,7 @@ class Sidebar extends React.Component{
 
         if(currentstate == '0'){
           var subheader =   <div> <hr/> <div className="rating">
-                <button className="submitbutton2"> Rating <strong> 4.5 </strong>  <img src ={'client/Images/star.png'}/> </button>
+                <button className="submitbutton2"> Rating <strong> 4.5 </strong> </button>
                 <button className="submitbutton2"> $10 </button>
                 <button className="submitbutton2"> Sold - 310 </button>
                 <button className="submitbutton3"> Add To Card</button>
