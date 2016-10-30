@@ -72,6 +72,15 @@ class Sidebar extends React.Component{
     Item(){
 
         var curr_icon =  <div> <hr/> <div className="sidebar-bottom">
+
+            <h4> <strong> Estimated Integration Time </strong> <br/> </h4>
+            <p> 3-4 Hours </p>
+            <br/>
+
+            <h4> <strong> Complexity </strong> <br/> </h4>
+            <p> 3.5/10 </p>
+            <br/>
+            
             <h4> <strong> Required Packages </strong> <br/> </h4>
 
             <button className="submitbutton4"> Npm </button>
