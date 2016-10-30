@@ -24,15 +24,11 @@ class  ItemPreview extends React.Component{
 
     render(){
 
-        var divStyle = {
-            backgroundImage: "url('client/Images/code.jpg')"
-        };
 
         return (
-            <div className="background" style={divStyle}>
+            <div className="background">
                 <Header/>
                 <Sidebar/>
-                <br/>
                 <Itemview/>
             </div>
         )

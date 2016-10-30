@@ -56,11 +56,6 @@ class  Itemview extends React.Component{
                         <ReactMarkdown source={thisIsMyCopy} />
                     </div>
 
-                    <div className="htmlsrcimage">
-                        <div className="image-user"  style={divStyle}>
-                        </div>
-                    </div>
-
                 </div>
             </div>
         )
