@@ -168,7 +168,6 @@ h1{
 }
 
 .sidebar{
-    /*float: right;*/
     width: 32%;
     height: auto;
     margin-right: 3%;
@@ -375,7 +374,7 @@ h1{
 }
 .image-user{
     height: 100%;
-    width: 100%;
+    width: 60%;
     background-size: cover;
 }
 
@@ -439,27 +438,27 @@ h1{
 }
 
 
-@media only screen and (min-device-width : 1290px) {
+
+@media only screen and (max-device-width : 1290px) {
 
     body {
         background:  #D3D9DF;
         font-family: Roboto, Arial, sans-serif;
         width: 100%;
         height: 100%;
-        position: fixed;
-        overflow-y: scroll;
     }
 
     .background{
         height: 100%;
-        width: 70%;
+        width: 90%;
         /*margin-left: 10%;*/
         /*margin-right: 10%;*/
         background:  #D3D9DF;
         margin: 10% auto;
         margin-top: 0%;
         margin-bottom: 0%;
-        margin-left: 15%;
+        margin-left: 5%;
+        margin-right: 5%;
     }
 
     .sidebar {
@@ -489,27 +488,21 @@ h1{
     }
 
     .submitbutton{
-        margin: 30% auto;
         padding: 15% auto;
+        margin-left: 30%;
+        margin-right: 35%;
         margin-top: 0%;
         margin-bottom: 0%;
-        width:auto;
+        width:30%;
         height: 6%;
-        background-color: #004489;
-        -webkit-border-radius: 16;
-        -moz-border-radius: 16;
         border-radius: 8px;
         font-family: Roboto, Arial, sans-serif;
         color: #ffffff;
         font-size: 16px;
-        /*padding: 1% 5% 5% 5%;*/
-        border: solid #1f628d 0px;
-        text-decoration: none;
-        opacity: 0.6;
     }
 
 }
-@media only screen and (min-device-width : 1590px) {
+@media only screen and (max-device-width : 1590px) {
 
     .imagecontainer{
         width: 611px;
@@ -532,17 +525,61 @@ h1{
         background-size: cover;
     }
     .submitbutton{
-        margin: 30% auto;
-        padding: 15% auto;
+        margin-left: 40%;
+        margin-right: 40%;
         margin-top: 0%;
         margin-bottom: 0%;
         width:20%;
-        height: 6%;
-        background-color: #004489;
+        height: 4%;
         border-radius: 8px;
+        font-family: Roboto, Arial, sans-serif;
+        color: #ffffff;
+        font-size: 16px;
     }
 
 }
+
+@media only screen and (max-device-width : 1920px) {
+
+    .imagecontainer{
+        width: 611px;
+        height: 350px;
+        background-color: #000;
+        background: center;
+        border: 0px solid white;
+        margin: 10% auto;
+        padding: 0%;
+        margin-top: 0%;
+        margin-bottom: 0%;
+
+    }
+
+    .image-user {
+        width: 611px;
+        height: 100%;
+        background-position: center;
+        border: 0px solid white;
+        background-size: cover;
+    }
+    .submitbutton{
+        padding: 15% auto;
+        margin-left: 40%;
+        margin-right: 40%;
+        margin-top: 0%;
+        margin-bottom: 0%;
+        width:20%;
+        height: 4%;
+        border-radius: 8px;
+        font-family: Roboto, Arial, sans-serif;
+        color: #ffffff;
+        font-size: 16px;
+    }
+
+}
+
+
+
+
 
 @media only screen and (max-device-width : 800px) {
 
@@ -608,3 +645,4 @@ h1{
     }
 
 }
+
