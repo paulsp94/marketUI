@@ -80,7 +80,7 @@ class Sidebar extends React.Component{
             <h4> <strong> Complexity </strong> <br/> </h4>
             <p> 3.5/10 </p>
             <br/>
-            
+
             <h4> <strong> Required Packages </strong> <br/> </h4>
 
             <button className="submitbutton4"> Npm </button>

@@ -28,8 +28,8 @@ class  ItemPreview extends React.Component{
         return (
             <div className="background">
                 <Header/>
-                <Sidebar/>
-                <Itemview/>
+                 <Itemview/>
+                 <Sidebar/>
             </div>
         )
     }
