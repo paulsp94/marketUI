@@ -8,6 +8,7 @@ import ReactMarkdown from 'react-markdown';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
+import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 
 class  Itemview extends React.Component{
 
@@ -15,18 +16,16 @@ class  Itemview extends React.Component{
 
         super(props);
         this.state= {
-            code:"color: blue"
+            code:"color: blue",
+	    expanded: false,
         };
 
     }
 
 
     render(){
-
-        var divStyle = {
-            backgroundImage: "url('client/Images/zx.jpg')"
-        };
-
+	
+      
         var divstylelastimage = {
             backgroundImage: "url('client/Images/lastimg.jpg')"
         }
@@ -37,34 +36,38 @@ class  Itemview extends React.Component{
             var button = '';
         }
         else {
-            var button = <button className="submitbutton"> Live Preview <img src ={'client/Images/preview.png'}/> </button>
+            var button = <RaisedButton label="Preview" style={{ margin: 1}} />
         }
 
-        var thisIsMyCopy = ' <p> <strong> copy copy copy </strong> <br/> <strong> All the information user paste in Html code will come here </strong> <strong> So user can write anything to show viewers</strong>';
+        var thisIsMyCopy = '### test\n# markdown\n\n <h5> <strong> copy copy copy </h5> <br/> <strong> All the information user paste in Html code will come here </strong> <strong> So user can write anything to show viewers</strong>### test \n <p> <strong> copy copy copy </strong> <br/> <strong> All the information user paste in Html code will come here </strong> <strong> So user can write anything to show viewers</strong> ### test \n <p> <strong> copy copy copy </strong> <br/> <strong> All the information user paste in Html code will come here </strong> <strong> So user can write anything to show viewers</strong> ### test \n <p> <strong> copy copy copy </strong> <br/> <strong> All the information user paste in Html code will come here </strong> <strong> So user can write anything to show viewers</strong> ### test \n <p> <strong> copy copy copy </strong> <br/> <strong> All the information user paste in Html code will come here </strong> <strong> So user can write anything to show viewers</strong> ### test \n <p> <strong> copy copy copy </strong> <br/> <strong> All the information user paste in Html code will come here </strong> <strong> So user can write anything to show viewers</strong> ### test \n <p> <strong> copy copy copy </strong> <br/> <strong> All the information user paste in Html code will come here </strong> <strong> So user can write anything to show viewers</strong>';
 
         return (
-            <MuiThemeProvider>
+	    <MuiThemeProvider>
             <div>
                 <div className="container">
+			
+		      <Card expanded={this.state.expanded} onExpandChange={this.handleExpandChange}>
+		   
+		   
+			<CardMedia
+			  overlay={<CardTitle title="Overlay title" subtitle="Overlay subtitle" />}>
+			  <img src="client/Images/lastimg.jpg" />
+			</CardMedia>
 
-                <div className="imagecontainer">
-                    <div className="image-user" style={divstylelastimage}>
-                    </div>
-                </div>
-                    {button}
-                <div className="description">
-                    Lorem ipsum eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet,
-                </div>
-
-                    <div className="code">
-                        <ReactMarkdown source={thisIsMyCopy} />
-                    </div>
-
-                    <RaisedButton label="Default" />
+				    {button}
+			<CardText >
+				  <div className="code">
+				        <ReactMarkdown source={thisIsMyCopy} />
+				    </div>
+			</CardText>
+		 
+		     </Card>
+		
+             
 
                 </div>
             </div>
-            </MuiThemeProvider>
+	    </MuiThemeProvider>
         )
     }
 }

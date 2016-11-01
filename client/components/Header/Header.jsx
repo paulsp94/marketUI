@@ -28,9 +28,7 @@ class  Header extends React.Component{
 
             <div className="header">
                 <h3> Featured Popular</h3>
-                <img className="headerimg" src ={'client/Images/user.png'}/>
             </div>
-
         )
     }
 }

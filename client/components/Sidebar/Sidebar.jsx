@@ -6,6 +6,18 @@ import {withRouter} from 'react-router';
 import { hashHistory } from 'react-router';
 import Header from '../Header/Header.jsx';
 import Subheader from '../Subheader/Subheader.jsx';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import {Tabs, Tab} from 'material-ui/Tabs';
+import Slider from 'material-ui/Slider';
+import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
+import RaisedButton from 'material-ui/RaisedButton';
+import Divider from 'material-ui/Divider';
+
+
+
+
 
 class Sidebar extends React.Component{
 
@@ -13,15 +25,18 @@ class Sidebar extends React.Component{
         super(props);
         this.state= {
             Currenticon:'',
-            Currentstate:''
+            Currentstate:'',
+	    expanded: false,
+	    showCheckboxes: false,
         };
-
     }
+
+
 
     componentWillMount(){
 
 
-        var curr_icon =  <div> <hr/> <div className="sidebar-bottom">
+        var curr_icon =  <div><div className="sidebar-bottom">
 
             <h4> <strong> Estimated Integration Time </strong> <br/> </h4>
             <p> 3-4 Hours </p>
@@ -71,7 +86,7 @@ class Sidebar extends React.Component{
 
     Item(){
 
-        var curr_icon =  <div> <hr/> <div className="sidebar-bottom">
+        var curr_icon =  <div><div className="sidebar-bottom">
 
             <h4> <strong> Estimated Integration Time </strong> <br/> </h4>
             <p> 3-4 Hours </p>
@@ -123,7 +138,7 @@ class Sidebar extends React.Component{
 
     Comments(){
 
-        var curr_icon = <div> <hr/> <div className="sidebar-bottom">
+        var curr_icon = <div><div className="sidebar-bottom">
             <div className="usercommentname">
                 <h4> <strong> Komaldeep Singh </strong> <br/> </h4>
             </div>
@@ -199,9 +214,8 @@ class Sidebar extends React.Component{
                 </p>
                 <hr/>
                 <strong>Email-</strong> komaldeep1993@gmail.com<br/>
-
                 <h4> <strong> Experience </strong> <br/> </h4>
-
+		
                 <button className="submitbutton4"> React </button>
                 <button className="submitbutton4"> Html </button>
                 <button className="submitbutton4"> CSS </button>
@@ -226,14 +240,22 @@ class Sidebar extends React.Component{
     render(){
 
         var currentstate = this.state.Currentstate;
-
+	
         if(currentstate == '0'){
-          var subheader =   <div> <hr/> <div className="rating">
-                <button className="submitbutton2"> Rating <strong> 4.5 </strong> </button>
-                <button className="submitbutton2"> $10 </button>
-                <button className="submitbutton2"> Sold - 310 </button>
-                <button className="submitbutton3"> Add To Card</button>
-                <button className="submitbutton3"> Buy & Checkout </button>
+          var subheader =   <div><div className="rating">
+	 <Divider />
+	  <Table >
+	    <TableBody displayRowCheckbox={this.state.showCheckboxes} adjustForCheckbox={this.state.showCheckboxes}>
+	      <TableRow  >
+		<TableRowColumn style={{textAlign: 'center'}}>Rating: 4.5</TableRowColumn>
+		<TableRowColumn style={{textAlign: 'center'}}>$10</TableRowColumn>
+		<TableRowColumn style={{textAlign: 'center'}}>Sold: 310</TableRowColumn>
+	      </TableRow>
+	    </TableBody>
+	  </Table>
+	  <RaisedButton label="Add To Card" style={{ margin: 12}} />
+	  <RaisedButton label="Buy & Checkout" style={{ margin: 12}} />
+	  <Divider />
             </div></div>
         }
         else {
@@ -242,7 +264,10 @@ class Sidebar extends React.Component{
 
 
         return (
+	<MuiThemeProvider>	   
             <div className="sidebar">
+ 		<Card expanded={this.state.expanded} onExpandChange={this.handleExpandChange}>
+		
                 <div className="side-header">
                 <button onClick={this.Item.bind(this)} className="submitbutton1"> Item </button>
                 <button onClick={this.Comments.bind(this)} className="submitbutton1"> Comments </button>
@@ -250,10 +275,14 @@ class Sidebar extends React.Component{
                 </div>
                 {subheader}
                 {this.state.Currenticon}
+		</Card>
             </div>
+
+	</MuiThemeProvider>
         )
     }
 }
+
 
 export default Sidebar ;
 
