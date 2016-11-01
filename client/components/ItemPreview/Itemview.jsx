@@ -5,6 +5,9 @@ import {Link} from "react-router";
 import {withRouter} from 'react-router';
 import { hashHistory } from 'react-router';
 import ReactMarkdown from 'react-markdown';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import RaisedButton from 'material-ui/RaisedButton';
 
 class  Itemview extends React.Component{
 
@@ -40,6 +43,7 @@ class  Itemview extends React.Component{
         var thisIsMyCopy = ' <p> <strong> copy copy copy </strong> <br/> <strong> All the information user paste in Html code will come here </strong> <strong> So user can write anything to show viewers</strong>';
 
         return (
+            <MuiThemeProvider>
             <div>
                 <div className="container">
 
@@ -56,8 +60,11 @@ class  Itemview extends React.Component{
                         <ReactMarkdown source={thisIsMyCopy} />
                     </div>
 
+                    <RaisedButton label="Default" />
+
                 </div>
             </div>
+            </MuiThemeProvider>
         )
     }
 }
