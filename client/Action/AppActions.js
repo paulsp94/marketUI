@@ -1,8 +1,6 @@
 var AppDispatcher = require('../dispatcher/AppDispatcher');
 
 var AppActions = {
-
-
     createComment: function (username) {
         var action = {
             actionType: "Tasks",

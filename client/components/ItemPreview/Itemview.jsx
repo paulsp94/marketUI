@@ -17,7 +17,7 @@ class  Itemview extends React.Component{
         super(props);
         this.state= {
             code:"color: blue",
-	    expanded: false,
+	        expanded: false,
         };
 
     }

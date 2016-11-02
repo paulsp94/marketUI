@@ -26,62 +26,15 @@ class Sidebar extends React.Component{
         this.state= {
             Currenticon:'',
             Currentstate:'',
-	    expanded: false,
-	    showCheckboxes: false,
+            expanded: false,
+            showCheckboxes: false,
         };
     }
-
-
-
     componentWillMount(){
-
-
-        var curr_icon =  <div><div className="sidebar-bottom">
-
-            <h4> <strong> Estimated Integration Time </strong> <br/> </h4>
-            <p> 3-4 Hours </p>
-            <br/>
-
-            <h4> <strong> Complexity </strong> <br/> </h4>
-            <p> 3.5/10 </p>
-            <br/>
-            <h4> <strong> Required Packages </strong> <br/> </h4>
-
-            <button className="submitbutton4"> Npm </button>
-            <button className="submitbutton4"> Bla-Bla </button>
-            <button className="submitbutton4"> something Here </button>
-            <br/>
-            <br/>
-            <h4> <strong> Language Compatibilty </strong> <br/> </h4>
-
-            R.3.3.1 Or Higher <br/>
-            rR3.30 Or Higher
-
-            <br/> <br/>
-            <h4> <strong> Maintenance </strong> <br/> </h4>
-            <h5> 5 Versions</h5>
-            <p> Last Updated   20-11-2015 </p>
-
-            <br/>
-            <h4> <strong> Tags </strong> <br/> </h4>
-
-            <button className="submitbutton4"> React </button>
-            <button className="submitbutton4"> Html </button>
-            <button className="submitbutton4"> CSS </button>
-            <button className="submitbutton4"> Javascript </button>
-            <button className="submitbutton4"> Jquery </button>
-        </div>
-        </div>;
-
-        this.setState({
-            Currenticon :curr_icon
-        });
-
         var statevalue = 0;
         this.setState({
             Currentstate : statevalue
         });
-
     }
 
     Item(){
@@ -215,7 +168,7 @@ class Sidebar extends React.Component{
                 <hr/>
                 <strong>Email-</strong> komaldeep1993@gmail.com<br/>
                 <h4> <strong> Experience </strong> <br/> </h4>
-		
+
                 <button className="submitbutton4"> React </button>
                 <button className="submitbutton4"> Html </button>
                 <button className="submitbutton4"> CSS </button>
@@ -240,22 +193,23 @@ class Sidebar extends React.Component{
     render(){
 
         var currentstate = this.state.Currentstate;
-	
+
         if(currentstate == '0'){
-          var subheader =   <div><div className="rating">
-	    <Divider />
-              <Table >
-	    <TableBody displayRowCheckbox={this.state.showCheckboxes} adjustForCheckbox={this.state.showCheckboxes}>
-	      <TableRow  >
-		<TableRowColumn style={{textAlign: 'center'}}>Rating: 4.5</TableRowColumn>
-		<TableRowColumn style={{textAlign: 'center'}}>$10</TableRowColumn>
-		<TableRowColumn style={{textAlign: 'center'}}>Sold: 310</TableRowColumn>
-	      </TableRow>
-	    </TableBody>
-	           </Table>
-	  <RaisedButton label="Add To Card" style={{ margin: 12}} />
-	  <RaisedButton label="Buy & Checkout" style={{ margin: 12}} />
-	  <Divider />
+            var subheader =  <div><div className="rating">
+
+                <Divider />
+                <Table >
+                    <TableBody displayRowCheckbox={this.state.showCheckboxes} adjustForCheckbox={this.state.showCheckboxes}>
+                        <TableRow  >
+                            <TableRowColumn style={{textAlign: 'center'}}>Rating: 4.5</TableRowColumn>
+                            <TableRowColumn style={{textAlign: 'center'}}>$10</TableRowColumn>
+                            <TableRowColumn style={{textAlign: 'center'}}>Sold: 310</TableRowColumn>
+                        </TableRow>
+                    </TableBody>
+                </Table>
+                <RaisedButton label="Add To Card" style={{ margin: 12}} />
+                <RaisedButton label="Buy & Checkout" style={{ margin: 12}} />
+                <Divider />
             </div></div>
         }
         else {
@@ -263,22 +217,67 @@ class Sidebar extends React.Component{
         }
 
 
-        return (
-	<MuiThemeProvider>	   
-            <div className="sidebar">
- 		<Card expanded={this.state.expanded} onExpandChange={this.handleExpandChange}>
-		
-                <div className="side-header">
-                <button onClick={this.Item.bind(this)} className="submitbutton1"> Item </button>
-                <button onClick={this.Comments.bind(this)} className="submitbutton1"> Comments </button>
-                <button onClick={this.Support.bind(this)} className="submitbutton1"> Supports </button>
-                </div>
-                {subheader}
-                {this.state.Currenticon}
-		</Card>
-            </div>
+        if(currentstate == '0') {
+            var prodctdetails =
+                <div className="sidebar-bottom">
 
-	</MuiThemeProvider>
+                    <h4><strong> {this.props.productname[0]} </strong> <br/></h4>
+
+                    <h4><strong> Estimated Integration Time </strong> <br/></h4>
+                    <p> {this.props.productname[1]} </p>
+                    <br/>
+
+                    <h4><strong> Complexity </strong> <br/></h4>
+                    <p> {this.props.productname[2]} </p>
+                    <br/>
+                    <h4><strong> Required Packages </strong> <br/></h4>
+
+                    <button className="submitbutton4"> Npm</button>
+                    <button className="submitbutton4"> Bla-Bla</button>
+                    <button className="submitbutton4"> something Here</button>
+                    <br/>
+                    <br/>
+                    <h4><strong> Language Compatibilty </strong> <br/></h4>
+
+                    {this.props.productname[3]}
+
+                    <br/> <br/>
+                    <h4><strong> Maintenance </strong> <br/></h4>
+                    <h5> 5 Versions</h5>
+                    <p> Last Updated 20-11-2015 </p>
+
+                    <br/>
+                    <h4><strong> Tags </strong> <br/></h4>
+
+                    <button className="submitbutton4"> React</button>
+                    <button className="submitbutton4"> Html</button>
+                    <button className="submitbutton4"> CSS</button>
+                    <button className="submitbutton4"> Javascript</button>
+                    <button className="submitbutton4"> Jquery</button>
+                </div>;
+        }
+        else {
+            var prodctdetails = " ";
+        }
+
+
+        return (
+        <MuiThemeProvider>
+                <div className="sidebar">
+                    <Card expanded={this.state.expanded} onExpandChange={this.handleExpandChange}>
+
+                        <div className="side-header">
+                            <button onClick={this.Item.bind(this)} className="submitbutton1"> Item </button>
+                            <button onClick={this.Comments.bind(this)} className="submitbutton1"> Comments </button>
+                            <button onClick={this.Support.bind(this)} className="submitbutton1"> Supports </button>
+                        </div>
+                        {subheader}
+                        {prodctdetails}
+                        {this.state.Currenticon}
+                    </Card>
+                </div>
+
+            </MuiThemeProvider>
         )
     }
 }
