@@ -39,45 +39,7 @@ class Sidebar extends React.Component{
 
     Item(){
 
-        var curr_icon =  <div><div className="sidebar-bottom">
-
-            <h4> <strong> Estimated Integration Time </strong> <br/> </h4>
-            <p> 3-4 Hours </p>
-            <br/>
-
-            <h4> <strong> Complexity </strong> <br/> </h4>
-            <p> 3.5/10 </p>
-            <br/>
-
-            <h4> <strong> Required Packages </strong> <br/> </h4>
-
-            <button className="submitbutton4"> Npm </button>
-            <button className="submitbutton4"> Bla-Bla </button>
-            <button className="submitbutton4"> something Here </button>
-
-            <br/>
-            <h4> <strong> Language Compatibilty </strong> <br/> </h4>
-
-            R.3.3.1 Or Higher <br/>
-            rR3.30 Or Higher
-
-            <br/> <br/>
-            <h4> <strong> Maintenance </strong> <br/> </h4>
-            <h5> 5 Versions</h5>
-            <p> Last Updated   20-11-2015 </p>
-
-            <br/>
-            <h4> <strong> Tags </strong> <br/> </h4>
-
-            <button className="submitbutton4"> React </button>
-            <button className="submitbutton4"> Html </button>
-            <button className="submitbutton4"> CSS </button>
-            <button className="submitbutton4"> Javascript </button>
-            <button className="submitbutton4"> Jquery </button>
-
-        </div>
-        </div>;
-
+        var curr_icon="";
         this.setState({
             Currenticon :curr_icon
         });
@@ -92,6 +54,7 @@ class Sidebar extends React.Component{
     Comments(){
 
         var curr_icon = <div><div className="sidebar-bottom">
+            <CardText>
             <div className="usercommentname">
                 <h4> <strong> Komaldeep Singh </strong> <br/> </h4>
             </div>
@@ -135,6 +98,7 @@ class Sidebar extends React.Component{
             </div>
             <hr/>
 
+                </CardText>
         </div>
         </div>;
 
@@ -153,6 +117,7 @@ class Sidebar extends React.Component{
 
         var curr_icon =  <div> <hr/> <div className="sidebar-bottom">
             <img className="Userimage" src ={'client/Images/deep.jpg'}/> <br/>
+            <CardText>
             <div className="userdescribation">
                 <p>
                     I have successful Web Developer with Nearly 2 Year experience.
@@ -169,13 +134,15 @@ class Sidebar extends React.Component{
                 <strong>Email-</strong> komaldeep1993@gmail.com<br/>
                 <h4> <strong> Experience </strong> <br/> </h4>
 
-                <button className="submitbutton4"> React </button>
-                <button className="submitbutton4"> Html </button>
-                <button className="submitbutton4"> CSS </button>
-                <button className="submitbutton4"> Javascript </button>
-                <button className="submitbutton4"> Jquery </button>
-                <button className="submitbutton4"> Firebase </button>
+                <RaisedButton label="React" disabled={true} className="submitbutton4" />
+                <RaisedButton label="Html" disabled={true} className="submitbutton4" />
+                <RaisedButton label="CSS" disabled={true} className="submitbutton4" />
+                <RaisedButton label="Javascript" disabled={true} className="submitbutton4" />
+                <RaisedButton label="Jquery" disabled={true} className="submitbutton4" />
+                <RaisedButton label="Firebase" disabled={true} className="submitbutton4" />
+
             </div>
+            </CardText>
         </div>
         </div>;
 
@@ -232,9 +199,12 @@ class Sidebar extends React.Component{
                     <br/>
                     <h4><strong> Required Packages </strong> <br/></h4>
 
-                    <button className="submitbutton4"> Npm</button>
-                    <button className="submitbutton4"> Bla-Bla</button>
-                    <button className="submitbutton4"> something Here</button>
+
+                    <RaisedButton label="Npm" disabled={true} className="submitbutton4" />
+                    <RaisedButton label="Bla-Bla" disabled={true} className="submitbutton4" />
+                    <RaisedButton label="something Here" disabled={true} className="submitbutton4" />
+                    <RaisedButton label="Npm" disabled={true} className="submitbutton4" />
+
                     <br/>
                     <br/>
                     <h4><strong> Language Compatibilty </strong> <br/></h4>
@@ -249,11 +219,12 @@ class Sidebar extends React.Component{
                     <br/>
                     <h4><strong> Tags </strong> <br/></h4>
 
-                    <button className="submitbutton4"> React</button>
-                    <button className="submitbutton4"> Html</button>
-                    <button className="submitbutton4"> CSS</button>
-                    <button className="submitbutton4"> Javascript</button>
-                    <button className="submitbutton4"> Jquery</button>
+                    <RaisedButton label="React" disabled={true} className="submitbutton4" />
+                    <RaisedButton label="Html" disabled={true} className="submitbutton4" />
+                    <RaisedButton label="CSS" disabled={true} className="submitbutton4" />
+                    <RaisedButton label="Javascript" disabled={true} className="submitbutton4" />
+                    <RaisedButton label="Jquery" disabled={true} className="submitbutton4" />
+
                 </div>;
         }
         else {
@@ -266,11 +237,12 @@ class Sidebar extends React.Component{
                 <div className="sidebar">
                     <Card expanded={this.state.expanded} onExpandChange={this.handleExpandChange}>
 
-                        <div className="side-header">
-                            <button onClick={this.Item.bind(this)} className="submitbutton1"> Item </button>
-                            <button onClick={this.Comments.bind(this)} className="submitbutton1"> Comments </button>
-                            <button onClick={this.Support.bind(this)} className="submitbutton1"> Supports </button>
-                        </div>
+                        <Tabs>
+                            <Tab label="Item" onActive={this.Item.bind(this)}> </Tab>
+                            <Tab label="Comments" onActive={this.Comments.bind(this)}> </Tab>
+                            <Tab label="Supports" onActive={this.Support.bind(this)}> </Tab>
+                        </Tabs>
+
                         {subheader}
                         {prodctdetails}
                         {this.state.Currenticon}

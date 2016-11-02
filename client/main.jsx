@@ -20,8 +20,6 @@ import Downloads from 'components/Downloads/Downloads';
           <Route path="ProductOptions" component={ProductOptions}/>
           <Route path="ItemPreview" component={ItemPreview}/>
           <Route path="/" component={Downloads}/>
-
-
       </Router>,
       document.getElementById('js-main'));
 
