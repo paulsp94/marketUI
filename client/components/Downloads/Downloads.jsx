@@ -16,6 +16,9 @@ import RaisedButton from 'material-ui/RaisedButton';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import Slider from 'material-ui/Slider';
+import Profile from './Profile.jsx';
+import ProfileSidebar from './ProfileSidebar.jsx';
+
 
 var data = [
     {image:"https://images.unsplash.com/photo-1461632830798-3adb3034e4c8?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=90a14bfc86ece2e02bb67cb5decef29b", Price:"$5", name: "Product 1" },
@@ -37,6 +40,7 @@ class  Downloads extends React.Component{
         this.state= {
             filldetails:'',
             productname:'',
+            profiletab:'',
         };
     }
 
@@ -51,6 +55,11 @@ class  Downloads extends React.Component{
 
         this.setState({
             productname : arr,
+        });
+
+        var profiletab = 1;
+        this.setState({
+            profiletab : profiletab,
         });
 
     }
@@ -78,12 +87,41 @@ class  Downloads extends React.Component{
         }
     }
 
+    Profile(){
+        var profiletab = 1;
+        this.setState({
+            profiletab : profiletab,
+        });
+    }
+
+    Download(){
+        var profiletab = 0;
+        this.setState({
+            profiletab : profiletab,
+        });
+    }
+
+    Content(){
+        var profiletab = 0;
+        this.setState({
+            profiletab : profiletab,
+        });
+    }
+
 
 
     render(){
 
         var productspecificdata = this.state.productname;
-        console.log(productspecificdata);
+
+        var profiletab = this.state.profiletab;
+
+        if(profiletab == '1'){
+            var sidebar = <ProfileSidebar/>
+        }
+        else {
+            var sidebar = <Sidebar productname={productspecificdata}/>
+        }
 
         return (
             <MuiThemeProvider>
@@ -92,13 +130,13 @@ class  Downloads extends React.Component{
                         <div className="container">
                         <Card>
                             <Tabs>
-                                <Tab label="Profile" >
+                                <Tab label="Profile" onActive={this.Profile.bind(this)}>
                                     <div>
-                                       Profile
+                                       <Profile/>
                                     </div>
                                 </Tab>
 
-                                <Tab label="Downloads" >
+                                <Tab label="Downloads" onActive={this.Download.bind(this)}>
                                     <div>
                                         {
                                             data.map((detail)=> {
@@ -110,12 +148,13 @@ class  Downloads extends React.Component{
 
                                     </div>
                                 </Tab>
-                                <Link to="ItemPreview"> <Tab label="Content">
-                                </Tab></Link>
+                                <Tab label="Content" onActive={this.Content.bind(this)}>
+                                </Tab>
                             </Tabs>
                             </Card>
                         </div>
-                <Sidebar productname={productspecificdata}/>
+                {sidebar}
+
             </div>
             </MuiThemeProvider>
         )

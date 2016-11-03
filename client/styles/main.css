@@ -174,14 +174,14 @@
 
 	.inputfield-signup1{
 
-	border: 0;
-	background: transparent;
-	border-bottom: 2px solid white;
-	color: white;
-	width: 63%;
-	padding-left: 3%;
-	outline: 0;
-	outline-color: black;
+		border: 0;
+		background: transparent;
+		border-bottom: 2px solid black;
+		color: black;
+		width: 50%;
+		padding-left: 3%;
+		outline: 0;
+		outline-color: black;
 
 	}
 
@@ -402,7 +402,9 @@
 		cursor: pointer;
 	}
 	.productimage{
-		width: 50%;
+		width: 300px;
+		height: 250px;
+		margin: 15px 10px auto;
 	}
 
 	.image-part{
@@ -416,6 +418,14 @@
 		text-align: center;
 		margin-top: 5%;
 	}
+
+	.Profiledata{
+		text-align: center;
+		/*border: 10px solid red;*/
+		font-size: 16px;
+
+	}
+
 
 	@media (min-width : 800px) and (max-width : 1099px) {
 
