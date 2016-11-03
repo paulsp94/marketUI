@@ -14,6 +14,7 @@ import Slider from 'material-ui/Slider';
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
 import RaisedButton from 'material-ui/RaisedButton';
 import Divider from 'material-ui/Divider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 
 class ProfileSidebar extends React.Component{
@@ -27,6 +28,8 @@ class ProfileSidebar extends React.Component{
             showCheckboxes: false,
         };
     }
+
+
 
     render(){
 

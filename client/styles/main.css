@@ -402,9 +402,7 @@
 		cursor: pointer;
 	}
 	.productimage{
-		width: 300px;
-		height: 250px;
-		margin: 15px 10px auto;
+		width: 50%;
 	}
 
 	.image-part{

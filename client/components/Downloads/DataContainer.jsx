@@ -38,7 +38,7 @@ class  DataContainer extends React.Component{
 
         return (
             <MuiThemeProvider>
-            <Card style={{ margin: 10}} onClick={this.updateItem.bind(this)}>
+            <Card style={{ margin: 9}} onClick={this.updateItem.bind(this)}>
             <div className="Product" >
                 <CardText>
                 <img className="productimage" src={this.props.item.image} style = {Style}/>
