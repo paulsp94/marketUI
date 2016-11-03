@@ -276,7 +276,7 @@
 	color: #000;
 	font-size: 14px;
 	text-decoration: none;
-	margin-right: 3%;
+	margin-right: 1%;
 	margin-bottom: 3%;
 	border: none;
 
@@ -303,6 +303,7 @@
 	}
 
 	.rating{
+	padding-top:5px;
 	height: 15%;
 	text-align: center;
 	opacity: 0.9;
@@ -329,7 +330,7 @@
 	.container{
 	margin-left:2%;
 	height: auto;
-	background-color: white;
+	background-color: none;
 	min-height: 100%;
 	padding: 0%;
 	margin-left:14%;
@@ -394,17 +395,14 @@
 	padding-left: 5%;
 	text-align: left;
 	}
+
 	.Product{
 		width: 100%;
-		height: 300px;
-		border: 2px solid grey;
 		vertical-align: middle;
 		cursor: pointer;
 	}
 	.productimage{
-		width: 300px;
-		height: 250px;
-		margin: 15px 10px auto;
+		width: 50%;
 	}
 
 	.image-part{
@@ -447,7 +445,6 @@
 	width: 400px;
 	height: auto;
 	min-height: 900px;
-	margin-right: 1%;
 	float: right;
 	}
 

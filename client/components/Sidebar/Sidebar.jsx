@@ -208,7 +208,7 @@ class Sidebar extends React.Component{
 
     Support(){
 
-        var curr_icon =  <div> <hr/> <div className="sidebar-bottom">
+        var curr_icon =  <div> <div className="sidebar-bottom">
             <img className="Userimage" src ={'client/Images/deep.jpg'}/> <br/>
             <CardText>
                 <div className="userdescribation">
@@ -257,8 +257,7 @@ class Sidebar extends React.Component{
 	
         if(currentstate == '0'){
           var subheader =   <div><div className="rating">
-	    <Divider />
-              <Table >
+        <Table >
 	    <TableBody displayRowCheckbox={this.state.showCheckboxes} adjustForCheckbox={this.state.showCheckboxes}>
 	      <TableRow  >
 		<TableRowColumn style={{textAlign: 'center'}}>Rating: 4.5</TableRowColumn>
@@ -266,10 +265,9 @@ class Sidebar extends React.Component{
 		<TableRowColumn style={{textAlign: 'center'}}>Sold: 310</TableRowColumn>
 	      </TableRow>
 	    </TableBody>
-	           </Table>
+	   </Table>
 	  <RaisedButton label="Add To Card" style={{ margin: 12}} />
 	  <RaisedButton label="Buy & Checkout" style={{ margin: 12}} />
-	  <Divider />
             </div></div>
         }
         else {

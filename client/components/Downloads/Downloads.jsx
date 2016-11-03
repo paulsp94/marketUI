@@ -90,6 +90,7 @@ class  Downloads extends React.Component{
             <div className="background">
                 <Header/>
                         <div className="container">
+                        <Card>
                             <Tabs>
                                 <Tab label="Profile" >
                                     <div>
@@ -112,6 +113,7 @@ class  Downloads extends React.Component{
                                 <Link to="ItemPreview"> <Tab label="Content">
                                 </Tab></Link>
                             </Tabs>
+                            </Card>
                         </div>
                 <Sidebar productname={productspecificdata}/>
             </div>

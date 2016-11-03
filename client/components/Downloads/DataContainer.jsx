@@ -11,6 +11,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import Paper from 'material-ui/Paper';
 
 class  DataContainer extends React.Component{
 
@@ -33,18 +34,14 @@ class  DataContainer extends React.Component{
     render(){
 
         var Style = {
-            width: "47%",
-            float: "left",
         };
 
         return (
             <MuiThemeProvider>
-            <div className="Product" onClick={this.updateItem.bind(this)}>
-                <CardMedia style = {Style}>
-                <img className="productimage" src={this.props.item.image} />
-                </CardMedia>
-
+            <Card style={{ margin: 10}} onClick={this.updateItem.bind(this)}>
+            <div className="Product" >
                 <CardText>
+                <img className="productimage" src={this.props.item.image} style = {Style}/>
                 <div className="text-part">
                 <h4> <strong> {this.props.item.name} </strong> </h4>
                     <br/> <br/>
@@ -54,6 +51,8 @@ class  DataContainer extends React.Component{
                 </div>
                 </CardText>
             </div>
+            </Card>
+
             </MuiThemeProvider>
         )
     }
