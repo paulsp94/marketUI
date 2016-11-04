@@ -22,10 +22,7 @@ class  Itemview extends React.Component{
 
     }
 
-
     render(){
-	
-      
         var divstylelastimage = {
             backgroundImage: "url('client/Images/lastimg.jpg')"
         }

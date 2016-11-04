@@ -14,7 +14,7 @@ import Slider from 'material-ui/Slider';
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
 import RaisedButton from 'material-ui/RaisedButton';
 import Divider from 'material-ui/Divider';
-
+import Chip from 'material-ui/Chip';
 
 
 
@@ -134,7 +134,6 @@ class Sidebar extends React.Component{
                 <strong>Email-</strong> komaldeep1993@gmail.com<br/>
                 <h4> <strong> Experience </strong> <br/> </h4>
 
-                <RaisedButton label="React" disabled={true} className="submitbutton4" />
                 <RaisedButton label="Html" disabled={true} className="submitbutton4" />
                 <RaisedButton label="CSS" disabled={true} className="submitbutton4" />
                 <RaisedButton label="Javascript" disabled={true} className="submitbutton4" />
