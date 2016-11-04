@@ -29,16 +29,12 @@ class ProfileSidebar extends React.Component{
         };
     }
 
-
-
     render(){
-
-
         return (
             <MuiThemeProvider>
                 <div className="sidebar">
                  <Tabs>
-                 <Tab label="Item" >
+                 <Tab label="" >
                     <Card expanded={this.state.expanded}>
                             <img className="Userimage" src ={'client/Images/code.jpg'}/> <br/>
                             <CardText>
@@ -54,7 +50,6 @@ class ProfileSidebar extends React.Component{
                                     </p>
                                 </div>
                             </CardText>
-
                     </Card>
                      </Tab>
                     </Tabs>

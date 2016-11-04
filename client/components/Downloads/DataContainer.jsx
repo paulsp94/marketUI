@@ -24,12 +24,10 @@ class  DataContainer extends React.Component{
 
     }
 
-
     updateItem(event){
         var productname = this.props.item.name;
         this.props.ViewItem(productname);
     }
-
 
     render(){
 

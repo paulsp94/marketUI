@@ -158,7 +158,6 @@ class Sidebar extends React.Component{
     }
 
     render(){
-
         var currentstate = this.state.Currentstate;
 
         if(currentstate == '0'){
@@ -182,7 +181,6 @@ class Sidebar extends React.Component{
         else {
             var subheader= '';
         }
-
 
         if(currentstate == '0') {
             var prodctdetails =
@@ -231,7 +229,6 @@ class Sidebar extends React.Component{
             var prodctdetails = " ";
         }
 
-
         return (
         <MuiThemeProvider>
                 <div className="sidebar">
@@ -254,8 +251,4 @@ class Sidebar extends React.Component{
     }
 }
 
-
 export default Sidebar ;
-
-
-

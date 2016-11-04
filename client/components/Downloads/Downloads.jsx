@@ -130,12 +130,11 @@ class  Downloads extends React.Component{
                         <div className="container">
                         <Card style= {{backgroundColor: "#efeadd", paddingBottom: "2%"}}>
                             <Tabs>
-                                <Tab label="Profile" onActive={this.Profile.bind(this)}>
+                                <Tab label="Account" onActive={this.Profile.bind(this)}>
                                     <div>
                                        <Profile/>
                                     </div>
                                 </Tab>
-
                                 <Tab label="Downloads" onActive={this.Download.bind(this)}>
                                     <div>
                                         {
@@ -145,16 +144,14 @@ class  Downloads extends React.Component{
                                                 />
                                             })
                                         }
-
                                     </div>
                                 </Tab>
-                                <Tab label="Content" onActive={this.Content.bind(this)}>
+                                     <Tab label="Content" onActive={this.Content.bind(this)}>
                                 </Tab>
                             </Tabs>
                             </Card>
                         </div>
                 {sidebar}
-
             </div>
             </MuiThemeProvider>
         )
