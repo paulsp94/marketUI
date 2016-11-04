@@ -128,7 +128,7 @@ class  Downloads extends React.Component{
             <div className="background">
                 <Header/>
                         <div className="container">
-                        <Card>
+                        <Card style= {{backgroundColor: "#efeadd", paddingBottom: "2%"}}>
                             <Tabs>
                                 <Tab label="Profile" onActive={this.Profile.bind(this)}>
                                     <div>
