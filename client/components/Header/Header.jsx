@@ -30,7 +30,8 @@ class  Header extends React.Component{
                 <MuiThemeProvider>
                     <Card>
                         <div className="header">
-                        <h3> Featured Popular</h3>
+                        <h3> Featured Popular</h3>'
+                        <Link to="ItemPreview"> <h3>Item Preview</h3> </Link>
                         </div>
                     </Card>
                 </MuiThemeProvider>

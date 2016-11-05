@@ -382,11 +382,19 @@
 	text-align: left;
 	}
 
+	.Product1{
+		width: 100%;
+		vertical-align: middle;
+		cursor: pointer;
+		height: 310px;
+	}
+
 	.Product{
 		width: 100%;
 		vertical-align: middle;
 		cursor: pointer;
 	}
+
 	.productimage{
 		width: 50%;
 	}

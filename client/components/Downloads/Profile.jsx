@@ -21,6 +21,8 @@ class  Profile extends React.Component{
         this.state= {
             open: false,
             open1: false,
+            open2:false,
+            open3:false,
         };
 
     }
