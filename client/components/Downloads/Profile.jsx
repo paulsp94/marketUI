@@ -119,7 +119,6 @@ class  Profile extends React.Component{
 
                             Enter Password: <br/> <input className="inputfield-signup1" type="password"/> <br/><br/>
                             Enter Again-Password: <br/><input className="inputfield-signup1" type="password"/><br/><br/>
-
                             <RaisedButton label="Submit" style={{ margin: 12}} />
 
                         </Dialog>

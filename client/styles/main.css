@@ -65,7 +65,7 @@
 	background: #ffffff;
 	border: solid  black 2px;
 	width: 70%;
-	padding-left: 2%;
+	padding-left: 5%;
 	margin-left: 5%;
 	}
 
@@ -154,13 +154,10 @@
 	padding-right: 5px;
 	background-color: none;
 	color: black;
-	min-height: 900px;
-	padding-top: 0px;
 	float: left;
 	}
 
 	.productpage-top{
-	border: 4px solid grey;
 	width: 54%;
 	margin-left: 7%;
 	margin-right: 7%;
@@ -174,14 +171,14 @@
 
 	.inputfield-signup1{
 
-		border: 0;
-		background: transparent;
-		border-bottom: 2px solid black;
-		color: black;
-		width: 50%;
-		padding-left: 3%;
-		outline: 0;
-		outline-color: black;
+	border: 0;
+	background: transparent;
+	border-bottom: 2px solid black;
+	color: black;
+	width: 50%;
+	padding-left: 3%;
+	outline: 0;
+	outline-color: black;
 
 	}
 
@@ -282,10 +279,6 @@
 
 	}
 
-	.side-header{
-	height: 5%;
-	text-align: center;
-	}
 
 	.buttons{
 	background-color: transparent;
@@ -303,8 +296,7 @@
 	}
 
 	.rating{
-	padding-top:5px;
-	height: 15%;
+	padding-top:1px;
 	text-align: center;
 	opacity: 0.9;
 	}
@@ -318,20 +310,14 @@
 	}
 
 	.sidebar-bottom{
-	min-height: 300px;
 	height: auto;
-	margin-top: 2%;
-	text-align: center;
-	font-size: 16px;
 	color: black;
-	padding-top: 1%;
 	}
 
 	.container{
 	margin-left:2%;
 	height: auto;
 	background-color: none;
-	min-height: 100%;
 	padding: 0%;
 	margin-left:14%;
 	float: left;
@@ -373,7 +359,7 @@
 	font-size: 20px;
 	color: black;
 	margin-right: 5%;
-	padding-left: 2%;
+	padding-left: 5%;
 	margin-top: 3%;
 	margin-left: 5%;
 	width: 80%;

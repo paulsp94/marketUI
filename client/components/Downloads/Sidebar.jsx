@@ -131,14 +131,15 @@ class Sidebar extends React.Component{
                     Backhand development (Php Laravel framework, MySQL, Firebase)
                 </p>
                 <hr/>
-                <strong>Email-</strong> komaldeep1993@gmail.com<br/>
+                <strong>Email:</strong> komaldeep1993@gmail.com<br/>
                 <h4> <strong> Experience </strong> <br/> </h4>
-
-                <RaisedButton label="Html" disabled={true} className="submitbutton4" />
-                <RaisedButton label="CSS" disabled={true} className="submitbutton4" />
-                <RaisedButton label="Javascript" disabled={true} className="submitbutton4" />
-                <RaisedButton label="Jquery" disabled={true} className="submitbutton4" />
-                <RaisedButton label="Firebase" disabled={true} className="submitbutton4" />
+                <div style={{display: 'flex', flexWrap: 'wrap'}}>
+                <Chip style={{float: "left", margin: 2}}>Html </Chip>
+                <Chip style={{float: "left", margin: 2}}>CSS </Chip>
+                <Chip style={{float: "left", margin: 2}}>Javascript </Chip>
+                <Chip style={{float: "left", margin: 2}}>Jquery </Chip>
+                <Chip style={{float: "left", margin: 2}}>Firebase </Chip>
+                </div>
 
             </div>
             </CardText>
@@ -161,8 +162,7 @@ class Sidebar extends React.Component{
 
         if(currentstate == '0'){
             var subheader =  <div><div className="rating">
-
-                <Divider />
+                <Card>
                 <Table >
                     <TableBody displayRowCheckbox={this.state.showCheckboxes} adjustForCheckbox={this.state.showCheckboxes}>
                         <TableRow  >
@@ -174,8 +174,7 @@ class Sidebar extends React.Component{
                 </Table>
                 <RaisedButton label="Add To Card" style={{ margin: 12}} />
                 <RaisedButton label="Buy & Checkout" style={{ margin: 12}} />
-                <Divider />
-            </div></div>
+            </Card></div></div>
         }
         else {
             var subheader= '';
@@ -184,44 +183,49 @@ class Sidebar extends React.Component{
         if(currentstate == '0') {
             var prodctdetails =
                 <div className="sidebar-bottom">
-
                     <h4><strong> {this.props.productname[0]} </strong> <br/></h4>
 
-                    <h4><strong> Estimated Integration Time </strong> <br/></h4>
-                    <p> {this.props.productname[1]} </p>
-                    <br/>
+                    <Card>
+                    <h4 style={{float: "left", marginLeft: 3}}><strong>Packages:</strong> <br/></h4>
+                    <div style={{display:"flex", flexWrap:"wrap", margin: 9}}>
+                    <Chip style={{float: "left", margin: 4}}>Shiny </Chip>
+                    <Chip style={{float: "left", margin: 4}}>ggplot </Chip>
+                    <Chip style={{float: "left", margin: 4}}>dplyr </Chip>
+                    </div>
+                    </Card>
 
-                    <h4><strong> Complexity </strong> <br/></h4>
+
+                    <div style={{flexWrap: 'wrap', margin: 9}}>
+                    <h4><strong>Complexity:</strong></h4>
                     <p> {this.props.productname[2]} </p>
-                    <br/>
-                    <h4><strong> Required Packages </strong> <br/></h4>
+                    <h4><strong>Integration Time: </strong></h4>
+                     {this.props.productname[1]}
+                    </div>
 
 
-                    <RaisedButton label="Npm" disabled={true} className="submitbutton4" />
-                    <RaisedButton label="Bla-Bla" disabled={true} className="submitbutton4" />
-                    <RaisedButton label="something Here" disabled={true} className="submitbutton4" />
-                    <RaisedButton label="Npm" disabled={true} className="submitbutton4" />
+                    <Card>
+                    <h4 style={{float: "left", marginLeft: 3}}><strong>  Compatibilty: </strong> <br/></h4>
+                    <div style={{display: 'flex', flexWrap: 'wrap'}}>
+                    <Chip style={{float: "left", margin: 4}}> {this.props.productname[3]} </Chip>
+                    </div>
+                    </Card>
 
-                    <br/>
-                    <br/>
-                    <h4><strong> Language Compatibilty </strong> <br/></h4>
-
-                    {this.props.productname[3]}
-
-                    <br/> <br/>
-                    <h4><strong> Maintenance </strong> <br/></h4>
+                    <div style={{flexWrap:"wrap", margin: 9}}>
+                    <h4 ><strong> Maintenance: </strong> </h4>
                     <h5> 5 Versions</h5>
-                    <p> Last Updated 20-11-2015 </p>
+                    <p > Last Updated 20-11-2015 </p>
+                    </div>
 
-                    <br/>
-                    <h4><strong> Tags </strong> <br/></h4>
-
-                    <RaisedButton label="React" disabled={true} className="submitbutton4" />
-                    <RaisedButton label="Html" disabled={true} className="submitbutton4" />
-                    <RaisedButton label="CSS" disabled={true} className="submitbutton4" />
-                    <RaisedButton label="Javascript" disabled={true} className="submitbutton4" />
-                    <RaisedButton label="Jquery" disabled={true} className="submitbutton4" />
-
+                    <Card>
+                    <h4 style={{float: "left", marginLeft: 3}} ><strong> Tags: </strong> </h4>
+                    <div style={{display: 'flex', flexWrap: 'wrap'}}>
+                    <Chip style={{float: "left", margin: 4}}>Html </Chip>
+                    <Chip style={{float: "left", margin: 4}}>CSS </Chip>
+                    <Chip style={{float: "left", margin: 4}}>Javascript </Chip>
+                    <Chip style={{float: "left", margin: 4}}>Jquery </Chip>
+                    <Chip style={{float: "left", margin: 4}}>Firebase </Chip>
+                    </div>
+                    </Card>
                 </div>;
         }
         else {
@@ -231,7 +235,7 @@ class Sidebar extends React.Component{
         return (
         <MuiThemeProvider>
                 <div className="sidebar">
-                    <Card expanded={this.state.expanded} onExpandChange={this.handleExpandChange}>
+                    <Card style={{backgroundColor: "#fdfdfb"}} expanded={this.state.expanded} onExpandChange={this.handleExpandChange}>
 
                         <Tabs>
                             <Tab label="Item" onActive={this.Item.bind(this)}> </Tab>
