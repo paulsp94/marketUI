@@ -460,14 +460,11 @@
 	.textarea{
 		min-height: 500px;
 		width: 100%;
-		font-size: 20px;
+		/*font-size: 20px;*/
 		border-style: none;
 		border-color: Transparent;
 		outline: none;
 	}
-	/*.textarea:focus{*/
-		/*border: none;*/
-	/*}*/
 
 
 
@@ -502,6 +499,18 @@
 	float: right;
 	}
 
+		.Product2{
+			min-height: 900px;
+		}
+
+		.markdowncode{
+			min-height: 890px;
+		}
+
+		.markdowntext{
+			min-height: 890px;
+		}
+
 	}
 
 	@media (min-width : 1100px) and (max-width : 1279px) {
@@ -530,6 +539,18 @@
 	min-height: 900px;
 	}
 
+		.Product2{
+			min-height: 900px;
+		}
+
+		.markdowncode{
+			min-height: 890px;
+		}
+
+		.markdowntext{
+			min-height: 890px;
+		}
+
 	}
 
 	@media (min-width : 1280px) and (max-width : 1439px) {
@@ -549,18 +570,26 @@
 	}
 
 	.container{
-
 	margin-left:3%;
 	width: 700px;
-
 	}
 
 	.sidebar{
 	width: 490px;
 	min-height: 900px;
-
-
 	}
+		.Product2{
+			min-height: 900px;
+		}
+
+
+		.markdowncode{
+			min-height: 890px;
+		}
+
+		.markdowntext{
+			min-height: 890px;
+		}
 
 	}
 
@@ -582,18 +611,26 @@
 	}
 
 	.container{
-
 	margin-left:4%;
 	width: 800px;
-
 	}
 
-	.sidebar{
-	width: 520px;
-	min-height: 900px;
-
-
+	.sidebar {
+		width: 520px;
+		min-height: 900px;
 	}
+
+	.Product2{
+		min-height: 900px;
+	}
+
+		.markdowncode{
+			min-height: 890px;
+		}
+
+		.markdowntext{
+			min-height: 890px;
+		}
 
 	}
 
@@ -624,9 +661,20 @@
 	.sidebar{
 	width: 520px;
 	min-height: 900px;
-
-
 	}
+
+		.Product2{
+			min-height: 900px;
+		}
+
+
+		.markdowncode{
+			min-height: 890px;
+		}
+
+		.markdowntext{
+			min-height: 890px;
+		}
 
 	}
 
@@ -658,6 +706,17 @@
 	margin-right: 5%;
 
 	}
+		.Product2{
+			min-height: 950px;
+		}
+
+		.markdowncode{
+			min-height: 890px;
+		}
+
+		.markdowntext{
+			min-height: 890px;
+		}
 
 	}
 
