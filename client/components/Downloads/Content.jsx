@@ -26,7 +26,7 @@ class  Content extends React.Component{
 
     updateItem(event){
         var productname = this.props.item.name;
-        this.props.ViewItem(productname);
+        this.props.ViewItemrateprice(productname);
     }
 
     render(){
@@ -40,14 +40,15 @@ class  Content extends React.Component{
                 <Card style={{ marginRight: "2%", marginLeft: "2%", marginTop: 9}} onClick={this.updateItem.bind(this)}>
                     <div className="Product" >
                         <CardText>
+
                             <img className="productimage" src={this.props.item.image} style = {Style}/>
                             <div className="text-part">
 
                                 <h4> <strong> Product Category </strong> </h4>
                                 <br/>  <hr/> <br/>
                                 <RaisedButton label="Edit Details" style={{ margin: 12}} />
-
                             </div>
+
                         </CardText>
                     </div>
                 </Card>

@@ -19,6 +19,7 @@ import Slider from 'material-ui/Slider';
 import Profile from './Profile.jsx';
 import ProfileSidebar from './ProfileSidebar.jsx';
 import Content from './Content.jsx';
+import ContentSidebar from './ContentSidebar.jsx';
 
 var data = [
     {image:"https://images.unsplash.com/photo-1461632830798-3adb3034e4c8?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=90a14bfc86ece2e02bb67cb5decef29b", Price:"$5", name: "Product 1" },
@@ -27,14 +28,14 @@ var data = [
 ];
 
 var data1 = [
-    {image:"https://images.unsplash.com/photo-1461632830798-3adb3034e4c8?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=90a14bfc86ece2e02bb67cb5decef29b", Price:"$5", name: "Product 1" },
-    {image:"https://images.unsplash.com/photo-1468070454955-c5b6932bd08d?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=098777638826d5753222a09116959b23", Price:"$10", name: "Product 2" },
+    {image:"https://images.unsplash.com/photo-1461632830798-3adb3034e4c8?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=90a14bfc86ece2e02bb67cb5decef29b", Price:"$5", name: "Product 1",rate:"4.5/10" },
+    {image:"https://images.unsplash.com/photo-1468070454955-c5b6932bd08d?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=098777638826d5753222a09116959b23", Price:"$10", name: "Product 2",rate:"8.5/10" },
 ];
 
 var productspecificdata = [
-    {Productname:"Product 1", IntegrationTime:"7-8 Hours", Complexity: "8/10", compatibilty:" Php7"},
-    {Productname:"Product 2", IntegrationTime:"1-2 Hours", Complexity: "3.5/10", compatibilty:"Java"},
-    {Productname:"Product 3", IntegrationTime:"3-4 Hours", Complexity: "7.5/10", compatibilty:"C++"},
+    {Productname:"Product 1", IntegrationTime:"7-8 Hours", Complexity: "8/10", compatibilty:" Php7", Price:"$15",rate:"5/10" },
+    {Productname:"Product 2", IntegrationTime:"1-2 Hours", Complexity: "3.5/10", compatibilty:"Java", Price:"$250",rate:"7.5/10"},
+    {Productname:"Product 3", IntegrationTime:"3-4 Hours", Complexity: "7.5/10", compatibilty:"C++", Price:"$20",rate:"2.5/10"},
 ];
 
 class  Downloads extends React.Component{
@@ -92,6 +93,30 @@ class  Downloads extends React.Component{
         }
     }
 
+    productData1(productname){
+
+        for(var i=0; i<productspecificdata.length; i++){
+            var productdata = [];
+            var specific_data = productspecificdata[i];
+            var currentproduct = productspecificdata[i].Productname;
+            if(currentproduct == productname){
+
+                var arr =[];
+                for( var ij in specific_data ) {
+                    if (specific_data.hasOwnProperty(ij)){
+                        arr.push(specific_data[ij]);
+                    }
+                }
+
+                this.setState({
+                    productname : arr,
+                });
+                break;
+            }
+        }
+    }
+
+
     Profile(){
         var profiletab = 1;
         this.setState({
@@ -107,13 +132,11 @@ class  Downloads extends React.Component{
     }
 
     Content(){
-        var profiletab = 0;
+        var profiletab = 2;
         this.setState({
             profiletab : profiletab,
         });
     }
-
-
 
     render(){
 
@@ -124,9 +147,14 @@ class  Downloads extends React.Component{
         if(profiletab == '1'){
             var sidebar = <ProfileSidebar/>
         }
+        else if(profiletab == '2'){
+            var sidebar = <ContentSidebar productname={productspecificdata}/>
+        }
         else {
             var sidebar = <Sidebar productname={productspecificdata}/>
         }
+
+
 
         return (
             <MuiThemeProvider>
@@ -166,7 +194,7 @@ class  Downloads extends React.Component{
                                     {
                                         data1.map((detail)=> {
                                             return <Content item={detail} key={detail.Price}
-                                                                  ViewItem = {this.productData.bind(this)}
+                                                            ViewItemrateprice = {this.productData1.bind(this)}
                                             />
                                         })
                                     }

@@ -28,12 +28,14 @@ class  Header extends React.Component{
 
         return (
                 <MuiThemeProvider>
+
                     <Card>
                         <div className="header">
                         <h3> Featured Popular</h3>'
                         <Link to="ItemPreview"> <h3>Item Preview</h3> </Link>
                         </div>
                     </Card>
+
                 </MuiThemeProvider>
         )
     }
