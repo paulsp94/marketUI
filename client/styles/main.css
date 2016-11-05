@@ -384,6 +384,14 @@
 		width: 100%;
 		vertical-align: middle;
 		cursor: pointer;
+		min-height: 350px;
+		/*border: 10px solid red;*/
+	}
+
+	.Product2{
+		width: 100%;
+		vertical-align: middle;
+		cursor: pointer;
 		min-height: 550px;
 		/*border: 10px solid red;*/
 	}

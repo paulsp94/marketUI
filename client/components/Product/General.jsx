@@ -62,7 +62,7 @@ class  General extends React.Component{
                                 <Tab label="Content">
 
                                     <Card style={{ marginRight: "2%", marginLeft: "2%", marginTop: 9}}>
-                                        <div className="Product1" >
+                                        <div className="Product2" >
                                             <CardText>
                                                 <div className="markdowncode" >
                                                     <CardText>
