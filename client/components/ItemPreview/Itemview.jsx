@@ -33,7 +33,7 @@ class  Itemview extends React.Component{
             var button = '';
         }
         else {
-            var button = <RaisedButton label="Preview" style={{ margin: 1}} />
+            var button = <RaisedButton label="Preview" style={{ marginLeft: "44%", marginRight: "44%"}} />
         }
 
         var thisIsMyCopy = '### test\n# markdown\n\n <h5> <strong> copy copy copy </h5> <br/> <strong> All the information user paste in Html code will come here </strong> <strong> So user can write anything to show viewers</strong>### test \n <p> <strong> copy copy copy </strong> <br/> <strong> All the information user paste in Html code will come here </strong> <strong> So user can write anything to show viewers</strong> ### test \n <p> <strong> copy copy copy </strong> <br/> <strong> All the information user paste in Html code will come here </strong> <strong> So user can write anything to show viewers</strong> ### test \n <p> <strong> copy copy copy </strong> <br/> <strong> All the information user paste in Html code will come here </strong> <strong> So user can write anything to show viewers</strong> ### test \n <p> <strong> copy copy copy </strong> <br/> <strong> All the information user paste in Html code will come here </strong> <strong> So user can write anything to show viewers</strong> ### test \n <p> <strong> copy copy copy </strong> <br/> <strong> All the information user paste in Html code will come here </strong> <strong> So user can write anything to show viewers</strong> ### test \n <p> <strong> copy copy copy </strong> <br/> <strong> All the information user paste in Html code will come here </strong> <strong> So user can write anything to show viewers</strong>';
@@ -43,13 +43,13 @@ class  Itemview extends React.Component{
             <div>
                 <div className="container">
 			
-		      <Card expanded={this.state.expanded} onExpandChange={this.handleExpandChange}>
-		   
+		      <Card expanded={this.state.expanded} onExpandChange={this.handleExpandChange} style={{backgroundColor: "#efeadd"}}>
 		   
 			<CardMedia
 			  overlay={<CardTitle title="Overlay title" subtitle="Overlay subtitle" />}>
 			  <img src="client/Images/lastimg.jpg" />
 			</CardMedia>
+            <Card style={{ marginRight: 40, marginLeft: 40}}>
 
 				    {button}
 			<CardText >
@@ -57,8 +57,8 @@ class  Itemview extends React.Component{
 				        <ReactMarkdown source={thisIsMyCopy} />
 				    </div>
 			</CardText>
-		 
-		     </Card>
+		      </Card>
+              </Card>
 		
              
 
