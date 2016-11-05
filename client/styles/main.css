@@ -442,10 +442,10 @@
 	}
 
 	.productcontainer{
-		width: 95%;
+		width: 100%;
 		/*border: 10px solid red;*/
-		margin-left: 2.5%;
-		margin-right: 2.5%;
+		margin-left: 0%;
+		margin-right: 0%;
 		height: 100%;
 	}
 

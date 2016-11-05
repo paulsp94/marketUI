@@ -40,13 +40,12 @@ class  General extends React.Component{
 
         var thisIsMyCopy = this.state.textfieldvalue;
         console.log(thisIsMyCopy)
-
         return (
             <MuiThemeProvider>
                 <div className="background">
                     <Header/>
                     <div className="productcontainer">
-                        <Card style= {{backgroundColor: "#efeadd", paddingBottom: "2%"}}>
+                        <Card style= {{backgroundColor: "#efeadd", paddingBottom: "1%"}}>
                             <Tabs>
                                 <Tab label="General">
                                     <div>
@@ -61,7 +60,7 @@ class  General extends React.Component{
 
                                 <Tab label="Content">
 
-                                    <Card style={{ marginRight: "2%", marginLeft: "2%", marginTop: 9}}>
+                                    <Card style={{ marginRight: "1%", marginLeft: "1%", marginTop: 9}}>
                                         <div className="Product1" >
                                             <CardText>
                                                 <div className="markdowncode" >
