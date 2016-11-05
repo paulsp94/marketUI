@@ -116,7 +116,6 @@ class  Downloads extends React.Component{
         }
     }
 
-
     Profile(){
         var profiletab = 1;
         this.setState({

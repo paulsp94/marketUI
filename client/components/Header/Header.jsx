@@ -31,8 +31,9 @@ class  Header extends React.Component{
 
                     <Card>
                         <div className="header">
-                        <h3> Featured Popular</h3>'
-                        <Link to="ItemPreview"> <h3>Item Preview</h3> </Link>
+                            <h3> Featured Popular</h3>'
+                            <Link to="ItemPreview"> <h3>Item Preview</h3> </Link>
+                            <Link to="General"> <h3>product</h3> </Link>
                         </div>
                     </Card>
 

@@ -384,7 +384,29 @@
 		width: 100%;
 		vertical-align: middle;
 		cursor: pointer;
-		height: 310px;
+		min-height: 550px;
+		/*border: 10px solid red;*/
+	}
+
+	.markdowncode{
+		width: 50%;
+		vertical-align: middle;
+		cursor: pointer;
+		min-height: 500px;
+		/*border: 1px solid red;*/
+		border-right: 5px solid black;
+		float: left;
+		color: black;
+	}
+
+	.markdowntext{
+		width: 50%;
+		vertical-align: middle;
+		cursor: pointer;
+		min-height: 500px;
+		/*border: 10px solid red;*/
+		float: right;
+		color: black;
 	}
 
 	.Product{
@@ -418,6 +440,27 @@
 		text-align: center;
 		vertical-align: middle;
 	}
+
+	.productcontainer{
+		width: 95%;
+		/*border: 10px solid red;*/
+		margin-left: 2.5%;
+		margin-right: 2.5%;
+		height: 100%;
+	}
+
+	.textarea{
+		min-height: 500px;
+		width: 100%;
+		font-size: 20px;
+		border-style: none;
+		border-color: Transparent;
+		outline: none;
+	}
+	/*.textarea:focus{*/
+		/*border: none;*/
+	/*}*/
+
 
 
 	@media (min-width : 800px) and (max-width : 1099px) {
