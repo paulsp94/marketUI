@@ -392,6 +392,15 @@
 	.Product2{
 		width: 100%;
 		vertical-align: middle;
+<<<<<<< HEAD
+=======
+		min-height: -moz-calc(99% - 140px); /* Firefox */
+ 		min-height: -webkit-calc(99% - 140px); /* Chrome, Safari */
+ 		min-height: calc(99% - 140px);
+
+		
+		/*border: 10px solid red;*/
+>>>>>>> aa7645a44eb50312057ee88c90a89b6f9616c8c7
 	}
 
 	.markdowncode{
@@ -406,11 +415,14 @@
 	.markdowntext{
 		width: 50%;
 		vertical-align: middle;
-		height: 80%;
 		/*border: 10px solid red;*/
 		float: right;
 		color: black;
+		height: -moz-calc(99% - 140px); /* Firefox */
+ 		height: -webkit-calc(99% - 140px); /* Chrome, Safari */
+ 		height: calc(99% - 140px);
 		overflow-y: scroll;
+		background-color: white;
 	}
 
 
@@ -468,7 +480,9 @@
 	}
 
 	.textarea{
-		height: 80%;
+		height: -moz-calc(99% - 140px); /* Firefox */
+ 		height: -webkit-calc(99% - 140px); /* Chrome, Safari */
+ 		height: calc(99% - 140px);
 		width: 100%;
 		/*font-size: 20px;*/
 		border-style: none;
@@ -476,6 +490,7 @@
 		outline: none;
 		resize: none;
 		overflow: auto;
+		background-color: #F5F5F5;
 	}
 
 	.Leftedit{
@@ -555,9 +570,6 @@
 	float: right;
 	}
 
-	.Product2{
-		min-height: 900px;
-	}
 
 
 }
@@ -589,10 +601,6 @@
 	min-height: 900px;
 	}
 
-		.Product2{
-			min-height: 900px;
-		}
-
 
 	}
 
@@ -621,9 +629,7 @@
 	width: 490px;
 	min-height: 900px;
 	}
-		.Product2{
-			min-height: 900px;
-		}
+
 
 	}
 
@@ -654,9 +660,6 @@
 		min-height: 900px;
 	}
 
-	.Product2{
-		min-height: 900px;
-	}
 
 	}
 
@@ -689,13 +692,7 @@
 	min-height: 900px;
 	}
 
-		.Product2{
-			min-height: 900px;
-		}
-
-
 	
-
 	}
 
 	@media (min-width : 1900px) {
@@ -726,9 +723,6 @@
 	margin-right: 5%;
 
 	}
-		.Product2{
-			min-height: 950px;
-		}
 
 	}
 
