@@ -391,31 +391,30 @@
 	.Product2{
 		width: 100%;
 		vertical-align: middle;
-		cursor: pointer;
-		min-height: 550px;
+
+		
 		/*border: 10px solid red;*/
 	}
 
 	.markdowncode{
 		width: 50%;
 		vertical-align: middle;
-		cursor: pointer;
-		min-height: 500px;
 		/*border: 1px solid red;*/
-		border-right: 5px solid black;
 		float: left;
 		color: black;
+
 	}
 
 	.markdowntext{
 		width: 50%;
 		vertical-align: middle;
-		cursor: pointer;
-		min-height: 500px;
+		height: 80%;
 		/*border: 10px solid red;*/
 		float: right;
 		color: black;
+		overflow-y: scroll;
 	}
+
 
 	.Product{
 		width: 100%;
@@ -454,16 +453,17 @@
 		/*border: 10px solid red;*/
 		margin-left: 0%;
 		margin-right: 0%;
-		height: 100%;
 	}
 
 	.textarea{
-		min-height: 500px;
+		height: 80%;
 		width: 100%;
 		/*font-size: 20px;*/
 		border-style: none;
 		border-color: Transparent;
 		outline: none;
+		resize: none;
+		overflow: auto;
 	}
 
 
@@ -499,19 +499,13 @@
 	float: right;
 	}
 
-		.Product2{
-			min-height: 900px;
-		}
-
-		.markdowncode{
-			min-height: 890px;
-		}
-
-		.markdowntext{
-			min-height: 890px;
-		}
-
+	.Product2{
+		min-height: 900px;
 	}
+
+
+}
+
 
 	@media (min-width : 1100px) and (max-width : 1279px) {
 	.imagecontainer{
@@ -543,13 +537,6 @@
 			min-height: 900px;
 		}
 
-		.markdowncode{
-			min-height: 890px;
-		}
-
-		.markdowntext{
-			min-height: 890px;
-		}
 
 	}
 
@@ -580,15 +567,6 @@
 	}
 		.Product2{
 			min-height: 900px;
-		}
-
-
-		.markdowncode{
-			min-height: 890px;
-		}
-
-		.markdowntext{
-			min-height: 890px;
 		}
 
 	}
@@ -623,14 +601,6 @@
 	.Product2{
 		min-height: 900px;
 	}
-
-		.markdowncode{
-			min-height: 890px;
-		}
-
-		.markdowntext{
-			min-height: 890px;
-		}
 
 	}
 
@@ -668,13 +638,7 @@
 		}
 
 
-		.markdowncode{
-			min-height: 890px;
-		}
-
-		.markdowntext{
-			min-height: 890px;
-		}
+	
 
 	}
 
@@ -708,14 +672,6 @@
 	}
 		.Product2{
 			min-height: 950px;
-		}
-
-		.markdowncode{
-			min-height: 890px;
-		}
-
-		.markdowntext{
-			min-height: 890px;
 		}
 
 	}

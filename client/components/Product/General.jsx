@@ -46,7 +46,7 @@ class  General extends React.Component{
                 <div className="background">
                     <Header/>
                     <div className="productcontainer">
-                        <Card style= {{backgroundColor: "#efeadd", paddingBottom: "2%"}}>
+                        <Card style= {{backgroundColor: "#efeadd", paddingBottom: "1%"}}>
                             <Tabs>
                                 <Tab label="General">
                                     <div>
@@ -61,19 +61,15 @@ class  General extends React.Component{
 
                                 <Tab label="Content">
 
-                                    <Card style={{ marginRight: "2%", marginLeft: "2%", marginTop: 9}}>
+                                    <Card style={{ marginRight: "1%", marginLeft: "1%", marginTop: 9}}>
                                         <div className="Product2" >
                                             <CardText>
                                                 <div className="markdowncode" >
-                                                    <CardText>
-                                                        <textarea className="textarea" ref={(efg) => this.textbox = efg}  name="textbox" onChange={this.textBox.bind(this)}>
+                                                        <textarea className="textarea" placeholder="Add here your markdown code" ref={(efg) => this.textbox = efg}  name="textbox" onChange={this.textBox.bind(this)}>
                                                         </textarea>
-                                                    </CardText>
                                                 </div>
-                                                <div className="markdowntext" >
-                                                    <CardText>
+                                                <div className="markdowntext"  >
                                                         <ReactMarkdown source={thisIsMyCopy} />
-                                                    </CardText>
                                                 </div>
                                             </CardText>
                                         </div>
