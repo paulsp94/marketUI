@@ -175,10 +175,11 @@
 	background: transparent;
 	border-bottom: 2px solid black;
 	color: black;
-	width: 50%;
+	width: 90%;
 	padding-left: 3%;
 	outline: 0;
 	outline-color: black;
+    margin-right: 5%;
 
 	}
 
@@ -394,8 +395,6 @@
 		min-height: -moz-calc(99% - 140px); /* Firefox */
  		min-height: -webkit-calc(99% - 140px); /* Chrome, Safari */
  		min-height: calc(99% - 140px);
-
-		
 		/*border: 10px solid red;*/
 	}
 
@@ -432,6 +431,11 @@
 		width: 50%;
 	}
 
+    .productimage1{
+        width: 50%;
+        height: 200px;
+    }
+
 	.image-part{
 		width: 50%;
 		border: 10px solid red;
@@ -442,7 +446,16 @@
 		width: 50%;
 		text-align: center;
 		margin-top: 5%;
+        /*border: 10px solid red;*/
 	}
+
+    .text-part1{
+        float: right;
+        width: 50%;
+        text-align: center;
+        margin-top: 0%;
+        /*border: 10px solid red;*/
+    }
 
 	.Profiledata{
 		text-align: center;
@@ -466,7 +479,6 @@
  		height: -webkit-calc(99% - 140px); /* Chrome, Safari */
  		height: calc(99% - 140px);
 		width: 100%;
-		/*font-size: 20px;*/
 		border-style: none;
 		border-color: Transparent;
 		outline: none;
@@ -474,6 +486,50 @@
 		overflow: auto;
 		background-color: #F5F5F5;
 	}
+
+	.Leftedit{
+        padding-top: 10%;
+		width: 50%;
+		height: 100%;
+		/*border: 4px solid black;*/
+		float: left;
+	}
+
+	.RightView{
+		width: 50%;
+		height: 100%;
+		/*border-left: 4px solid black;*/
+		float: right;
+	}
+
+    .Productdisplay{
+        width: 100%;
+        height: 410px;
+        /*border: 4px solid red;*/
+        text-align: left;
+        vertical-align: middle;
+        font-size: 20px;
+    }
+
+    .productdisplayleft{
+        padding-top: 5%;
+        width: 50%;
+        height: 100%;
+        float: left;
+    }
+
+    .productdisplayright{
+        padding-top: 5%;
+        width: 50%;
+        height: 100%;
+        float: right;
+    }
+
+    .textarea1{
+        outline: none;
+        width: 90%;
+        height: 110px;
+    }
 
 
 

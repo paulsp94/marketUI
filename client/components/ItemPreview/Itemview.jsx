@@ -49,9 +49,9 @@ class  Itemview extends React.Component{
 			  overlay={<CardTitle title="Overlay title" subtitle="Overlay subtitle" />}>
 			  <img src="client/Images/lastimg.jpg" />
 			</CardMedia>
-            <Card style={{ marginRight: 40, marginLeft: 40}}>
 
-				    {button}
+            <Card style={{ marginRight: 40, marginLeft: 40}}>
+                {button}
 			<CardText >
 				  <div className="code">
 				        <ReactMarkdown source={thisIsMyCopy} />

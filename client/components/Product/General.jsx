@@ -14,7 +14,7 @@ import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'mat
 import {Tabs, Tab} from 'material-ui/Tabs';
 import Slider from 'material-ui/Slider';
 import ReactMarkdown from 'react-markdown';
-
+import GeneralProfile from './GeneralProfile.jsx';
 
 
 
@@ -50,7 +50,7 @@ class  General extends React.Component{
                             <Tabs>
                                 <Tab label="General">
                                     <div>
-
+                                        <GeneralProfile/>
                                     </div>
                                 </Tab>
                                 <Tab label="Descriptions">
