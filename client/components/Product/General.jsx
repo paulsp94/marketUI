@@ -15,7 +15,7 @@ import {Tabs, Tab} from 'material-ui/Tabs';
 import Slider from 'material-ui/Slider';
 import ReactMarkdown from 'react-markdown';
 import GeneralProfile from './GeneralProfile.jsx';
-
+import Sidebar from './Sidebar.jsx';
 
 
 class  General extends React.Component{
@@ -93,7 +93,7 @@ class  General extends React.Component{
                                 </Tab>
 
                                 <Tab label="Sidebar">
-                                           
+                                      <Sidebar/>
                                 </Tab>
                             </Tabs>
                         </Card>
