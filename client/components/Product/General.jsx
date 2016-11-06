@@ -25,6 +25,7 @@ class  General extends React.Component{
         super(props);
         this.state= {
             textfieldvalue:'',
+            textfieldvalue1:'',
         };
     }
 
@@ -36,10 +37,18 @@ class  General extends React.Component{
         });
     }
 
+    textBox1(){
+        var textfieldvalue = this.textbox1.value;
+        console.log(textfieldvalue);
+        this.setState({
+            textfieldvalue1 :textfieldvalue
+        });
+    }
+
     render(){
 
         var thisIsMyCopy = this.state.textfieldvalue;
-        console.log(thisIsMyCopy)
+        var thisIsMyCopy1 = this.state.textfieldvalue1;
 
         return (
             <MuiThemeProvider>
@@ -54,9 +63,17 @@ class  General extends React.Component{
                                     </div>
                                 </Tab>
                                 <Tab label="Descriptions">
-                                    <div>
-
-                                    </div>
+                                    <Card style={{ marginRight: "1%", marginLeft: "1%", marginTop: 9}}>
+                                        <div className="Product2">
+                                            <div className="markdowncode" >
+                                                        <textarea className="textarea" placeholder="Add here your markdown or html code" ref={(eg) => this.textbox1 = eg}  name="textbox1" onChange={this.textBox1.bind(this)}>
+                                                        </textarea>
+                                            </div>
+                                            <div className="markdowntext">
+                                                <ReactMarkdown source={thisIsMyCopy1} escapeHtml={false} />
+                                            </div>
+                                        </div>
+                                    </Card>
                                 </Tab>
 
                                 <Tab label="Content">
