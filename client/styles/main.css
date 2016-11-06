@@ -392,15 +392,10 @@
 	.Product2{
 		width: 100%;
 		vertical-align: middle;
-<<<<<<< HEAD
-=======
 		min-height: -moz-calc(99% - 140px); /* Firefox */
  		min-height: -webkit-calc(99% - 140px); /* Chrome, Safari */
  		min-height: calc(99% - 140px);
-
-		
 		/*border: 10px solid red;*/
->>>>>>> aa7645a44eb50312057ee88c90a89b6f9616c8c7
 	}
 
 	.markdowncode{
@@ -484,7 +479,6 @@
  		height: -webkit-calc(99% - 140px); /* Chrome, Safari */
  		height: calc(99% - 140px);
 		width: 100%;
-		/*font-size: 20px;*/
 		border-style: none;
 		border-color: Transparent;
 		outline: none;
@@ -494,7 +488,6 @@
 	}
 
 	.Leftedit{
-
         padding-top: 10%;
 		width: 50%;
 		height: 100%;
@@ -503,7 +496,6 @@
 	}
 
 	.RightView{
-
 		width: 50%;
 		height: 100%;
 		/*border-left: 4px solid black;*/
@@ -518,12 +510,14 @@
         vertical-align: middle;
         font-size: 20px;
     }
+
     .productdisplayleft{
         padding-top: 5%;
         width: 50%;
         height: 100%;
         float: left;
     }
+
     .productdisplayright{
         padding-top: 5%;
         width: 50%;

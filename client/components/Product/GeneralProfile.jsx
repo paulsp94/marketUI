@@ -32,32 +32,35 @@ class  GeneralProfile extends React.Component{
 
 
 
-    Title(){
+    TiTle(){
         var title = this.title.value;
         this.setState({
             title :title
         });
     }
 
-    subTitle(){
+    SubTitle(){
         var subtitle = this.subTitle.value;
         this.setState({
             subtitle :subtitle
         });
     }
 
-    Description(){
+    DescriPtion(){
         var describtion = this.textarea.value;
+        console.log(describtion);
         this.setState({
             describtion :describtion
         });
     }
 
-    Price(){
+    PriCe(){
+
         var price =  this.Price.value;
         this.setState({
-            price :price
+            price : price
         });
+
     }
 
     ProdctCategory(){
@@ -66,6 +69,7 @@ class  GeneralProfile extends React.Component{
         this.setState({
             category :category
         });
+
     }
 
     render(){
@@ -85,29 +89,28 @@ class  GeneralProfile extends React.Component{
 
                               <div className="Productdisplay" >
                                   <CardText>
-
                                       <div className="productdisplayleft">
-                                          <input name="title" ref={(a) => this.title = a} type="text" className="inputfield-signup1" placeholder="Tittle" onChange={this.Title.bind(this)}/><br/><br/>
+                                          <input name="title" ref={(a) => this.title = a} type="text" className="inputfield-signup1" placeholder="Tittle" onChange={this.TiTle.bind(this)}/><br/><br/>
                                           <RaisedButton label="Upload Image" style={{ margin: 12}} /> <br/>
                                           <RaisedButton label="Upload main-Image" style={{ margin: 12}} /><br/><br/>
 
                                           <select name="Category" ref={(ab) => this.Category = ab} className="inputfield-signup1" onChange={this.ProdctCategory.bind(this)}>
                                               <optgroup label="Category">
-                                              <option> Product Category </option>
-                                                  <option> Product Category </option>
-                                                  <option> Product Category1 </option>
-                                                  <option> Product Category7 </option>
-                                                  <option> Product Category2 </option>
-                                                  <option> Product Category3 </option>
-                                                  <option> Product Category4 </option>
+                                              <option value="Product Category"> Product Category </option>
+                                                  <option value="Product Category"> Product Category </option>
+                                                  <option value="Product Category1" > Product Category1 </option>
+                                                  <option value="Product Category7"> Product Category7 </option>
+                                                  <option value="Product Category2"> Product Category2 </option>
+                                                  <option value="Product Category3"> Product Category3 </option>
+                                                  <option value="Product Category4"> Product Category4 </option>
                                               </optgroup>
                                           </select>
                                       </div>
                                       <div className="productdisplayright">
 
-                                          <input name="subtitle" ref={(c) => this.subTitle = c} type="text" className="inputfield-signup1" placeholder="Sub-Tittle" onChange={this.subTitle.bind(this)}/><br/><br/>
-                                          <textarea name="textarea" ref={(d) => this.textarea = d} className="textarea1" placeholder="Description about Product" onChange={this.Description.bind(this)}> </textarea> <br/> <br/>
-                                          <input name="Price" ref={(e) => this.Price = e}  type="text" className="inputfield-signup1" placeholder="Price" onChange={this.Price.bind(this)}/><br/><br/>
+                                          <input name="subtitle" ref={(c) => this.subTitle = c} type="text" className="inputfield-signup1" placeholder="Sub-Tittle" onChange={this.SubTitle.bind(this)}/><br/><br/>
+                                          <textarea name="textarea" ref={(d) => this.textarea = d} className="textarea1" placeholder="Description about Product" onChange={this.DescriPtion.bind(this)}/> <br/> <br/>
+                                          <input name="Price" ref={(ef) => this.Price = ef}  type="text" className="inputfield-signup1" onChange={this.PriCe.bind(this)}/><br/><br/>
 
                                       </div>
                                   </CardText>
@@ -123,7 +126,7 @@ class  GeneralProfile extends React.Component{
                                           <div className="text-part1">
                                               <h3> <strong> {this.state.title}  </strong> </h3>
                                               <br/> <br/>
-                                              <h5> Description</h5>
+                                              <h5> {this.state.describtion}</h5>
                                               <RaisedButton label={this.state.price} style={{ margin: 12}} />
                                               <RaisedButton label={this.state.category} style={{ margin: 12}} />
 
