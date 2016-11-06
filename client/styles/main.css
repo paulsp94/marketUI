@@ -391,6 +391,9 @@
 	.Product2{
 		width: 100%;
 		vertical-align: middle;
+		min-height: -moz-calc(99% - 140px); /* Firefox */
+ 		min-height: -webkit-calc(99% - 140px); /* Chrome, Safari */
+ 		min-height: calc(99% - 140px);
 
 		
 		/*border: 10px solid red;*/
@@ -411,10 +414,11 @@
 		/*border: 10px solid red;*/
 		float: right;
 		color: black;
-		height: -moz-calc(100% - 150px); /* Firefox */
- 		height: -webkit-calc(100% - 150px); /* Chrome, Safari */
- 		height: calc(100% - 150px);
+		height: -moz-calc(99% - 140px); /* Firefox */
+ 		height: -webkit-calc(99% - 140px); /* Chrome, Safari */
+ 		height: calc(99% - 140px);
 		overflow-y: scroll;
+		background-color: white;
 	}
 
 
@@ -458,9 +462,9 @@
 	}
 
 	.textarea{
-		height: -moz-calc(100% - 150px); /* Firefox */
- 		height: -webkit-calc(100% - 150px); /* Chrome, Safari */
- 		height: calc(100% - 150px);
+		height: -moz-calc(99% - 140px); /* Firefox */
+ 		height: -webkit-calc(99% - 140px); /* Chrome, Safari */
+ 		height: calc(99% - 140px);
 		width: 100%;
 		/*font-size: 20px;*/
 		border-style: none;
@@ -504,9 +508,6 @@
 	float: right;
 	}
 
-	.Product2{
-		min-height: 300px;
-	}
 
 
 }
@@ -538,10 +539,6 @@
 	min-height: 900px;
 	}
 
-		.Product2{
-			min-height: 900px;
-		}
-
 
 	}
 
@@ -570,9 +567,7 @@
 	width: 490px;
 	min-height: 900px;
 	}
-		.Product2{
-			min-height: 900px;
-		}
+
 
 	}
 
@@ -603,9 +598,6 @@
 		min-height: 900px;
 	}
 
-	.Product2{
-		min-height: 900px;
-	}
 
 	}
 
@@ -638,13 +630,7 @@
 	min-height: 900px;
 	}
 
-		.Product2{
-			min-height: 900px;
-		}
-
-
 	
-
 	}
 
 	@media (min-width : 1900px) {
@@ -675,9 +661,6 @@
 	margin-right: 5%;
 
 	}
-		.Product2{
-			min-height: 950px;
-		}
 
 	}
 
