@@ -62,13 +62,13 @@ class  General extends React.Component{
                                 <Tab label="Content">
 
                                     <Card style={{ marginRight: "1%", marginLeft: "1%", marginTop: 9}}>
-                                        <div className="Product2" >
+                                        <div className="Product2">
                                                 <div className="markdowncode" >
-                                                        <textarea className="textarea" placeholder="Add here your markdown code" ref={(efg) => this.textbox = efg}  name="textbox" onChange={this.textBox.bind(this)}>
+                                                        <textarea className="textarea" placeholder="Add here your markdown or html code" ref={(efg) => this.textbox = efg}  name="textbox" onChange={this.textBox.bind(this)}>
                                                         </textarea>
                                                 </div>
                                                 <div className="markdowntext"  >
-                                                        <ReactMarkdown source={thisIsMyCopy} />
+                                                        <ReactMarkdown source={thisIsMyCopy} escapeHtml={false} />
                                                 </div>
                                         </div>
                                     </Card>
