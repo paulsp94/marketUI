@@ -408,10 +408,12 @@
 	.markdowntext{
 		width: 50%;
 		vertical-align: middle;
-		height: 80%;
 		/*border: 10px solid red;*/
 		float: right;
 		color: black;
+		height: -moz-calc(100% - 150px); /* Firefox */
+ 		height: -webkit-calc(100% - 150px); /* Chrome, Safari */
+ 		height: calc(100% - 150px);
 		overflow-y: scroll;
 	}
 
@@ -456,7 +458,9 @@
 	}
 
 	.textarea{
-		height: 80%;
+		height: -moz-calc(100% - 150px); /* Firefox */
+ 		height: -webkit-calc(100% - 150px); /* Chrome, Safari */
+ 		height: calc(100% - 150px);
 		width: 100%;
 		/*font-size: 20px;*/
 		border-style: none;
@@ -464,6 +468,7 @@
 		outline: none;
 		resize: none;
 		overflow: auto;
+		background-color: #F5F5F5;
 	}
 
 
@@ -500,7 +505,7 @@
 	}
 
 	.Product2{
-		min-height: 900px;
+		min-height: 300px;
 	}
 
 

@@ -63,7 +63,6 @@ class  General extends React.Component{
 
                                     <Card style={{ marginRight: "1%", marginLeft: "1%", marginTop: 9}}>
                                         <div className="Product2" >
-                                            <CardText>
                                                 <div className="markdowncode" >
                                                         <textarea className="textarea" placeholder="Add here your markdown code" ref={(efg) => this.textbox = efg}  name="textbox" onChange={this.textBox.bind(this)}>
                                                         </textarea>
@@ -71,7 +70,6 @@ class  General extends React.Component{
                                                 <div className="markdowntext"  >
                                                         <ReactMarkdown source={thisIsMyCopy} />
                                                 </div>
-                                            </CardText>
                                         </div>
                                     </Card>
 
