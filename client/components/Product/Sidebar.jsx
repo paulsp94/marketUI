@@ -118,7 +118,7 @@ class  Sidebar extends React.Component{
                 <div className="background">
                     <div className="container">
 
-                        <Card style= {{backgroundColor: "#FFFFFF", paddingBottom: "2%"}}>
+                        <Card style= {{backgroundColor: "#FFFFFF", paddingBottom: "1%"}}>
                         <div className="Productdisplay" >
                             <CardText>
                                 <div className="productdisplayleft">
