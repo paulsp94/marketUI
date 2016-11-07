@@ -35,6 +35,7 @@ class  Sidebar extends React.Component{
     }
 
     handleDelete(i) {
+        console.log(i);
         let tags = this.state.tags;
         tags.splice(i, 1);
         this.setState({tags: tags});
@@ -122,26 +123,44 @@ class  Sidebar extends React.Component{
                         <div className="Productdisplay" >
                             <CardText>
                                 <div className="productdisplayleft">
-                                    <input name="diff" ref={(a) => this.diff = a} type="text" className="inputfield-signup1" placeholder="Difficulty" onChange={this.DiffiCulity.bind(this)}/><br/><br/>
+                                    <input name="diff" ref={(a) => this.diff = a} type="text" className="inputfield-signup2" placeholder="Difficulty" onChange={this.DiffiCulity.bind(this)}/><br/><br/>
 
                                     <ReactTags
-                                        suggestions={suggestions}
                                         handleDelete={this.handleDelete.bind(this)}
                                         handleAddition={this.handleAddition.bind(this)}
-                                        handleDrag={this.handleDrag.bind(this)}
                                         placeholder={placeholder}
+                                        tags={tags}
                                     />
-                                </div>
-                                <div className="productdisplayright">
-
-                                    <input name="timeest" ref={(c) => this.timeest = c} type="text" className="inputfield-signup1" placeholder="Time-Estimation" onChange={this.TimeEstimation.bind(this)}/><br/><br/>
+                                    <br/>
 
                                     <ReactTags
                                         handleDelete={this.handleDelete1.bind(this)}
                                         handleAddition={this.handleAddition1.bind(this)}
-                                        handleDrag={this.handleDrag1.bind(this)}
                                         placeholder={placeholder1}
                                     />
+                                </div>
+                                <div className="productdisplayright">
+
+                                    <input name="timeest" ref={(c) => this.timeest = c} type="text" className="inputfield-signup2" placeholder="Time-Estimation" onChange={this.TimeEstimation.bind(this)}/><br/><br/>
+
+                                    {
+                                        tags.map((detail)=> {
+                                            return <Chip item={detail} style={{float: "left", margin: 2}}  onTouchTap = {this.handleDelete.bind(this)}>
+                                                {detail.text}
+                                            </Chip>
+                                        })
+                                    }
+
+                                    <br/> <br/> <br/>
+                                    {
+                                        tags1.map((detail)=> {
+                                            return <Chip item={detail} style={{float: "left", margin: 2}} onRequestDelete={this.handleDelete1.bind(this)}>
+                                                {detail.text}
+                                            </Chip>
+                                        })
+                                    }
+
+
                                 </div>
                             </CardText>
                         </div>
@@ -181,7 +200,9 @@ class  Sidebar extends React.Component{
                                         <hr/>
                                         <strong> Estimation Time </strong>
                                         <div className="usertags">
+
                                             {this.state.timeest}
+
                                         </div>
                                         <br/><br/>
                                         <hr/>

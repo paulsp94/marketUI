@@ -54,7 +54,7 @@ class  General extends React.Component{
             <MuiThemeProvider>
                 <div className="background">
                     <Header/>
-                    <div className="productcontainer">
+                    <div className="">
                         <Card style= {{backgroundColor: "#efeadd", paddingBottom: "1%"}}>
                             <Tabs>
                                 <Tab label="General">
