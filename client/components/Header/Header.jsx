@@ -35,6 +35,8 @@ class  Header extends React.Component{
                             <Link to="General"> <h3>product</h3> </Link>
                             <Link to="ProductSearch"> <h3>product Search</h3> </Link>
                             <Link to="registration"> <h3> registration </h3> </Link>
+                            <Link to="login"> <h3> login </h3> </Link>
+                            <Link to="logout"> <h3> logout </h3> </Link>
                             <Link to="/"> <h3> profile </h3> </Link>
                         </div>
                     </Card>
