@@ -11,6 +11,7 @@ import ItemPreview from 'components/ItemPreview/ItemPreview';
 import Downloads from 'components/Downloads/Downloads';
 import General from 'components/Product/General.jsx';
 import ProductSearch from 'components/ProductSearch/ProductSearch.jsx';
+import registration from 'components/registration/registration.jsx';
 
 
   render(
@@ -19,6 +20,7 @@ import ProductSearch from 'components/ProductSearch/ProductSearch.jsx';
           <Route path="ItemPreview" component={ItemPreview}/>
           <Route path="General" component={General}/>
           <Route path="ProductSearch" component={ProductSearch}/>
+          <Route path="registration" component={registration}/>
           <Route path="/" component={Downloads}/>
       </Router>,
       document.getElementById('js-main'));
