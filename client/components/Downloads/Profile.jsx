@@ -6,7 +6,6 @@ import {withRouter} from 'react-router';
 import { hashHistory } from 'react-router';
 import Header from '../Header/Header.jsx';
 import Subheader from '../Subheader/Subheader.jsx';
-import ProductContent from '../ProductContent/ProductContent.jsx';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import { Tab as MuiTab } from 'material-ui/Tabs';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';

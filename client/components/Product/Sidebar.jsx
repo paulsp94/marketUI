@@ -6,7 +6,6 @@ import {withRouter} from 'react-router';
 import { hashHistory } from 'react-router';
 import Header from '../Header/Header.jsx';
 import Subheader from '../Subheader/Subheader.jsx';
-import ProductContent from '../ProductContent/ProductContent.jsx';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -18,6 +17,8 @@ import GeneralProfile from './GeneralProfile.jsx';
 import { WithContext as ReactTags } from 'react-tag-input';
 import Divider from 'material-ui/Divider';
 import Chip from 'material-ui/Chip';
+import ChipInput from 'material-ui-chip-input';
+import TagsInput from 'react-tags-input';
 
 class  Sidebar extends React.Component{
 
@@ -30,7 +31,8 @@ class  Sidebar extends React.Component{
             tags1: [],
             suggestions: [],
             timeest: '',
-            diff: ''
+            diff: '',
+            chips:[],
         };
     }
 
@@ -101,8 +103,39 @@ class  Sidebar extends React.Component{
         });
     }
 
+    handleRequestAdd(chip) {
+        console.log('it comes here');
+        const newChips = chip.split(',').filter((c) => c.trim().length > 0)
+        this.setState({
+            chips: [...this.state.chips, ...newChips]
+        })
+        console.log(this.state.chips);
+    }
+
+    handleRequestDelete(deletedChip) {
+        if (deletedChip !== 'js') {
+            this.setState({
+                chips: this.state.chips.filter((c) => c !== deletedChip)
+            })
+        } else {
+            alert('Why would you delete JS?')
+        }
+    }
+
+    _onChange(tags) {
+        this.setState({tags});
+
+    }
+
+    handleKeyPress(){
+            alert('Enter clicked!!!');
+
+    }
+
+
     render(){
 
+        console.log(this.state.tags);
         let style = {
             width:"100px",
         };
@@ -122,7 +155,7 @@ class  Sidebar extends React.Component{
                         <Card style= {{backgroundColor: "#FFFFFF", paddingBottom: "1%"}}>
                         <div className="Productdisplay" >
                             <CardText>
-                                <div className="productdisplayleft">
+                                <div className="productdisplayleft1">
                                     <input name="diff" ref={(a) => this.diff = a} type="text" className="inputfield-signup2" placeholder="Difficulty" onChange={this.DiffiCulity.bind(this)}/><br/><br/>
 
                                     <ReactTags
@@ -133,13 +166,28 @@ class  Sidebar extends React.Component{
                                     />
                                     <br/>
 
+                                    <input type="text" onChange ={this.handleKeyPress.bind(this)} />
+
                                     <ReactTags
                                         handleDelete={this.handleDelete1.bind(this)}
                                         handleAddition={this.handleAddition1.bind(this)}
                                         placeholder={placeholder1}
                                     />
+
+                                    <ChipInput
+                                        onRequestAdd={this.handleRequestAdd.bind(this)}
+                                        onRequestDelete={(deletedChip) => this.handleRequestDelete(deletedChip).bind(this)}
+                                        fullWidth
+                                    />
+
+                                    <TagsInput
+                                        onChange={this._onChange.bind(this)}
+                                        value={this.state.tags}
+                                        className="inputfield-signup2"
+                                    />
+
                                 </div>
-                                <div className="productdisplayright">
+                                <div className="productdisplayright1">
 
                                     <input name="timeest" ref={(c) => this.timeest = c} type="text" className="inputfield-signup2" placeholder="Time-Estimation" onChange={this.TimeEstimation.bind(this)}/><br/><br/>
 
@@ -226,6 +274,4 @@ class  Sidebar extends React.Component{
 }
 
 export default Sidebar;
-
-
 

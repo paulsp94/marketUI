@@ -6,7 +6,6 @@ import {withRouter} from 'react-router';
 import { hashHistory } from 'react-router';
 import Header from '../Header/Header.jsx';
 import Subheader from '../Subheader/Subheader.jsx';
-import ProductContent from '../ProductContent/ProductContent.jsx';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';

@@ -6,7 +6,6 @@ import {withRouter} from 'react-router';
 import { hashHistory } from 'react-router';
 import Header from '../Header/Header.jsx';
 import Subheader from '../Subheader/Subheader.jsx';
-import ProductContent from '../ProductContent/ProductContent.jsx';
 import Sidebar from '../Sidebar/Sidebar.jsx';
 
 
@@ -47,7 +46,6 @@ class  App extends React.Component{
                 <Header/>
                 <Sidebar/>
                 <br/>
-                <ProductContent/>
             </div>
 
 

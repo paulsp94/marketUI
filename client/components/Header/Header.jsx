@@ -34,6 +34,7 @@ class  Header extends React.Component{
                             <h3> Featured Popular</h3>'
                             <Link to="ItemPreview"> <h3>Item Preview</h3> </Link>
                             <Link to="General"> <h3>product</h3> </Link>
+                            <Link to="ProductSearch"> <h3>product Search</h3> </Link>
                         </div>
                     </Card>
 
