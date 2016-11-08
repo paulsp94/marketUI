@@ -99,6 +99,12 @@ class  Profile extends React.Component{
         ];
 
         var user = firebase.auth().currentUser;
+        var email;
+        if (user != null) {
+            email = user.email;
+        } else {
+            email = "not logged in"
+        }
 
 
         return (
@@ -107,7 +113,7 @@ class  Profile extends React.Component{
                 <Card style={{marginRight: "2%", marginLeft: "2%", marginTop: 9}}>
                     <CardText>
                         <br/><br/>
-                         Email: {user.email}
+                         Email: {email}
                         <br/><br/>          
                         <RaisedButton label="Change Email" style={{ margin: 12}} onTouchTap={this.Dropboxopen4.bind(this)} />   
                         <br />             
