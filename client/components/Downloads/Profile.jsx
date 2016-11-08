@@ -12,6 +12,8 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
+import * as firebase from 'firebase';
+
 class  Profile extends React.Component{
 
     constructor(props) {
@@ -96,13 +98,16 @@ class  Profile extends React.Component{
             />,
         ];
 
+        var user = firebase.auth().currentUser;
+
+
         return (
             <MuiThemeProvider>
                 <div className="Profiledata">
                 <Card style={{marginRight: "2%", marginLeft: "2%", marginTop: 9}}>
                     <CardText>
                         <br/><br/>
-                         Email: komaldeep1993@gmail.com
+                         Email: {user.email}
                         <br/><br/>          
                         <RaisedButton label="Change Email" style={{ margin: 12}} onTouchTap={this.Dropboxopen4.bind(this)} />   
                         <br />             
