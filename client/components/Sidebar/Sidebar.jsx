@@ -14,9 +14,7 @@ import Slider from 'material-ui/Slider';
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
 import RaisedButton from 'material-ui/RaisedButton';
 import Divider from 'material-ui/Divider';
-
-
-
+import Chip from 'material-ui/Chip';
 
 
 class Sidebar extends React.Component{
@@ -31,53 +29,52 @@ class Sidebar extends React.Component{
         };
     }
 
-
-
     componentWillMount(){
 
 
-        var curr_icon =  <div><div className="sidebar-bottom">
+        var curr_icon =  <div className="sidebar-bottom">
+                    <h4><strong> TestProduct </strong> <br/></h4>
 
-            <h4><strong> Product1 </strong> <br/></h4>
+                    <Card>
+                    <h4 style={{float: "left", marginLeft: 3}}><strong>Packages:</strong> <br/></h4>
+                    <div style={{display:"flex", flexWrap:"wrap", margin: 9}}>
+                    <Chip style={{float: "left", margin: 4}}>Shiny </Chip>
+                    <Chip style={{float: "left", margin: 4}}>ggplot </Chip>
+                    <Chip style={{float: "left", margin: 4}}>dplyr </Chip>
+                    </div>
+                    </Card>
 
-            <h4><strong> Estimated Integration Time </strong> <br/></h4>
-            <p> 7-8 Hours</p>
-            <br/>
+                    <div style={{flexWrap: 'wrap', margin: 9}}>
+                    <h4><strong>Complexity:</strong></h4>
+                    <p> 4 </p>
+                    <h4><strong>Integration Time: </strong></h4>
+                     3-4h
+                    </div>
 
-            <h4><strong> Complexity </strong> <br/></h4>
-            <p> 6.5/10 </p>
-            <br/>
-            <h4><strong> Required Packages </strong> <br/></h4>
+                    <Card>
+                    <h4 style={{float: "left", marginLeft: 3}}><strong>  Compatibilty: </strong> <br/></h4>
+                    <div style={{display: 'flex', flexWrap: 'wrap'}}>
+                    <Chip style={{float: "left", margin: 4}}> product1 </Chip>
+                    </div>
+                    </Card>
 
+                    <div style={{flexWrap:"wrap", margin: 9}}>
+                    <h4 ><strong> Maintenance: </strong> </h4>
+                    <h5> 5 Versions</h5>
+                    <p> Last Updated 20-11-2015 </p>
+                    </div>
 
-            <RaisedButton label="Npm" disabled={true} className="submitbutton4" />
-            <RaisedButton label="Bla-Bla" disabled={true} className="submitbutton4" />
-            <RaisedButton label="something Here" disabled={true} className="submitbutton4" />
-            <RaisedButton label="Npm" disabled={true} className="submitbutton4" />
-
-            <br/>
-            <br/>
-            <h4><strong> Language Compatibilty </strong> <br/></h4>
-
-            R.1/R.5
-
-            <br/> <br/>
-            <h4><strong> Maintenance </strong> <br/></h4>
-            <h5> 5 Versions</h5>
-            <p> Last Updated 20-11-2015 </p>
-
-            <br/>
-            <h4><strong> Tags </strong> <br/></h4>
-
-            <RaisedButton label="React" disabled={true} className="submitbutton4" />
-            <RaisedButton label="Html" disabled={true} className="submitbutton4" />
-            <RaisedButton label="CSS" disabled={true} className="submitbutton4" />
-            <RaisedButton label="Javascript" disabled={true} className="submitbutton4" />
-            <RaisedButton label="Jquery" disabled={true} className="submitbutton4" />
-
-        </div>
-        </div>;
-
+                    <Card>
+                    <h4 style={{float: "left", marginLeft: 3}} ><strong> Tags: </strong> </h4>
+                    <div style={{display: 'flex', flexWrap: 'wrap'}}>
+                    <Chip style={{float: "left", margin: 4}}>Html </Chip>
+                    <Chip style={{float: "left", margin: 4}}>CSS </Chip>
+                    <Chip style={{float: "left", margin: 4}}>Javascript </Chip>
+                    <Chip style={{float: "left", margin: 4}}>Jquery </Chip>
+                    <Chip style={{float: "left", margin: 4}}>Firebase </Chip>
+                    </div>
+                    </Card>
+                </div>;
         this.setState({
             Currenticon :curr_icon
         });
@@ -91,47 +88,51 @@ class Sidebar extends React.Component{
 
     Item(){
 
-        var curr_icon =  <div> <div className="sidebar-bottom">
+        var curr_icon =  
 
-            <h4><strong> Product1 </strong> <br/></h4>
+        <div className="sidebar-bottom">
+                    <h4><strong> TestProduct </strong> <br/></h4>
 
-            <h4><strong> Estimated Integration Time </strong> <br/></h4>
-            <p> 7-8 Hours</p>
-            <br/>
+                    <Card>
+                    <h4 style={{float: "left", marginLeft: 3}}><strong>Packages:</strong> <br/></h4>
+                    <div style={{display:"flex", flexWrap:"wrap", margin: 9}}>
+                    <Chip style={{float: "left", margin: 4}}>Shiny </Chip>
+                    <Chip style={{float: "left", margin: 4}}>ggplot </Chip>
+                    <Chip style={{float: "left", margin: 4}}>dplyr </Chip>
+                    </div>
+                    </Card>
 
-            <h4><strong> Complexity </strong> <br/></h4>
-            <p> 6.5/10 </p>
-            <br/>
-            <h4><strong> Required Packages </strong> <br/></h4>
+                    <div style={{flexWrap: 'wrap', margin: 9}}>
+                    <h4><strong>Complexity:</strong></h4>
+                    <p> 4 </p>
+                    <h4><strong>Integration Time: </strong></h4>
+                     3-4h
+                    </div>
 
+                    <Card>
+                    <h4 style={{float: "left", marginLeft: 3}}><strong>  Compatibilty: </strong> <br/></h4>
+                    <div style={{display: 'flex', flexWrap: 'wrap'}}>
+                    <Chip style={{float: "left", margin: 4}}> product1 </Chip>
+                    </div>
+                    </Card>
 
-            <RaisedButton label="Npm" disabled={true} className="submitbutton4" />
-            <RaisedButton label="Bla-Bla" disabled={true} className="submitbutton4" />
-            <RaisedButton label="something Here" disabled={true} className="submitbutton4" />
-            <RaisedButton label="Npm" disabled={true} className="submitbutton4" />
+                    <div style={{flexWrap:"wrap", margin: 9}}>
+                    <h4 ><strong> Maintenance: </strong> </h4>
+                    <h5> 5 Versions</h5>
+                    <p> Last Updated 20-11-2015 </p>
+                    </div>
 
-            <br/>
-            <br/>
-            <h4><strong> Language Compatibilty </strong> <br/></h4>
-
-            R.1/R.5
-
-            <br/> <br/>
-            <h4><strong> Maintenance </strong> <br/></h4>
-            <h5> 5 Versions</h5>
-            <p> Last Updated 20-11-2015 </p>
-
-            <br/>
-            <h4><strong> Tags </strong> <br/></h4>
-
-            <RaisedButton label="React" disabled={true} className="submitbutton4" />
-            <RaisedButton label="Html" disabled={true} className="submitbutton4" />
-            <RaisedButton label="CSS" disabled={true} className="submitbutton4" />
-            <RaisedButton label="Javascript" disabled={true} className="submitbutton4" />
-            <RaisedButton label="Jquery" disabled={true} className="submitbutton4" />
-
-        </div>
-        </div>;
+                    <Card>
+                    <h4 style={{float: "left", marginLeft: 3}} ><strong> Tags: </strong> </h4>
+                    <div style={{display: 'flex', flexWrap: 'wrap'}}>
+                    <Chip style={{float: "left", margin: 4}}>Html </Chip>
+                    <Chip style={{float: "left", margin: 4}}>CSS </Chip>
+                    <Chip style={{float: "left", margin: 4}}>Javascript </Chip>
+                    <Chip style={{float: "left", margin: 4}}>Jquery </Chip>
+                    <Chip style={{float: "left", margin: 4}}>Firebase </Chip>
+                    </div>
+                    </Card>
+                </div>;
 
         this.setState({
             Currenticon :curr_icon
@@ -148,50 +149,50 @@ class Sidebar extends React.Component{
 
         var curr_icon = <div><div className="sidebar-bottom">
             <CardText>
-                <div className="usercommentname">
-                    <h4> <strong> Komaldeep Singh </strong> <br/> </h4>
-                </div>
-                <div className="usercomments">
-                    <p>
-                        Standard Demo-Text seit 1500, als ein unbekannter Schriftsteller eine Hand voll Wörter nahm und diese durcheinander warf um ein Musterbuch zu
-                    </p>
-                </div>
-                <hr/>
+            <div className="usercommentname">
+                <h4> <strong> Komaldeep Singh </strong> <br/> </h4>
+            </div>
+            <div className="usercomments">
+                <p>
+                    Standard Demo-Text seit 1500, als ein unbekannter Schriftsteller eine Hand voll Wörter nahm und diese durcheinander warf um ein Musterbuch zu
+                </p>
+            </div>
+            <hr/>
 
-                <hr/>
-                <div className="usercommentname">
-                    <h4> <strong> Sonam Malhotra </strong> <br/> </h4>
-                </div>
-                <div className="usercomments">
-                    <p>
-                        Mittlerweile gibt es mehrere Versionen des Lorem Ipsum, einige zufällig, andere bewusst (beeinflusst von Witz und des eigenen Geschmacks)
-                    </p>
-                </div>
-                <hr/>
+            <hr/>
+            <div className="usercommentname">
+                <h4> <strong> Sonam Malhotra </strong> <br/> </h4>
+            </div>
+            <div className="usercomments">
+                <p>
+                    Mittlerweile gibt es mehrere Versionen des Lorem Ipsum, einige zufällig, andere bewusst (beeinflusst von Witz und des eigenen Geschmacks)
+                </p>
+            </div>
+            <hr/>
 
-                <hr/>
-                <div className="usercommentname">
-                    <h4> <strong> Sonam </strong> <br/> </h4>
-                </div>
-                <div className="usercomments">
-                    <p>
-                        Can you guide me ? How to improve the performance of this
-                    </p>
-                </div>
-                <hr/>
+            <hr/>
+            <div className="usercommentname">
+                <h4> <strong> Sonam </strong> <br/> </h4>
+            </div>
+            <div className="usercomments">
+                <p>
+                    Can you guide me ? How to improve the performance of this
+                </p>
+            </div>
+            <hr/>
 
-                <hr/>
-                <div className="usercommentname">
-                    <h4> <strong> Sonam </strong> <br/> </h4>
-                </div>
-                <div className="usercomments">
-                    <p>
-                        Can you guide me ? How to improve the performance of this
-                    </p>
-                </div>
-                <hr/>
+            <hr/>
+            <div className="usercommentname">
+                <h4> <strong> Sonam </strong> <br/> </h4>
+            </div>
+            <div className="usercomments">
+                <p>
+                    Can you guide me ? How to improve the performance of this
+                </p>
+            </div>
+            <hr/>
 
-            </CardText>
+                </CardText>
         </div>
         </div>;
 
@@ -208,33 +209,33 @@ class Sidebar extends React.Component{
 
     Support(){
 
-        var curr_icon =  <div> <div className="sidebar-bottom">
+        var curr_icon = <div> <hr/> <div className="sidebar-bottom">
             <img className="Userimage" src ={'client/Images/deep.jpg'}/> <br/>
             <CardText>
-                <div className="userdescribation">
-                    <p>
-                        I have successful Web Developer with Nearly 2 Year experience.
+            <div className="userdescribation">
+                <p>
+                    I have successful Web Developer with Nearly 2 Year experience.
 
-                        Currently working as freelancer/contract Front hand Developer in Germany.
+                    Currently working as freelancer/contract Front hand Developer in Germany.
 
-                        My Core Expertise is
+                    My Core Expertise is
 
-                        React.js, Flux, Fetch Api and Redux
-                        Web designing ( Html, css3, JavaScript and jQuery )
-                        Backhand development (Php Laravel framework, MySQL, Firebase)
-                    </p>
-                    <hr/>
-                    <strong>Email-</strong> komaldeep1993@gmail.com<br/>
-                    <h4> <strong> Experience </strong> <br/> </h4>
-
-                    <RaisedButton label="React" disabled={true} className="submitbutton4" />
-                    <RaisedButton label="Html" disabled={true} className="submitbutton4" />
-                    <RaisedButton label="CSS" disabled={true} className="submitbutton4" />
-                    <RaisedButton label="Javascript" disabled={true} className="submitbutton4" />
-                    <RaisedButton label="Jquery" disabled={true} className="submitbutton4" />
-                    <RaisedButton label="Firebase" disabled={true} className="submitbutton4" />
-
+                    React.js, Flux, Fetch Api and Redux
+                    Web designing ( Html, css3, JavaScript and jQuery )
+                    Backhand development (Php Laravel framework, MySQL, Firebase)
+                </p>
+                <hr/>
+                <strong>Email:</strong> komaldeep1993@gmail.com<br/>
+                <h4> <strong> Experience </strong> <br/> </h4>
+                <div style={{display: 'flex', flexWrap: 'wrap'}}>
+                <Chip style={{float: "left", margin: 2}}>Html </Chip>
+                <Chip style={{float: "left", margin: 2}}>CSS </Chip>
+                <Chip style={{float: "left", margin: 2}}>Javascript </Chip>
+                <Chip style={{float: "left", margin: 2}}>Jquery </Chip>
+                <Chip style={{float: "left", margin: 2}}>Firebase </Chip>
                 </div>
+
+            </div>
             </CardText>
         </div>
         </div>;

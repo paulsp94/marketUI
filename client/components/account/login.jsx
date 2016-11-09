@@ -47,6 +47,8 @@ var login = React.createClass({
     render: function(){
         var errors = this.state.error ? <p> {this.state.error} </p> : '';
         return (
+        <div>
+            <Header/>
             <div className="col-sm-6 col-sm-offset-3">
                 <h1> Login </h1>
                 <form onSubmit={this.handleSubmit}>
@@ -62,6 +64,7 @@ var login = React.createClass({
                     <button type="submit" className="btn btn-primary">Login</button>
                 </form>
             </div>
+        </div>
         );
     }
 });

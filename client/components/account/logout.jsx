@@ -30,7 +30,12 @@ var logout = React.createClass({
         // this.context.router.replace('/');
     },
     render: function () {
-        return <p>You are now logged out</p>;
+        return (
+        <div>
+        <Header/>
+        <p>You are now logged out</p>
+        </div>
+        );
     }
 });
 
