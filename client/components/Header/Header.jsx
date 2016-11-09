@@ -6,7 +6,7 @@ import {withRouter} from 'react-router';
 import { hashHistory } from 'react-router';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-
+import * as firebase from 'firebase';
 
 class  Header extends React.Component{
 
@@ -19,16 +19,12 @@ class  Header extends React.Component{
 
     }
 
-
-
+   
 
     render(){
 
-
-
         return (
                 <MuiThemeProvider>
-
                     <Card>
                         <div className="header">
                             <Link to="ItemPreview"> <h3>Item Preview</h3> </Link>
@@ -40,7 +36,6 @@ class  Header extends React.Component{
                             <Link to="/"> <h3> profile </h3> </Link>
                         </div>
                     </Card>
-
                 </MuiThemeProvider>
         )
     }

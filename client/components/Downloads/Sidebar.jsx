@@ -202,7 +202,6 @@ class Sidebar extends React.Component{
                      {this.props.productname[1]}
                     </div>
 
-
                     <Card>
                     <h4 style={{float: "left", marginLeft: 3}}><strong>  Compatibilty: </strong> <br/></h4>
                     <div style={{display: 'flex', flexWrap: 'wrap'}}>

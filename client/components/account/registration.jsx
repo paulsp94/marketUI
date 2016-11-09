@@ -30,7 +30,6 @@ var registration = React.createClass({
     var pw = this.refs.pw.value;
 
     // Add signup event
-    // TODO: Fazer validação de formulário
     firebase.auth().createUserWithEmailAndPassword( email, pw )
     .then( this.context.router.replace('/') )
     .catch( this.setState({error: e.message}) );
