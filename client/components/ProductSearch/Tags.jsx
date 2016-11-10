@@ -15,6 +15,8 @@ import Slider from 'material-ui/Slider';
 import ReactMarkdown from 'react-markdown';
 var firebase = require('firebase');
 import firebase_details from '../../Firebase/Firebase';
+import Flexbox from 'flexbox-react';
+
 
 
 class Tags extends React.Component{
@@ -31,14 +33,30 @@ class Tags extends React.Component{
 
         return (
             <div className="tags">
-                <RaisedButton label="Tag1" style={{ margin: 3}} />
-                <RaisedButton label="Tag2" style={{ margin: 3}} />
-                <RaisedButton label="Tag3" style={{ margin: 3}} />
-                <RaisedButton label="Tag4" style={{ margin: 3}} />
-                <RaisedButton label="Tag5" style={{ margin: 3}} />
-                <RaisedButton label="Tag6" style={{ margin: 3}} />
-                <RaisedButton label="Tag7" style={{ margin: 3}} />
-                <RaisedButton label="Tag8" style={{ margin: 3}} />
+            <Flexbox flexDirection="row">
+              <Flexbox flexGrow={1}>
+                            <RaisedButton label="Tag1" style={{margin: 3, width: "100%"}} />
+              </Flexbox>
+               <Flexbox flexGrow={1}>
+                            <RaisedButton label="Tag3" style={{margin: 3, width: "100%"}} />                   
+              </Flexbox>
+              <Flexbox flexGrow={1}>
+                             <RaisedButton label="Tag4" style={{margin: 3, width: "100%"}} />                   
+              </Flexbox>
+              <Flexbox flexGrow={1}>
+                            <RaisedButton label="Tag5" style={{margin: 3, width: "100%"}} />                   
+              </Flexbox>
+              <Flexbox flexGrow={1}>
+                            <RaisedButton label="Tag6" style={{margin: 3, width: "100%"}} />                   
+              </Flexbox>
+              <Flexbox flexGrow={1}>
+                            <RaisedButton label="Tag7" style={{margin: 3, width: "100%"}} />                   
+              </Flexbox>
+               <Flexbox flexGrow={1}>
+                            <RaisedButton label="Tag8" style={{margin: 3, width: "100%"}} />                   
+              </Flexbox>
+        </Flexbox>
+                
             </div>
         )
     }

@@ -13,8 +13,8 @@ import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'mat
 import {Tabs, Tab} from 'material-ui/Tabs';
 import Slider from 'material-ui/Slider';
 import ReactMarkdown from 'react-markdown';
-var firebase = require('firebase');
 import firebase_details from '../../Firebase/Firebase';
+
 
 
 class Product extends React.Component{
@@ -31,12 +31,12 @@ class Product extends React.Component{
 
         return (
             <div>
-                <div className="product-search">
+                <Card className="product-search">
                     <img className="product_image" src={this.props.item.image}/>
                     <h5>{this.props.item.name}</h5>
                     <RaisedButton label={this.props.item.Price} style={{ margin: 3}} />
                     <RaisedButton label="Downloads" style={{ margin: 12}} />
-                </div>
+                </Card>
             </div>
         )
     }

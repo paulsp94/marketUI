@@ -148,14 +148,12 @@ class  Sidebar extends React.Component{
         let placeholder1 = "Add Package Tags";
 
         return (
+        
             <MuiThemeProvider>
-                <div className="background">
-                    <div className="container">
-
-                        <Card style= {{backgroundColor: "#FFFFFF", paddingBottom: "1%"}}>
-                        <div className="Productdisplay" >
-                            <CardText>
-                                <div className="productdisplayleft1">
+               <Card style={{ marginRight: "1%", marginLeft: "1%", marginTop: 9}}>
+                        <div className="Product2">
+                          <div className="Leftedit">
+                             <div className="Productdisplay" style={{width: 250}} >
                                     <input name="diff" ref={(a) => this.diff = a} type="text" className="inputfield-signup2" placeholder="Difficulty" onChange={this.DiffiCulity.bind(this)}/><br/><br/>
 
                                     <ReactTags
@@ -186,8 +184,7 @@ class  Sidebar extends React.Component{
                                         className="inputfield-signup2"
                                     />
 
-                                </div>
-                                <div className="productdisplayright1">
+                               
 
                                     <input name="timeest" ref={(c) => this.timeest = c} type="text" className="inputfield-signup2" placeholder="Time-Estimation" onChange={this.TimeEstimation.bind(this)}/><br/><br/>
 
@@ -208,66 +205,56 @@ class  Sidebar extends React.Component{
                                         })
                                     }
 
+                            </div>
 
-                                </div>
-                            </CardText>
-                        </div>
-                        </Card>
-                    </div>
-                    <div className="sidebar">
-                        <Tabs>
-                            <Tab label="header" >
-                                <Card expanded={this.state.expanded}>
+                          </div>
 
-                                    <CardText>
-                                        <strong> Language Tags </strong>
-                                        <div className="usertags">
-                                            {
-                                                tags.map((detail)=> {
-                                                    return <Chip item={detail} style={{float: "left", margin: 2}} onRequestDelete={this.handleDelete.bind(this)}>
-                                                        {detail.text}
-                                                    </Chip>
-                                                })
-                                            }
-                                        </div>
+                          <div className="RightView">
+                                   <Card style={{width: 500, marginLeft: "25%", marginTop: "5%"}}>
+                                    <Card>
+                                    <h4 style={{float: "left", marginLeft: 3}}><strong>Packages:</strong> <br/></h4>
+                                    <div style={{display:"flex", flexWrap:"wrap", margin: 9}}>
+                                    <Chip style={{float: "left", margin: 4}}>Shiny </Chip>
+                                    <Chip style={{float: "left", margin: 4}}>ggplot </Chip>
+                                    <Chip style={{float: "left", margin: 4}}>dplyr </Chip>
+                                    </div>
+                                    </Card>
 
-                                        <br/><br/>
-                                        <hr/>
 
-                                        <strong> Package Tags </strong>
-                                        <div className="usertags">
-                                            {
-                                                tags1.map((detail)=> {
-                                                    return <Chip item={detail} style={{float: "left", margin: 2}} onRequestDelete={this.handleDelete1.bind(this)}>
-                                                        {detail.text}
-                                                    </Chip>
-                                                })
-                                            }
-                                        </div>
-                                        <br/><br/>
-                                        <hr/>
-                                        <strong> Estimation Time </strong>
-                                        <div className="usertags">
+                                    <div style={{flexWrap: 'wrap', margin: 9}}>
+                                    <h4><strong>Complexity:</strong></h4>
+                                    <p> 4/10 </p>
+                                    <h4><strong>Integration Time: </strong></h4>
+                                     3 hours
+                                    </div>
 
-                                            {this.state.timeest}
+                                    <Card>
+                                    <h4 style={{float: "left", marginLeft: 3}}><strong>  Compatibilty: </strong> <br/></h4>
+                                    <div style={{display: 'flex', flexWrap: 'wrap'}}>
+                                    <Chip style={{float: "left", margin: 4}}> R / Shiny </Chip>
+                                    </div>
+                                    </Card>
 
-                                        </div>
-                                        <br/><br/>
-                                        <hr/>
+                                    <div style={{flexWrap:"wrap", margin: 9}}>
+                                    <h4 ><strong> Maintenance: </strong> </h4>
+                                    <h5> 5 Versions</h5>
+                                    <p > Last Updated 20-11-2015 </p>
+                                    </div>
 
-                                        <strong>  Difficulity </strong>
-                                        <div className="usertags">
-                                            {this.state.diff}
-                                        </div>
-                                        <br/><br/>
-                                        <hr/>
-
-                                    </CardText>
+                                    <Card>
+                                    <h4 style={{float: "left", marginLeft: 3}} ><strong> Tags: </strong> </h4>
+                                    <div style={{display: 'flex', flexWrap: 'wrap'}}>
+                                    <Chip style={{float: "left", margin: 4}}>Html </Chip>
+                                    <Chip style={{float: "left", margin: 4}}>CSS </Chip>
+                                    <Chip style={{float: "left", margin: 4}}>Javascript </Chip>
+                                    <Chip style={{float: "left", margin: 4}}>Jquery </Chip>
+                                    <Chip style={{float: "left", margin: 4}}>Firebase </Chip>
+                                    </div>
+                                    </Card>
                                 </Card>
-                            </Tab>
-                        </Tabs>
-                    </div>
+                         </div>
                 </div>
+                </Card>
             </MuiThemeProvider>
         )
     }
