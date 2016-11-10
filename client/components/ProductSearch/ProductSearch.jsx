@@ -45,7 +45,6 @@ class  ProductSearch extends React.Component{
 
         return (
             <MuiThemeProvider>
-                <div className="backgroundc container-fluid">
                     <div className="container-search">
                      <Header/>
                         <Tags/>
@@ -58,7 +57,6 @@ class  ProductSearch extends React.Component{
                             })
                         }
 
-                    </div>
                 </div>
             </MuiThemeProvider>
         )

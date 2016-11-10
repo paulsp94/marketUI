@@ -25,13 +25,15 @@ class  Header extends React.Component{
                 <MuiThemeProvider>
                     <Card>
                         <div className="header">
-                            <Link to="ItemPreview"> <h3>Item Preview</h3> </Link>
+                            <Link to="ItemPreview"> <h3>preview</h3> </Link>
                             <Link to="General"> <h3>product</h3> </Link>
-                            <Link to="ProductSearch"> <h3>product Search</h3> </Link>
-                            <Link to="registration"> <h3> registration </h3> </Link>
+                            <Link to="ProductSearch"> <h3>search</h3> </Link>
+                            <Link to="/"> <h3> profile </h3> </Link>
+                            <h3> | </h3>
                             <Link to="login"> <h3> login </h3> </Link>
                             <Link to="logout"> <h3> logout </h3> </Link>
-                            <Link to="/"> <h3> profile </h3> </Link>
+                            <Link to="registration"> <h3> registration </h3> </Link>
+
                         </div>
                     </Card>
                 </MuiThemeProvider>

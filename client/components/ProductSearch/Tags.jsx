@@ -35,25 +35,25 @@ class Tags extends React.Component{
             <div className="tags">
             <Flexbox flexDirection="row">
               <Flexbox flexGrow={1}>
-                            <RaisedButton label="Tag1" style={{margin: 3, width: "100%"}} />
+                            <RaisedButton label="Shiny & Web" style={{margin: 3, width: "100%"}} primary={true} />
               </Flexbox>
                <Flexbox flexGrow={1}>
-                            <RaisedButton label="Tag3" style={{margin: 3, width: "100%"}} />                   
+                            <RaisedButton label="Machine Learning" style={{margin: 3, width: "100%"}} primary={true} />                   
               </Flexbox>
               <Flexbox flexGrow={1}>
-                             <RaisedButton label="Tag4" style={{margin: 3, width: "100%"}} />                   
+                             <RaisedButton label="Big Data" style={{margin: 3, width: "100%"}} primary={true} />                   
               </Flexbox>
               <Flexbox flexGrow={1}>
-                            <RaisedButton label="Tag5" style={{margin: 3, width: "100%"}} />                   
+                            <RaisedButton label="Algorithms" style={{margin: 3, width: "100%"}} primary={true} />                   
               </Flexbox>
               <Flexbox flexGrow={1}>
-                            <RaisedButton label="Tag6" style={{margin: 3, width: "100%"}} />                   
+                            <RaisedButton label="Graphics" style={{margin: 3, width: "100%"}} primary={true} />                   
               </Flexbox>
               <Flexbox flexGrow={1}>
-                            <RaisedButton label="Tag7" style={{margin: 3, width: "100%"}} />                   
+                            <RaisedButton label="Maps" style={{margin: 3, width: "100%"}} primary={true} />                   
               </Flexbox>
                <Flexbox flexGrow={1}>
-                            <RaisedButton label="Tag8" style={{margin: 3, width: "100%"}} />                   
+                            <RaisedButton label="Other" style={{margin: 3, width: "100%"}} primary={true} />                   
               </Flexbox>
         </Flexbox>
                 
