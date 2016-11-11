@@ -1,47 +1,97 @@
-import React, { Component } from 'react';
-var AppActions = require('../../Action/AppActions');
-var AppStore = require('../../Stores/AppStore');
-import {Link} from "react-router";
-import {withRouter} from 'react-router';
-import { hashHistory } from 'react-router';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+var React = require('react');
+var ReactRouter = require('react-router');
+var Router = ReactRouter.Router;
+var Link = ReactRouter.Link;
 import * as firebase from 'firebase';
 
-class  Header extends React.Component{
+var Main = React.createClass({
+    getInitialState: function() {
+        return {
+            loggedIn: (null !== firebase.auth().currentUser)
+        }
+    },
+    componentWillMount: function() {
+        firebase.auth().onAuthStateChanged(firebaseUser => {
 
-    constructor(props) {
+            this.setState({
+                loggedIn: (null !== firebaseUser)
+            })
 
-        super(props);
-        this.state= {
+            if (firebaseUser) {
+                console.log("Logged IN", firebaseUser);
+            } else {
+                console.log('Not logged in');
+            }
+        });
+    },
+    render: function() {
+        var loginOrOut;
+        var register;
+        var profileNav;
+        var creationNav;
+        if (this.state.loggedIn) {
+            loginOrOut = <li>
+                <Link to="/logout" className="navbar-brand">Logout</Link>
+            </li>;
+            profileNav = <li>
+                        <Link to="/" className="navbar-brand">
+                                Profile
+                            </Link>
+                        </li>;
+            creationNav =   <li>
+                                <Link to="General" className="navbar-brand">
+                                    ProductCreation
+                                </Link>
+                            </li>;            
+            register = null;
 
-        };
-
-    }
-
-    render(){
-
+        } else {
+            loginOrOut = <li>
+                <Link to="/login" className="navbar-brand">Login</Link>
+            </li>;
+            register = <li>
+                <Link to="registration" className="navbar-brand">
+                    register
+                </Link>
+            </li>;
+            profileNav = null;
+            creationNav = null;
+        }
         return (
-                <MuiThemeProvider>
-                    <Card>
-                        <div className="header">
-                            <Link to="ItemPreview"> <h3>preview</h3> </Link>
-                            <Link to="General"> <h3>product</h3> </Link>
-                            <Link to="ProductSearch"> <h3>search</h3> </Link>
-                            <Link to="/"> <h3> profile </h3> </Link>
-                            <h3> | </h3>
-                            <Link to="login"> <h3> login </h3> </Link>
-                            <Link to="logout"> <h3> logout </h3> </Link>
-                            <Link to="registration"> <h3> registration </h3> </Link>
-
+            <span>
+                <nav className="navbar navbar-default navbar-static-top">
+                    <div className="container">
+                        <div className="navbar-header">
+                            <Link to="/" className="navbar-brand">
+                                Rscript.Market
+                            </Link>
                         </div>
-                    </Card>
-                </MuiThemeProvider>
+                        <ul className="nav navbar-nav pull-right">
+                             <li>
+                                <Link to="ProductSearch" className="navbar-brand">
+                                    Search
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to="ItemPreview" className="navbar-brand">
+                                    Preview
+                                </Link>
+                            </li>
+                            {creationNav}
+                            {profileNav}
+                            {register}
+                            {loginOrOut}
+                        </ul>
+                    </div>
+                </nav>
+                <div className="container">
+                    <div className="row">
+                        {this.props.children}
+                    </div>
+                </div>
+            </span>
         )
     }
-}
+});
 
-export default Header;
-
-
-
+module.exports = Main;

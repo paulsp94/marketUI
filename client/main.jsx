@@ -13,17 +13,18 @@ import ProductSearch from 'components/ProductSearch/ProductSearch.jsx';
 import registration from 'components/account/registration.jsx';
 import login from 'components/account/login.jsx';
 import logout from 'components/account/logout.jsx';
+import requireAuth from 'components/account/authenticated.jsx';
 
   render(
       <Router history={hashHistory}>
           <Route path="/INDEX" component={Index}/>
           <Route path="ItemPreview" component={ItemPreview}/>
-          <Route path="General" component={General}/>
+          <Route path="General" component={General} onEnter={requireAuth}/>
           <Route path="ProductSearch" component={ProductSearch}/>
           <Route path="registration" component={registration}/>
           <Route path="login" component={login}/>
           <Route path="logout" component={logout}/>
-          <Route path="/" component={Downloads}/>
+          <Route path="/" component={Downloads} onEnter={requireAuth}/>
       </Router>,
       document.getElementById('js-main'));
 

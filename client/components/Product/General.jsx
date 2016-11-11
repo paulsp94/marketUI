@@ -76,7 +76,6 @@ class  General extends React.Component{
                                 </Tab>
 
                                 <Tab label="Content">
-
                                     <Card style={{ marginRight: "1%", marginLeft: "1%", marginTop: 9}}>
                                         <div className="Product2">
                                                 <div className="markdowncode" >

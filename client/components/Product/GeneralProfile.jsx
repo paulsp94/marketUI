@@ -120,8 +120,6 @@ class  GeneralProfile extends React.Component{
 
                           <div className="RightView">
 
-                              
-
                               <div className="container2">
                                       <CardMedia
                                           overlay={<CardTitle title={this.state.title} subtitle={this.state.subtitle}/>}>
@@ -144,11 +142,8 @@ class  GeneralProfile extends React.Component{
                                       </div>
                                     </Card>
                                       <br/><br/>
-                                      
                                   </div>
-
-                          </div>
-
+                              </div>
                         </div>
                     </Card>
                 </div>

@@ -64,6 +64,8 @@ var login = React.createClass({
                     <button type="submit" className="btn btn-primary">Login</button>
                 </form>
             </div>
+
+            
         </div>
         );
     }
