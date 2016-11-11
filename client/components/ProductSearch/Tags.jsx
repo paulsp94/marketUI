@@ -55,6 +55,19 @@ class Tags extends React.Component{
                <Flexbox flexGrow={1}>
                             <RaisedButton label="Other" style={{margin: 3, width: "100%"}} primary={true} />                   
               </Flexbox>
+              <Flexbox flexGrow={1}>
+                   <input type="text" className="search" placeholder="Search Product"/>
+                   <select className="sort">
+                       <optgroup label="Sort">
+                           <option value=""> Sort </option>
+                           <option value="New"> New </option>
+                           <option value="Last Day"> Last Day </option>
+                           <option value="1 week old"> 1 week old </option>
+                           <option value="1 Month old"> 1 Month old</option>
+                           <option value="1 Year old"> 1 Year old </option>
+                       </optgroup>
+                   </select>
+                   </Flexbox>
         </Flexbox>
                 
             </div>
