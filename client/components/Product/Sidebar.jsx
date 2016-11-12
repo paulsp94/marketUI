@@ -1,264 +1,172 @@
-import React, { Component } from 'react';
-var AppActions = require('../../Action/AppActions');
-var AppStore = require('../../Stores/AppStore');
-import {Link} from "react-router";
-import {withRouter} from 'react-router';
-import { hashHistory } from 'react-router';
-import Header from '../Header/Header.jsx';
-import Subheader from '../Subheader/Subheader.jsx';
-import injectTapEventPlugin from 'react-tap-event-plugin';
+import React from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import RaisedButton from 'material-ui/RaisedButton';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
-import {Tabs, Tab} from 'material-ui/Tabs';
-import Slider from 'material-ui/Slider';
-import ReactMarkdown from 'react-markdown';
-import GeneralProfile from './GeneralProfile.jsx';
-import { WithContext as ReactTags } from 'react-tag-input';
-import Divider from 'material-ui/Divider';
+import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card';
+import FlatButton from 'material-ui/FlatButton';
+import TextField from 'material-ui/TextField';
+import SelectField from 'material-ui/SelectField';
+import MenuItem from 'material-ui/MenuItem';
 import Chip from 'material-ui/Chip';
-import ChipInput from 'material-ui-chip-input';
-import TagsInput from 'react-tags-input';
+import MaterialTagsInput from '../_common/MaterialTagsInput';
 
-class  Sidebar extends React.Component{
+class ProductSidebar extends React.Component {
 
-    constructor(props) {
+  constructor(props) {
+    super(props);
+    this.state = {
+      packages: [],
+      complexity: 5,
+      integrationTime: 1,
+      compatibility: '',
+      tags: []
+    };
+  }
 
-        super(props);
-        this.state= {
-            expanded: true,
-            tags: [],
-            tags1: [],
-            suggestions: [],
-            timeest: '',
-            diff: '',
-            chips:[],
-        };
-    }
+  onPackagesChange = (packages) => {
+    this.setState({packages})
+  };
 
-    handleDelete(i) {
-        console.log(i);
-        let tags = this.state.tags;
-        tags.splice(i, 1);
-        this.setState({tags: tags});
-    }
+  onComplexityChange = (event, index, value) => {
+    this.setState({complexity: value});
+  };
 
-    handleDelete1(i) {
-        let tags = this.state.tags1;
-        tags.splice(i, 1);
-        this.setState({tags1: tags});
-    }
+  onCompatibilityChange = (event, value) => {
+    this.setState({compatibility: value});
+  };
 
-    handleAddition(tag) {
-        let tags = this.state.tags;
-        tags.push({
-            id: tags.length + 1,
-            text: tag
-        });
-        this.setState({tags: tags});
-    }
+  onIntegrationTimeChange = (event, value) => {
+    this.setState({integrationTime: value});
+  };
 
-    handleAddition1(tag) {
-        let tags1 = this.state.tags1;
-        tags1.push({
-            id: tags1.length + 1,
-            text: tag
-        });
-        this.setState({tags1: tags1});
-    }
+  onTagsChange = (tags) => {
+    this.setState({tags})
+  };
 
-    handleDrag(tag, currPos, newPos) {
-        let tags = this.state.tags;
+  render() {
+    const { packages, complexity, integrationTime, compatibility, tags } = this.state;
+    return (
+      <MuiThemeProvider>
+        <div className="product-tab">
 
-        // mutate array
-        tags.splice(currPos, 1);
-        tags.splice(newPos, 0, tag);
+          <div className="left-panel">
+            <Card style={{margin: '10px auto', width: '80%'}}>
+              <CardTitle
+                title="Sidebar"
+                subtitle="Here you can specify product details"
+              />
 
-        // re-render
-        this.setState({ tags: tags });
-    }
+              <CardText>
+                {/* packages */}
+                <MaterialTagsInput
+                  value={packages}
+                  onChange={this.onPackagesChange}
+                  label="Packages"
+                />
 
-    handleDrag1(tag, currPos, newPos) {
-        let tags = this.state.tags1;
+                {/* complexity */}
+                <SelectField
+                  floatingLabelText="Complexity"
+                  value={complexity}
+                  onChange={this.onComplexityChange}
+                  autoWidth={true}
+                  style={{width: '100%'}}
+                >
+                  <MenuItem value={1} primaryText="1/10" />
+                  <MenuItem value={2} primaryText="2/10" />
+                  <MenuItem value={3} primaryText="3/10" />
+                  <MenuItem value={4} primaryText="4/10" />
+                  <MenuItem value={5} primaryText="5/10" />
+                  <MenuItem value={6} primaryText="6/10" />
+                  <MenuItem value={7} primaryText="7/10" />
+                  <MenuItem value={8} primaryText="8/10" />
+                  <MenuItem value={9} primaryText="9/10" />
+                  <MenuItem value={10} primaryText="10/10" />
+                </SelectField>
 
-        // mutate array
-        tags.splice(currPos, 1);
-        tags.splice(newPos, 0, tag);
+                {/* integrationTime */}
+                <TextField
+                  type="number"
+                  value={integrationTime || '0'}
+                  onChange={this.onIntegrationTimeChange}
+                  hintText=""
+                  floatingLabelText="Integration Time"
+                  floatingLabelFixed={true}
+                  fullWidth={true}
+                />
 
-        // re-render
-        this.setState({ tags1: tags });
-    }
+                {/* compatibility */}
+                <TextField
+                  value={compatibility}
+                  onChange={this.onCompatibilityChange}
+                  hintText=""
+                  floatingLabelText="Compatibility"
+                  floatingLabelFixed={true}
+                  fullWidth={true}
+                />
 
-    DiffiCulity(){
-        var difficulty = this.diff.value;
-        this.setState({
-            diff: difficulty
-        });
-    }
+                {/* tags */}
+                <MaterialTagsInput
+                  value={tags}
+                  onChange={this.onTagsChange}
+                  label="Tags"
+                />
+              </CardText>
 
-    TimeEstimation(){
-        var timeest = this.timeest.value;
-        this.setState({
-            timeest: timeest
-        });
-    }
+              <CardActions style={{textAlign: 'right'}}>
+                <FlatButton label="Cancel" />
+                <FlatButton label="Submit" />
+              </CardActions>
+            </Card>
+          </div>
 
-    handleRequestAdd(chip) {
-        console.log('it comes here');
-        const newChips = chip.split(',').filter((c) => c.trim().length > 0)
-        this.setState({
-            chips: [...this.state.chips, ...newChips]
-        })
-        console.log(this.state.chips);
-    }
-
-    handleRequestDelete(deletedChip) {
-        if (deletedChip !== 'js') {
-            this.setState({
-                chips: this.state.chips.filter((c) => c !== deletedChip)
-            })
-        } else {
-            alert('Why would you delete JS?')
-        }
-    }
-
-    _onChange(tags) {
-        this.setState({tags});
-
-    }
-
-    handleKeyPress(){
-            alert('Enter clicked!!!');
-
-    }
-
-
-    render(){
-
-        console.log(this.state.tags);
-        let style = {
-            width:"100px",
-        };
-
-        let tags = this.state.tags;
-        let tags1 = this.state.tags1;
-
-        let suggestions = this.state.suggestions;
-        let placeholder = "Add Language Tags";
-        let placeholder1 = "Add Package Tags";
-
-        return (
-        
-            <MuiThemeProvider>
-               <Card style={{ marginRight: "1%", marginLeft: "1%", marginTop: 9}}>
-                        <div className="Product2">
-                          <div className="Leftedit">
-                             <div className="Productdisplay" style={{width: 250}} >
-                                    <input name="diff" ref={(a) => this.diff = a} type="text" className="inputfield-signup2" placeholder="Difficulty" onChange={this.DiffiCulity.bind(this)}/><br/><br/>
-
-                                    <ReactTags
-                                        handleDelete={this.handleDelete.bind(this)}
-                                        handleAddition={this.handleAddition.bind(this)}
-                                        placeholder={placeholder}
-                                        tags={tags}
-                                    />
-                                    <br/>
-
-                                    <input type="text" onChange ={this.handleKeyPress.bind(this)} />
-
-                                    <ReactTags
-                                        handleDelete={this.handleDelete1.bind(this)}
-                                        handleAddition={this.handleAddition1.bind(this)}
-                                        placeholder={placeholder1}
-                                    />
-
-                                    <ChipInput
-                                        onRequestAdd={this.handleRequestAdd.bind(this)}
-                                        onRequestDelete={(deletedChip) => this.handleRequestDelete(deletedChip).bind(this)}
-                                        fullWidth
-                                    />
-
-                                    <TagsInput
-                                        onChange={this._onChange.bind(this)}
-                                        value={this.state.tags}
-                                        className="inputfield-signup2"
-                                    />
-
-                               
-
-                                    <input name="timeest" ref={(c) => this.timeest = c} type="text" className="inputfield-signup2" placeholder="Time-Estimation" onChange={this.TimeEstimation.bind(this)}/><br/><br/>
-
-                                    {
-                                        tags.map((detail)=> {
-                                            return <Chip item={detail} style={{float: "left", margin: 2}}  onTouchTap = {this.handleDelete.bind(this)}>
-                                                {detail.text}
-                                            </Chip>
-                                        })
-                                    }
-
-                                    <br/> <br/> <br/>
-                                    {
-                                        tags1.map((detail)=> {
-                                            return <Chip item={detail} style={{float: "left", margin: 2}} onRequestDelete={this.handleDelete1.bind(this)}>
-                                                {detail.text}
-                                            </Chip>
-                                        })
-                                    }
-
-                            </div>
-
-                          </div>
-
-                          <div className="RightView">
-                                   <Card style={{width: 500, marginLeft: "25%", marginTop: "5%"}}>
-                                    <Card>
-                                    <h4 style={{float: "left", marginLeft: 3}}><strong>Packages:</strong> <br/></h4>
-                                    <div style={{display:"flex", flexWrap:"wrap", margin: 9}}>
-                                    <Chip style={{float: "left", margin: 4}}>Shiny </Chip>
-                                    <Chip style={{float: "left", margin: 4}}>ggplot </Chip>
-                                    <Chip style={{float: "left", margin: 4}}>dplyr </Chip>
-                                    </div>
-                                    </Card>
-
-
-                                    <div style={{flexWrap: 'wrap', margin: 9}}>
-                                    <h4><strong>Complexity:</strong></h4>
-                                    <p> 4/10 </p>
-                                    <h4><strong>Integration Time: </strong></h4>
-                                     3 hours
-                                    </div>
-
-                                    <Card>
-                                    <h4 style={{float: "left", marginLeft: 3}}><strong>  Compatibilty: </strong> <br/></h4>
-                                    <div style={{display: 'flex', flexWrap: 'wrap'}}>
-                                    <Chip style={{float: "left", margin: 4}}> R / Shiny </Chip>
-                                    </div>
-                                    </Card>
-
-                                    <div style={{flexWrap:"wrap", margin: 9}}>
-                                    <h4 ><strong> Maintenance: </strong> </h4>
-                                    <h5> 5 Versions</h5>
-                                    <p > Last Updated 20-11-2015 </p>
-                                    </div>
-
-                                    <Card>
-                                    <h4 style={{float: "left", marginLeft: 3}} ><strong> Tags: </strong> </h4>
-                                    <div style={{display: 'flex', flexWrap: 'wrap'}}>
-                                    <Chip style={{float: "left", margin: 4}}>Html </Chip>
-                                    <Chip style={{float: "left", margin: 4}}>CSS </Chip>
-                                    <Chip style={{float: "left", margin: 4}}>Javascript </Chip>
-                                    <Chip style={{float: "left", margin: 4}}>Jquery </Chip>
-                                    <Chip style={{float: "left", margin: 4}}>Firebase </Chip>
-                                    </div>
-                                    </Card>
-                                </Card>
-                         </div>
+          <div className="right-panel">
+            <Card style={{margin: '10px auto', width: '80%'}}>
+              <CardText>
+                {/* Packages */}
+                <div style={{display: 'flex', flexWrap: 'wrap'}}>
+                  <h4><strong>Packages:</strong></h4>
+                  {packages.map((item, index) =>
+                    <Chip key={index} style={{float: "left", margin: 4}}>{item}</Chip>
+                  )}
                 </div>
-                </Card>
-            </MuiThemeProvider>
-        )
-    }
+
+                {/* Complexity */}
+                <h4><strong>Complexity:</strong></h4>
+                <p>{complexity}/10</p>
+
+                {/* Integration Time */}
+                <h4><strong>Integration Time:</strong></h4>
+                <p>{integrationTime} hours</p>
+
+                {/* Compatibilty */}
+                <div style={{display: 'flex', flexWrap: 'wrap'}}>
+                  <h4><strong>Compatibilty:</strong></h4>
+                  {compatibility
+                    && <Chip style={{float: "left", margin: 4}}>{compatibility}</Chip>
+                  }
+                </div>
+
+                {/* Maintenance */}
+                <h4><strong>Maintenance:</strong></h4>
+                <p>5 Versions</p>
+                <p>Last Updated 20-11-2015</p>
+
+                {/* Tags */}
+                <div style={{display: 'flex', flexWrap: 'wrap'}}>
+                  <h4><strong>Tags:</strong></h4>
+                  {tags.map((tag, index) =>
+                    <Chip key={index} style={{float: "left", margin: 4}}>{tag}</Chip>
+                  )}
+                </div>
+              </CardText>
+            </Card>
+
+          </div>
+
+        </div>
+      </MuiThemeProvider>
+    )
+  }
 }
 
-export default Sidebar;
+export default ProductSidebar;
 

@@ -82,9 +82,9 @@ class  GeneralProfile extends React.Component{
             <MuiThemeProvider>
                 <div className="Profiledata">
                     <Card style={{marginRight: "1%", marginLeft: "1%", marginTop: 9}}>
-                        <div className="Product2" >
+                        <div className="product-tab" >
 
-                          <div className="Leftedit">
+                          <div className="left-panel">
                               <div style={{marginTop: 25}}>
 
                                 <p> this is the creation page! here you can interactivly create your content. Dont forget to save & publish your work </p>
@@ -118,7 +118,7 @@ class  GeneralProfile extends React.Component{
                               </div>
                           </div>
 
-                          <div className="RightView">
+                          <div className="right-panel">
 
                               <div className="container2">
                                       <CardMedia
