@@ -12,6 +12,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import Slider from 'material-ui/Slider';
+import Flexbox from 'flexbox-react';
 
 
 
@@ -32,11 +33,18 @@ class Product extends React.Component{
                 <Card className="product-search" style={{padding: 0}}>
                     <img className="product_image" src={this.props.item.image}/>
                     <h5>{this.props.item.name}</h5>
-
-                    
-                    <RaisedButton label="4.8" style={{ margin: 2}} />
-                    <RaisedButton label={this.props.item.Price} style={{ margin: 2}} />
-                    <RaisedButton label="223" style={{ margin: 2}} />
+                    <h5> This is the default description. The user is allowed to fill in 4 lines. To make it uniform we always make spacing for 4 lines</h5>
+                    <Flexbox flexDirection="row">
+                        <Flexbox flexGrow={1}>
+                            <RaisedButton label="4.8" style={{ margin: 1, width: "100%"}} />
+                        </Flexbox>
+                        <Flexbox flexGrow={1}>
+                            <RaisedButton label={this.props.item.Price} style={{ margin: 1, width: "100%"}} /> 
+                        </Flexbox>
+                        <Flexbox flexGrow={1}>
+                            <RaisedButton label="223" style={{ margin: 1, width: "100%"}} />
+                        </Flexbox>
+                    </Flexbox>
                 </Card>
             </div>
         )

@@ -62,7 +62,7 @@ var Main = React.createClass({
                 <nav className="navbar navbar-default navbar-static-top">
                     <div className="container">
                         <div className="navbar-header">
-                            <Link to="/" className="navbar-brand">
+                            <Link to="ProductSearch" className="navbar-brand">
                                 Rscript.Market
                             </Link>
                         </div>

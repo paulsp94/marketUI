@@ -17,15 +17,13 @@ var firebase = require('firebase');
 import firebase_details from '../../Firebase/Firebase';
 import Flexbox from 'flexbox-react';
 
-
-
 class Tags extends React.Component{
 
     constructor(props) {
 
         super(props);
         this.state= {
-
+            value: 1,
         };
     }
 
@@ -34,28 +32,25 @@ class Tags extends React.Component{
         return (
             <div className="tags">
             <Flexbox flexDirection="row">
-              <Flexbox flexGrow={1}>
+              <Flexbox flexGrow={1} flexShrink={1}>
                             <RaisedButton label="Shiny & Web" style={{margin: 3, width: "100%"}} primary={true} />
               </Flexbox>
-               <Flexbox flexGrow={1}>
+               <Flexbox flexGrow={1} flexShrink={1}>
                             <RaisedButton label="Machine Learning" style={{margin: 3, width: "100%"}} primary={true} />                   
               </Flexbox>
-              <Flexbox flexGrow={1}>
+              <Flexbox flexGrow={1} flexShrink={1}>
                              <RaisedButton label="Big Data" style={{margin: 3, width: "100%"}} primary={true} />                   
               </Flexbox>
-              <Flexbox flexGrow={1}>
+              <Flexbox flexGrow={1} flexShrink={1}>
                             <RaisedButton label="Algorithms" style={{margin: 3, width: "100%"}} primary={true} />                   
               </Flexbox>
-              <Flexbox flexGrow={1}>
+              <Flexbox flexGrow={1} flexShrink={1}>
                             <RaisedButton label="Graphics" style={{margin: 3, width: "100%"}} primary={true} />                   
               </Flexbox>
-              <Flexbox flexGrow={1}>
-                            <RaisedButton label="Maps" style={{margin: 3, width: "100%"}} primary={true} />                   
-              </Flexbox>
-               <Flexbox flexGrow={1}>
+               <Flexbox flexGrow={1} flexShrink={1}>
                             <RaisedButton label="Other" style={{margin: 3, width: "100%"}} primary={true} />                   
               </Flexbox>
-              <Flexbox flexGrow={1}>
+              <Flexbox flexGrow={1} flexShrink={1}>
                    <input type="text" className="search" placeholder="Search Product"/>
                    <select className="sort">
                        <optgroup label="Sort">
