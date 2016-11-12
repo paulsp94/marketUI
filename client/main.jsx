@@ -1,11 +1,11 @@
 'use strict';
+
 import 'styles/main.css';
 import React from 'react';
 import { render } from 'react-dom';
-import { Router, Route, IndexRoute, hashHistory } from "react-router";
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import Index from 'components/Index/Index';
 import Header from 'components/Header/Header';
-import { browserHistory } from 'react-router';
 import ItemPreview from 'components/ItemPreview/ItemPreview';
 import Downloads from 'components/Downloads/Downloads';
 import General from 'components/Product/General.jsx';
@@ -16,7 +16,7 @@ import logout from 'components/account/logout.jsx';
 import requireAuth from 'components/account/authenticated.jsx';
 
   render(
-      <Router history={hashHistory}>
+      <Router history={browserHistory}>
           <Route path="/INDEX" component={Index}/>
           <Route path="ItemPreview" component={ItemPreview}/>
           <Route path="General" component={General} onEnter={requireAuth}/>

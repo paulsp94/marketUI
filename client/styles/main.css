@@ -478,16 +478,6 @@
 		margin: 0px 0px 0px 0px;
 	}
 
-	.Product2{
-		width: 100%;
-		background-color: #F5F5F5;
-		vertical-align: middle;
-		min-height: -moz-calc(99% - 140px); /* Firefox */
- 		min-height: -webkit-calc(99% - 140px); /* Chrome, Safari */
- 		min-height: calc(99% - 140px);
-		/*border: 10px solid red;*/
-	}
-
 	.markdowncode{
 		width: 50%;
 		vertical-align: middle;
@@ -580,43 +570,15 @@
 		background-color: #F5F5F5;
 	}
 
-	.Leftedit{
-        padding-top: 1%;
-		width: 50%;
-		/*border: 4px solid black;*/
-		float: left;
-	}
+  .productdisplayleft{
+      padding-top: 9%;
+      margin-left: 22%;
+      margin-right: 25%;
+      width: 55%;
+      float: left;
+  /*border: 4px solid red;*/
+  }
 
-	.RightView{
-		width: 50%;
-		/*border-left: 4px solid black;*/
-		float: right;
-		height: -moz-calc(99% - 140px); /* Firefox */
- 		height: -webkit-calc(99% - 140px); /* Chrome, Safari */
- 		height: calc(99% - 140px);
-		overflow-y: scroll;
-		background-color: #CFD8DC;
-	}
-
-    .Productdisplay{
-        width: 100%;
-        height: -moz-calc(99% - 140px); /* Firefox */
- 		height: -webkit-calc(99% - 140px); /* Chrome, Safari */
- 		height: calc(99% - 140px);
-        /*border: 4px solid red;*/
-        text-align: left;
-        vertical-align: middle;
-        font-size: 20px;
-    }
-
-    .productdisplayleft{
-        padding-top: 9%;
-        margin-left: 22%;
-        margin-right: 25%;
-        width: 55%;
-        float: left;
-		/*border: 4px solid red;*/
-    }
 	.productdisplayleft1{
 		padding-top: 5%;
 		width: 50%;
