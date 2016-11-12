@@ -15,8 +15,8 @@ class ProductSidebar extends React.Component {
     this.state = {
       packages: [],
       complexity: 5,
-      integrationTime: 1,
-      compatibility: '',
+      integrationTime: "15 min",
+      compatibility: [],
       tags: []
     };
   }
@@ -29,12 +29,12 @@ class ProductSidebar extends React.Component {
     this.setState({complexity: value});
   };
 
-  onCompatibilityChange = (event, value) => {
-    this.setState({compatibility: value});
+  onIntegrationTimeChange = (event, index, value) => {
+    this.setState({integrationTime: value});
   };
 
-  onIntegrationTimeChange = (event, value) => {
-    this.setState({integrationTime: value});
+  onCompatibilityChange = (compatibility) => {
+    this.setState({compatibility})
   };
 
   onTagsChange = (tags) => {
@@ -48,7 +48,7 @@ class ProductSidebar extends React.Component {
         <div className="product-tab">
 
           <div className="left-panel">
-            <Card style={{margin: '10px auto', width: '80%'}}>
+            <Card style={{margin: '10px auto', width: 550}}>
               <CardTitle
                 title="Sidebar"
                 subtitle="Here you can specify product details"
@@ -67,8 +67,7 @@ class ProductSidebar extends React.Component {
                   floatingLabelText="Complexity"
                   value={complexity}
                   onChange={this.onComplexityChange}
-                  autoWidth={true}
-                  style={{width: '100%'}}
+                  autoWidth={false}
                 >
                   <MenuItem value={1} primaryText="1/10" />
                   <MenuItem value={2} primaryText="2/10" />
@@ -82,25 +81,27 @@ class ProductSidebar extends React.Component {
                   <MenuItem value={10} primaryText="10/10" />
                 </SelectField>
 
-                {/* integrationTime */}
-                <TextField
-                  type="number"
-                  value={integrationTime || '0'}
-                  onChange={this.onIntegrationTimeChange}
-                  hintText=""
+                <SelectField
                   floatingLabelText="Integration Time"
-                  floatingLabelFixed={true}
-                  fullWidth={true}
-                />
+                  value={integrationTime}
+                  onChange={this.onIntegrationTimeChange}
+                  autoWidth={false}
+                >
+                  <MenuItem value={"15 min"} primaryText="15 min" />
+                  <MenuItem value={"30 min"} primaryText="30 min" />
+                  <MenuItem value={"45 min"} primaryText="45 min" />
+                  <MenuItem value={"< 1 hour"} primaryText="< 1 hour" />
+                  <MenuItem value={"< 2 hours"} primaryText="< 2 hours" />
+                  <MenuItem value={"> 2 hours"} primaryText="> 2 hours" />
+                  <MenuItem value={"> 5 hours"} primaryText="> 5 hours" />
+                </SelectField>
+
 
                 {/* compatibility */}
-                <TextField
+                <MaterialTagsInput
                   value={compatibility}
                   onChange={this.onCompatibilityChange}
-                  hintText=""
-                  floatingLabelText="Compatibility"
-                  floatingLabelFixed={true}
-                  fullWidth={true}
+                  label="Compatibility"
                 />
 
                 {/* tags */}
@@ -111,54 +112,61 @@ class ProductSidebar extends React.Component {
                 />
               </CardText>
 
-              <CardActions style={{textAlign: 'right'}}>
-                <FlatButton label="Cancel" />
-                <FlatButton label="Submit" />
-              </CardActions>
+              
             </Card>
           </div>
 
           <div className="right-panel">
-            <Card style={{margin: '10px auto', width: '80%'}}>
-              <CardText>
-                {/* Packages */}
-                <div style={{display: 'flex', flexWrap: 'wrap'}}>
-                  <h4><strong>Packages:</strong></h4>
-                  {packages.map((item, index) =>
-                    <Chip key={index} style={{float: "left", margin: 4}}>{item}</Chip>
-                  )}
-                </div>
 
-                {/* Complexity */}
-                <h4><strong>Complexity:</strong></h4>
-                <p>{complexity}/10</p>
+            <Card style={{width: 500, marginLeft: "25%", marginTop: "5%"}}>
+                                    <Card>
+                                     {/* Packages */}
+                                    <div style={{display: 'flex', flexWrap: 'wrap'}}>
+                                      <h4><strong>Packages:</strong></h4>
+                                      {packages.map((item, index) =>
+                                        <Chip key={index} style={{float: "left", margin: 4}}>{item}</Chip>
+                                      )}
+                                    </div>
+                                    </Card>
 
-                {/* Integration Time */}
-                <h4><strong>Integration Time:</strong></h4>
-                <p>{integrationTime} hours</p>
 
-                {/* Compatibilty */}
-                <div style={{display: 'flex', flexWrap: 'wrap'}}>
-                  <h4><strong>Compatibilty:</strong></h4>
-                  {compatibility
-                    && <Chip style={{float: "left", margin: 4}}>{compatibility}</Chip>
-                  }
-                </div>
+                                    <div style={{flexWrap: 'wrap', margin: 9}}>
+                                    {/* Complexity */}
+                                    <h4><strong>Complexity:</strong></h4>
+                                    <p>{complexity}/10</p>
 
-                {/* Maintenance */}
-                <h4><strong>Maintenance:</strong></h4>
-                <p>5 Versions</p>
-                <p>Last Updated 20-11-2015</p>
+                                    {/* Integration Time */}
+                                    <h4><strong>Integration Time:</strong></h4>
+                                    <p>{integrationTime}</p>
+                                    </div>
 
-                {/* Tags */}
-                <div style={{display: 'flex', flexWrap: 'wrap'}}>
-                  <h4><strong>Tags:</strong></h4>
-                  {tags.map((tag, index) =>
-                    <Chip key={index} style={{float: "left", margin: 4}}>{tag}</Chip>
-                  )}
-                </div>
-              </CardText>
-            </Card>
+                                    <Card>
+                                    {/* Compatibilty */}
+                                    <div style={{display: 'flex', flexWrap: 'wrap'}}>
+                                      <h4><strong>Compatibilty:</strong></h4>
+                                       {compatibility.map((compatibility, index) =>
+                                        <Chip key={index} style={{float: "left", margin: 4}}>{compatibility}</Chip>
+                                      )}
+                                    </div>
+                                    </Card>
+
+                                    <div style={{flexWrap:"wrap", margin: 9}}>
+                                    <h4 ><strong> Maintenance: </strong> </h4>
+                                    <h5> 5 Versions</h5>
+                                    <p > Last Updated 20-11-2015 </p>
+                                    </div>
+
+                                    <Card>
+                                    <div style={{display: 'flex', flexWrap: 'wrap'}}>
+                                      <h4><strong>Tags:</strong></h4>
+                                      {tags.map((tag, index) =>
+                                        <Chip key={index} style={{float: "left", margin: 4}}>{tag}</Chip>
+                                      )}
+                                    </div>
+                                    </Card>
+                                </Card>
+
+           
 
           </div>
 
