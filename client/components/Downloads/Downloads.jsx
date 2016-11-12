@@ -192,7 +192,7 @@ class  Downloads extends React.Component{
                                     {
                                         data1.map((detail)=> {
                                             return <Content item={detail} key={detail.Price}
-                                                            ViewItemrateprice = {this.productData1.bind(this)}
+                                                            ViewItemrateprice = {this.productData.bind(this)}
                                             />
                                         })
                                     }
