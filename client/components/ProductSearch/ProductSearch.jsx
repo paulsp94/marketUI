@@ -36,12 +36,29 @@ class  ProductSearch extends React.Component{
 
         super(props);
         this.state= {
-
+            questdata:[],
         };
+    }
+
+    componentWillMount(){
+
+        fetch('http://localhost:3002/', {"method" : 'GET'})
+            .then((response) => response.json())
+            .then((data) => {
+
+                var questdata = data;
+
+                this.setState ({
+                    questdata: questdata,
+                })
+
+            });
+
     }
 
     render(){
 
+        console.log(this.state.questdata);
         return (
             <MuiThemeProvider>
                 <div className="backgroundc container-fluid">
