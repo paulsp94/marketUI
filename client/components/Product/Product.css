@@ -1,0 +1,22 @@
+	.product-tab {
+	  display: flex;
+	  background-color: #F5F5F5;
+	  min-height: -moz-calc(99% - 140px); /* Firefox */
+	  min-height: -webkit-calc(99% - 140px); /* Chrome, Safari */
+	  min-height: calc(99% - 140px);
+	}
+
+	.left-panel {
+	  padding-top: 5px;
+	  flex: 1;
+	}
+
+	.right-panel {
+	  padding-top: 5px;
+	  flex: 1;
+	  background-color: #CFD8DC;
+	}
+
+	.left-panel label {
+	  font-weight: normal;
+	}

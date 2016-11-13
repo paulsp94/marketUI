@@ -15,7 +15,7 @@ import Slider from 'material-ui/Slider';
 import ReactMarkdown from 'react-markdown';
 var firebase = require('firebase');
 import firebase_details from '../../Firebase/Firebase';
-
+import Flexbox from 'flexbox-react';
 
 class Tags extends React.Component{
 
@@ -23,7 +23,7 @@ class Tags extends React.Component{
 
         super(props);
         this.state= {
-
+            value: 1,
         };
     }
 
@@ -31,14 +31,40 @@ class Tags extends React.Component{
 
         return (
             <div className="tags">
-                <RaisedButton label="Tag1" style={{ margin: 3}} />
-                <RaisedButton label="Tag2" style={{ margin: 3}} />
-                <RaisedButton label="Tag3" style={{ margin: 3}} />
-                <RaisedButton label="Tag4" style={{ margin: 3}} />
-                <RaisedButton label="Tag5" style={{ margin: 3}} />
-                <RaisedButton label="Tag6" style={{ margin: 3}} />
-                <RaisedButton label="Tag7" style={{ margin: 3}} />
-                <RaisedButton label="Tag8" style={{ margin: 3}} />
+            <Flexbox flexDirection="row">
+              <Flexbox flexGrow={1} flexShrink={1}>
+                            <RaisedButton label="Shiny & Web" style={{margin: 3, width: "100%"}} primary={true} />
+              </Flexbox>
+               <Flexbox flexGrow={1} flexShrink={1}>
+                            <RaisedButton label="Machine Learning" style={{margin: 3, width: "100%"}} primary={true} />                   
+              </Flexbox>
+              <Flexbox flexGrow={1} flexShrink={1}>
+                             <RaisedButton label="Big Data" style={{margin: 3, width: "100%"}} primary={true} />                   
+              </Flexbox>
+              <Flexbox flexGrow={1} flexShrink={1}>
+                            <RaisedButton label="Algorithms" style={{margin: 3, width: "100%"}} primary={true} />                   
+              </Flexbox>
+              <Flexbox flexGrow={1} flexShrink={1}>
+                            <RaisedButton label="Graphics" style={{margin: 3, width: "100%"}} primary={true} />                   
+              </Flexbox>
+               <Flexbox flexGrow={1} flexShrink={1}>
+                            <RaisedButton label="Other" style={{margin: 3, width: "100%"}} primary={true} />                   
+              </Flexbox>
+              <Flexbox flexGrow={1} flexShrink={1}>
+                   <input type="text" className="search" placeholder="Search Product"/>
+                   <select className="sort">
+                       <optgroup label="Sort">
+                           <option value=""> Sort </option>
+                           <option value="New"> New </option>
+                           <option value="Last Day"> Last Day </option>
+                           <option value="1 week old"> 1 week old </option>
+                           <option value="1 Month old"> 1 Month old</option>
+                           <option value="1 Year old"> 1 Year old </option>
+                       </optgroup>
+                   </select>
+                   </Flexbox>
+        </Flexbox>
+                
             </div>
         )
     }

@@ -24,7 +24,7 @@ class  Itemview extends React.Component{
 
     render(){
         var divstylelastimage = {
-            backgroundImage: "url('client/Images/lastimg.jpg')"
+            backgroundImage: "client/Images/lastimg.jpg"
         }
 
         var buttonvalue = 'dssf';
@@ -43,7 +43,7 @@ class  Itemview extends React.Component{
             <div>
                 <div className="container">
 			
-		      <Card expanded={this.state.expanded} onExpandChange={this.handleExpandChange} style={{backgroundColor: "#efeadd"}}>
+		      <Card  style={{backgroundColor: "#efeadd"}}>
 		   
 			<CardMedia
 			  overlay={<CardTitle title="Overlay title" subtitle="Overlay subtitle" />}>

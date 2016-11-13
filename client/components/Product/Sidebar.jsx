@@ -1,277 +1,180 @@
-import React, { Component } from 'react';
-var AppActions = require('../../Action/AppActions');
-var AppStore = require('../../Stores/AppStore');
-import {Link} from "react-router";
-import {withRouter} from 'react-router';
-import { hashHistory } from 'react-router';
-import Header from '../Header/Header.jsx';
-import Subheader from '../Subheader/Subheader.jsx';
-import injectTapEventPlugin from 'react-tap-event-plugin';
+import React from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import RaisedButton from 'material-ui/RaisedButton';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
-import {Tabs, Tab} from 'material-ui/Tabs';
-import Slider from 'material-ui/Slider';
-import ReactMarkdown from 'react-markdown';
-import GeneralProfile from './GeneralProfile.jsx';
-import { WithContext as ReactTags } from 'react-tag-input';
-import Divider from 'material-ui/Divider';
+import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card';
+import FlatButton from 'material-ui/FlatButton';
+import TextField from 'material-ui/TextField';
+import SelectField from 'material-ui/SelectField';
+import MenuItem from 'material-ui/MenuItem';
 import Chip from 'material-ui/Chip';
-import ChipInput from 'material-ui-chip-input';
-import TagsInput from 'react-tags-input';
+import MaterialTagsInput from '../_common/MaterialTagsInput';
 
-class  Sidebar extends React.Component{
+class ProductSidebar extends React.Component {
 
-    constructor(props) {
+  constructor(props) {
+    super(props);
+    this.state = {
+      packages: [],
+      complexity: 5,
+      integrationTime: "15 min",
+      compatibility: [],
+      tags: []
+    };
+  }
 
-        super(props);
-        this.state= {
-            expanded: true,
-            tags: [],
-            tags1: [],
-            suggestions: [],
-            timeest: '',
-            diff: '',
-            chips:[],
-        };
-    }
+  onPackagesChange = (packages) => {
+    this.setState({packages})
+  };
 
-    handleDelete(i) {
-        console.log(i);
-        let tags = this.state.tags;
-        tags.splice(i, 1);
-        this.setState({tags: tags});
-    }
+  onComplexityChange = (event, index, value) => {
+    this.setState({complexity: value});
+  };
 
-    handleDelete1(i) {
-        let tags = this.state.tags1;
-        tags.splice(i, 1);
-        this.setState({tags1: tags});
-    }
+  onIntegrationTimeChange = (event, index, value) => {
+    this.setState({integrationTime: value});
+  };
 
-    handleAddition(tag) {
-        let tags = this.state.tags;
-        tags.push({
-            id: tags.length + 1,
-            text: tag
-        });
-        this.setState({tags: tags});
-    }
+  onCompatibilityChange = (compatibility) => {
+    this.setState({compatibility})
+  };
 
-    handleAddition1(tag) {
-        let tags1 = this.state.tags1;
-        tags1.push({
-            id: tags1.length + 1,
-            text: tag
-        });
-        this.setState({tags1: tags1});
-    }
+  onTagsChange = (tags) => {
+    this.setState({tags})
+  };
 
-    handleDrag(tag, currPos, newPos) {
-        let tags = this.state.tags;
+  render() {
+    const { packages, complexity, integrationTime, compatibility, tags } = this.state;
+    return (
+      <MuiThemeProvider>
+        <div className="product-tab">
 
-        // mutate array
-        tags.splice(currPos, 1);
-        tags.splice(newPos, 0, tag);
+          <div className="left-panel">
+            <Card style={{margin: '10px auto', width: 550}}>
+              <CardTitle
+                title="Sidebar"
+                subtitle="Here you can specify product details"
+              />
 
-        // re-render
-        this.setState({ tags: tags });
-    }
+              <CardText>
+                {/* packages */}
+                <MaterialTagsInput
+                  value={packages}
+                  onChange={this.onPackagesChange}
+                  label="Packages"
+                />
 
-    handleDrag1(tag, currPos, newPos) {
-        let tags = this.state.tags1;
+                {/* complexity */}
+                <SelectField
+                  floatingLabelText="Complexity"
+                  value={complexity}
+                  onChange={this.onComplexityChange}
+                  autoWidth={false}
+                >
+                  <MenuItem value={1} primaryText="1/10" />
+                  <MenuItem value={2} primaryText="2/10" />
+                  <MenuItem value={3} primaryText="3/10" />
+                  <MenuItem value={4} primaryText="4/10" />
+                  <MenuItem value={5} primaryText="5/10" />
+                  <MenuItem value={6} primaryText="6/10" />
+                  <MenuItem value={7} primaryText="7/10" />
+                  <MenuItem value={8} primaryText="8/10" />
+                  <MenuItem value={9} primaryText="9/10" />
+                  <MenuItem value={10} primaryText="10/10" />
+                </SelectField>
 
-        // mutate array
-        tags.splice(currPos, 1);
-        tags.splice(newPos, 0, tag);
-
-        // re-render
-        this.setState({ tags1: tags });
-    }
-
-    DiffiCulity(){
-        var difficulty = this.diff.value;
-        this.setState({
-            diff: difficulty
-        });
-    }
-
-    TimeEstimation(){
-        var timeest = this.timeest.value;
-        this.setState({
-            timeest: timeest
-        });
-    }
-
-    handleRequestAdd(chip) {
-        console.log('it comes here');
-        const newChips = chip.split(',').filter((c) => c.trim().length > 0)
-        this.setState({
-            chips: [...this.state.chips, ...newChips]
-        })
-        console.log(this.state.chips);
-    }
-
-    handleRequestDelete(deletedChip) {
-        if (deletedChip !== 'js') {
-            this.setState({
-                chips: this.state.chips.filter((c) => c !== deletedChip)
-            })
-        } else {
-            alert('Why would you delete JS?')
-        }
-    }
-
-    _onChange(tags) {
-        this.setState({tags});
-
-    }
-
-    handleKeyPress(){
-            alert('Enter clicked!!!');
-
-    }
+                <SelectField
+                  floatingLabelText="Integration Time"
+                  value={integrationTime}
+                  onChange={this.onIntegrationTimeChange}
+                  autoWidth={false}
+                >
+                  <MenuItem value={"15 min"} primaryText="15 min" />
+                  <MenuItem value={"30 min"} primaryText="30 min" />
+                  <MenuItem value={"45 min"} primaryText="45 min" />
+                  <MenuItem value={"< 1 hour"} primaryText="< 1 hour" />
+                  <MenuItem value={"< 2 hours"} primaryText="< 2 hours" />
+                  <MenuItem value={"> 2 hours"} primaryText="> 2 hours" />
+                  <MenuItem value={"> 5 hours"} primaryText="> 5 hours" />
+                </SelectField>
 
 
-    render(){
+                {/* compatibility */}
+                <MaterialTagsInput
+                  value={compatibility}
+                  onChange={this.onCompatibilityChange}
+                  label="Compatibility"
+                />
 
-        console.log(this.state.tags);
-        let style = {
-            width:"100px",
-        };
+                {/* tags */}
+                <MaterialTagsInput
+                  value={tags}
+                  onChange={this.onTagsChange}
+                  label="Tags"
+                />
+              </CardText>
 
-        let tags = this.state.tags;
-        let tags1 = this.state.tags1;
+              
+            </Card>
+          </div>
 
-        let suggestions = this.state.suggestions;
-        let placeholder = "Add Language Tags";
-        let placeholder1 = "Add Package Tags";
+          <div className="right-panel">
 
-        return (
-            <MuiThemeProvider>
-                <div className="background">
-                    <div className="container">
-
-                        <Card style= {{backgroundColor: "#FFFFFF", paddingBottom: "1%"}}>
-                        <div className="Productdisplay" >
-                            <CardText>
-                                <div className="productdisplayleft1">
-                                    <input name="diff" ref={(a) => this.diff = a} type="text" className="inputfield-signup2" placeholder="Difficulty" onChange={this.DiffiCulity.bind(this)}/><br/><br/>
-
-                                    <ReactTags
-                                        handleDelete={this.handleDelete.bind(this)}
-                                        handleAddition={this.handleAddition.bind(this)}
-                                        placeholder={placeholder}
-                                        tags={tags}
-                                    />
-                                    <br/>
-
-                                    <input type="text" onChange ={this.handleKeyPress.bind(this)} />
-
-                                    <ReactTags
-                                        handleDelete={this.handleDelete1.bind(this)}
-                                        handleAddition={this.handleAddition1.bind(this)}
-                                        placeholder={placeholder1}
-                                    />
-
-                                    <ChipInput
-                                        onRequestAdd={this.handleRequestAdd.bind(this)}
-                                        onRequestDelete={(deletedChip) => this.handleRequestDelete(deletedChip).bind(this)}
-                                        fullWidth
-                                    />
-
-                                    <TagsInput
-                                        onChange={this._onChange.bind(this)}
-                                        value={this.state.tags}
-                                        className="inputfield-signup2"
-                                    />
-
-                                </div>
-                                <div className="productdisplayright1">
-
-                                    <input name="timeest" ref={(c) => this.timeest = c} type="text" className="inputfield-signup2" placeholder="Time-Estimation" onChange={this.TimeEstimation.bind(this)}/><br/><br/>
-
-                                    {
-                                        tags.map((detail)=> {
-                                            return <Chip item={detail} style={{float: "left", margin: 2}}  onTouchTap = {this.handleDelete.bind(this)}>
-                                                {detail.text}
-                                            </Chip>
-                                        })
-                                    }
-
-                                    <br/> <br/> <br/>
-                                    {
-                                        tags1.map((detail)=> {
-                                            return <Chip item={detail} style={{float: "left", margin: 2}} onRequestDelete={this.handleDelete1.bind(this)}>
-                                                {detail.text}
-                                            </Chip>
-                                        })
-                                    }
+            <Card style={{width: 500, marginLeft: "25%", marginTop: "5%"}}>
+                                    <Card>
+                                     {/* Packages */}
+                                    <div style={{display: 'flex', flexWrap: 'wrap'}}>
+                                      <h4><strong>Packages:</strong></h4>
+                                      {packages.map((item, index) =>
+                                        <Chip key={index} style={{float: "left", margin: 4}}>{item}</Chip>
+                                      )}
+                                    </div>
+                                    </Card>
 
 
-                                </div>
-                            </CardText>
-                        </div>
-                        </Card>
-                    </div>
-                    <div className="sidebar">
-                        <Tabs>
-                            <Tab label="header" >
-                                <Card expanded={this.state.expanded}>
+                                    <div style={{flexWrap: 'wrap', margin: 9}}>
+                                    {/* Complexity */}
+                                    <h4><strong>Complexity:</strong></h4>
+                                    <p>{complexity}/10</p>
 
-                                    <CardText>
-                                        <strong> Language Tags </strong>
-                                        <div className="usertags">
-                                            {
-                                                tags.map((detail)=> {
-                                                    return <Chip item={detail} style={{float: "left", margin: 2}} onRequestDelete={this.handleDelete.bind(this)}>
-                                                        {detail.text}
-                                                    </Chip>
-                                                })
-                                            }
-                                        </div>
+                                    {/* Integration Time */}
+                                    <h4><strong>Integration Time:</strong></h4>
+                                    <p>{integrationTime}</p>
+                                    </div>
 
-                                        <br/><br/>
-                                        <hr/>
+                                    <Card>
+                                    {/* Compatibilty */}
+                                    <div style={{display: 'flex', flexWrap: 'wrap'}}>
+                                      <h4><strong>Compatibilty:</strong></h4>
+                                       {compatibility.map((compatibility, index) =>
+                                        <Chip key={index} style={{float: "left", margin: 4}}>{compatibility}</Chip>
+                                      )}
+                                    </div>
+                                    </Card>
 
-                                        <strong> Package Tags </strong>
-                                        <div className="usertags">
-                                            {
-                                                tags1.map((detail)=> {
-                                                    return <Chip item={detail} style={{float: "left", margin: 2}} onRequestDelete={this.handleDelete1.bind(this)}>
-                                                        {detail.text}
-                                                    </Chip>
-                                                })
-                                            }
-                                        </div>
-                                        <br/><br/>
-                                        <hr/>
-                                        <strong> Estimation Time </strong>
-                                        <div className="usertags">
+                                    <div style={{flexWrap:"wrap", margin: 9}}>
+                                    <h4 ><strong> Maintenance: </strong> </h4>
+                                    <h5> 5 Versions</h5>
+                                    <p > Last Updated 20-11-2015 </p>
+                                    </div>
 
-                                            {this.state.timeest}
-
-                                        </div>
-                                        <br/><br/>
-                                        <hr/>
-
-                                        <strong>  Difficulity </strong>
-                                        <div className="usertags">
-                                            {this.state.diff}
-                                        </div>
-                                        <br/><br/>
-                                        <hr/>
-
-                                    </CardText>
+                                    <Card>
+                                    <div style={{display: 'flex', flexWrap: 'wrap'}}>
+                                      <h4><strong>Tags:</strong></h4>
+                                      {tags.map((tag, index) =>
+                                        <Chip key={index} style={{float: "left", margin: 4}}>{tag}</Chip>
+                                      )}
+                                    </div>
+                                    </Card>
                                 </Card>
-                            </Tab>
-                        </Tabs>
-                    </div>
-                </div>
-            </MuiThemeProvider>
-        )
-    }
+
+           
+
+          </div>
+
+        </div>
+      </MuiThemeProvider>
+    )
+  }
 }
 
-export default Sidebar;
+export default ProductSidebar;
 

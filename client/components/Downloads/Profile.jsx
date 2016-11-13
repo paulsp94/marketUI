@@ -13,6 +13,9 @@ import RaisedButton from 'material-ui/RaisedButton';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import * as firebase from 'firebase';
+import TextField from 'material-ui/TextField';
+
+
 
 class  Profile extends React.Component{
 
@@ -20,13 +23,14 @@ class  Profile extends React.Component{
 
         super(props);
         this.state= {
-            open: false,
-            open1: false,
+            open:false,
+            open1:false,
             open2:false,
             open3:false,
         };
 
     }
+
 
     Dropboxopen4(){
         this.setState({open3: true});
@@ -61,6 +65,10 @@ class  Profile extends React.Component{
     }
 
     render(){
+
+        var user = firebase.auth().currentUser;
+
+
         const actions = [
             <FlatButton
                 label="Ok"
@@ -140,6 +148,10 @@ class  Profile extends React.Component{
                             modal={false}
                             open={this.state.open3}
                             onRequestClose={this.Dropboxcloase4.bind(this)}>
+                             <TextField
+                            style={{marginLeft: "25%", width: 400}}
+                            hintText="Enter new email"
+                            />
                         </Dialog>
 
                         <Dialog

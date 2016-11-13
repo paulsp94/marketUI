@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 var AppActions = require('../../Action/AppActions');
 var AppStore = require('../../Stores/AppStore');
@@ -15,6 +16,7 @@ import Slider from 'material-ui/Slider';
 import ReactMarkdown from 'react-markdown';
 import GeneralProfile from './GeneralProfile.jsx';
 import Sidebar from './Sidebar.jsx';
+import './Product.css';
 
 
 class  General extends React.Component{
@@ -63,7 +65,7 @@ class  General extends React.Component{
                                 </Tab>
                                 <Tab label="Descriptions">
                                     <Card style={{ marginRight: "1%", marginLeft: "1%", marginTop: 9}}>
-                                        <div className="Product2">
+                                        <div className="product-tab">
                                             <div className="markdowncode" >
                                                         <textarea className="textarea" placeholder="Add here your markdown or html code" ref={(eg) => this.textbox1 = eg}  name="textbox1" onChange={this.textBox1.bind(this)}>
                                                         </textarea>
@@ -76,9 +78,8 @@ class  General extends React.Component{
                                 </Tab>
 
                                 <Tab label="Content">
-
                                     <Card style={{ marginRight: "1%", marginLeft: "1%", marginTop: 9}}>
-                                        <div className="Product2">
+                                        <div className="product-tab">
                                                 <div className="markdowncode" >
                                                         <textarea className="textarea" placeholder="Add here your markdown or html code" ref={(efg) => this.textbox = efg}  name="textbox" onChange={this.textBox.bind(this)}>
                                                         </textarea>
