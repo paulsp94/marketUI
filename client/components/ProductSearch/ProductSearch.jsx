@@ -58,7 +58,6 @@ class  ProductSearch extends React.Component{
                 <Header/>
                    <div className="container-search">
                         <Tags/>
-                         <br/>
 
                         {
                             data.map((detail)=> {
