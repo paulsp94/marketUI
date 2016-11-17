@@ -14,8 +14,6 @@ import {Tabs, Tab} from 'material-ui/Tabs';
 import Slider from 'material-ui/Slider';
 import Flexbox from 'flexbox-react';
 
-
-
 class Product extends React.Component{
 
     constructor(props) {
