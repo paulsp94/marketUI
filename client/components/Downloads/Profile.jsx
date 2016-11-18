@@ -16,7 +16,6 @@ import * as firebase from 'firebase';
 import TextField from 'material-ui/TextField';
 
 
-
 class  Profile extends React.Component{
 
     constructor(props) {

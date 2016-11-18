@@ -67,6 +67,8 @@
     "react-boron": "0.1.4",
     "react-copy-to-clipboard": "4.2.2",
     "react-dom": "15.3.2",
+    "react-file-input": "0.2.5",
+    "react-firebase-file-uploader": "2.0.0",
     "react-infinity": "1.2.2",
     "react-loading": "0.0.9",
     "react-markdown": "2.4.2",
