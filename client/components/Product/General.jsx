@@ -89,7 +89,6 @@ class  General extends React.Component{
                                                 </div>
                                         </div>
                                     </Card>
-
                                 </Tab>
 
                                 <Tab label="Sidebar">

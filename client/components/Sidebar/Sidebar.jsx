@@ -232,7 +232,7 @@ class Sidebar extends React.Component{
                 <Chip style={{float: "left", margin: 2}}>CSS </Chip>
                 <Chip style={{float: "left", margin: 2}}>Javascript </Chip>
                 <Chip style={{float: "left", margin: 2}}>Jquery </Chip>
-                <Chip style={{float: "left", margin: 2}}>Firebase </Chip>
+                <Chip style={{float: "left", margin: 2}}>Firebase3 </Chip>
                 </div>
 
             </div>

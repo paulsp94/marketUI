@@ -40,6 +40,7 @@ class ContentSidebar extends React.Component{
                                 <RaisedButton label="Create Product" style={{ margin: 12}} />
                                 </div>
                                 <hr/>
+                                
                                 <CardText>
                                     <div className="userdescribation">
                                         Rating graph over time

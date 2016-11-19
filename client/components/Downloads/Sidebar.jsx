@@ -16,9 +16,6 @@ import RaisedButton from 'material-ui/RaisedButton';
 import Divider from 'material-ui/Divider';
 import Chip from 'material-ui/Chip';
 
-
-
-
 class Sidebar extends React.Component{
 
     constructor(props) {
