@@ -42,8 +42,6 @@ class  GeneralProfile extends React.Component{
         });
     }
 
-    TiTle = (title) => this.setState({title});
-
     SubTitle(){
         var subtitle = this.subTitle.value;
         this.setState({
@@ -101,6 +99,7 @@ class  GeneralProfile extends React.Component{
                 Price: price,
                 mainImage:url,
                 subImage:url1,
+                Userid:'',
             }
             firebase.database().ref("ProductCoreDetails").push(newData);
         }
