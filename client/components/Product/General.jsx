@@ -17,6 +17,8 @@ import ReactMarkdown from 'react-markdown';
 import GeneralProfile from './GeneralProfile.jsx';
 import Sidebar from './Sidebar.jsx';
 import './Product.css';
+import Description from './Description.jsx';
+import Content from './Content.jsx';
 
 
 class  General extends React.Component{
@@ -25,31 +27,12 @@ class  General extends React.Component{
 
         super(props);
         this.state= {
-            textfieldvalue:'',
-            textfieldvalue1:'',
+
         };
     }
 
 
-    textBox(){
-        var textfieldvalue = this.textbox.value;
-        this.setState({
-            textfieldvalue :textfieldvalue
-        });
-    }
-
-    textBox1(){
-        var textfieldvalue = this.textbox1.value;
-        console.log(textfieldvalue);
-        this.setState({
-            textfieldvalue1 :textfieldvalue
-        });
-    }
-
     render(){
-
-        var thisIsMyCopy = this.state.textfieldvalue;
-        var thisIsMyCopy1 = this.state.textfieldvalue1;
 
         return (
             <MuiThemeProvider>
@@ -64,32 +47,11 @@ class  General extends React.Component{
                                     </div>
                                 </Tab>
                                 <Tab label="Descriptions">
-                                    <Card style={{ marginRight: "1%", marginLeft: "1%", marginTop: 9}}>
-                                        <div className="product-tab">
-                                            <div className="markdowncode" >
-                                                        <textarea className="textarea" placeholder="Add here your markdown or html code" ref={(eg) => this.textbox1 = eg}  name="textbox1" onChange={this.textBox1.bind(this)}>
-                                                        </textarea>
-                                            </div>
-                                            <div className="markdowntext">
-                                                <ReactMarkdown source={thisIsMyCopy1} escapeHtml={false} />
-                                            </div>
-                                        </div>
-                                    </Card>
+                                    <Description />
                                 </Tab>
 
                                 <Tab label="Content">
-                                    <Card style={{ marginRight: "1%", marginLeft: "1%", marginTop: 9}}>
-                                        <div className="product-tab">
-                                                <div className="markdowncode" >
-                                                        <textarea className="textarea" placeholder="Add here your markdown or html code" ref={(efg) => this.textbox = efg}  name="textbox" onChange={this.textBox.bind(this)}>
-                                                        </textarea>
-                                                </div>
-                                                <div className="markdowntext"  >
-                                                        <ReactMarkdown source={thisIsMyCopy} escapeHtml={false} />
-                                                </div>
-                                        </div>
-                                    </Card>
-
+                                    <Content />
                                 </Tab>
 
                                 <Tab label="Sidebar">

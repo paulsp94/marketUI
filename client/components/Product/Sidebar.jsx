@@ -7,6 +7,9 @@ import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import Chip from 'material-ui/Chip';
 import MaterialTagsInput from '../_common/MaterialTagsInput';
+var firebase = require('firebase');
+import firebase_details from '../../Firebase/Firebase';
+import RaisedButton from 'material-ui/RaisedButton';
 
 class ProductSidebar extends React.Component {
 
@@ -41,12 +44,36 @@ class ProductSidebar extends React.Component {
     this.setState({tags})
   };
 
+    subMit(){
+
+        var packages = this.state.packages;
+        var complexity = this.state.complexity;
+        var integrationTime = this.state.integrationTime;
+        var compatibility= this.state.compatibility;
+        var tags= this.state.tags;
+
+        var ProductId = firebase.database().ref("ProductSidebar").push().key;
+
+            var newData = {
+                Packages:packages,
+                complexity:complexity,
+                IntegrationTime:integrationTime,
+                compatibility:compatibility,
+                tags:tags,
+                Productid: ProductId,
+                Userid:'',
+            }
+
+            firebase.database().ref("ProductSidebar").push(newData);
+
+    };
+
+
   render() {
     const { packages, complexity, integrationTime, compatibility, tags } = this.state;
     return (
       <MuiThemeProvider>
         <div className="product-tab">
-
           <div className="left-panel">
             <Card style={{margin: '10px auto', width: 550}}>
               <CardTitle
@@ -58,7 +85,7 @@ class ProductSidebar extends React.Component {
                 {/* packages */}
                 <MaterialTagsInput
                   value={packages}
-                  onChange={this.onPackagesChange}
+                  onChange={this.onPackagesChange.bind(this)}
                   label="Packages"
                 />
 
@@ -66,7 +93,7 @@ class ProductSidebar extends React.Component {
                 <SelectField
                   floatingLabelText="Complexity"
                   value={complexity}
-                  onChange={this.onComplexityChange}
+                  onChange={this.onComplexityChange.bind(this)}
                   autoWidth={false}
                 >
                   <MenuItem value={1} primaryText="1/10" />
@@ -84,7 +111,7 @@ class ProductSidebar extends React.Component {
                 <SelectField
                   floatingLabelText="Integration Time"
                   value={integrationTime}
-                  onChange={this.onIntegrationTimeChange}
+                  onChange={this.onIntegrationTimeChange.bind(this)}
                   autoWidth={false}
                 >
                   <MenuItem value={"15 min"} primaryText="15 min" />
@@ -100,18 +127,20 @@ class ProductSidebar extends React.Component {
                 {/* compatibility */}
                 <MaterialTagsInput
                   value={compatibility}
-                  onChange={this.onCompatibilityChange}
+                  onChange={this.onCompatibilityChange.bind(this)}
                   label="Compatibility"
                 />
 
                 {/* tags */}
                 <MaterialTagsInput
                   value={tags}
-                  onChange={this.onTagsChange}
+                  onChange={this.onTagsChange.bind(this)}
                   label="Tags"
                 />
               </CardText>
 
+                <RaisedButton onClick={this.subMit.bind(this)} label=" Save" style={{ margin: 12}}/>
+                <RaisedButton onClick={this.subMit.bind(this)} label="Publish" style={{ margin: 12}}/>
               
             </Card>
           </div>
