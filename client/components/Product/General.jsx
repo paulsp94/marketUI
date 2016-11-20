@@ -35,10 +35,9 @@ class  General extends React.Component{
 
         return (
             <MuiThemeProvider>
-                <div className="background">
+                <div className="">
                     <Header/>
-                    <div className="">
-                        <Card style= {{backgroundColor: "#efeadd", paddingBottom: "1%"}}>
+                    <div className="" style={{backgroundColor: "#efeadd", paddingBottom: "0.5%"}}>
                             <Tabs>
                                 <Tab label="General">
                                     <div>
@@ -57,7 +56,6 @@ class  General extends React.Component{
                                       <Sidebar/>
                                 </Tab>
                             </Tabs>
-                        </Card>
                     </div>
                 </div>
             </MuiThemeProvider>

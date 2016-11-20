@@ -8,7 +8,7 @@ var firebase = require('firebase');
 import firebase_details from '../../Firebase/Firebase';
 var FileInput = require('react-file-input');
 import FileUploader from 'react-firebase-file-uploader';
-
+import Flexbox from 'flexbox-react';
 
 class  GeneralProfile extends React.Component{
 
@@ -57,7 +57,6 @@ class  GeneralProfile extends React.Component{
     }
 
     PriCe(){
-
         var price =  this.Price.value;
         this.setState({
             price : price
@@ -65,7 +64,6 @@ class  GeneralProfile extends React.Component{
     }
 
     ProdctCategory(){
-
         var category = this.Category.value;
         this.setState({
             category :category
@@ -73,7 +71,6 @@ class  GeneralProfile extends React.Component{
     }
 
     SubMit(){
-
         var title = this.state.title;
         var subtitle = this.state.subtitle;
         var describtion = this.state.describtion;
@@ -90,7 +87,6 @@ class  GeneralProfile extends React.Component{
         else {
 
             var ProductId = firebase.database().ref("ProductCoreDetails").push().key;
-
             var newData = {
                 ProductId :ProductId,
                 Title:title,
@@ -171,7 +167,7 @@ class  GeneralProfile extends React.Component{
                                               <optgroup label="Category">
                                               <option value="Category">  Category </option>
                                                   <option value="Category">  Category </option>
-                                                  <option value="Category1" > Category1 </option>
+                                                  <option value="Category1"> Category1 </option>
                                                   <option value="Category7">  Category7 </option>
                                                   <option value="Category2">  Category2 </option>
                                                   <option value="Category3">  Category3 </option>
@@ -204,27 +200,29 @@ class  GeneralProfile extends React.Component{
                                   <div className="itemCard">
                                     <Card>
 
-                                      <CardMedia>
-                                          <img className="productimage1" src={this.state.avatarURL1} />
-                                      </CardMedia>
 
-                                      <div className="innerItemCard">
-                                              <h3> <strong> {this.state.title}  </strong> </h3>
-                                              <br/>
-                                              <h5> {this.state.describtion}</h5>
-                                              <RaisedButton label={this.state.price} style={{ margin: 3}} />
-                                              <RaisedButton label={this.state.category} style={{ margin: 3}} /><br/>
-                                              <RaisedButton label="rating" style={{ margin: 3}} />
-                                      </div>
+                                      <Card className="product-search" style={{padding: 0}}>
+                                          <img className="product_image" src={this.state.avatarURL1}/>
+                                          <h5>{this.state.title}</h5>
+                                          <h5> {this.state.describtion}</h5>
+                                          <Flexbox flexDirection="row">
+                                              <Flexbox flexGrow={1}>
+                                                  <RaisedButton label="rating" style={{ margin: 1, width: "100%"}} />
+                                              </Flexbox>
+                                              <Flexbox flexGrow={1}>
+                                                  <RaisedButton label={this.state.price} style={{ margin: 1, width: "100%"}} /> 
+                                              </Flexbox>
+                                              <Flexbox flexGrow={1}>
+                                                  <RaisedButton label="nr sold" style={{ margin: 1, width: "100%"}} />
+                                              </Flexbox>
+                                          </Flexbox>
                                     </Card>
-
-                                      <br/><br/>
-
+                                    </Card>
+                                    <br/><br/>
                                   </div>
                               </div>
                         </div>
                     </Card>
-
                 </div>
             </MuiThemeProvider>
         )

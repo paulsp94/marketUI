@@ -45,7 +45,6 @@ class ProductSidebar extends React.Component {
   };
 
     subMit(){
-
         var packages = this.state.packages;
         var complexity = this.state.complexity;
         var integrationTime = this.state.integrationTime;
@@ -67,7 +66,6 @@ class ProductSidebar extends React.Component {
             firebase.database().ref("ProductSidebar").push(newData);
 
     };
-
 
   render() {
     const { packages, complexity, integrationTime, compatibility, tags } = this.state;
@@ -158,19 +156,15 @@ class ProductSidebar extends React.Component {
                                     </div>
                                     </Card>
 
-
                                     <div style={{flexWrap: 'wrap', margin: 9}}>
-                                    {/* Complexity */}
                                     <h4><strong>Complexity:</strong></h4>
                                     <p>{complexity}/10</p>
 
-                                    {/* Integration Time */}
                                     <h4><strong>Integration Time:</strong></h4>
                                     <p>{integrationTime}</p>
                                     </div>
 
                                     <Card>
-                                    {/* Compatibilty */}
                                     <div style={{display: 'flex', flexWrap: 'wrap'}}>
                                       <h4><strong>Compatibilty:</strong></h4>
                                        {compatibility.map((compatibility, index) =>
@@ -194,8 +188,6 @@ class ProductSidebar extends React.Component {
                                     </div>
                                     </Card>
                                 </Card>
-
-           
 
           </div>
 

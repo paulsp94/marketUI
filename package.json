@@ -59,6 +59,7 @@
     "material-ui-chip-input": "0.9.1",
     "node-fetch": "1.6.0",
     "node-php-server": "0.1.2",
+    "office-ui-fabric-react": "0.72.1",
     "rc-checkbox": "1.4.2",
     "react": "15.3.2",
     "react-addons-css-transition-group": "15.3.0",

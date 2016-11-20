@@ -65,11 +65,21 @@
 .product-tab {
     display: flex;
     background-color: #F5F5F5;
-    min-height: -moz-calc(99% - 117px);
+    min-height: -moz-calc(99% - 120px);
     /* Firefox */
-    min-height: -webkit-calc(99% - 117px);
+    min-height: -webkit-calc(99% - 120px);
     /* Chrome, Safari */
-    min-height: calc(99% - 117px);
+    min-height: calc(99% - 120px);
+}
+
+.product-tab2 {
+    display: flex;
+    background-color: #F5F5F5;
+    min-height: -moz-calc(99% - 160px);
+    /* Firefox */
+    min-height: -webkit-calc(99% - 160px);
+    /* Chrome, Safari */
+    min-height: calc(99% - 160px);
 }
 
 .product-search {
@@ -486,11 +496,11 @@ h1 {
     /*border: 10px solid red;*/
     float: right;
     color: black;
-    height: -moz-calc(99% - 140px);
+    height: -moz-calc(99% - 150px);
     /* Firefox */
-    height: -webkit-calc(99% - 140px);
+    height: -webkit-calc(99% - 150px);
     /* Chrome, Safari */
-    height: calc(99% - 140px);
+    height: calc(99% - 150px);
     overflow-y: scroll;
     background-color: white;
 }
@@ -553,11 +563,11 @@ h1 {
 }
 
 .textarea {
-    height: -moz-calc(99% - 140px);
+    height: -moz-calc(99% - 150px);
     /* Firefox */
-    height: -webkit-calc(99% - 140px);
+    height: -webkit-calc(99% - 150px);
     /* Chrome, Safari */
-    height: calc(99% - 140px);
+    height: calc(99% - 150px);
     width: 100%;
     border-style: none;
     border-color: Transparent;
