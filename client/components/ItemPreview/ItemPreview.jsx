@@ -47,7 +47,9 @@ function mapDispatchToProps(dispatch) {
     return bindActionCreators({fetchuserdetails}, dispatch);
 }
 
-
+function mapStateToProps(store) {
+    return { userdetails: store.userdetails };
+}
 
 
 export default connect(null, mapDispatchToProps)(ItemPreview) ;

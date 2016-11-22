@@ -1,10 +1,11 @@
-export default function userdetails(state=null, action){
+export default function userdetails(state={}, action){
     console.log(action.type);
     switch (action.type){
-        case "USERDETAILS":{
+        case "USERDETAILS":
             console.log(action.payload);
-            return action.payload;
-        }
+            return Object.assign({}, state, action.payload);
+        default:
+        	return state;
     }
 
     return state;
