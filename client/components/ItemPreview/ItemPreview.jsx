@@ -23,7 +23,6 @@ class  ItemPreview extends Component{
     }
 
     componentWillMount(){
-        console.log(this.props);
         this.props.fetchuserdetails();
     }
 
@@ -31,7 +30,7 @@ class  ItemPreview extends Component{
 
 
     render(){
-
+        console.log(1, this.props);
 
         return (
             <div className="background">
@@ -52,7 +51,7 @@ function mapStateToProps(store) {
 }
 
 
-export default connect(null, mapDispatchToProps)(ItemPreview) ;
+export default connect(mapStateToProps, mapDispatchToProps)(ItemPreview) ;
 
 
 
