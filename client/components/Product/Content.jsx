@@ -11,10 +11,7 @@ import ReactMarkdown from 'react-markdown';
 import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
 
 
-
 class  Content extends React.Component{
-
-
 
     constructor(props) {
 
@@ -52,10 +49,7 @@ class  Content extends React.Component{
             firebase.database().ref("Content").push(newData);
         }
     }
-
-
-
-
+    
     render(){
         var thisIsMyCopy = this.state.textfieldvalue;
         const leftCommands = [
@@ -68,7 +62,7 @@ class  Content extends React.Component{
                             key: 'folder',
                             name: 'Folder',
                             icon: 'Folder',
-                            onClick: () => alert('new folder')
+                            onMouseOver: () => alert('new folder')
                           },
                           {
                             key: 'sep',
@@ -105,7 +99,6 @@ class  Content extends React.Component{
                       },
         ];
         const commands = [
-                   
                        {
                         key: 'Save',
                         name: 'Save',
