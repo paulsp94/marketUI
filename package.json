@@ -82,6 +82,8 @@
     "react-tagsinput": "3.13.6",
     "react-tap-event-plugin": "^1.0.0",
     "redux": "3.5.2",
+    "redux-logger": "2.7.4",
+    "redux-promise-middleware": "4.1.0",
     "redux-thunk": "2.1.0",
     "rsa-json": "0.2.0",
     "velocity-react": "1.1.5",

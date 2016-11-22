@@ -3,6 +3,8 @@
 import 'styles/main.css';
 import React from 'react';
 import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import store from 'Stores/AppStore';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import Index from 'components/Index/Index';
 import Header from 'components/Header/Header';
@@ -16,7 +18,7 @@ import logout from 'components/account/logout.jsx';
 import requireAuth from 'components/account/authenticated.jsx';
 import checkout from 'components/checkout/checkout.jsx';
 
-  render(
+  render( <Provider store={store}>
       <Router history={browserHistory}>
           <Route path="/INDEX" component={Index}/>
           <Route path="ItemPreview" component={ItemPreview}/>
@@ -27,7 +29,8 @@ import checkout from 'components/checkout/checkout.jsx';
           <Route path="login" component={login}/>
           <Route path="logout" component={logout}/>
           <Route path="/" component={Downloads} onEnter={requireAuth}/>
-      </Router>,
+      </Router>
+      </Provider>,
       document.getElementById('js-main'));
 
 

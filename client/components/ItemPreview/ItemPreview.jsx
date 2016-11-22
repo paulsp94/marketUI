@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-var AppActions = require('../../Action/AppActions');
-var AppStore = require('../../Stores/AppStore');
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import {Link} from "react-router";
 import {withRouter} from 'react-router';
 import { hashHistory } from 'react-router';
@@ -8,8 +8,10 @@ import Header from '../Header/Header.jsx';
 import Subheader from '../Subheader/Subheader.jsx';
 import Sidebar from '../Sidebar/Sidebar.jsx';
 import Itemview from './Itemview.jsx';
+import { fetchuserdetails } from '../../action/action.jsx'
 
-class  ItemPreview extends React.Component{
+
+class  ItemPreview extends Component{
 
     constructor(props) {
 
@@ -20,9 +22,15 @@ class  ItemPreview extends React.Component{
 
     }
 
+    componentWillMount(){
+        this.props.fetchuserdetails();
+    }
+
+
+
 
     render(){
-
+        console.log(1, this.props);
 
         return (
             <div className="background">
@@ -34,7 +42,16 @@ class  ItemPreview extends React.Component{
     }
 }
 
-export default ItemPreview ;
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({fetchuserdetails}, dispatch);
+}
+
+function mapStateToProps(store) {
+    return { userdetails: store.userdetails };
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(ItemPreview) ;
 
 
 
