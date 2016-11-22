@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-var AppActions = require('../../Action/AppActions');
-var AppStore = require('../../Stores/AppStore');
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';

@@ -1,7 +1,5 @@
 import * as firebase from 'firebase';
 import React, { Component } from 'react';
-var AppActions = require('../../Action/AppActions');
-var AppStore = require('../../Stores/AppStore');
 import {Link} from "react-router";
 import {withRouter} from 'react-router';
 import { hashHistory } from 'react-router';
