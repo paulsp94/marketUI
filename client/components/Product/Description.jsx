@@ -16,7 +16,17 @@ class  Description extends React.Component{
         super(props);
         this.state= {
             textfieldvalue1:'',
+            markdownSyntax:'<iframe width="100%" height="100%"src="https://guides.github.com/features/mastering-markdown/"></iframe>',
+            isOpened: false,
+            showSyntax: false,
         };
+    }
+
+    handleClick(event){
+        var newShowSyntax =  this.state.showSyntax ? false : true;
+        this.setState({
+            showSyntax: newShowSyntax
+        });
     }
 
     textBox1(){
@@ -48,7 +58,7 @@ class  Description extends React.Component{
 
 
     render(){
-        var thisIsMyCopy1 = this.state.textfieldvalue1;
+        var thisIsMyCopy1 = this.state.showSyntax ?  this.state.markdownSyntax : this.state.textfieldvalue1;
         const leftCommands = [
                            {
                         key: 'new',
@@ -88,15 +98,14 @@ class  Description extends React.Component{
                         icon: 'Upload',
                         onClick: () => alert('upload')
                       },
-                      {
-                        key: 'share',
-                        name: 'Share',
-                        icon: 'Share',
-                        onClick: () => alert('share')
-                      },
         ];
         const commands = [
-                   
+                      {
+                        key: 'share',
+                        name: 'Markdown Guide',
+                        icon: 'Share',
+                        onClick: this.handleClick.bind(this)
+                      },
                        {
                         key: 'Save',
                         name: 'Save',
