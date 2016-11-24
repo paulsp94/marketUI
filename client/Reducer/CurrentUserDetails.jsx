@@ -1,8 +1,5 @@
 export default function userdetails(state={
-    user:{
-        name:"null",
-        userid:"null"
-    },
+    user:{},
     fetching:false,
 }, action){
     switch (action.type){
@@ -19,5 +16,5 @@ export default function userdetails(state={
         	return state;
     }
 
-    //return state;
+    return state;
 }

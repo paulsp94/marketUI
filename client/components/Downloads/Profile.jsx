@@ -61,10 +61,12 @@ class  Profile extends React.Component{
         this.setState({open: false});
     }
 
+    userdetails(){
+
+    }
+
+
     render(){
-
-        var user = firebase.auth().currentUser;
-
 
         const actions = [
             <FlatButton
@@ -106,7 +108,8 @@ class  Profile extends React.Component{
         var user = firebase.auth().currentUser;
         var email;
         if (user != null) {
-            email = user.email;
+            email = user.uid;
+            console.log('user email is', email);
         } else {
             email = "not logged in"
         }

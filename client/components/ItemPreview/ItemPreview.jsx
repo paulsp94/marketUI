@@ -10,11 +10,18 @@ import Sidebar from '../Sidebar/Sidebar.jsx';
 import Itemview from './Itemview.jsx';
 import { fetchuserdetails } from '../../action/action.jsx'
 
-@connect((store) =>{
-    return {
-        userdetails: store.userdetails
+
+   function mapDispatchToProps(dispatch) {
+        return bindActionCreators({
+                fetchuserdetails
+            }, dispatch);
     }
-})
+
+   function mapStateToProps(store) {
+        return { userdetails: store.userdetails };
+    }
+
+@connect(mapStateToProps, mapDispatchToProps)
 
 class  ItemPreview extends Component{
 
@@ -28,9 +35,7 @@ class  ItemPreview extends Component{
     }
 
     componentWillMount(){
-        this.props.dispatch(fetchuserdetails());
-        console.log(this.props.userdetails);
-        //this.props.fetchuserdetails();
+        this.props.fetchuserdetails();
     }
 
 
@@ -38,6 +43,7 @@ class  ItemPreview extends Component{
 
     render(){
 
+        console.log('this is specific details',this.props.userdetails);
 
         return (
             <div className="background">
@@ -48,15 +54,6 @@ class  ItemPreview extends Component{
         )
     }
 }
-
-//function mapDispatchToProps(dispatch) {
-//    return bindActionCreators({fetchuserdetails}, dispatch);
-//}
-//
-//function mapStateToProps(store) {
-//    return { userdetails: store.userdetails };
-//}
-
 
 export default ItemPreview ;
 

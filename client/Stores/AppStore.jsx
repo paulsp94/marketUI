@@ -8,5 +8,5 @@ import promise from "redux-promise-middleware"
 import reducer from "../Reducer/Index.jsx";
 
 const middleware = applyMiddleware(thunk, logger({collapsed: true}));
-export default createStore(reducer, middleware);
+export default createStore(reducer, {}, middleware);
 
