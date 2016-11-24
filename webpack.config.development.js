@@ -19,6 +19,7 @@ config.plugins = config.plugins.concat([
 config.module.loaders = config.module.loaders.concat([
   {test: /\.jsx?$/, loaders: [ 'react-hot', 'babel'], exclude: /node_modules/},
   {test: /\.json$/, loader: 'json'},
+
   {
   test: /\.css$/,
   loader: 'style!css?modules',
