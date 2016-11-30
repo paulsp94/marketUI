@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import {Link} from "react-router";
 import {withRouter} from 'react-router';
 import { hashHistory } from 'react-router';
-import Header from '../Header/Header.jsx';
-import Subheader from '../Subheader/Subheader.jsx';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import { Tab as MuiTab } from 'material-ui/Tabs';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -12,7 +10,25 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import * as firebase from 'firebase';
 import TextField from 'material-ui/TextField';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+var user = require('../../action/action.jsx');
+import { fetchuserdetails, changepassword, changeemaildetails } from '../../action/action.jsx'
 
+
+function mapStateToProps(store) {
+    return { userdetails: store.userdetails};
+}
+
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({
+        fetchuserdetails,
+        changepassword,
+        changeemaildetails,
+    }, dispatch);
+}
+
+@connect(mapStateToProps, mapDispatchToProps)
 
 class  Profile extends React.Component{
 
@@ -25,9 +41,11 @@ class  Profile extends React.Component{
             open2:false,
             open3:false,
         };
-
     }
 
+    componentWillMount(){
+        this.props.fetchuserdetails();
+    }
 
     Dropboxopen4(){
         this.setState({open3: true});
@@ -65,8 +83,50 @@ class  Profile extends React.Component{
 
     }
 
+    changeemail(){
+        var newemail = this.newemail.value;
+        this.props.changeemaildetails(newemail);
+    }
+
+    changepassword(){
+
+        var password1= this.password.value;
+        var password2= this.password1.value;
+
+        if(password1 == password2){
+            this.props.changepassword(password1);
+            this.setState({open: false});
+        }
+        else{
+            console.log('didnt match');
+        }
+    }
+
 
     render(){
+
+
+        if(this.props.userdetails.password != false){
+            var passwordchangedresult = this.props.userdetails.password;
+            var result = Object.keys(passwordchangedresult).map(key => passwordchangedresult[key]);
+            if(result != "Changed Successfully"){
+                result = "Error:"+result[0].message;
+            }
+        }
+        else {
+            var result = "";
+        }
+
+        if(this.props.userdetails.Email != false){
+            var passwordchangedresult1 = this.props.userdetails.Email;
+            var Emailresult = Object.keys(passwordchangedresult1).map(key => passwordchangedresult1[key]);
+            if(Emailresult != "Changed Successfully"){
+                Emailresult = "Error:"+ Emailresult[0].message;
+            }
+        }
+        else {
+            var Emailresult = "";
+        }
 
         const actions = [
             <FlatButton
@@ -86,7 +146,6 @@ class  Profile extends React.Component{
             />,
         ];
 
-
         const actions2 = [
             <FlatButton
                 label="Ok"
@@ -96,7 +155,7 @@ class  Profile extends React.Component{
             />,
         ];
 
-         const actions3 = [
+        const actions3 = [
             <FlatButton
                 label="Ok"
                 primary={true}
@@ -108,8 +167,7 @@ class  Profile extends React.Component{
         var user = firebase.auth().currentUser;
         var email;
         if (user != null) {
-            email = user.uid;
-            console.log('user email is', email);
+            email = user.email;
         } else {
             email = "not logged in"
         }
@@ -124,10 +182,11 @@ class  Profile extends React.Component{
                          Email: {email}
                         <br/><br/>          
                         <RaisedButton label="Change Email" style={{ margin: 12}} onTouchTap={this.Dropboxopen4.bind(this)} />   
-                        <br />             
+                        <br />
+                        {Emailresult}<br/>
                        <RaisedButton label="Change Password" style={{ margin: 12}} onTouchTap={this.Dropboxopen1.bind(this)} />
                         <br/><br/>
-                        
+                        {result}
 
                         <Dialog
                             actions={actions}
@@ -137,9 +196,9 @@ class  Profile extends React.Component{
 
                            <h3> Change Password </h3> <br/><br/>
 
-                            Enter Password: <br/> <input className="inputfield-signup1" type="password"/> <br/><br/>
-                            Enter Again-Password: <br/><input className="inputfield-signup1" type="password"/><br/><br/>
-                            <RaisedButton label="Submit" style={{ margin: 12}} />
+                            Enter Password: <br/> <input className="inputfield-signup1" type="password" name="password" ref={(fgf) => this.password = fgf} /> <br/><br/>
+                            Enter Again-Password: <br/><input className="inputfield-signup1" type="password" name="password1" ref={(fg) => this.password1 = fg}/><br/><br/>
+                            <RaisedButton label="Submit" onClick={this.changepassword.bind(this)} style={{ margin: 12}} />
 
                         </Dialog>
 
@@ -148,11 +207,11 @@ class  Profile extends React.Component{
                             modal={false}
                             open={this.state.open3}
                             onRequestClose={this.Dropboxcloase4.bind(this)}>
-                             <TextField
-                            style={{marginLeft: "25%", width: 400}}
-                            hintText="Enter new email"
-                            />
-                        </Dialog>
+                             <input className="inputfield-signup1" type="email" placeholder="Enter New Email" name="newemail" ref={(g) => this.newemail = g}/>
+
+                             <RaisedButton label="Submit" onClick={this.changeemail.bind(this)} style={{ margin: 12}} />
+
+                         </Dialog>
 
                         <Dialog
                             actions={actions1}
