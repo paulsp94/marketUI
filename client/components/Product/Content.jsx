@@ -43,11 +43,10 @@ class  Content extends React.Component{
             });
         }
         else {
-            var ProductId = firebase.database().ref("Content").push().key;
+            var ProductId = this.props.ProductId;
             var newData = {
                 ProductId :ProductId,
                 Content: textfieldvalue1,
-                Userid:'',
             }
             firebase.database().ref("Content").push(newData);
         }

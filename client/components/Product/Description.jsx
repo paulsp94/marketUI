@@ -45,11 +45,10 @@ class  Description extends React.Component{
             });
         }
         else {
-            var ProductId = firebase.database().ref("Description").push().key;
+            var ProductId = this.props.ProductId;
             var newData = {
                 ProductId :ProductId,
                 textfieldvalue1 : textfieldvalue1,
-                Userid:'',
             }
 
             firebase.database().ref("Description").push(newData);

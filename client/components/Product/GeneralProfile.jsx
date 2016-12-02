@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -7,6 +9,19 @@ import firebase_details from '../../Firebase/Firebase';
 var FileInput = require('react-file-input');
 import FileUploader from 'react-firebase-file-uploader';
 import Flexbox from 'flexbox-react';
+import { currentuserid } from '../../action/action.jsx'
+
+function mapStateToProps(store) {
+    return { userdetails: store.userdetails};
+}
+
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({
+        currentuserid
+    }, dispatch);
+}
+
+@connect(mapStateToProps, mapDispatchToProps)
 
 class  GeneralProfile extends React.Component{
 
@@ -31,6 +46,10 @@ class  GeneralProfile extends React.Component{
             avatarURL1: '',
         };
 
+    }
+
+    componentWillMount(){
+        this.props.currentuserid();
     }
 
     TiTle(){
@@ -69,6 +88,7 @@ class  GeneralProfile extends React.Component{
     }
 
     SubMit(){
+
         var title = this.state.title;
         var subtitle = this.state.subtitle;
         var describtion = this.state.describtion;
@@ -76,6 +96,8 @@ class  GeneralProfile extends React.Component{
         var category = this.state.category;
         var url= this.state.avatarURL;
         var url1= this.state.avatarURL1;
+        var UserIdobject = this.props.userdetails.userid;
+        var UserId = Object.keys(UserIdobject).map(key => UserIdobject[key]);
 
         if(title == '' || subtitle == '' || describtion == '' || price == '' || category == ''|| url == ''|| url1 == ''){
             this.setState({
@@ -84,7 +106,7 @@ class  GeneralProfile extends React.Component{
         }
         else {
 
-            var ProductId = firebase.database().ref("ProductCoreDetails").push().key;
+            var ProductId = this.props.ProductId;
             var newData = {
                 ProductId :ProductId,
                 Title:title,
@@ -93,10 +115,16 @@ class  GeneralProfile extends React.Component{
                 Price: price,
                 mainImage:url,
                 subImage:url1,
-                Userid:'',
             }
+            var newData1 = {
+                ProductId :ProductId,
+                userid:UserId[0]
+            }
+
+            firebase.database().ref("Product_creation").push(newData1);
             firebase.database().ref("ProductCoreDetails").push(newData);
         }
+
     }
 
     handleUploadStart = () => this.setState({isUploading: true, progress: 0});

@@ -16,6 +16,8 @@ import Sidebar from './Sidebar.jsx';
 import './Product.css';
 import Description from './Description.jsx';
 import Content from './Content.jsx';
+var firebase = require('firebase');
+import firebase_details from '../../Firebase/Firebase';
 
 
 class  General extends React.Component{
@@ -24,8 +26,15 @@ class  General extends React.Component{
 
         super(props);
         this.state= {
-
+            ProductID:''
         };
+    }
+
+    componentWillMount(){
+        var ProductId = firebase.database().ref("ProductCoreDetails").push().key;
+        this.setState({
+            ProductID: ProductId
+        })
     }
 
 
@@ -39,19 +48,19 @@ class  General extends React.Component{
                             <Tabs>
                                 <Tab label="General">
                                     <div>
-                                        <GeneralProfile/>
+                                        <GeneralProfile ProductId = {this.state.ProductID} />
                                     </div>
                                 </Tab>
                                 <Tab label="Descriptions">
-                                    <Description />
+                                    <Description ProductId = {this.state.ProductID}/>
                                 </Tab>
 
                                 <Tab label="Content">
-                                    <Content />
+                                    <Content ProductId = {this.state.ProductID}/>
                                 </Tab>
 
                                 <Tab label="Sidebar">
-                                      <Sidebar/>
+                                      <Sidebar ProductId = {this.state.ProductID}/>
                                 </Tab>
                             </Tabs>
                     </div>

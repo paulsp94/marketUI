@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
@@ -10,6 +12,19 @@ import MaterialTagsInput from '../_common/MaterialTagsInput';
 var firebase = require('firebase');
 import firebase_details from '../../Firebase/Firebase';
 import RaisedButton from 'material-ui/RaisedButton';
+import { currentuserid } from '../../action/action.jsx'
+
+function mapStateToProps(store) {
+    return { userdetails: store.userdetails};
+}
+
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({
+        currentuserid
+    }, dispatch);
+}
+
+@connect(mapStateToProps, mapDispatchToProps)
 
 class ProductSidebar extends React.Component {
 
@@ -23,6 +38,10 @@ class ProductSidebar extends React.Component {
       tags: []
     };
   }
+
+    componentWillMount(){
+        this.props.currentuserid();
+    }
 
   onPackagesChange = (packages) => {
     this.setState({packages})
@@ -51,21 +70,36 @@ class ProductSidebar extends React.Component {
         var compatibility= this.state.compatibility;
         var tags= this.state.tags;
 
-        var ProductId = firebase.database().ref("ProductSidebar").push().key;
+        var ProductId = this.props.ProductId;
 
-            var newData = {
-                Packages:packages,
-                complexity:complexity,
-                IntegrationTime:integrationTime,
-                compatibility:compatibility,
-                tags:tags,
-                Productid: ProductId,
-                Userid:'',
-            }
+        var newData = {
+            Packages:packages,
+            complexity:complexity,
+            IntegrationTime:integrationTime,
+            compatibility:compatibility,
+            tags:tags,
+            Productid: ProductId,
+        }
 
-            firebase.database().ref("ProductSidebar").push(newData);
+        firebase.database().ref("ProductSidebar").push(newData);
+    };
+
+    Publish(){
+
+        var ProductId = this.props.ProductId;
+        var UserIdobject = this.props.userdetails.userid;
+        var UserId = Object.keys(UserIdobject).map(key => UserIdobject[key]);
+
+
+        var newData = {
+            Productid: ProductId,
+            UserId: UserId[0],
+        }
+
+        firebase.database().ref("Publishedproduct").push(newData);
 
     };
+
 
   render() {
     const { packages, complexity, integrationTime, compatibility, tags } = this.state;
@@ -138,7 +172,7 @@ class ProductSidebar extends React.Component {
               </CardText>
 
                 <RaisedButton onClick={this.subMit.bind(this)} label=" Save" style={{ margin: 12}}/>
-                <RaisedButton onClick={this.subMit.bind(this)} label="Publish" style={{ margin: 12}}/>
+                <RaisedButton onClick={this.Publish.bind(this)} label="Publish" style={{ margin: 12}}/>
               
             </Card>
           </div>

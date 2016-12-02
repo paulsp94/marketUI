@@ -101,8 +101,7 @@ class  Profile extends React.Component{
             console.log('didnt match');
         }
     }
-
-
+    
     render(){
 
 

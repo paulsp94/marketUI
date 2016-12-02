@@ -67,5 +67,16 @@ export function changeemaildetails (newemail){
     }
 }
 
+export function currentuserid (){
+    var user = firebase.auth().currentUser;
+    var Userid = user.uid;
+    return {
+        type:"USERID",
+        payload:{
+            Userid:Userid
+        }
+    }
+}
+
 export default user;
 
