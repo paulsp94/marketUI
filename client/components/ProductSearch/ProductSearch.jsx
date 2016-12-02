@@ -64,10 +64,15 @@ class  ProductSearch extends React.Component{
 
     componentWillMount(){
         this.props.FetchAllPublishedproduct();
-        console.log(this.props.FetchAllPublishedproduct());
     }
 
     render(){
+
+        var allproducts = this.props.userdetails.Productalldetails;
+
+        var UserId = Object.keys(allproducts).map(key => allproducts[key]);
+
+        var mergedProduct = [].concat.apply([], UserId);
 
         return (
             <MuiThemeProvider>
@@ -77,7 +82,7 @@ class  ProductSearch extends React.Component{
                         <Tags/>
 
                         {
-                            data.map((detail)=> {
+                            mergedProduct.map((detail)=> {
                                 return <Product item={detail}
                                 />
                             })

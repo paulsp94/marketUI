@@ -4,6 +4,7 @@ export default function userdetails(state={
     password:false,
     Email:false,
     userid:false,
+    Productalldetails:false,
 }, action){
     switch (action.type){
 
@@ -30,6 +31,11 @@ export default function userdetails(state={
         case "USERID":
         {
             return {...state, userid: action.payload}
+        }
+
+        case "ALLPRODUCTDETAILS":
+        {
+            return {...state, Productalldetails: action.payload}
         }
 
         default: return state;

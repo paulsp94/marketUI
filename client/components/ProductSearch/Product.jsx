@@ -27,9 +27,9 @@ class Product extends React.Component{
         return (
             <div>
                 <Card className="product-search" style={{padding: 0}}>
-                    <img className="product_image" src={this.props.item.image}/>
+                    <img className="product_image" src={this.props.item.Mainimage}/>
                     <h5>{this.props.item.name}</h5>
-                    <h5> This is the default description. The user is allowed to fill in 4 lines. To make it uniform we always make spacing for 4 lines</h5>
+                    <h5> {this.props.item.Description} </h5>
                     <Flexbox flexDirection="row">
                         <Flexbox flexGrow={1}>
                             <RaisedButton label="4.8" style={{ margin: 1, width: "100%"}} />

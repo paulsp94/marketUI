@@ -89,14 +89,29 @@ export function  FetchAllPublishedproduct() {
                 });
             });
 
+            var productallid = [];
             for(var i= 0; i < groupid.length;i++) {
 
                 var currentproductid = groupid[i].productid;
-                console.log(currentproductid);
-                //dispatch({
-                //    type: "GROUPID",
-                //    payload: {}
-                //})
+
+                firebase.database().ref('ProductCoreDetails').orderByChild('ProductId').equalTo(currentproductid).on("value", (snapshot) => {
+
+                    snapshot.forEach((data123) => {
+                        productallid.push({
+                            productid: data123.val().ProductId,
+                            Price: data123.val().Price,
+                            Description: data123.val().Description,
+                            Mainimage: data123.val().mainImage,
+                            Title: data123.val().Title,
+                        });
+                    });
+                    dispatch({
+                        type: "ALLPRODUCTDETAILS",
+                        payload: {
+                            products : productallid
+                        }
+                    })
+                });
             }
 
         });
