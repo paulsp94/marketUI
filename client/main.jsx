@@ -22,13 +22,13 @@ import checkout from 'components/checkout/checkout.jsx';
       <Router history={browserHistory}>
           <Route path="/INDEX" component={Index}/>
           <Route path="ItemPreview" component={ItemPreview}/>
-          <Route path="General" component={General} onEnter={requireAuth}/>
+          <Route path="General" component={General}/>
           <Route path="ProductSearch" component={ProductSearch}/>
           <Route path="checkout" component={checkout}/>
           <Route path="registration" component={registration}/>
           <Route path="login" component={login}/>
           <Route path="logout" component={logout}/>
-          <Route path="/" component={Downloads} onEnter={requireAuth}/>
+          <Route path="/" component={Downloads}/>
       </Router>
       </Provider>,
       document.getElementById('js-main'));
