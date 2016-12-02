@@ -78,5 +78,32 @@ export function currentuserid (){
     }
 }
 
+export function  FetchAllPublishedproduct() {
+    return function (dispatch) {
+        var groupid = [];
+        firebase.database().ref('Product_creation').orderByChild('ProductId').on("value", (snapshot) => {
+
+            snapshot.forEach((data12) => {
+                groupid.push({
+                    productid: data12.val().ProductId
+                });
+            });
+
+            for(var i= 0; i < groupid.length;i++) {
+
+                var currentproductid = groupid[i].productid;
+                console.log(currentproductid);
+                //dispatch({
+                //    type: "GROUPID",
+                //    payload: {}
+                //})
+            }
+
+        });
+
+    }
+}
+
+
 export default user;
 
