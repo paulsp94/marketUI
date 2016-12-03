@@ -27,52 +27,75 @@ class Sidebar extends React.Component{
         };
     }
 
+
+    productDetails(){
+
+        return (
+        <div className="sidebar-bottom">
+            <h4><strong> {this.props.productcoredetails.Title} </strong> <br/></h4>
+
+            <Card>
+                <h4 style={{float: "left", marginLeft: 3}}><strong>Packages:</strong> <br/></h4>
+                <div style={{display:"flex", flexWrap:"wrap", margin: 9}}>
+
+                    {
+                        this.props.Sidebar.Packages.map((detail)=> {
+                            return <Chip style={{float: "left", margin: 4}}> {detail}</Chip>
+                        })
+                    }
+
+                </div>
+            </Card>
+
+            <div style={{flexWrap: 'wrap', margin: 9}}>
+                <h4><strong>Complexity:</strong></h4>
+                <p>  {this.props.Sidebar.complexity} </p>
+                <h4><strong>Integration Time: </strong></h4>
+                {this.props.Sidebar.IntegrationTime}
+            </div>
+
+            <Card>
+                <h4 style={{float: "left", marginLeft: 3}}><strong> Compatibilty: </strong> <br/></h4>
+                <div style={{display: 'flex', flexWrap: 'wrap'}}>
+
+                    {
+                        this.props.Sidebar.compatibility.map((detail)=> {
+                            return <Chip style={{float: "left", margin: 4}}> {detail}</Chip>
+                        })
+                    }
+
+                </div>
+            </Card>
+
+            <div style={{flexWrap:"wrap", margin: 9}}>
+                <h4 ><strong> Maintenance: </strong></h4>
+                <h5> 5 Versions</h5>
+                <p> Last Updated 20-11-2015 </p>
+            </div>
+
+            <Card>
+                <h4 style={{float: "left", marginLeft: 3}}><strong> Tags: </strong></h4>
+                <div style={{display: 'flex', flexWrap: 'wrap'}}>
+
+                    {
+                        this.props.Sidebar.tags.map((detail)=> {
+                            return <Chip style={{float: "left", margin: 4}}> {detail}</Chip>
+                        })
+                    }
+
+                </div>
+            </Card>
+        </div>
+        )
+
+    }
+
+
     componentWillMount(){
 
 
-        var curr_icon =  <div className="sidebar-bottom">
-                    <h4><strong> TestProduct </strong> <br/></h4>
+        var curr_icon =  this.productDetails();
 
-                    <Card>
-                    <h4 style={{float: "left", marginLeft: 3}}><strong>Packages:</strong> <br/></h4>
-                    <div style={{display:"flex", flexWrap:"wrap", margin: 9}}>
-                    <Chip style={{float: "left", margin: 4}}>Shiny </Chip>
-                    <Chip style={{float: "left", margin: 4}}>ggplot </Chip>
-                    <Chip style={{float: "left", margin: 4}}>dplyr </Chip>
-                    </div>
-                    </Card>
-
-                    <div style={{flexWrap: 'wrap', margin: 9}}>
-                    <h4><strong>Complexity:</strong></h4>
-                    <p> 4 </p>
-                    <h4><strong>Integration Time: </strong></h4>
-                     3-4h
-                    </div>
-
-                    <Card>
-                    <h4 style={{float: "left", marginLeft: 3}}><strong>  Compatibilty: </strong> <br/></h4>
-                    <div style={{display: 'flex', flexWrap: 'wrap'}}>
-                    <Chip style={{float: "left", margin: 4}}> product1 </Chip>
-                    </div>
-                    </Card>
-
-                    <div style={{flexWrap:"wrap", margin: 9}}>
-                    <h4 ><strong> Maintenance: </strong> </h4>
-                    <h5> 5 Versions</h5>
-                    <p> Last Updated 20-11-2015 </p>
-                    </div>
-
-                    <Card>
-                    <h4 style={{float: "left", marginLeft: 3}} ><strong> Tags: </strong> </h4>
-                    <div style={{display: 'flex', flexWrap: 'wrap'}}>
-                    <Chip style={{float: "left", margin: 4}}>Html </Chip>
-                    <Chip style={{float: "left", margin: 4}}>CSS </Chip>
-                    <Chip style={{float: "left", margin: 4}}>Javascript </Chip>
-                    <Chip style={{float: "left", margin: 4}}>Jquery </Chip>
-                    <Chip style={{float: "left", margin: 4}}>Firebase </Chip>
-                    </div>
-                    </Card>
-                </div>;
         this.setState({
             Currenticon :curr_icon
         });
@@ -86,51 +109,7 @@ class Sidebar extends React.Component{
 
     Item(){
 
-        var curr_icon =  
-
-        <div className="sidebar-bottom">
-                    <h4><strong> TestProduct </strong> <br/></h4>
-
-                    <Card>
-                    <h4 style={{float: "left", marginLeft: 3}}><strong>Packages:</strong> <br/></h4>
-                    <div style={{display:"flex", flexWrap:"wrap", margin: 9}}>
-                    <Chip style={{float: "left", margin: 4}}>Shiny </Chip>
-                    <Chip style={{float: "left", margin: 4}}>ggplot </Chip>
-                    <Chip style={{float: "left", margin: 4}}>dplyr </Chip>
-                    </div>
-                    </Card>
-
-                    <div style={{flexWrap: 'wrap', margin: 9}}>
-                    <h4><strong>Complexity:</strong></h4>
-                    <p> 4 </p>
-                    <h4><strong>Integration Time: </strong></h4>
-                     3-4h
-                    </div>
-
-                    <Card>
-                    <h4 style={{float: "left", marginLeft: 3}}><strong>  Compatibilty: </strong> <br/></h4>
-                    <div style={{display: 'flex', flexWrap: 'wrap'}}>
-                    <Chip style={{float: "left", margin: 4}}> product1 </Chip>
-                    </div>
-                    </Card>
-
-                    <div style={{flexWrap:"wrap", margin: 9}}>
-                    <h4 ><strong> Maintenance: </strong> </h4>
-                    <h5> 5 Versions</h5>
-                    <p> Last Updated 20-11-2015 </p>
-                    </div>
-
-                    <Card>
-                    <h4 style={{float: "left", marginLeft: 3}} ><strong> Tags: </strong> </h4>
-                    <div style={{display: 'flex', flexWrap: 'wrap'}}>
-                    <Chip style={{float: "left", margin: 4}}>Html </Chip>
-                    <Chip style={{float: "left", margin: 4}}>CSS </Chip>
-                    <Chip style={{float: "left", margin: 4}}>Javascript </Chip>
-                    <Chip style={{float: "left", margin: 4}}>Jquery </Chip>
-                    <Chip style={{float: "left", margin: 4}}>Firebase </Chip>
-                    </div>
-                    </Card>
-                </div>;
+        var curr_icon =this.productDetails();
 
         this.setState({
             Currenticon :curr_icon
@@ -251,6 +230,8 @@ class Sidebar extends React.Component{
     }
 
     render(){
+
+        console.log('description is',this.props.productcoredetails);
 
         var currentstate = this.state.Currentstate;
 	

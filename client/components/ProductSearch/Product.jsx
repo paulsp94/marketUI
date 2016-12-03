@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import {Link} from "react-router";
 import {withRouter} from 'react-router';
-import { hashHistory } from 'react-router';
+import { browserHistory } from 'react-router'
 import Header from '../Header/Header.jsx';
 import Subheader from '../Subheader/Subheader.jsx';
 import injectTapEventPlugin from 'react-tap-event-plugin';
@@ -11,6 +13,23 @@ import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'mat
 import {Tabs, Tab} from 'material-ui/Tabs';
 import Slider from 'material-ui/Slider';
 import Flexbox from 'flexbox-react';
+import { productCoreDetails, currentproductstore, } from '../../action/action.jsx'
+
+
+function mapStateToProps(store) {
+    return { userdetails: store.userdetails};
+}
+
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({
+        productCoreDetails,
+        currentproductstore,
+    }, dispatch);
+}
+
+@connect(mapStateToProps, mapDispatchToProps)
+
+
 
 class Product extends React.Component{
 
@@ -22,13 +41,20 @@ class Product extends React.Component{
         };
     }
 
+    productDetails(){
+        var productid = this.props.item.productid;
+        this.props.currentproductstore(productid);
+        browserHistory.push('ItemPreview');
+
+    }
+
     render(){
 
         return (
-            <div>
+            <div className="productdetails" onClick={this.productDetails.bind(this)}>
                 <Card className="product-search" style={{padding: 0}}>
                     <img className="product_image" src={this.props.item.Mainimage}/>
-                    <h5>{this.props.item.name}</h5>
+                    <h5>{this.props.item.Title}</h5>
                     <h5> {this.props.item.Description} </h5>
                     <Flexbox flexDirection="row">
                         <Flexbox flexGrow={1}>

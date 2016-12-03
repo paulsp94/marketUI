@@ -3,6 +3,7 @@ import * as user from '../action/action.jsx';
 var firebase = require('firebase');
 import firebase_details from '../Firebase/Firebase';
 
+var productid = [];
 
 export function fetchuserdetails (){
     return {
@@ -119,6 +120,98 @@ export function  FetchAllPublishedproduct() {
     }
 }
 
+export function currentproductstore (currentproductvalue){
 
+    productid.push(currentproductvalue);
+
+    var length =  productid.length;
+    var currentproductid = length - 1;
+
+    if(productid.length > 1){
+        productid = productid.slice(currentproductid,length);
+    }
+
+    return {
+        type:"CURRENTPRODUCTIDSTORE",
+        payload:{
+            Productid: productid
+        }
+    }
+}
+
+export function  productCoreDetails(productid) {
+    return function (dispatch) {
+        var productcoredetails = [];
+        firebase.database().ref('ProductCoreDetails').orderByChild('ProductId').equalTo(productid).on("value", (snapshot) => {
+
+            snapshot.forEach((data123) => {
+                productcoredetails.push({
+                    productid: data123.val().ProductId,
+                    Price: data123.val().Price,
+                    Description: data123.val().Description,
+                    Mainimage: data123.val().mainImage,
+                    Title: data123.val().Title,
+                    Subimage: data123.val().subImage,
+                    SubTitle: data123.val().Subtitle,
+                });
+            });
+
+            dispatch({
+                type: "PRODUCTCOREDETAILS",
+                payload: {
+                    productcoredetail : productcoredetails
+                }
+            })
+        });
+    }
+}
+
+export function  Description(productid) {
+    return function (dispatch) {
+        var Description = [];
+        firebase.database().ref('Description').orderByChild('ProductId').equalTo(productid).on("value", (snapshot) => {
+
+            snapshot.forEach((data123) => {
+                Description.push({
+                    Description: data123.val().textfieldvalue1,
+                });
+            });
+
+            dispatch({
+                type: "DESCRIPTION",
+                payload: {
+                    Description : Description
+                }
+            })
+        });
+    }
+}
+
+export function  ProductSidebar(productid) {
+    return function (dispatch) {
+        var ProductSidebar = [];
+        firebase.database().ref('ProductSidebar').orderByChild('Productid').equalTo(productid).on("value", (snapshot) => {
+
+            snapshot.forEach((data123) => {
+                ProductSidebar.push({
+                    IntegrationTime: data123.val().IntegrationTime,
+                    Packages: data123.val().Packages,
+                    compatibility: data123.val().compatibility,
+                    complexity: data123.val().complexity,
+                    tags: data123.val().tags,
+                });
+            });
+
+            console.log('it hits product sidebar');
+
+            dispatch({
+                type: "PRODUCTSIDEBAR",
+                payload: {
+                    Productsidebar: ProductSidebar
+                }
+            })
+        });
+    }
+}
 export default user;
 

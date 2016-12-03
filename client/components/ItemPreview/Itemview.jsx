@@ -21,9 +21,6 @@ class  Itemview extends React.Component{
     }
 
     render(){
-        var divstylelastimage = {
-            backgroundImage: "client/Images/lastimg.jpg"
-        }
 
         var buttonvalue = 'dssf';
 
@@ -34,7 +31,7 @@ class  Itemview extends React.Component{
             var button = <RaisedButton label="Preview" style={{ marginLeft: "44%", marginRight: "44%"}} />
         }
 
-        var thisIsMyCopy = '### test\n markdown\n\n <h5> <strong> copy copy copy </h5> <br/> <strong> All the information user paste in Html code will come here </strong> <strong> So user can write anything to show viewers</strong>### test \n <p> <strong> copy copy copy </strong> <br/> <strong> All the information user paste in Html code will come here </strong> <strong> So user can write anything to show viewers</strong> ### test \n <p> <strong> copy copy copy </strong> <br/> <strong> All the information user paste in Html code will come here </strong> <strong> So user can write anything to show viewers</strong> ### test \n <p> <strong> copy copy copy </strong> <br/> <strong> All the information user paste in Html code will come here </strong> <strong> So user can write anything to show viewers</strong> ### test \n <p> <strong> copy copy copy </strong> <br/> <strong> All the information user paste in Html code will come here </strong> <strong> So user can write anything to show viewers</strong> ### test \n <p> <strong> copy copy copy </strong> <br/> <strong> All the information user paste in Html code will come here </strong> <strong> So user can write anything to show viewers</strong> ### test \n <p> <strong> copy copy copy </strong> <br/> <strong> All the information user paste in Html code will come here </strong> <strong> So user can write anything to show viewers</strong>';
+        var thisIsMyCopy = this.props.Description.Description;
 
         return (
 	    <MuiThemeProvider>
@@ -44,9 +41,9 @@ class  Itemview extends React.Component{
 		      <Card  style={{backgroundColor: "#efeadd"}}>
 		   
 			<CardMedia
-			  overlay={<CardTitle title="Overlay title" subtitle="Overlay subtitle" />}>
-			  <img src="client/Images/lastimg.jpg" />
-			</CardMedia>
+			  overlay={<CardTitle title={this.props.productcoredetails.Title} subtitle={this.props.productcoredetails.SubTitle} />}>
+			  <img src={this.props.productcoredetails.Mainimage} />
+            </CardMedia>
 
             <Card style={{ marginRight: 40, marginLeft: 40}}>
                 {button}

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+var Loading = require('react-loading');
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {Link} from "react-router";
@@ -55,23 +56,35 @@ class  ProductSearch extends React.Component{
 
         var mergedProduct = [].concat.apply([], UserId);
 
-        return (
-            <MuiThemeProvider>
-            <div>
+        if(allproducts == false){
+            return(
+            <div className="background">
                 <Header/>
-                   <div className="container-search">
-                        <Tags/>
+                <div className="loader">
+                    <Loading type='spin' color='#000000' />
+                </div>
+            </div>
+            )
+        }
+        else {
+            return (
+                <MuiThemeProvider>
+                    <div>
+                        <Header/>
+                        <div className="container-search">
+                            <Tags/>
 
-                        {
-                            mergedProduct.map((detail)=> {
-                                return <Product item={detail}
-                                />
-                            })
-                        }
-              </div>
-            </div>  
-            </MuiThemeProvider>
-        )
+                            {
+                                mergedProduct.map((detail)=> {
+                                    return <Product item={detail}
+                                    />
+                                })
+                            }
+                        </div>
+                    </div>
+                </MuiThemeProvider>
+            )
+        }
     }
 }
 

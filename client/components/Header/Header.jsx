@@ -73,11 +73,6 @@ var Main = React.createClass({
                                 </Link>
                             </li>
                             <li>
-                                <Link to="ItemPreview" className="navbar-brand">
-                                    Preview
-                                </Link>
-                            </li>
-                            <li>
                                 <Link to="checkout" className="navbar-brand">
                                     checkout
                                 </Link>

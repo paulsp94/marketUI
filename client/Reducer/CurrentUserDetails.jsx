@@ -5,6 +5,10 @@ export default function userdetails(state={
     Email:false,
     userid:false,
     Productalldetails:false,
+    Productid:false,
+    Productcoredetails:false,
+    Description:false,
+    Productsidebar:false,
 }, action){
     switch (action.type){
 
@@ -36,6 +40,26 @@ export default function userdetails(state={
         case "ALLPRODUCTDETAILS":
         {
             return {...state, Productalldetails: action.payload}
+        }
+
+        case "CURRENTPRODUCTIDSTORE":
+        {
+            return {...state, Productid: action.payload}
+        }
+
+        case "PRODUCTCOREDETAILS":
+        {
+            return {...state, Productcoredetails: action.payload}
+        }
+
+        case "DESCRIPTION":
+        {
+            return {...state, Description: action.payload}
+        }
+
+        case "PRODUCTSIDEBAR":
+        {
+            return {...state, Productsidebar: action.payload}
         }
 
         default: return state;
