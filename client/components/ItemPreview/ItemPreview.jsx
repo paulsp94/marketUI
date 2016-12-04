@@ -9,7 +9,7 @@ import Header from '../Header/Header.jsx';
 import Subheader from '../Subheader/Subheader.jsx';
 import Sidebar from '../Sidebar/Sidebar.jsx';
 import Itemview from './Itemview.jsx';
-import { fetchuserdetails, productCoreDetails, Description, ProductSidebar} from '../../action/action.jsx'
+import { fetchuserdetails, productCoreDetails, Description, ProductSidebar, currentproductstore} from '../../action/action.jsx'
 
 
 
@@ -19,6 +19,7 @@ import { fetchuserdetails, productCoreDetails, Description, ProductSidebar} from
                 productCoreDetails,
                 Description,
                 ProductSidebar,
+                currentproductstore,
             }, dispatch);
     }
 
@@ -40,14 +41,19 @@ class  ItemPreview extends Component{
     }
 
     componentWillMount(){
-        var Productidobject = this.props.userdetails.Productid;
-        var ProductIdarray = Object.keys(Productidobject).map(key => Productidobject[key]);
-        var ProductId = [].concat.apply([], ProductIdarray);
-        ProductId = ProductId[0];
+
+        var ProductId = this.props.params.productid;
+        this.props.currentproductstore(ProductId);
+        //var Productidobject = this.props.userdetails.Productid;
+        //var ProductIdarray = Object.keys(Productidobject).map(key => Productidobject[key]);
+        //var ProductId = [].concat.apply([], ProductIdarray);
+        //ProductId = ProductId[0];
 
         this.props.ProductSidebar(ProductId);
         this.props.Description(ProductId);
         this.props.productCoreDetails(ProductId);
+
+        //console.log('this is param value',this.props.params.productid);
 
     }
 

@@ -21,7 +21,7 @@ import checkout from 'components/checkout/checkout.jsx';
   render( <Provider store={store}>
       <Router history={browserHistory}>
           <Route path="/INDEX" component={Index}/>
-          <Route path="ItemPreview" component={ItemPreview}/>
+          <Route path="ItemPreview/:productid" component={ItemPreview}/>
           <Route path="General" component={General}/>
           <Route path="ProductSearch" component={ProductSearch}/>
           <Route path="checkout" component={checkout}/>

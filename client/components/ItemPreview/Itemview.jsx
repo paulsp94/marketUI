@@ -54,9 +54,6 @@ class  Itemview extends React.Component{
 			</CardText>
 		      </Card>
               </Card>
-		
-             
-
                 </div>
             </div>
 	    </MuiThemeProvider>

@@ -43,8 +43,7 @@ class Product extends React.Component{
 
     productDetails(){
         var productid = this.props.item.productid;
-        this.props.currentproductstore(productid);
-        browserHistory.push('ItemPreview');
+        browserHistory.push('ItemPreview/'+ productid);
 
     }
 
