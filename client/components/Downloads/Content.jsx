@@ -34,10 +34,10 @@ class  Content extends React.Component{
                     <div className="Product" >
                         <CardText>
 
-                            <img className="productimage" src={this.props.item.image} style = {Style}/>
+                            <img className="productimage" src={this.props.item.Subimage} style = {Style}/>
                             <div className="text-part">
 
-                                <h4> <strong> Product Category </strong> </h4>
+                                <h4> <strong> {this.props.item.Title} </strong> </h4>
                                 <br/>  <hr/> <br/>
                                 <RaisedButton label="Edit Details" style={{ margin: 12}} />
                             </div>

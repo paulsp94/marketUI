@@ -9,7 +9,7 @@ import Header from '../Header/Header.jsx';
 import Subheader from '../Subheader/Subheader.jsx';
 import Sidebar from '../Sidebar/Sidebar.jsx';
 import Itemview from './Itemview.jsx';
-import { fetchuserdetails, productCoreDetails, Description, ProductSidebar, currentproductstore} from '../../action/action.jsx'
+import { fetchuserdetails, productCoreDetails, Description, ProductSidebar, currentproductstore, ProductComments} from '../../action/action.jsx'
 
 
 
@@ -20,6 +20,7 @@ import { fetchuserdetails, productCoreDetails, Description, ProductSidebar, curr
                 Description,
                 ProductSidebar,
                 currentproductstore,
+                ProductComments
             }, dispatch);
     }
 
@@ -36,6 +37,7 @@ class  ItemPreview extends Component{
         super(props);
         this.state= {
             filldetails:'',
+            ProductId:'',
         };
 
     }
@@ -43,6 +45,11 @@ class  ItemPreview extends Component{
     componentWillMount(){
 
         var ProductId = this.props.params.productid;
+
+        this.setState({
+            ProductId: ProductId
+        })
+
         this.props.currentproductstore(ProductId);
         //var Productidobject = this.props.userdetails.Productid;
         //var ProductIdarray = Object.keys(Productidobject).map(key => Productidobject[key]);
@@ -52,6 +59,7 @@ class  ItemPreview extends Component{
         this.props.ProductSidebar(ProductId);
         this.props.Description(ProductId);
         this.props.productCoreDetails(ProductId);
+        this.props.ProductComments(ProductId);
 
         //console.log('this is param value',this.props.params.productid);
 
@@ -61,6 +69,7 @@ class  ItemPreview extends Component{
 
 
     render(){
+
 
         var productdetails = this.props.userdetails.Productcoredetails;
         var productobject = Object.keys(productdetails).map(key => productdetails[key]);
@@ -88,16 +97,19 @@ class  ItemPreview extends Component{
             var productcorealldetails = productcoredetails[0];
             var productdesdetail = descriptiondetails[0];
             var prodsidebardet = sidebardetails[0];
+            var allcomment = this.props.userdetails.allcomments.productcomment;
+
 
             return (
                 <div className="background">
                     <Header/>
                     <Itemview productcoredetails = {productcorealldetails} Description = {productdesdetail}/>
                     <Sidebar productcoredetails={productcorealldetails} Description={productdesdetail}
-                             Sidebar={prodsidebardet}/>
+                             Sidebar={prodsidebardet} ProductId={this.state.ProductId} Comments = {allcomment}/>
                 </div>
             )
         }
+
     }
 }
 

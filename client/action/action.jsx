@@ -74,7 +74,7 @@ export function currentuserid (){
     return {
         type:"USERID",
         payload:{
-            Userid:Userid
+            Userid
         }
     }
 }
@@ -104,6 +104,7 @@ export function  FetchAllPublishedproduct() {
                             Description: data123.val().Description,
                             Mainimage: data123.val().mainImage,
                             Title: data123.val().Title,
+                            Subimage: data123.val().subImage,
                         });
                     });
                     dispatch({
@@ -202,7 +203,6 @@ export function  ProductSidebar(productid) {
                 });
             });
 
-            console.log('it hits product sidebar');
 
             dispatch({
                 type: "PRODUCTSIDEBAR",
@@ -213,5 +213,96 @@ export function  ProductSidebar(productid) {
         });
     }
 }
+
+export function  UserCreatedProduct() {
+
+    var user = firebase.auth().currentUser;
+    var Userid = user.uid;
+
+    return function (dispatch) {
+    var groupid = [];
+    firebase.database().ref('Product_creation').orderByChild('userid').equalTo(Userid).on("value", (snapshot) => {
+
+        snapshot.forEach((data12) => {
+            groupid.push({
+                productid: data12.val().ProductId
+            });
+        });
+
+        var productallid = [];
+        for(var i= 0; i < groupid.length;i++) {
+
+            var currentproductid = groupid[i].productid;
+
+            firebase.database().ref('ProductCoreDetails').orderByChild('ProductId').equalTo(currentproductid).on("value", (snapshot) => {
+
+                snapshot.forEach((data123) => {
+                    productallid.push({
+                        productid: data123.val().ProductId,
+                        Price: data123.val().Price,
+                        Description: data123.val().Description,
+                        Mainimage: data123.val().mainImage,
+                        Title: data123.val().Title,
+                        Subimage: data123.val().subImage,
+                    });
+                });
+
+                dispatch({
+                    type: "USERCREATEPRODUCTS",
+                    payload: {
+                        productallid
+                    }
+                })
+            });
+        }
+
+    });
+
+}
+}
+
+export function EnternewComment(Comment,ProductId,name){
+
+    var newData = {
+        ProductId :ProductId,
+        Username: name,
+        Comment: Comment,
+    }
+
+    firebase.database().ref("Products_User_Comments").push(newData);
+
+    return {
+        type:"WRITECOMMENT",
+        payload:{
+            Comment:"Successfully"
+        }
+    }
+}
+
+export function  ProductComments(Productid) {
+
+    return function (dispatch) {
+        var productcomment = [];
+        firebase.database().ref('Products_User_Comments').orderByChild('ProductId').equalTo(Productid).on("value", (snapshot) => {
+
+            snapshot.forEach((data12) => {
+                productcomment.push({
+                    productid: data12.val().ProductId,
+                    Comment: data12.val().Comment,
+                    Username:data12.val().Username,
+                });
+            });
+
+            dispatch({
+                type: "PRODUCTSCOMMENT",
+                payload: {
+                    productcomment
+                }
+            });
+        });
+
+    }
+}
+
 export default user;
 

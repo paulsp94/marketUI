@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+var Loading = require('react-loading');
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import {Link} from "react-router";
 import {withRouter} from 'react-router';
 import { hashHistory } from 'react-router';
 import Header from '../Header/Header.jsx';
-import Subheader from '../Subheader/Subheader.jsx';
 import Sidebar from './Sidebar.jsx';
 import DataContainer from './DataContainer.jsx';
 import injectTapEventPlugin from 'react-tap-event-plugin';
@@ -17,6 +19,8 @@ import Profile from './Profile.jsx';
 import ProfileSidebar from './ProfileSidebar.jsx';
 import Content from './Content.jsx';
 import ContentSidebar from './ContentSidebar.jsx';
+import { currentuserid, UserCreatedProduct } from '../../action/action.jsx';
+
 
 var data = [
     {image:"https://images.unsplash.com/photo-1461632830798-3adb3034e4c8?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=90a14bfc86ece2e02bb67cb5decef29b", Price:"$5", name: "Product 1" },
@@ -35,6 +39,23 @@ var productspecificdata = [
     {Productname:"Product 3", IntegrationTime:"3-4 Hours", Complexity: "7.5/10", compatibilty:"C++", Price:"$20",rate:"2.5/10"},
 ];
 
+
+
+
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({
+        currentuserid,
+        UserCreatedProduct,
+    }, dispatch);
+}
+
+function mapStateToProps(store) {
+    return { userdetails: store.userdetails };
+}
+
+@connect(mapStateToProps, mapDispatchToProps)
+
+
 class  Downloads extends React.Component{
 
     constructor(props) {
@@ -44,6 +65,7 @@ class  Downloads extends React.Component{
             filldetails:'',
             productname:'',
             profiletab:'',
+            Contentdata:'',
         };
     }
 
@@ -128,6 +150,9 @@ class  Downloads extends React.Component{
     }
 
     Content(){
+
+        this.props.UserCreatedProduct();
+
         var profiletab = 2;
         this.setState({
             profiletab : profiletab,
@@ -151,8 +176,38 @@ class  Downloads extends React.Component{
         }
 
 
+        var Usercreatedproductobject = this.props.userdetails.UserCreatedProduct;
+
+
+        if(Usercreatedproductobject == false) {
+            var Contentdata = <div>
+                <div className="loader">
+                    <Loading type='spin' color='#000000' />
+                </div>
+            </div>
+        }
+        else {
+            var Usercreatedproductarray = Object.keys(Usercreatedproductobject).map(key => Usercreatedproductobject[key]);
+
+            var Usercreatedproduct = [].concat.apply([], Usercreatedproductarray);
+
+
+            var Contentdata = <div>
+                {
+                    Usercreatedproduct.map((detail)=> {
+                        return <Content item={detail}
+                                        ViewItemrateprice = {this.productData.bind(this)}
+                        />
+                    })
+                }
+
+            </div>;
+        }
+
+
 
         return (
+
             <MuiThemeProvider>
             <div className="background">
                 <Header/>
@@ -187,13 +242,7 @@ class  Downloads extends React.Component{
                                             </CardText>
                                         </div>
                                     </Card>
-                                    {
-                                        data1.map((detail)=> {
-                                            return <Content item={detail} key={detail.Price}
-                                                            ViewItemrateprice = {this.productData.bind(this)}
-                                            />
-                                        })
-                                    }
+                                    {Contentdata}
 
                                 </Tab>
                             </Tabs>

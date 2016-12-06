@@ -36,9 +36,10 @@ class  Itemview extends React.Component{
         return (
 	    <MuiThemeProvider>
             <div>
+
                 <div className="container">
 			
-		      <Card  style={{backgroundColor: "#efeadd"}}>
+		        <Card  style={{backgroundColor: "#efeadd"}}>
 		   
 			<CardMedia
 			  overlay={<CardTitle title={this.props.productcoredetails.Title} subtitle={this.props.productcoredetails.SubTitle} />}>

@@ -9,6 +9,8 @@ export default function userdetails(state={
     Productcoredetails:false,
     Description:false,
     Productsidebar:false,
+    UserCreatedProduct:false,
+
 }, action){
     switch (action.type){
 
@@ -60,6 +62,21 @@ export default function userdetails(state={
         case "PRODUCTSIDEBAR":
         {
             return {...state, Productsidebar: action.payload}
+        }
+
+        case "USERCREATEPRODUCTS":
+        {
+            return {...state, UserCreatedProduct: action.payload}
+        }
+
+        case "WRITECOMMENT":
+        {
+            return {...state, comment: action.payload}
+        }
+
+        case "PRODUCTSCOMMENT":
+        {
+            return {...state, allcomments: action.payload}
         }
 
         default: return state;

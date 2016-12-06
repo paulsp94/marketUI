@@ -30,7 +30,6 @@ function mapDispatchToProps(dispatch) {
 @connect(mapStateToProps, mapDispatchToProps)
 
 
-
 class Product extends React.Component{
 
     constructor(props) {
@@ -52,7 +51,7 @@ class Product extends React.Component{
         return (
             <div className="productdetails" onClick={this.productDetails.bind(this)}>
                 <Card className="product-search" style={{padding: 0}}>
-                    <img className="product_image" src={this.props.item.Mainimage}/>
+                    <img className="product_image" src={this.props.item.Subimage}/>
                     <h5>{this.props.item.Title}</h5>
                     <h5> {this.props.item.Description} </h5>
                     <Flexbox flexDirection="row">

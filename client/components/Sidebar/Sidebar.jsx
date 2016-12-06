@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import {Link} from "react-router";
 import {withRouter} from 'react-router';
 import { hashHistory } from 'react-router';
@@ -13,17 +15,34 @@ import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColu
 import RaisedButton from 'material-ui/RaisedButton';
 import Divider from 'material-ui/Divider';
 import Chip from 'material-ui/Chip';
+import { EnternewComment, ProductComments } from '../../action/action.jsx';
+var firebase = require('firebase');
+import firebase_details from '../../Firebase/Firebase';
 
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({
+        EnternewComment,
+        ProductComments
+    }, dispatch);
+}
+
+function mapStateToProps(store) {
+    return { userdetails: store.userdetails };
+}
+
+@connect(mapStateToProps, mapDispatchToProps)
 
 class Sidebar extends React.Component{
 
     constructor(props) {
         super(props);
         this.state= {
-            Currenticon:'',
-            Currentstate:'',
-	    expanded: false,
-	    showCheckboxes: false,
+            Currenticon: '',
+            Currentstate: '',
+            expanded: false,
+            showCheckboxes: false,
+            Commentvalue: '',
+            allcomment:'',
         };
     }
 
@@ -90,21 +109,14 @@ class Sidebar extends React.Component{
 
     }
 
-
     componentWillMount(){
-
-
         var curr_icon =  this.productDetails();
+        var statevalue = 0;
 
         this.setState({
+            Currentstate : statevalue,
             Currenticon :curr_icon
         });
-
-        var statevalue = 0;
-        this.setState({
-            Currentstate : statevalue
-        });
-
     }
 
     Item(){
@@ -122,55 +134,27 @@ class Sidebar extends React.Component{
 
     }
 
+    keyPress(event){
+
+        if(event.keyCode == 13) {
+
+            var coment = this.comment.value;
+            var ProductId = this.props.ProductId;
+
+            var user = firebase.auth().currentUser;
+            var Useremail = user.email;
+            this.props.EnternewComment(coment , ProductId, Useremail);
+
+            this.comment.value = '';
+            this.props.ProductComments(ProductId);
+
+        }
+    }
+
     Comments(){
 
-        var curr_icon = <div><div className="sidebar-bottom">
-            <CardText>
-            <div className="usercommentname">
-                <h4> <strong> Komaldeep Singh </strong> <br/> </h4>
-            </div>
-            <div className="usercomments">
-                <p>
-                    Standard Demo-Text seit 1500, als ein unbekannter Schriftsteller eine Hand voll Wörter nahm und diese durcheinander warf um ein Musterbuch zu
-                </p>
-            </div>
-            <hr/>
+        var curr_icon = <div>
 
-            <hr/>
-            <div className="usercommentname">
-                <h4> <strong> Sonam Malhotra </strong> <br/> </h4>
-            </div>
-            <div className="usercomments">
-                <p>
-                    Mittlerweile gibt es mehrere Versionen des Lorem Ipsum, einige zufällig, andere bewusst (beeinflusst von Witz und des eigenen Geschmacks)
-                </p>
-            </div>
-            <hr/>
-
-            <hr/>
-            <div className="usercommentname">
-                <h4> <strong> Sonam </strong> <br/> </h4>
-            </div>
-            <div className="usercomments">
-                <p>
-                    Can you guide me ? How to improve the performance of this
-                </p>
-            </div>
-            <hr/>
-
-            <hr/>
-            <div className="usercommentname">
-                <h4> <strong> Sonam </strong> <br/> </h4>
-            </div>
-            <div className="usercomments">
-                <p>
-                    Can you guide me ? How to improve the performance of this
-                </p>
-            </div>
-            <hr/>
-
-                </CardText>
-        </div>
         </div>;
 
 
@@ -185,6 +169,8 @@ class Sidebar extends React.Component{
     }
 
     Support(){
+
+
 
         var curr_icon = <div> <hr/> <div className="sidebar-bottom">
             <img className="Userimage" src ={'client/Images/deep.jpg'}/> <br/>
@@ -231,7 +217,6 @@ class Sidebar extends React.Component{
 
     render(){
 
-        console.log('description is',this.props.productcoredetails);
 
         var currentstate = this.state.Currentstate;
 	
@@ -254,6 +239,7 @@ class Sidebar extends React.Component{
             var subheader= '';
         }
 
+        var allcomment = this.props.Comments;
 
         return (
 	<MuiThemeProvider>	   
@@ -262,7 +248,41 @@ class Sidebar extends React.Component{
 
             <Tabs>
                 <Tab label="Item" onActive={this.Item.bind(this)}> </Tab>
-                <Tab label="Comments" onActive={this.Comments.bind(this)}> </Tab>
+                <Tab label="Comments" onActive={this.Comments.bind(this)}>
+
+                    <div className="sidebar-bottom">
+
+                        <CardText>
+                            <div className="usercommentname">
+                                <input name="comment" ref={(g) => this.comment = g} onKeyDown={this.keyPress.bind(this)}
+                                       className="inputfield-signup1" type="text"
+                                       placeholder="Ask Your Questions or Queries about the product"/>
+                                <br/>
+                            </div>
+                        </CardText>
+
+                        {
+                            allcomment.map((detail)=>{
+
+                                return (
+                                    <CardText>
+                                        <div className="usercommentname">
+                                            <h4><strong> {detail.Username} </strong> <br/></h4>
+                                        </div>
+                                        <div className="usercomments">
+                                            <p>
+                                                {detail.Comment}
+                                            </p>
+                                        </div>
+                                        <hr/>
+                                    </CardText>
+                                )
+                            })
+                        }
+                    </div>
+
+
+                </Tab>
                 <Tab label="Supports" onActive={this.Support.bind(this)}> </Tab>
             </Tabs>
 
