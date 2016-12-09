@@ -306,16 +306,8 @@ export function  ProductComments(Productid) {
 
 export function  submitProductGeneralDetails(ProductId,title,subtitle,describtion,price,category,url,url1,UserIdobject,UserId) {
 
-    return function (dispatch) {
-
-        var query = firebase.database().ref('ProductCoreDetails').equalTo(ProductId);
-        query.on("value", function(snapshot) {
-
-            console.log(snapshot.val());
-            if(snapshot.exists()){
-
                 console.log('it hits first');
-                snapshot.ref().update({
+                firebase.database().ref('ProductCoreDetails/' + ProductId).set({
                     ProductId :ProductId,
                     Title:title,
                     Subtitle:subtitle,
@@ -325,44 +317,10 @@ export function  submitProductGeneralDetails(ProductId,title,subtitle,describtio
                     subImage:url1,
                 });
 
-                dispatch({
-                    type: "SUBMITPRODUCTCOREDETAILS",
-                    payload: ({
-                        Productentryexist: " Details are Edited"
-                    })
-                });
-            }
-            else{
-                console.log('it hits second');
-
-                var newData = {
+                firebase.database().ref("Product_creation/" + ProductId).set({
                     ProductId :ProductId,
-                    Title:title,
-                    Subtitle:subtitle,
-                    Description:describtion,
-                    Price: price,
-                    mainImage:url,
-                    subImage:url1,
-                }
-                var newData1 = {
-                    ProductId :ProductId,
-                    userid:UserId[0]
-                }
-
-                firebase.database().ref("Product_creation").push(newData1);
-                firebase.database().ref("ProductCoreDetails").push(newData);
-
-                dispatch({
-                    type: "SUBMITPRODUCTCOREDETAILS",
-                    payload: ({
-                        Productentryexist: " Details are submitted"
-                    })
+                    userid:UserId[0],
                 });
-
-            }
-
-        });
-    }
 }
 
 export default user;
