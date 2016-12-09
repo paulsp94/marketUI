@@ -40,6 +40,7 @@ class  General extends React.Component{
 
     render(){
 
+
         return (
             <MuiThemeProvider>
                 <div className="">

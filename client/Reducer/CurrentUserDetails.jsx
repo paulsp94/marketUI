@@ -10,6 +10,7 @@ export default function userdetails(state={
     Description:false,
     Productsidebar:false,
     UserCreatedProduct:false,
+    productcoredetailssubmitted:false,
 
 }, action){
     switch (action.type){
@@ -78,6 +79,13 @@ export default function userdetails(state={
         {
             return {...state, allcomments: action.payload}
         }
+
+        case "SUBMITPRODUCTCOREDETAILS":
+        {
+            return {...state, productcoredetailssubmitted: action.payload}
+        }
+
+
 
         default: return state;
     }

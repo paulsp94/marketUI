@@ -249,7 +249,6 @@ class Sidebar extends React.Component{
             <Tabs>
                 <Tab label="Item" onActive={this.Item.bind(this)}> </Tab>
                 <Tab label="Comments" onActive={this.Comments.bind(this)}>
-
                     <div className="sidebar-bottom">
 
                         <CardText>
@@ -280,8 +279,6 @@ class Sidebar extends React.Component{
                             })
                         }
                     </div>
-
-
                 </Tab>
                 <Tab label="Supports" onActive={this.Support.bind(this)}> </Tab>
             </Tabs>

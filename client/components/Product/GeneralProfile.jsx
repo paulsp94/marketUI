@@ -9,7 +9,7 @@ import firebase_details from '../../Firebase/Firebase';
 var FileInput = require('react-file-input');
 import FileUploader from 'react-firebase-file-uploader';
 import Flexbox from 'flexbox-react';
-import { currentuserid } from '../../action/action.jsx'
+import { currentuserid, submitProductGeneralDetails } from '../../action/action.jsx'
 
 function mapStateToProps(store) {
     return { userdetails: store.userdetails};
@@ -17,7 +17,8 @@ function mapStateToProps(store) {
 
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({
-        currentuserid
+        currentuserid,
+        submitProductGeneralDetails
     }, dispatch);
 }
 
@@ -107,22 +108,9 @@ class  GeneralProfile extends React.Component{
         else {
 
             var ProductId = this.props.ProductId;
-            var newData = {
-                ProductId :ProductId,
-                Title:title,
-                Subtitle:subtitle,
-                Description:describtion,
-                Price: price,
-                mainImage:url,
-                subImage:url1,
-            }
-            var newData1 = {
-                ProductId :ProductId,
-                userid:UserId[0]
-            }
 
-            firebase.database().ref("Product_creation").push(newData1);
-            firebase.database().ref("ProductCoreDetails").push(newData);
+            this.props.submitProductGeneralDetails(ProductId,title,subtitle,describtion,price,category,url,url1,UserIdobject,UserId);
+
         }
 
     }
@@ -150,6 +138,9 @@ class  GeneralProfile extends React.Component{
     };
 
     render(){
+
+        console.log(this.props.userdetails.productcoredetailssubmitted);
+
         var style = {
             height : "300px",
         };
@@ -164,7 +155,10 @@ class  GeneralProfile extends React.Component{
                               <div style={{marginTop: 25}}>
                                 <p> This is the creation page! here you can interactivly create your content. Don't forget to save & publish your work </p>
                                 </div>
-            
+                              <div className="warning">
+                                  {this.state.Error}
+                              </div>
+
                                 <div className="productdisplayleft">
                                 <Card style={{padding: 20, backgroundColor: "white"}}>
                                           <input name="title" ref={(a) => this.title = a} type="text" className="inputfield-signup1" placeholder="Title" onChange={this.TiTle.bind(this)}/>
@@ -210,9 +204,7 @@ class  GeneralProfile extends React.Component{
                                 <div className="product-header">
                                   <RaisedButton onClick={this.SubMit.bind(this)} label=" Save" primary={true} style={{ margin: 12}}/>
                                 </div>
-                                <div className="warning">
-                                  {this.state.Error}
-                                </div>
+
                               </div>
                           </div>
                           <div className="right-panel">
