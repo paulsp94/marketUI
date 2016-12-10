@@ -82,42 +82,31 @@ export function currentuserid (){
 export function  FetchAllPublishedproduct() {
     return function (dispatch) {
         var groupid = [];
-        firebase.database().ref('Product_creation').orderByChild('ProductId').on("value", (snapshot) => {
+        var productallid = [];
+        firebase.database().ref('Product_creation').orderByChild('ProductId').on("child_added", (snapshot) => {
 
-            snapshot.forEach((data12) => {
-                groupid.push({
-                    productid: data12.val().ProductId
+            var groupid = snapshot.val().ProductId;
+            var currentproductid = groupid;
+
+            firebase.database().ref('ProductCoreDetails').orderByChild('ProductId').equalTo(currentproductid).on("child_added", (snapshot) => {
+
+                productallid.push({
+                    productid: snapshot.val().ProductId,
+                    Price: snapshot.val().Price,
+                    Description: snapshot.val().Description,
+                    Mainimage: snapshot.val().mainImage,
+                    Title: snapshot.val().Title,
+                    Subimage: snapshot.val().subImage,
                 });
+
+                dispatch({
+                    type: "ALLPRODUCTDETAILS",
+                    payload: {
+                        products : productallid
+                    }
+                })
             });
-
-            var productallid = [];
-            for(var i= 0; i < groupid.length;i++) {
-
-                var currentproductid = groupid[i].productid;
-
-                firebase.database().ref('ProductCoreDetails').orderByChild('ProductId').equalTo(currentproductid).on("value", (snapshot) => {
-
-                    snapshot.forEach((data123) => {
-                        productallid.push({
-                            productid: data123.val().ProductId,
-                            Price: data123.val().Price,
-                            Description: data123.val().Description,
-                            Mainimage: data123.val().mainImage,
-                            Title: data123.val().Title,
-                            Subimage: data123.val().subImage,
-                        });
-                    });
-                    dispatch({
-                        type: "ALLPRODUCTDETAILS",
-                        payload: {
-                            products : productallid
-                        }
-                    })
-                });
-            }
-
         });
-
     }
 }
 
@@ -306,21 +295,28 @@ export function  ProductComments(Productid) {
 
 export function  submitProductGeneralDetails(ProductId,title,subtitle,describtion,price,category,url,url1,UserIdobject,UserId) {
 
-                console.log('it hits first');
-                firebase.database().ref('ProductCoreDetails/' + ProductId).set({
-                    ProductId :ProductId,
-                    Title:title,
-                    Subtitle:subtitle,
-                    Description:describtion,
-                    Price: price,
-                    mainImage:url,
-                    subImage:url1,
-                });
+    firebase.database().ref('ProductCoreDetails/' + ProductId).set({
+        ProductId :ProductId,
+        Title:title,
+        Subtitle:subtitle,
+        Description:describtion,
+        Price: price,
+        mainImage:url,
+        subImage:url1,
+    });
 
-                firebase.database().ref("Product_creation/" + ProductId).set({
-                    ProductId :ProductId,
-                    userid:UserId[0],
-                });
+    firebase.database().ref("Product_creation/" + ProductId).set({
+        ProductId :ProductId,
+        userid:UserId[0],
+    });
+
+    return {
+        type: "SUBMITPRODUCTCOREDETAILS",
+        payload: {
+            submitDetails:"Details are submitted"
+        }
+    }
+
 }
 
 export default user;

@@ -139,8 +139,6 @@ class  GeneralProfile extends React.Component{
 
     render(){
 
-        console.log(this.props.userdetails.productcoredetailssubmitted);
-
         var style = {
             height : "300px",
         };
