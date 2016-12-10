@@ -43,7 +43,6 @@ class Product extends React.Component{
     productDetails(){
         var productid = this.props.item.productid;
         browserHistory.push('ItemPreview/'+ productid);
-
     }
 
     render(){

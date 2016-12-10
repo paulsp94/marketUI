@@ -34,7 +34,7 @@ var Main = React.createClass({
                 <Link to="/logout" className="navbar-brand">Logout</Link>
             </li>;
             profileNav = <li>
-                        <Link to="/" className="navbar-brand">
+                        <Link to="profile" className="navbar-brand">
                                 Profile
                             </Link>
                         </li>;
@@ -67,6 +67,11 @@ var Main = React.createClass({
                             </Link>
                         </div>
                         <ul className="nav navbar-nav pull-right">
+                             <li>
+                                <Link to="/" className="navbar-brand">
+                                    Home
+                                </Link>
+                            </li>
                              <li>
                                 <Link to="ProductSearch" className="navbar-brand">
                                     Search

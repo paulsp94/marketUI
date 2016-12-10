@@ -9,7 +9,8 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import Index from 'components/Index/Index';
 import Header from 'components/Header/Header';
 import ItemPreview from 'components/ItemPreview/ItemPreview';
-import Downloads from 'components/Downloads/Downloads';
+import Downloads from 'components/Downloads/Downloads.jsx';
+import Welcome from 'components/Welcome/Welcome.jsx';
 import General from 'components/Product/General.jsx';
 import ProductSearch from 'components/ProductSearch/ProductSearch.jsx';
 import registration from 'components/account/registration.jsx';
@@ -28,7 +29,8 @@ import checkout from 'components/checkout/checkout.jsx';
           <Route path="registration" component={registration}/>
           <Route path="login" component={login}/>
           <Route path="logout" component={logout}/>
-          <Route path="/" component={Downloads}/>
+          <Route path="profile" component={Downloads}/>
+          <Route path="/" component={Welcome}/>
       </Router>
       </Provider>,
       document.getElementById('js-main'));
