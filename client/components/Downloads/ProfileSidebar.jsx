@@ -34,7 +34,6 @@ class ProfileSidebar extends React.Component{
                  <Tabs>
                  <Tab label="header" >
                     <Card expanded={this.state.expanded}>
-                            <img className="Userimage" src ={'client/Images/code.jpg'}/> <br/>
                             <CardText>
                                 <div className="userdescribation">
                                     <p>
@@ -46,6 +45,7 @@ class ProfileSidebar extends React.Component{
                                         <br/>
                                         by injected humour, or randomised words which don't look even slightly believable.
                                     </p>
+                                    <h2> stripe connect button here </h2>
                                 </div>
                             </CardText>
                     </Card>

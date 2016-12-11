@@ -184,12 +184,12 @@ class  GeneralProfile extends React.Component{
                                           <select name="Category" ref={(ab) => this.Category = ab} className="inputfield-signup1" onChange={this.ProdctCategory.bind(this)}>
                                               <optgroup label="Category">
                                               <option value="Category">  Category </option>
-                                                  <option value="Category">  Category </option>
-                                                  <option value="Category1"> Category1 </option>
-                                                  <option value="Category7">  Category7 </option>
-                                                  <option value="Category2">  Category2 </option>
-                                                  <option value="Category3">  Category3 </option>
-                                                  <option value="Category4">  Category4 </option>
+                                                  <option value="Machine-Learning">  Machine-Learning </option>
+                                                  <option value="Big-Data"> Big-Data </option>
+                                                  <option value="Algorithms">  Algorithms </option>
+                                                  <option value="Graphics">  Graphics </option>
+                                                  <option value="Other">  Other </option>
+                                                  <option value="Web or Shiny">  Web or Shiny </option>
                                               </optgroup>
                                           </select>
 
