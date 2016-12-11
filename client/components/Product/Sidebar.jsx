@@ -12,7 +12,7 @@ import MaterialTagsInput from '../_common/MaterialTagsInput';
 var firebase = require('firebase');
 import firebase_details from '../../Firebase/Firebase';
 import RaisedButton from 'material-ui/RaisedButton';
-import { currentuserid } from '../../action/action.jsx'
+import { currentuserid, submitProductsidebarDetails, submitPublishedproducts} from '../../action/action.jsx'
 
 function mapStateToProps(store) {
     return { userdetails: store.userdetails};
@@ -20,7 +20,9 @@ function mapStateToProps(store) {
 
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({
-        currentuserid
+        currentuserid,
+        submitProductsidebarDetails,
+        submitPublishedproducts
     }, dispatch);
 }
 
@@ -72,16 +74,8 @@ class ProductSidebar extends React.Component {
 
         var ProductId = this.props.ProductId;
 
-        var newData = {
-            Packages:packages,
-            complexity:complexity,
-            IntegrationTime:integrationTime,
-            compatibility:compatibility,
-            tags:tags,
-            Productid: ProductId,
-        }
+        this.props.submitProductsidebarDetails(packages, complexity, integrationTime, compatibility, tags, ProductId);
 
-        firebase.database().ref("ProductSidebar").push(newData);
     };
 
     Publish(){
@@ -89,25 +83,36 @@ class ProductSidebar extends React.Component {
         var ProductId = this.props.ProductId;
         var UserIdobject = this.props.userdetails.userid;
         var UserId = Object.keys(UserIdobject).map(key => UserIdobject[key]);
+        UserId= UserId[0];
 
+        this.props.submitPublishedproducts(ProductId, UserId);
 
-        var newData = {
-            Productid: ProductId,
-            UserId: UserId[0],
-        }
+        console.log(this.props.userdetails.publishedproduct);
 
-        firebase.database().ref("Publishedproduct").push(newData);
 
     };
 
 
   render() {
+
+      if(this.props.userdetails.publishedproduct == false){
+          var message = '';
+      }
+      else{
+          var message = this.props.userdetails.publishedproduct.submitDetails;
+          console.log(message);
+      }
+
     const { packages, complexity, integrationTime, compatibility, tags } = this.state;
     return (
       <MuiThemeProvider>
         <div className="product-tab">
           <div className="left-panel">
+
             <Card style={{margin: '10px auto', width: 550}}>
+                <div className="warning">
+                    {message}
+                </div>
               <CardTitle
                 title="Sidebar"
                 subtitle="Here you can specify product details"
@@ -173,7 +178,8 @@ class ProductSidebar extends React.Component {
 
                 <RaisedButton onClick={this.subMit.bind(this)} label=" Save" style={{ margin: 12}}/>
                 <RaisedButton onClick={this.Publish.bind(this)} label="Publish" style={{ margin: 12}}/>
-              
+
+
             </Card>
           </div>
 
