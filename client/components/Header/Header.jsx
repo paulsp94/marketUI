@@ -31,15 +31,15 @@ var Main = React.createClass({
         var creationNav;
         if (this.state.loggedIn) {
             loginOrOut = <li>
-                <Link to="/logout" className="navbar-brand">Logout</Link>
+                <Link to="/logout" className="">Logout</Link>
             </li>;
             profileNav = <li>
-                        <Link to="profile" className="navbar-brand">
+                        <Link to="profile" className="">
                                 Profile
                             </Link>
                         </li>;
             creationNav =   <li>
-                                <Link to="General" className="navbar-brand">
+                                <Link to="General" className="">
                                     ProductCreation
                                 </Link>
                             </li>;            
@@ -47,10 +47,10 @@ var Main = React.createClass({
 
         } else {
             loginOrOut = <li>
-                <Link to="/login" className="navbar-brand">Login</Link>
+                <Link to="/login" className="">Login</Link>
             </li>;
             register = <li>
-                <Link to="registration" className="navbar-brand">
+                <Link to="registration" className="">
                     register
                 </Link>
             </li>;
@@ -60,7 +60,7 @@ var Main = React.createClass({
         return (
             <span>
                 <nav className="navbar navbar-default navbar-static-top">
-                    <div className="container">
+                    <div className="">
                         <div className="navbar-header">
                             <Link to="ProductSearch" className="navbar-brand">
                                 Rscript.Market
@@ -68,17 +68,17 @@ var Main = React.createClass({
                         </div>
                         <ul className="nav navbar-nav pull-right">
                              <li>
-                                <Link to="/" className="navbar-brand">
+                                <Link to="/" className="">
                                     Home
                                 </Link>
                             </li>
                              <li>
-                                <Link to="ProductSearch" className="navbar-brand">
+                                <Link to="ProductSearch" className="">
                                     Search
                                 </Link>
                             </li>
                             <li>
-                                <Link to="checkout" className="navbar-brand">
+                                <Link to="checkout" className="">
                                     checkout
                                 </Link>
                             </li>

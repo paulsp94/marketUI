@@ -17,21 +17,33 @@ var Welcome = React.createClass({
 
 
     render(){
+        var style = { backgroundImage: 'url(https://picload.org/image/raorapid/front_page.jpg)', 
+                      height: '100%', 
+                      width: '100%', 
+                      top: '0px',
+                      backgroundRepeat: 'no-repeat', 
+                      backgroundPosition: 'right top', 
+                      backgroundSize: 'cover',
+                      position: 'absolute'};
 
         return (
             <MuiThemeProvider>
             <div>
                 <Header/>
-                <Card className="container">
-                    <h2> Welcome to the Rscript.Market</h2>
-
-                    <p> Discover the newest code snipped of the R universe </p>
-                    <p> We are now available for coders in 25 countries! </p>
-
-                    <p>-----</p>
-                    <div style={{height: 50}}> <p> the last added 10 items are listed here: </p> </div>
-                     <p>-----</p>
-                </Card>
+                <div style={style}>
+                    <div className="welcome-text">
+                        <h1> Welcome to the Rscript.Market</h1>
+                        <br/>
+                        <p> Discover the newest code snippets of the R universe </p>
+                        <p> We are now available in 25 countries! </p>
+                    </div>
+                    <div className="welcome-text" style={{marginTop:'40px'}}>
+                        <RaisedButton href="/ProductSearch" label='explore' style={{marginRight: '5px'}} /> 
+                    </div>
+                    <div className='welcome-info'>
+                        <p> this graphic was created <br/> with R and C4D</p>
+                    </div>
+                </div>
                 
             </div>
             </MuiThemeProvider>

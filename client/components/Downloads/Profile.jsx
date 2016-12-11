@@ -54,17 +54,9 @@ class  Profile extends React.Component{
     Dropboxcloase4(){
         this.setState({open3: false});
     }
-
-    Dropboxopen3(){
-        this.setState({open2: true});
-    }
-
+ 
     Dropboxcloase3(){
         this.setState({open2: false});
-    }
-
-    Dropboxopen2(){
-        this.setState({open1: true});
     }
 
     Dropboxcloase2(){
@@ -226,10 +218,7 @@ class  Profile extends React.Component{
                        <CardText>
                       
                         <br/>
-                        <RaisedButton label="Choose Payment" style={{ margin: 12}} onTouchTap={this.Dropboxopen2.bind(this)}/>
-
-                        <RaisedButton label="Payment Overview" style={{ margin: 12}} onTouchTap={this.Dropboxopen3.bind(this)}/>
-
+                    
                         <Dialog
                             actions={actions1}
                             modal={false}

@@ -11,8 +11,6 @@ import Sidebar from '../Sidebar/Sidebar.jsx';
 import Itemview from './Itemview.jsx';
 import { fetchuserdetails, productCoreDetails, Description, ProductSidebar, currentproductstore, ProductComments} from '../../action/action.jsx'
 
-
-
    function mapDispatchToProps(dispatch) {
         return bindActionCreators({
                 fetchuserdetails,
@@ -65,12 +63,8 @@ class  ItemPreview extends Component{
 
     }
 
-
-
-
     render(){
-
-
+    
         var productdetails = this.props.userdetails.Productcoredetails;
         var productobject = Object.keys(productdetails).map(key => productdetails[key]);
         var productcoredetails = [].concat.apply([], productobject);
@@ -98,7 +92,6 @@ class  ItemPreview extends Component{
             var productdesdetail = descriptiondetails[0];
             var prodsidebardet = sidebardetails[0];
             var allcomment = this.props.userdetails.allcomments.productcomment;
-
 
             return (
                 <div className="background">
