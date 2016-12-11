@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -7,6 +9,17 @@ var firebase = require('firebase');
 import firebase_details from '../../Firebase/Firebase';
 import ReactMarkdown from 'react-markdown';
 import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
+import { submitProductContentDetails } from '../../action/action.jsx'
+
+function mapStateToProps(store) {
+    return { userdetails: store.userdetails};
+}
+
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({
+        submitProductContentDetails
+    }, dispatch);
+}
 
 
 class  Content extends React.Component{
@@ -18,6 +31,7 @@ class  Content extends React.Component{
             markdownSyntax:'<iframe width="100%" height="100%"src="https://guides.github.com/features/mastering-markdown/"></iframe>',
             isOpened: false,
             showSyntax: false,
+            Error:''
         };
     }
 
@@ -44,11 +58,11 @@ class  Content extends React.Component{
         }
         else {
             var ProductId = this.props.ProductId;
-            var newData = {
+            firebase.database().ref("Content/" + ProductId).set({
                 ProductId :ProductId,
-                Content: textfieldvalue1,
-            }
-            firebase.database().ref("Content").push(newData);
+                textfieldvalue1 : textfieldvalue1,
+            });
+
         }
     }
     
@@ -113,6 +127,9 @@ class  Content extends React.Component{
         return (
             <MuiThemeProvider>
                 <div>
+                    <div className="warning">
+                        {this.state.Error}
+                        </div>
                     <Card style={{ marginRight: "1%", marginLeft: "1%", marginTop: 9}}>
                        <CommandBar farItems={ commands } items = {leftCommands} /> 
                         <div className="product-tab2">

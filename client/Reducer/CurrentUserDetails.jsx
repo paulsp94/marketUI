@@ -11,6 +11,8 @@ export default function userdetails(state={
     Productsidebar:false,
     UserCreatedProduct:false,
     productcoredetailssubmitted:false,
+    productdescriptiondetailssubmitted:false,
+    publishedproduct:false,
 
 }, action){
     switch (action.type){
@@ -85,10 +87,18 @@ export default function userdetails(state={
             return {...state, productcoredetailssubmitted: action.payload}
         }
 
+        case "SUBMITPRODUCTCONTENTDETAILS":
+        {
+            return {...state, productdescriptiondetailssubmitted: action.payload}
+        }
 
+        case "SUBMITPUBLISHEDPRODUCTS":
+        {
+            return {...state, publishedproduct: action.payload}
+        }
 
         default: return state;
-    }
 
+    }
     return state;
 }

@@ -83,9 +83,9 @@ export function  FetchAllPublishedproduct() {
     return function (dispatch) {
         var groupid = [];
         var productallid = [];
-        firebase.database().ref('Product_creation').orderByChild('ProductId').on("child_added", (snapshot) => {
+        firebase.database().ref('Publishedproduct').orderByChild('ProductId').on("child_added", (snapshot) => {
 
-            var groupid = snapshot.val().ProductId;
+            var groupid = snapshot.val().Productid;
             var currentproductid = groupid;
 
             firebase.database().ref('ProductCoreDetails').orderByChild('ProductId').equalTo(currentproductid).on("child_added", (snapshot) => {
@@ -295,26 +295,120 @@ export function  ProductComments(Productid) {
 
 export function  submitProductGeneralDetails(ProductId,title,subtitle,describtion,price,category,url,url1,UserIdobject,UserId) {
 
-    firebase.database().ref('ProductCoreDetails/' + ProductId).set({
-        ProductId :ProductId,
-        Title:title,
-        Subtitle:subtitle,
-        Description:describtion,
-        Price: price,
-        mainImage:url,
-        subImage:url1,
-    });
+    return function (dispatch) {
+        firebase.database().ref('ProductCoreDetails/' + ProductId).set({
+            ProductId: ProductId,
+            Title: title,
+            Subtitle: subtitle,
+            Description: describtion,
+            Price: price,
+            mainImage: url,
+            subImage: url1,
+        });
 
-    firebase.database().ref("Product_creation/" + ProductId).set({
-        ProductId :ProductId,
-        userid:UserId[0],
-    });
+        firebase.database().ref("Product_creation/" + ProductId).set({
+            ProductId: ProductId,
+            userid: UserId[0],
+        });
 
-    return {
-        type: "SUBMITPRODUCTCOREDETAILS",
-        payload: {
-            submitDetails:"Details are submitted"
-        }
+        dispatch({
+            type: "SUBMITPRODUCTCOREDETAILS",
+            payload: {
+                submitDetails:"Details are submitted"
+            }
+        })
+
+    }
+}
+
+export function  submitProductsidebarDetails(packages, complexity, integrationTime, compatibility, tags, ProductId) {
+
+    return function (dispatch) {
+        firebase.database().ref("ProductSidebar/" + ProductId).set({
+            Packages: packages,
+            complexity: complexity,
+            IntegrationTime: integrationTime,
+            compatibility: compatibility,
+            tags: tags,
+            Productid: ProductId,
+        });
+
+        dispatch({
+            type: "SUBMITPRODUCTCONTENTDETAILS",
+            payload: {
+                submitDetails: "Details are submitted"
+            }
+        })
+    }
+}
+
+export function  submitPublishedproducts(ProductId, UserId) {
+
+    return function (dispatch) {
+        firebase.database().ref('ProductCoreDetails').child(ProductId).once("value", function (snapshot) {
+            if (snapshot.exists()) {
+                firebase.database().ref('Description').child(ProductId).once("value", function (snapshot) {
+                    if (snapshot.exists()) {
+
+                        firebase.database().ref('Content').child(ProductId).once("value", function (snapshot) {
+                            if (snapshot.exists()) {
+
+                                firebase.database().ref('ProductSidebar').child(ProductId).once("value", function (snapshot) {
+                                    if (snapshot.exists()) {
+
+                                        firebase.database().ref("Publishedproduct/" + ProductId).set({
+                                            Productid: ProductId,
+                                            UserId: UserId,
+                                        });
+
+                                        dispatch({
+                                            type: "SUBMITPUBLISHEDPRODUCTS",
+                                            payload: {
+                                                submitDetails: "Every detail Exist, Your Product is published Now"
+                                            }
+                                        })
+                                    }
+                                    else {
+                                        dispatch({
+                                            type: "SUBMITPUBLISHEDPRODUCTS",
+                                            payload: {
+                                                submitDetails: "Error: Product Sidebar doesnt exist"
+                                            }
+                                        })
+                                    }
+                                })
+                            }
+                            else {
+                                dispatch({
+                                    type: "SUBMITPUBLISHEDPRODUCTS",
+                                    payload: {
+                                        submitDetails: "Error: Product Content doesnt exist"
+                                    }
+                                })
+
+                            }
+                        });
+                    }
+                    else {
+                        dispatch({
+                            type: "SUBMITPUBLISHEDPRODUCTS",
+                            payload: {
+                                submitDetails: "Error: Product Description doesnt exist"
+                            }
+                        })
+                    }
+                });
+            }
+            else {
+                dispatch({
+                    type: "SUBMITPUBLISHEDPRODUCTS",
+                    payload: {
+                        submitDetails: "Error: Product General doesnt exist"
+                    }
+                })
+            }
+        });
+
     }
 
 }

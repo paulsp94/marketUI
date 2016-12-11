@@ -3,10 +3,11 @@ import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'mat
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
+import ReactMarkdown from 'react-markdown';
 var firebase = require('firebase');
 import firebase_details from '../../Firebase/Firebase';
-import ReactMarkdown from 'react-markdown';
 import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
+
 
 
 
@@ -19,6 +20,7 @@ class  Description extends React.Component{
             markdownSyntax:'<iframe width="100%" height="100%"src="https://guides.github.com/features/mastering-markdown/"></iframe>',
             isOpened: false,
             showSyntax: false,
+            Error:'',
         };
     }
 
@@ -46,12 +48,11 @@ class  Description extends React.Component{
         }
         else {
             var ProductId = this.props.ProductId;
-            var newData = {
+            firebase.database().ref("Description/" + ProductId).set({
                 ProductId :ProductId,
                 textfieldvalue1 : textfieldvalue1,
-            }
+            });
 
-            firebase.database().ref("Description").push(newData);
         }
     }
 
@@ -112,16 +113,15 @@ class  Description extends React.Component{
                         onClick: this.subMit.bind(this)
                       }
                     ];
-
         return (
             <MuiThemeProvider>
                 <div>
+                    <div className="warning">
+                        {this.state.Error}
+                    </div>
                     <Card style={{ marginRight: "1%", marginLeft: "1%", marginTop: 9}}>
-                    <CommandBar 
-                        farItems={ commands } items = {leftCommands}
-                    />
+                    <CommandBar farItems={ commands } items = {leftCommands}/>
                         <div className="product-tab2">
-
                             <div className="markdowncode" >
                                 <textarea className="textarea" placeholder="Add here your markdown or html code" ref={(eg) => this.textbox1 = eg}  name="textbox1" onChange={this.textBox1.bind(this)}>
                                 </textarea>
