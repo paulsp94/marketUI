@@ -4,10 +4,8 @@ import {withRouter} from 'react-router';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { hashHistory } from 'react-router';
-import Header from '../Header/Header.jsx';
 import Subheader from '../Subheader/Subheader.jsx';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import {Tabs, Tab} from 'material-ui/Tabs';
@@ -66,9 +64,7 @@ class  General extends React.Component{
 
         console.log('validation is',this.props.userdetails.validation);
         return (
-            <MuiThemeProvider>
                 <div className="">
-                    <Header/>
                     <div className="" style={{backgroundColor: "#efeadd", paddingBottom: "0.5%"}}>
                             <Tabs>
 
@@ -93,7 +89,6 @@ class  General extends React.Component{
                             </Tabs>
                     </div>
                 </div>
-            </MuiThemeProvider>
         )
     }
 }

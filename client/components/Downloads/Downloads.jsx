@@ -2,19 +2,10 @@ import React, { Component } from 'react';
 var Loading = require('react-loading');
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import {Link} from "react-router";
-import {withRouter} from 'react-router';
-import { hashHistory } from 'react-router';
-import Header from '../Header/Header.jsx';
 import Sidebar from './Sidebar.jsx';
 import DataContainer from './DataContainer.jsx';
-import injectTapEventPlugin from 'react-tap-event-plugin';
-injectTapEventPlugin();
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import RaisedButton from 'material-ui/RaisedButton';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import {Tabs, Tab} from 'material-ui/Tabs';
-import Slider from 'material-ui/Slider';
 import Profile from './Profile.jsx';
 import ProfileSidebar from './ProfileSidebar.jsx';
 import Content from './Content.jsx';
@@ -214,10 +205,7 @@ class  Downloads extends React.Component{
         }
 
         return (
-
-            <MuiThemeProvider>
             <div className="background">
-                <Header/>
                         <div className="container">
                         <Card style= {{backgroundColor: "#efeadd", paddingBottom: "2%"}}>
                             <Tabs>
@@ -254,7 +242,6 @@ class  Downloads extends React.Component{
                         </div>
                 {sidebar}
             </div>
-            </MuiThemeProvider>
         )
     }
 }

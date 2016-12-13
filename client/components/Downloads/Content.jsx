@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import {Link} from "react-router";
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import Paper from 'material-ui/Paper';
 import {withRouter} from 'react-router';
 import { browserHistory } from 'react-router'
 
-class  Content extends React.Component{
+export default class Content extends React.Component{
 
     constructor(props) {
 
@@ -37,7 +36,6 @@ class  Content extends React.Component{
         };
 
         return (
-            <MuiThemeProvider>
                 <Card style={{ marginRight: "2%", marginLeft: "2%", marginTop: 9}} onClick={this.updateItem.bind(this)}>
                     <div className="Product" >
                         <CardText>
@@ -53,13 +51,6 @@ class  Content extends React.Component{
                         </CardText>
                     </div>
                 </Card>
-
-            </MuiThemeProvider>
         )
     }
 }
-
-export default Content;
-
-
-

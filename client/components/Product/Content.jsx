@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 var firebase = require('firebase');
@@ -22,7 +21,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 
-class  Content extends React.Component{
+class Content extends React.Component{
 
     constructor(props) {
         super(props);
@@ -125,25 +124,23 @@ class  Content extends React.Component{
                       }
                     ];
         return (
-            <MuiThemeProvider>
-                <div>
-                    <div className="warning">
-                        {this.state.Error}
+            <div>
+                <div className="warning">
+                    {this.state.Error}
+                    </div>
+                <Card style={{ marginRight: "1%", marginLeft: "1%", marginTop: 9}}>
+                   <CommandBar farItems={ commands } items = {leftCommands} />
+                    <div className="product-tab2">
+                        <div className="markdowncode">
+                        <textarea onChange={this.textBox1.bind(this)} className="textarea" placeholder="Add here your markdown or html code" ref={(efg) => this.textbox = efg}  name="textbox">
+                        </textarea>
                         </div>
-                    <Card style={{ marginRight: "1%", marginLeft: "1%", marginTop: 9}}>
-                       <CommandBar farItems={ commands } items = {leftCommands} /> 
-                        <div className="product-tab2">
-                            <div className="markdowncode">
-                            <textarea onChange={this.textBox1.bind(this)} className="textarea" placeholder="Add here your markdown or html code" ref={(efg) => this.textbox = efg}  name="textbox">
-                            </textarea>
-                            </div>
-                            <div className="markdowntext">
-                                <ReactMarkdown source={thisIsMyCopy} escapeHtml={false} />
-                            </div>
+                        <div className="markdowntext">
+                            <ReactMarkdown source={thisIsMyCopy} escapeHtml={false} />
                         </div>
-                    </Card>
-                </div>
-            </MuiThemeProvider>
+                    </div>
+                </Card>
+            </div>
         )
     }
 }

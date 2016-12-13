@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 import ReactMarkdown from 'react-markdown';
@@ -114,27 +113,25 @@ class  Description extends React.Component{
                       }
                     ];
         return (
-            <MuiThemeProvider>
-                <div>
-                    <div className="warning">
-                        {this.state.Error}
-                    </div>
-                    <Card style={{ marginRight: "1%", marginLeft: "1%", marginTop: 9}}>
-                    <CommandBar farItems={ commands } items = {leftCommands}/>
-                        <div className="product-tab2">
-                            <div className="markdowncode" >
-                                <textarea className="textarea" placeholder="Add here your markdown or html code" ref={(eg) => this.textbox1 = eg}  name="textbox1" onChange={this.textBox1.bind(this)}>
-                                </textarea>
-                            </div>
-
-                            <div className="markdowntext">
-                                <ReactMarkdown source={thisIsMyCopy1} escapeHtml={false} />
-                            </div>
-
-                        </div>
-                    </Card>
+            <div>
+                <div className="warning">
+                    {this.state.Error}
                 </div>
-            </MuiThemeProvider>
+                <Card style={{ marginRight: "1%", marginLeft: "1%", marginTop: 9}}>
+                <CommandBar farItems={ commands } items = {leftCommands}/>
+                    <div className="product-tab2">
+                        <div className="markdowncode" >
+                            <textarea className="textarea" placeholder="Add here your markdown or html code" ref={(eg) => this.textbox1 = eg}  name="textbox1" onChange={this.textBox1.bind(this)}>
+                            </textarea>
+                        </div>
+
+                        <div className="markdowntext">
+                            <ReactMarkdown source={thisIsMyCopy1} escapeHtml={false} />
+                        </div>
+
+                    </div>
+                </Card>
+            </div>
         )
     }
 }
