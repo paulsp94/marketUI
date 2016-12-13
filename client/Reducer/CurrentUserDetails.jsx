@@ -13,7 +13,8 @@ export default function userdetails(state={
     productcoredetailssubmitted:false,
     productdescriptiondetailssubmitted:false,
     publishedproduct:false,
-
+    currentuserproducts:false,
+    validation:false,
 }, action){
     switch (action.type){
 
@@ -96,6 +97,16 @@ export default function userdetails(state={
         {
             return {...state, publishedproduct: action.payload}
         }
+        case "CURRENTUSERPERSONALPRODUCTS":
+        {
+            return {...state, currentuserproducts: action.payload}
+        }
+
+        case "EDITVALIDATION":
+        {
+            return {...state, validation: action.payload}
+        }
+
 
         default: return state;
 

@@ -36,7 +36,7 @@ class  DataContainer extends React.Component{
             <Card style={{ marginRight: "2%", marginLeft: "2%", marginTop: 9}} onClick={this.updateItem.bind(this)}>
             <div className="Product" >
                 <CardText>
-                <img className="productimage" src={this.props.item.image} style = {Style}/>
+                <img className="productimage" src={this.props.item.Subimage} style = {Style}/>
                 <div className="text-part">
                 <h4> <strong> {this.props.item.name} </strong> </h4>
                     <br/> <br/>

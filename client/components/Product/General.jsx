@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import {Link} from "react-router";
 import {withRouter} from 'react-router';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { hashHistory } from 'react-router';
 import Header from '../Header/Header.jsx';
 import Subheader from '../Subheader/Subheader.jsx';
@@ -18,7 +20,19 @@ import Description from './Description.jsx';
 import Content from './Content.jsx';
 var firebase = require('firebase');
 import firebase_details from '../../Firebase/Firebase';
+import { productEditValidationDetails } from '../../action/action.jsx';
 
+function mapStateToProps(store) {
+    return { userdetails: store.userdetails};
+}
+
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({
+        productEditValidationDetails
+    }, dispatch);
+}
+
+@connect(mapStateToProps, mapDispatchToProps)
 
 class  General extends React.Component{
 
@@ -31,27 +45,39 @@ class  General extends React.Component{
     }
 
     componentWillMount(){
-        var ProductId = firebase.database().ref("ProductCoreDetails").push().key;
-        this.setState({
-            ProductID: ProductId
-        })
-    }
 
+        var ProductId = this.props.params.productid;
+
+        if(ProductId == '' || ProductId == undefined){
+            var ProductId = firebase.database().ref("ProductCoreDetails").push().key;
+            this.setState({
+                ProductID: ProductId
+            })
+        }
+        else {
+            this.props.productEditValidationDetails(ProductId);
+            this.setState({
+                ProductID: ProductId
+            })
+        }
+    }
 
     render(){
 
-
+        console.log('validation is',this.props.userdetails.validation);
         return (
             <MuiThemeProvider>
                 <div className="">
                     <Header/>
                     <div className="" style={{backgroundColor: "#efeadd", paddingBottom: "0.5%"}}>
                             <Tabs>
+
                                 <Tab label="General">
                                     <div>
                                         <GeneralProfile ProductId = {this.state.ProductID} />
                                     </div>
                                 </Tab>
+
                                 <Tab label="Descriptions">
                                     <Description ProductId = {this.state.ProductID}/>
                                 </Tab>
@@ -63,6 +89,7 @@ class  General extends React.Component{
                                 <Tab label="Sidebar">
                                       <Sidebar ProductId = {this.state.ProductID}/>
                                 </Tab>
+
                             </Tabs>
                     </div>
                 </div>

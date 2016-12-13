@@ -9,7 +9,7 @@ import firebase_details from '../../Firebase/Firebase';
 var FileInput = require('react-file-input');
 import FileUploader from 'react-firebase-file-uploader';
 import Flexbox from 'flexbox-react';
-import { currentuserid, submitProductGeneralDetails } from '../../action/action.jsx'
+import { currentuserid, submitProductGeneralDetails, productCoreDetails } from '../../action/action.jsx';
 
 function mapStateToProps(store) {
     return { userdetails: store.userdetails};
@@ -18,7 +18,8 @@ function mapStateToProps(store) {
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({
         currentuserid,
-        submitProductGeneralDetails
+        submitProductGeneralDetails,
+        productCoreDetails
     }, dispatch);
 }
 
@@ -51,6 +52,8 @@ class  GeneralProfile extends React.Component{
 
     componentWillMount(){
         this.props.currentuserid();
+        var ProductId = this.props.ProductId;
+        //this.props.productCoreDetails(ProductId);
     }
 
     TiTle(){
@@ -138,6 +141,8 @@ class  GeneralProfile extends React.Component{
     };
 
     render(){
+
+        console.log(this.props.userdetails.Productcoredetails);
 
         var style = {
             height : "300px",

@@ -5,6 +5,8 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import Paper from 'material-ui/Paper';
+import {withRouter} from 'react-router';
+import { browserHistory } from 'react-router'
 
 class  Content extends React.Component{
 
@@ -20,6 +22,12 @@ class  Content extends React.Component{
     updateItem(event){
         var productname = this.props.item.name;
         this.props.ViewItemrateprice(productname);
+    }
+
+    EditDetails(){
+        console.log('hey it click me');
+        var productid = this.props.item.productid;
+        browserHistory.push('EditProduct/'+ productid);
     }
 
     render(){
@@ -39,7 +47,7 @@ class  Content extends React.Component{
 
                                 <h4> <strong> {this.props.item.Title} </strong> </h4>
                                 <br/>  <hr/> <br/>
-                                <RaisedButton label="Edit Details" style={{ margin: 12}} />
+                                <RaisedButton onClick={this.EditDetails.bind(this)} label="Edit Details" style={{ margin: 12}} />
                             </div>
 
                         </CardText>

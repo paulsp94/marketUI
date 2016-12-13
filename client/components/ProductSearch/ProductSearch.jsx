@@ -73,7 +73,6 @@ class  ProductSearch extends React.Component{
                         <Header/>
                         <div className="container-search">
                             <Tags/>
-
                             {
                                 mergedProduct.map((detail)=> {
                                     return <Product item={detail}

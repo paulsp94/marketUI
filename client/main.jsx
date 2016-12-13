@@ -31,6 +31,7 @@ import checkout from 'components/checkout/checkout.jsx';
           <Route path="logout" component={logout}/>
           <Route path="profile" component={Downloads}/>
           <Route path="/" component={Welcome}/>
+          <Route path="EditProduct/:productid" component={General}/>
       </Router>
       </Provider>,
       document.getElementById('js-main'));

@@ -413,5 +413,65 @@ export function  submitPublishedproducts(ProductId, UserId) {
 
 }
 
+export function  FetchAllCurrentUserproduct() {
+
+    return function (dispatch) {
+        var user = firebase.auth().currentUser;
+        var Userid = user.uid;
+        var groupid = [];
+        var productallid = [];
+        firebase.database().ref('Product_creation').orderByChild('userid').equalTo(Userid).on("child_added", (snapshot) => {
+
+            var groupid = snapshot.val().ProductId;
+            var currentproductid = groupid;
+
+            firebase.database().ref('ProductCoreDetails').orderByChild('ProductId').equalTo(currentproductid).on("child_added", (snapshot) => {
+
+                productallid.push({
+                    productid: snapshot.val().ProductId,
+                    Price: snapshot.val().Price,
+                    Description: snapshot.val().Description,
+                    Title: snapshot.val().Title,
+                    Subimage: snapshot.val().subImage,
+                });
+
+                dispatch({
+                    type: "CURRENTUSERPERSONALPRODUCTS",
+                    payload: {
+                        products : productallid
+                    }
+                })
+            });
+        });
+    }
+}
+
+export function  productEditValidationDetails(productid) {
+    return function (dispatch) {
+        firebase.database().ref('Product_creation').orderByChild('ProductId').equalTo(productid).on("child_added", (snapshot) => {
+            var Productuserid = snapshot.val().userid;
+            var user = firebase.auth().currentUser;
+            var currentUserid = user.uid;
+
+            if(currentUserid == Productuserid){
+                dispatch({
+                    type: "EDITVALIDATION",
+                    payload: {
+                        producteditvalidation : "RIGHTVALIDATION"
+                    }
+                })
+            }
+            else{
+                dispatch({
+                    type: "EDITVALIDATION",
+                    payload: {
+                        producteditvalidation : "WRONGVALIDATION"
+                    }
+                })
+            }
+        });
+    }
+}
+
 export default user;
 

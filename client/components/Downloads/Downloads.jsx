@@ -19,10 +19,10 @@ import Profile from './Profile.jsx';
 import ProfileSidebar from './ProfileSidebar.jsx';
 import Content from './Content.jsx';
 import ContentSidebar from './ContentSidebar.jsx';
-import { currentuserid, UserCreatedProduct } from '../../action/action.jsx';
+import { currentuserid, UserCreatedProduct, FetchAllCurrentUserproduct } from '../../action/action.jsx';
 
 
-var data = [
+var datacontainer = [
     {image:"https://images.unsplash.com/photo-1461632830798-3adb3034e4c8?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=90a14bfc86ece2e02bb67cb5decef29b", Price:"$5", name: "Product 1" },
     {image:"https://images.unsplash.com/photo-1468070454955-c5b6932bd08d?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=098777638826d5753222a09116959b23", Price:"$10", name: "Product 2" },
     {image:"https://images.unsplash.com/photo-1452626038306-9aae5e071dd3?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=f043061c9a5cdbd0fc2f114e2f52f0fd", Price:"$15", name: "Product 3" }
@@ -46,6 +46,7 @@ function mapDispatchToProps(dispatch) {
     return bindActionCreators({
         currentuserid,
         UserCreatedProduct,
+        FetchAllCurrentUserproduct,
     }, dispatch);
 }
 
@@ -143,6 +144,8 @@ class  Downloads extends React.Component{
     }
 
     Download(){
+
+        this.props.FetchAllCurrentUserproduct();
         var profiletab = 0;
         this.setState({
             profiletab : profiletab,
@@ -161,10 +164,19 @@ class  Downloads extends React.Component{
 
     render(){
 
+        //console.log(this.props.userdetails.currentuserproducts);
+
+        // download section will changed soon
+        if(this.props.userdetails.currentuserproducts == false){
+            var data = [];
+        }
+        else {
+            var data = this.props.userdetails.currentuserproducts.products;
+            var data = Object.keys(data).map(key => data[key]);
+        }
+
         var productspecificdata = this.state.productname;
-
         var profiletab = this.state.profiletab;
-
         if(profiletab == '1'){
             var sidebar = <ProfileSidebar/>
         }
@@ -175,9 +187,7 @@ class  Downloads extends React.Component{
             var sidebar = <Sidebar productname={productspecificdata}/>
         }
 
-
         var Usercreatedproductobject = this.props.userdetails.UserCreatedProduct;
-
 
         if(Usercreatedproductobject == false) {
             var Contentdata = <div>
@@ -186,25 +196,22 @@ class  Downloads extends React.Component{
                 </div>
             </div>
         }
+
         else {
             var Usercreatedproductarray = Object.keys(Usercreatedproductobject).map(key => Usercreatedproductobject[key]);
 
             var Usercreatedproduct = [].concat.apply([], Usercreatedproductarray);
 
 
-            var Contentdata = <div>
+            var Contentdata =
+                <div>
                 {
                     Usercreatedproduct.map((detail)=> {
-                        return <Content item={detail}
-                                        ViewItemrateprice = {this.productData.bind(this)}
-                        />
+                        return <Content item={detail} ViewItemrateprice = {this.productData.bind(this)}/>
                     })
                 }
-
-            </div>;
+                </div>;
         }
-
-
 
         return (
 
@@ -223,16 +230,13 @@ class  Downloads extends React.Component{
                                     <div>
                                         {
                                             data.map((detail)=> {
-                                                return <DataContainer item={detail} key={detail.Price}
-                                                                  ViewItem = {this.productData.bind(this)}
-                                                />
+                                                return <DataContainer item={detail} ViewItem = {this.productData.bind(this)}/>
                                             })
                                         }
                                     </div>
                                 </Tab>
 
                                 <Tab label="Content" onActive={this.Content.bind(this)}>
-
                                     <Card style={{ marginRight: "2%", marginLeft: "2%", marginTop: 9}}>
                                         <div className="Product1" >
                                             <CardText>
