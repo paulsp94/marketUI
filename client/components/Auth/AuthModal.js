@@ -46,7 +46,7 @@ export default class AuthModal extends React.Component {
         firebase.auth().createUserWithEmailAndPassword(email, pw).then(() => {
           this.setState({ register: false })
           this.props.toggleAuthModal()
-        }).catch((error) => this.setState({ error: e.message }));
+        }).catch((error) => this.setState({ error: error.message }));
       }
     }
   }
