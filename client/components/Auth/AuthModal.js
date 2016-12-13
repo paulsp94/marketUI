@@ -53,7 +53,7 @@ export default class AuthModal extends React.Component {
   }
 
   closeModal = () => {
-    this.setState({ login: false, register: false })
+    this.setState({ login: false, register: false, error: false })
     this.props.toggleAuthModal()
   }
 
