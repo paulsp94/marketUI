@@ -7,9 +7,6 @@ import Subheader from '../Subheader/Subheader.jsx';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
-import {Tabs, Tab} from 'material-ui/Tabs';
-import Slider from 'material-ui/Slider';
 import Flexbox from 'flexbox-react';
 
 
@@ -41,7 +38,7 @@ var Welcome = React.createClass({
                         <RaisedButton href="/ProductSearch" label='explore' style={{marginRight: '5px'}} /> 
                     </div>
                     <div className='welcome-info'>
-                        <p> this graphic was created <br/> with R and C4D</p>
+                        <p> this density map was  <br/> created with R and C4D</p>
                     </div>
                 </div>
                 
