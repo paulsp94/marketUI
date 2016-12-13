@@ -1,5 +1,8 @@
-.buttons-container {
-  margin: 20px;
-  display: flex;
-  justify-content: space-around;
+.auth-container {
+
+  .buttons-container {
+    padding: 15px 0;
+    display: flex;
+    justify-content: space-around;
+  }
 }

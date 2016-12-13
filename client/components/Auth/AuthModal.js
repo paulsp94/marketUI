@@ -21,7 +21,8 @@ export default class AuthModal extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      error: false
+      error: false,
+      signUp: false
     }
   }
 
@@ -37,69 +38,119 @@ export default class AuthModal extends React.Component {
       const pw = this.refs.pw.input.value;
       if (type === 'login') {
         firebase.auth().signInWithEmailAndPassword(email, pw).then(() => {
-          this.setState({ login: false })
-          this.props.toggleAuthModal();
+          this.closeModal();
         }).catch((error) => {
           this.setState({ error: error.message });
         });
       } else {
         firebase.auth().createUserWithEmailAndPassword(email, pw).then(() => {
-          this.setState({ register: false })
-          this.props.toggleAuthModal()
+          this.closeModal();
         }).catch((error) => this.setState({ error: error.message }));
       }
     }
   }
 
   closeModal = () => {
-    this.setState({ login: false, register: false, error: false })
-    this.props.toggleAuthModal()
+    this.setState({ signUp: false, error: false });
+    this.props.toggleAuthModal();
+  }
+
+  openSignUpMenu = () => {
+    this.setState({signUp: true})
   }
 
   render () {
-    const { error } = this.state
+    const { error, signUp } = this.state
     const { open } = this.props
     const errors = error ? <p className="text-danger"> {error} </p> : '';
     return (
       <Dialog
         onRequestClose={this.closeModal}
         open={open}
+        className={cx('auth-container')}
       >
-        <div className="row">
-          <div className="col-sm-6 col-sm-offset-3">
-            <form>
-              <div className="form-group">
-                <TextField
-                  ref="email"
-                  hintText="Email"
-                  floatingLabelText="Email"
-                  floatingLabelFixed
-                  fullWidth
-                />
-              </div>
-              <div className="form-group">
-                <TextField
-                  ref="pw"
-                  hintText="Password"
-                  floatingLabelText="Password"
-                  floatingLabelFixed
-                  type="password"
-                  fullWidth
-                />
-              </div>
-              {errors}
-              <div className={cx('buttons-container')}>
-                <RaisedButton
-                  label="Login"
-                  onClick={this.handleSubmit('login')}
-                  primary
-                  className={cx('login-button')}
-                />
-                <RaisedButton label="Sign Up" onClick={this.handleSubmit('register')} secondary/>
-              </div>
-            </form>
+        {!signUp ? <div>
+          <div className="row">
+            <div className="col-sm-6 col-sm-offset-3">
+              <form>
+                <div className="form-group">
+                  <TextField
+                    ref="email"
+                    hintText="Email"
+                    floatingLabelText="Email"
+                    floatingLabelFixed
+                    fullWidth
+                  />
+                </div>
+                <div className="form-group">
+                  <TextField
+                    ref="pw"
+                    hintText="Password"
+                    floatingLabelText="Password"
+                    floatingLabelFixed
+                    type="password"
+                    fullWidth
+                  />
+                </div>
+                {errors}
+                <div className={cx('buttons-container')}>
+                  <RaisedButton
+                    label="Login"
+                    onClick={this.handleSubmit('login')}
+                    primary
+                    fullWidth
+                  />
+                </div>
+                <div className="text-center">
+                  Need to Signup?
+                </div>
+                <div className={cx('buttons-container')}>
+                  <RaisedButton
+                    label="Sign Up"
+                    onClick={this.openSignUpMenu}
+                    secondary
+                    fullWidth
+                  />
+                </div>
+              </form>
+            </div>
           </div>
-        </div>
+        </div> : <div>
+          <div className="row">
+            <div className="col-sm-6 col-sm-offset-3">
+              <form>
+                <div className="form-group">
+                  <TextField
+                    ref="email"
+                    hintText="Email"
+                    floatingLabelText="Email"
+                    floatingLabelFixed
+                    fullWidth
+                  />
+                </div>
+                <div className="form-group">
+                  <TextField
+                    ref="pw"
+                    hintText="Password"
+                    floatingLabelText="Password"
+                    floatingLabelFixed
+                    type="password"
+                    fullWidth
+                  />
+                </div>
+                {errors}
+                <div className={cx('buttons-container')}>
+                  <RaisedButton
+                    label="Sign Up"
+                    onClick={this.handleSubmit('signUp')}
+                    secondary
+                    fullWidth
+                  />
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>}
       </Dialog>
     )
   }
