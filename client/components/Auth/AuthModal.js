@@ -21,8 +21,6 @@ export default class AuthModal extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      login: false,
-      register: false,
       error: false
     }
   }
@@ -33,22 +31,23 @@ export default class AuthModal extends React.Component {
     }
   }
 
-  handleSubmit = (e) => {
-    e.preventDefault();
-    const email = this.refs.email.input.value;
-    const pw = this.refs.pw.input.value;
-    if (this.state.login) {
-      firebase.auth().signInWithEmailAndPassword(email, pw).then(() => {
-        this.setState({ login: false })
-        this.props.toggleAuthModal();
-      }).catch((error) => {
-        this.setState({ error: error.message });
-      });
-    } else {
-      firebase.auth().createUserWithEmailAndPassword(email, pw).then(() => {
-        this.setState({ register: false })
-        this.props.toggleAuthModal()
-      }).catch((error) => this.setState({ error: e.message }));
+  handleSubmit = (type) => {
+    return () => {
+      const email = this.refs.email.input.value;
+      const pw = this.refs.pw.input.value;
+      if (type === 'login') {
+        firebase.auth().signInWithEmailAndPassword(email, pw).then(() => {
+          this.setState({ login: false })
+          this.props.toggleAuthModal();
+        }).catch((error) => {
+          this.setState({ error: error.message });
+        });
+      } else {
+        firebase.auth().createUserWithEmailAndPassword(email, pw).then(() => {
+          this.setState({ register: false })
+          this.props.toggleAuthModal()
+        }).catch((error) => this.setState({ error: e.message }));
+      }
     }
   }
 
@@ -58,7 +57,7 @@ export default class AuthModal extends React.Component {
   }
 
   render () {
-    const { login, register, error } = this.state
+    const { error } = this.state
     const { open } = this.props
     const errors = error ? <p className="text-danger"> {error} </p> : '';
     return (
@@ -66,20 +65,16 @@ export default class AuthModal extends React.Component {
         onRequestClose={this.closeModal}
         open={open}
       >
-        {!login && !register
-          ? <div className={cx('buttons-container')}>
-          <RaisedButton label="Login" primary onClick={this.setAction('login')}/>
-          <RaisedButton label="Sign Up" secondary onClick={this.setAction('register')}/>
-        </div>
-          : <div className="row">
+        <div className="row">
           <div className="col-sm-6 col-sm-offset-3">
-            <form onSubmit={this.handleSubmit}>
+            <form>
               <div className="form-group">
                 <TextField
                   ref="email"
                   hintText="Email"
                   floatingLabelText="Email"
                   floatingLabelFixed
+                  fullWidth
                 />
               </div>
               <div className="form-group">
@@ -89,14 +84,22 @@ export default class AuthModal extends React.Component {
                   floatingLabelText="Password"
                   floatingLabelFixed
                   type="password"
+                  fullWidth
                 />
               </div>
               {errors}
-              <RaisedButton label={login ? 'Login' : 'Sign Up'} type="submit" primary/>
+              <div className={cx('buttons-container')}>
+                <RaisedButton
+                  label="Login"
+                  onClick={this.handleSubmit('login')}
+                  primary
+                  className={cx('login-button')}
+                />
+                <RaisedButton label="Sign Up" onClick={this.handleSubmit('register')} secondary/>
+              </div>
             </form>
           </div>
         </div>
-        }
       </Dialog>
     )
   }
