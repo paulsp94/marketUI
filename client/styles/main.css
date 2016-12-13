@@ -21,6 +21,10 @@
     /*position: absolute;*/
 }
 
+.cursor-pointer {
+    cursor: pointer;
+}
+
 .Top {
     display: block;
     margin-left: auto;

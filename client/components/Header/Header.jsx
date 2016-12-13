@@ -5,6 +5,10 @@ import AuthModal from 'components/Auth/AuthModal'
 
 export default class Header extends React.Component {
 
+  static contextTypes = {
+    router: React.PropTypes.object.isRequired
+  }
+
   constructor (props) {
     super(props)
     this.state = {
@@ -29,6 +33,11 @@ export default class Header extends React.Component {
 
   toggleAuthModal = () => {
     this.setState({ openAuthModal: !this.state.openAuthModal })
+  }
+
+  logout = () => {
+    firebase.auth().signOut()
+    this.context.router.push('/')
   }
 
   render () {
@@ -60,7 +69,7 @@ export default class Header extends React.Component {
           </Link>
         </li>
         <li>
-          <Link to="/logout" className="">Logout</Link>
+          <a className="cursor-pointer" onClick={this.logout}>Logout</a>
         </li>
       </ul>
       : <ul className="nav navbar-nav pull-right">
@@ -80,7 +89,7 @@ export default class Header extends React.Component {
         </Link>
       </li>
       <li>
-        <a href="#" onClick={this.toggleAuthModal}>Login / Sign Up</a>
+        <a className="cursor-pointer" onClick={this.toggleAuthModal}>Login / Sign Up</a>
       </li>
     </ul>
     return (

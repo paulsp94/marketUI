@@ -11,7 +11,6 @@ import Welcome from 'components/Welcome/Welcome.jsx';
 import General from 'components/Product/General.jsx';
 import ProductSearch from 'components/ProductSearch/ProductSearch.jsx';
 import Root from 'components/Root/Root.js'
-import logout from 'components/account/logout.jsx';
 import checkout from 'components/checkout/checkout.jsx';
 
 render(<Provider store={store}>
@@ -23,7 +22,6 @@ render(<Provider store={store}>
         <Route path="General" component={General}/>
         <Route path="ProductSearch" component={ProductSearch}/>
         <Route path="checkout" component={checkout}/>
-        <Route path="logout" component={logout}/>
         <Route path="profile" component={Downloads}/>
         <Route path="EditProduct/:productid" component={General}/>
       </Route>
