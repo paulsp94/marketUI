@@ -55,8 +55,8 @@ export default class AuthModal extends React.Component {
     this.props.toggleAuthModal();
   }
 
-  openSignUpMenu = () => {
-    this.setState({signUp: true})
+  toggleSignUpMenu = () => {
+    this.setState({signUp: !this.state.signUp})
   }
 
   render () {
@@ -107,7 +107,7 @@ export default class AuthModal extends React.Component {
                 <div className={cx('buttons-container')}>
                   <RaisedButton
                     label="Sign Up"
-                    onClick={this.openSignUpMenu}
+                    onClick={this.toggleSignUpMenu}
                     secondary
                     fullWidth
                   />
@@ -146,6 +146,10 @@ export default class AuthModal extends React.Component {
                     secondary
                     fullWidth
                   />
+                </div>
+                <div className="text-center">
+                  Already got an account?&nbsp;
+                  <a onClick={this.toggleSignUpMenu} className="cursor-pointer">Sign in here</a>
                 </div>
               </form>
             </div>
