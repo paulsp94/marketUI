@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 var firebase = require('firebase');
 import firebase_details from '../../Firebase/Firebase';
@@ -149,103 +148,101 @@ class  GeneralProfile extends React.Component{
         };
 
         return (
-            <MuiThemeProvider>
-                <div className="Profiledata">
+            <div className="Profiledata">
 
-                    <Card style={{marginRight: "1%", marginLeft: "1%", marginTop: 9}}>
-                        <div className="product-tab" >
-                          <div className="left-panel">
-                              <div style={{marginTop: 25}}>
-                                <p> This is the creation page! here you can interactivly create your content. Don't forget to save & publish your work </p>
-                                </div>
-                              <div className="warning">
-                                  {this.state.Error}
-                              </div>
+                <Card style={{marginRight: "1%", marginLeft: "1%", marginTop: 9}}>
+                    <div className="product-tab" >
+                      <div className="left-panel">
+                          <div style={{marginTop: 25}}>
+                            <p> This is the creation page! here you can interactivly create your content. Don't forget to save & publish your work </p>
+                            </div>
+                          <div className="warning">
+                              {this.state.Error}
+                          </div>
 
-                                <div className="productdisplayleft">
-                                <Card style={{padding: 20, backgroundColor: "white"}}>
-                                          <input name="title" ref={(a) => this.title = a} type="text" className="inputfield-signup1" placeholder="Title" onChange={this.TiTle.bind(this)}/>
-                                          <input name="subtitle" ref={(c) => this.subTitle = c} type="text" className="inputfield-signup1" placeholder="sub-title" onChange={this.SubTitle.bind(this)}/><br/><br/>
-                                     <FileUploader
-                                            accept="image/*"
-                                            name="avatar"
-                                            randomizeFilename
-                                            storageRef={firebase.storage().ref('images')}
-                                            onUploadStart={this.handleUploadStart}
-                                            onUploadError={this.handleUploadError}
-                                            onUploadSuccess={this.handleUploadSuccess}
-                                            onProgress={this.handleProgress} />
-                                
-                                        <FileUploader
-                                            accept="image/*"
-                                            name="avatar"
-                                            randomizeFilename
-                                            storageRef={firebase.storage().ref('images')}
-                                            onUploadStart={this.handleUploadStart1}
-                                            onUploadError={this.handleUploadError1}
-                                            onUploadSuccess={this.handleUploadSuccess1}
-                                            onProgress={this.handleProgress1} />
+                            <div className="productdisplayleft">
+                            <Card style={{padding: 20, backgroundColor: "white"}}>
+                                      <input name="title" ref={(a) => this.title = a} type="text" className="inputfield-signup1" placeholder="Title" onChange={this.TiTle.bind(this)}/>
+                                      <input name="subtitle" ref={(c) => this.subTitle = c} type="text" className="inputfield-signup1" placeholder="sub-title" onChange={this.SubTitle.bind(this)}/><br/><br/>
+                                 <FileUploader
+                                        accept="image/*"
+                                        name="avatar"
+                                        randomizeFilename
+                                        storageRef={firebase.storage().ref('images')}
+                                        onUploadStart={this.handleUploadStart}
+                                        onUploadError={this.handleUploadError}
+                                        onUploadSuccess={this.handleUploadSuccess}
+                                        onProgress={this.handleProgress} />
 
-                                          <select name="Category" ref={(ab) => this.Category = ab} className="inputfield-signup1" onChange={this.ProdctCategory.bind(this)}>
-                                              <optgroup label="Category">
-                                              <option value="Category">  Category </option>
-                                                  <option value="Machine-Learning">  Machine-Learning </option>
-                                                  <option value="Big-Data"> Big-Data </option>
-                                                  <option value="Algorithms">  Algorithms </option>
-                                                  <option value="Graphics">  Graphics </option>
-                                                  <option value="Other">  Other </option>
-                                                  <option value="Web or Shiny">  Web or Shiny </option>
-                                              </optgroup>
-                                          </select>
+                                    <FileUploader
+                                        accept="image/*"
+                                        name="avatar"
+                                        randomizeFilename
+                                        storageRef={firebase.storage().ref('images')}
+                                        onUploadStart={this.handleUploadStart1}
+                                        onUploadError={this.handleUploadError1}
+                                        onUploadSuccess={this.handleUploadSuccess1}
+                                        onProgress={this.handleProgress1} />
 
-                                          <textarea name="textarea" ref={(d) => this.textarea = d} className="textarea1" placeholder="Description about Product"
-                                                    onChange={this.DescriPtion.bind(this)}/> <br/> <br/>
-                                          <input name="Price" ref={(ef) => this.Price = ef}  type="text" className="inputfield-signup1"
-                                          placeholder="Price in $"
-                                          onChange={this.PriCe.bind(this)}/><br/><br/>
+                                      <select name="Category" ref={(ab) => this.Category = ab} className="inputfield-signup1" onChange={this.ProdctCategory.bind(this)}>
+                                          <optgroup label="Category">
+                                          <option value="Category">  Category </option>
+                                              <option value="Machine-Learning">  Machine-Learning </option>
+                                              <option value="Big-Data"> Big-Data </option>
+                                              <option value="Algorithms">  Algorithms </option>
+                                              <option value="Graphics">  Graphics </option>
+                                              <option value="Other">  Other </option>
+                                              <option value="Web or Shiny">  Web or Shiny </option>
+                                          </optgroup>
+                                      </select>
+
+                                      <textarea name="textarea" ref={(d) => this.textarea = d} className="textarea1" placeholder="Description about Product"
+                                                onChange={this.DescriPtion.bind(this)}/> <br/> <br/>
+                                      <input name="Price" ref={(ef) => this.Price = ef}  type="text" className="inputfield-signup1"
+                                      placeholder="Price in $"
+                                      onChange={this.PriCe.bind(this)}/><br/><br/>
+                            </Card>
+                            <div className="product-header">
+                              <RaisedButton onClick={this.SubMit.bind(this)} label=" Save" primary={true} style={{ margin: 12}}/>
+                            </div>
+
+                          </div>
+                      </div>
+                      <div className="right-panel">
+                          <div className="container2">
+                                  <CardMedia
+                                      overlay={<CardTitle title={this.state.title} subtitle={this.state.subtitle}/>}>
+                                      <img style ={{height: 400}} src={this.state.avatarURL} />
+                                  </CardMedia>
+                                  </div>
+
+                              <div className="itemCard">
+                                <Card>
+
+
+                                  <Card className="product-search" style={{padding: 0}}>
+                                      <img className="product_image" src={this.state.avatarURL1}/>
+                                      <h5>{this.state.title}</h5>
+                                      <h5> {this.state.describtion}</h5>
+                                      <Flexbox flexDirection="row">
+                                          <Flexbox flexGrow={1}>
+                                              <RaisedButton label="rating" style={{ margin: 1, width: "100%"}} />
+                                          </Flexbox>
+                                          <Flexbox flexGrow={1}>
+                                              <RaisedButton label={this.state.price} style={{ margin: 1, width: "100%"}} />
+                                          </Flexbox>
+                                          <Flexbox flexGrow={1}>
+                                              <RaisedButton label="nr sold" style={{ margin: 1, width: "100%"}} />
+                                          </Flexbox>
+                                      </Flexbox>
                                 </Card>
-                                <div className="product-header">
-                                  <RaisedButton onClick={this.SubMit.bind(this)} label=" Save" primary={true} style={{ margin: 12}}/>
-                                </div>
-
+                                </Card>
+                                <br/><br/>
                               </div>
                           </div>
-                          <div className="right-panel">
-                              <div className="container2">
-                                      <CardMedia
-                                          overlay={<CardTitle title={this.state.title} subtitle={this.state.subtitle}/>}>
-                                          <img style ={{height: 400}} src={this.state.avatarURL} />
-                                      </CardMedia>
-                                      </div>
-                                 
-                                  <div className="itemCard">
-                                    <Card>
-
-
-                                      <Card className="product-search" style={{padding: 0}}>
-                                          <img className="product_image" src={this.state.avatarURL1}/>
-                                          <h5>{this.state.title}</h5>
-                                          <h5> {this.state.describtion}</h5>
-                                          <Flexbox flexDirection="row">
-                                              <Flexbox flexGrow={1}>
-                                                  <RaisedButton label="rating" style={{ margin: 1, width: "100%"}} />
-                                              </Flexbox>
-                                              <Flexbox flexGrow={1}>
-                                                  <RaisedButton label={this.state.price} style={{ margin: 1, width: "100%"}} /> 
-                                              </Flexbox>
-                                              <Flexbox flexGrow={1}>
-                                                  <RaisedButton label="nr sold" style={{ margin: 1, width: "100%"}} />
-                                              </Flexbox>
-                                          </Flexbox>
-                                    </Card>
-                                    </Card>
-                                    <br/><br/>
-                                  </div>
-                              </div>
-                        </div>
-                    </Card>
-                </div>
-            </MuiThemeProvider>
+                    </div>
+                </Card>
+            </div>
         )
     }
 }

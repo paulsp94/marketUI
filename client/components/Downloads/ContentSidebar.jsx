@@ -2,10 +2,8 @@ import React, { Component } from 'react';
 import {Link} from "react-router";
 import {withRouter} from 'react-router';
 import { hashHistory } from 'react-router';
-import Header from '../Header/Header.jsx';
 import Subheader from '../Subheader/Subheader.jsx';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import Slider from 'material-ui/Slider';
@@ -29,7 +27,6 @@ class ContentSidebar extends React.Component{
 
     render(){
         return (
-            <MuiThemeProvider>
                 <div className="sidebar">
                     <Tabs>
                         <Tab label="Content" >
@@ -65,8 +62,6 @@ class ContentSidebar extends React.Component{
                         </Tab>
                     </Tabs>
                 </div>
-
-            </MuiThemeProvider>
         )
     }
 }

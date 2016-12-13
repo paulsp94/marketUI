@@ -5,7 +5,6 @@ import { bindActionCreators } from 'redux';
 import {Link} from "react-router";
 import {withRouter} from 'react-router';
 import { hashHistory } from 'react-router';
-import Header from '../Header/Header.jsx';
 import Subheader from '../Subheader/Subheader.jsx';
 import Sidebar from '../Sidebar/Sidebar.jsx';
 import Itemview from './Itemview.jsx';
@@ -80,7 +79,6 @@ class  ItemPreview extends Component{
         if(productdetails == false || prductdescription == false || Productsidebarobject == false){
             return(
                 <div className="background">
-                    <Header/>
                 <div className="loader">
                     <Loading type='spin' color='#000000' />
                 </div>
@@ -95,7 +93,6 @@ class  ItemPreview extends Component{
 
             return (
                 <div className="background">
-                    <Header/>
                     <Itemview productcoredetails = {productcorealldetails} Description = {productdesdetail}/>
                     <Sidebar productcoredetails={productcorealldetails} Description={productdesdetail}
                              Sidebar={prodsidebardet} ProductId={this.state.ProductId} Comments = {allcomment}/>

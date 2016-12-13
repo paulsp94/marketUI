@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
-import {Link} from "react-router";
-import {withRouter} from 'react-router';
-import { hashHistory } from 'react-router';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import { Tab as MuiTab } from 'material-ui/Tabs';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
@@ -54,7 +50,7 @@ class  Profile extends React.Component{
     Dropboxcloase4(){
         this.setState({open3: false});
     }
- 
+
     Dropboxcloase3(){
         this.setState({open2: false});
     }
@@ -93,7 +89,7 @@ class  Profile extends React.Component{
             console.log('didnt match');
         }
     }
-    
+
     render(){
 
 
@@ -165,78 +161,76 @@ class  Profile extends React.Component{
 
 
         return (
-            <MuiThemeProvider>
-                <div className="Profiledata">
+            <div className="Profiledata">
+            <Card style={{marginRight: "2%", marginLeft: "2%", marginTop: 9}}>
+                <CardText>
+                    <br/><br/>
+                     Email: {email}
+                    <br/><br/>
+                    <RaisedButton label="Change Email" style={{ margin: 12}} onTouchTap={this.Dropboxopen4.bind(this)} />
+                    <br />
+                    {Emailresult}<br/>
+                   <RaisedButton label="Change Password" style={{ margin: 12}} onTouchTap={this.Dropboxopen1.bind(this)} />
+                    <br/><br/>
+                    {result}
+
+                    <Dialog
+                        actions={actions}
+                        modal={false}
+                        open={this.state.open}
+                        onRequestClose={this.Dropboxcloase1.bind(this)}>
+
+                       <h3> Change Password </h3> <br/><br/>
+
+                        Enter Password: <br/> <input className="inputfield-signup1" type="password" name="password" ref={(fgf) => this.password = fgf} /> <br/><br/>
+                        Enter Again-Password: <br/><input className="inputfield-signup1" type="password" name="password1" ref={(fg) => this.password1 = fg}/><br/><br/>
+                        <RaisedButton label="Submit" onClick={this.changepassword.bind(this)} style={{ margin: 12}} />
+
+                    </Dialog>
+
+                     <Dialog
+                        actions={actions3}
+                        modal={false}
+                        open={this.state.open3}
+                        onRequestClose={this.Dropboxcloase4.bind(this)}>
+                         <input className="inputfield-signup1" type="email" placeholder="Enter New Email" name="newemail" ref={(g) => this.newemail = g}/>
+
+                         <RaisedButton label="Submit" onClick={this.changeemail.bind(this)} style={{ margin: 12}} />
+
+                     </Dialog>
+
+                    <Dialog
+                        actions={actions1}
+                        modal={false}
+                        open={this.state.open1}
+                        onRequestClose={this.Dropboxcloase2.bind(this)}>
+                    </Dialog>
+
+                </CardText>
+                </Card>
                 <Card style={{marginRight: "2%", marginLeft: "2%", marginTop: 9}}>
-                    <CardText>
-                        <br/><br/>
-                         Email: {email}
-                        <br/><br/>          
-                        <RaisedButton label="Change Email" style={{ margin: 12}} onTouchTap={this.Dropboxopen4.bind(this)} />   
-                        <br />
-                        {Emailresult}<br/>
-                       <RaisedButton label="Change Password" style={{ margin: 12}} onTouchTap={this.Dropboxopen1.bind(this)} />
-                        <br/><br/>
-                        {result}
 
-                        <Dialog
-                            actions={actions}
-                            modal={false}
-                            open={this.state.open}
-                            onRequestClose={this.Dropboxcloase1.bind(this)}>
+                   <CardText>
 
-                           <h3> Change Password </h3> <br/><br/>
+                    <br/>
 
-                            Enter Password: <br/> <input className="inputfield-signup1" type="password" name="password" ref={(fgf) => this.password = fgf} /> <br/><br/>
-                            Enter Again-Password: <br/><input className="inputfield-signup1" type="password" name="password1" ref={(fg) => this.password1 = fg}/><br/><br/>
-                            <RaisedButton label="Submit" onClick={this.changepassword.bind(this)} style={{ margin: 12}} />
+                    <Dialog
+                        actions={actions1}
+                        modal={false}
+                        open={this.state.open1}
+                        onRequestClose={this.Dropboxcloase2.bind(this)}>
+                    </Dialog>
 
-                        </Dialog>
+                    <Dialog
+                        actions={actions2}
+                        modal={false}
+                        open={this.state.open2}
+                        onRequestClose={this.Dropboxcloase3.bind(this)}>
+                    </Dialog>
 
-                         <Dialog
-                            actions={actions3}
-                            modal={false}
-                            open={this.state.open3}
-                            onRequestClose={this.Dropboxcloase4.bind(this)}>
-                             <input className="inputfield-signup1" type="email" placeholder="Enter New Email" name="newemail" ref={(g) => this.newemail = g}/>
-
-                             <RaisedButton label="Submit" onClick={this.changeemail.bind(this)} style={{ margin: 12}} />
-
-                         </Dialog>
-
-                        <Dialog
-                            actions={actions1}
-                            modal={false}
-                            open={this.state.open1}
-                            onRequestClose={this.Dropboxcloase2.bind(this)}>
-                        </Dialog>
-
-                    </CardText>
-                    </Card>
-                    <Card style={{marginRight: "2%", marginLeft: "2%", marginTop: 9}}>
-
-                       <CardText>
-                      
-                        <br/>
-                    
-                        <Dialog
-                            actions={actions1}
-                            modal={false}
-                            open={this.state.open1}
-                            onRequestClose={this.Dropboxcloase2.bind(this)}>
-                        </Dialog>
-
-                        <Dialog
-                            actions={actions2}
-                            modal={false}
-                            open={this.state.open2}
-                            onRequestClose={this.Dropboxcloase3.bind(this)}>
-                        </Dialog>
-
-                    </CardText>
-                    </Card>
-                </div>
-            </MuiThemeProvider>
+                </CardText>
+                </Card>
+            </div>
         )
     }
 }

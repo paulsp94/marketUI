@@ -5,10 +5,7 @@ import { bindActionCreators } from 'redux';
 import {Link} from "react-router";
 import {withRouter} from 'react-router';
 import { hashHistory } from 'react-router';
-import Header from '../Header/Header.jsx';
 import Subheader from '../Subheader/Subheader.jsx';
-import injectTapEventPlugin from 'react-tap-event-plugin';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import {Tabs, Tab} from 'material-ui/Tabs';
@@ -59,7 +56,6 @@ class  ProductSearch extends React.Component{
         if(allproducts == false){
             return(
             <div className="background">
-                <Header/>
                 <div className="loader">
                     <Loading type='spin' color='#000000' />
                 </div>
@@ -68,9 +64,7 @@ class  ProductSearch extends React.Component{
         }
         else {
             return (
-                <MuiThemeProvider>
                     <div>
-                        <Header/>
                         <div className="container-search">
                             <Tags/>
                             {
@@ -81,7 +75,6 @@ class  ProductSearch extends React.Component{
                             }
                         </div>
                     </div>
-                </MuiThemeProvider>
             )
         }
     }

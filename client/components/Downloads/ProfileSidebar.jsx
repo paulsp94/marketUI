@@ -1,18 +1,6 @@
 import React, { Component } from 'react';
-import {Link} from "react-router";
-import {withRouter} from 'react-router';
-import { hashHistory } from 'react-router';
-import Header from '../Header/Header.jsx';
-import Subheader from '../Subheader/Subheader.jsx';
-import injectTapEventPlugin from 'react-tap-event-plugin';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import {Card, CardText} from 'material-ui/Card';
 import {Tabs, Tab} from 'material-ui/Tabs';
-import Slider from 'material-ui/Slider';
-import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
-import RaisedButton from 'material-ui/RaisedButton';
-import Divider from 'material-ui/Divider';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 
 class ProfileSidebar extends React.Component{
@@ -29,7 +17,6 @@ class ProfileSidebar extends React.Component{
 
     render(){
         return (
-            <MuiThemeProvider>
                 <div className="sidebar">
                  <Tabs>
                  <Tab label="header" >
@@ -52,8 +39,6 @@ class ProfileSidebar extends React.Component{
                      </Tab>
                     </Tabs>
                 </div>
-
-            </MuiThemeProvider>
         )
     }
 }

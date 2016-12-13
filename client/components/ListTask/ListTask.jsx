@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {Link} from "react-router";
 import {withRouter} from 'react-router';
 import { hashHistory } from 'react-router';
-import Header from '../Header/Header.jsx';
 import Details from './Details';
 import { PropTypes } from 'react'
 
@@ -74,7 +73,6 @@ class ListTask extends React.Component{
         return (
 
             <div className="background" >
-                <Header/>
                 <br/>
 
 

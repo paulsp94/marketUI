@@ -2,10 +2,8 @@ import React, { Component } from 'react';
 import {Link} from "react-router";
 import {withRouter} from 'react-router';
 import { hashHistory } from 'react-router';
-import Header from '../Header/Header.jsx';
 import Subheader from '../Subheader/Subheader.jsx';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 import Flexbox from 'flexbox-react';
 
@@ -24,9 +22,7 @@ var Welcome = React.createClass({
                       position: 'absolute'};
 
         return (
-            <MuiThemeProvider>
             <div>
-                <Header/>
                 <div style={style}>
                     <div className="welcome-text">
                         <h1> Welcome to the Rscript.Market</h1>
@@ -43,7 +39,6 @@ var Welcome = React.createClass({
                 </div>
                 
             </div>
-            </MuiThemeProvider>
         )
     }
 
