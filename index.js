@@ -19,11 +19,7 @@ app.use('/client', express.static(path.join(process.cwd(), '/client')));
 
 app.disable('x-powered-by');
 
-firebase.initializeApp({
-  apiKey: "AIzaSyBbdacDmz3DuXlHSjfu7aoBSXjQircXnQw",
-  authDomain: "rscriptmarket-66f49.firebaseio.com",
-  databaseURL: "https://rscriptmarket-66f49.firebaseio.com"
-});
+firebase.initializeApp(config['config']['firebase']);
 
 var env = {
   production: process.env.NODE_ENV === 'production'
