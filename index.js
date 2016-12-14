@@ -1,45 +1,12 @@
-'use strict';
 var fs = require('fs');
 var path = require('path');
 var express = require('express');
-var app = express();
-//
-//app.get('/api', function (req, res) {
-//    //res.send('Hello World!'); // This will serve your request to '/'.
-//    res.sendfile(__dirname + '/index.php');
-//});
-//
-//app.listen(8080, function () {
-//    console.log('Example app listening on port 8080!');
-//});
-
-
-
-//var phpServer = require('node-php-server');
-//
-//// Create a PHP Server
-//phpServer.createServer({
-//    port: 8080,
-//    hostname: '127.0.0.1',
-//    base: '.',
-//    keepalive: false,
-//    open: false,
-//    bin: 'php',
-//    router: __dirname + '/server.php'
-//});
-//
-//// Close server
-//phpServer.close();
-
-
-
-
-//
-//var express = require('express');
-//var app = express();
-
+var axios = require('axios');
+var firebase = require('firebase');
 var compress = require('compression');
 var layouts = require('express-ejs-layouts');
+var config = require('./config');
+var app = express();
 
 app.set('layout');
 app.set('view engine', 'ejs');
@@ -52,6 +19,8 @@ app.use('/client', express.static(path.join(process.cwd(), '/client')));
 
 app.disable('x-powered-by');
 
+firebase.initializeApp(config['config']['firebase']);
+
 var env = {
   production: process.env.NODE_ENV === 'production'
 };
@@ -62,18 +31,43 @@ if (env.production) {
   });
 }
 
-app.get('/api', function(req, res) {
+app.get('/api', function (req, res) {
   res.send("api");
 });
 
-//app.get('/index.php', function (req, res) {
-//  res.router(dirname + '/server.php');
-//
-//});
+/**
+ * On stripe callback, make a post request to stripe oaut
+ * to fetch the user details.
+ *
+ * On success make another request to firebase and store the response from the stripe
+ * **/
+app.get('/stripe/callback', function (request, response) {
+  var stripeConfig = config['config']['stripe'];
+  var userId = request.query.state;
 
+  axios.post(stripeConfig['accessTokenUrl'], {
+    client_secret: stripeConfig['clientSecretKey'],
+    code: request.query.code,
+    grant_type: 'authorization_code'
+  })
+    .then(function (callback) {
+      var newUserKey = firebase.database().ref().child('Users').push().key;
+      var userData = callback.data;
+      var update = {};
+      userData['_id'] = newUserKey;
+      userData['UserId'] = userId;
+      update[`/Users/${newUserKey}`] = userData;
 
+      return firebase.database().ref().update(update).then(() => {
+        response.redirect('/');
+      });
+    })
+    .catch(function (error) {
+      response.redirect('/');
+    });
+});
 
-app.get('/*', function(req, res) {
+app.get('/*', function (req, res) {
   res.render('layout', {
     env: env
   });
