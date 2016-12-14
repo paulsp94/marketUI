@@ -196,6 +196,13 @@ h1 {
 	color: #dbd1b4;
 }
 
+.Productcontent{
+    margin-right: 10%;
+    margin-left: 10%;
+    text-align: center;
+    height: 100%;
+}
+
 .welcome-text{
 	margin-top: 90px;
 	margin-left: auto;

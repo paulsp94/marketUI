@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Link} from "react-router";
 import {withRouter} from 'react-router';
+import { browserHistory } from 'react-router';
 import { hashHistory } from 'react-router';
 import Header from '../Header/Header.jsx';
 import Subheader from '../Subheader/Subheader.jsx';
@@ -25,6 +26,11 @@ class  DataContainer extends React.Component{
         this.props.ViewItem(productname);
     }
 
+    ProductContentDownload(){
+        var productid = this.props.item.productid;
+        browserHistory.push('ProductContent/'+ productid);
+    }
+
     render(){
 
         var Style = {
@@ -38,7 +44,7 @@ class  DataContainer extends React.Component{
                 <div className="text-part">
                 <h4> <strong> {this.props.item.name} </strong> </h4>
                     <br/> <br/>
-                    <RaisedButton label="Download" style={{ margin: 12}} />
+                    <RaisedButton onClick={this.ProductContentDownload.bind(this)} label="Download" style={{ margin: 12}} />
                     <RaisedButton label={this.props.item.Price} style={{ margin: 12}} />
 
                 </div>

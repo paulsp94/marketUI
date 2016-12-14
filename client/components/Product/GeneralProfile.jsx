@@ -149,7 +149,6 @@ class  GeneralProfile extends React.Component{
 
         return (
             <div className="Profiledata">
-
                 <Card style={{marginRight: "1%", marginLeft: "1%", marginTop: 9}}>
                     <div className="product-tab" >
                       <div className="left-panel">

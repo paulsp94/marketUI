@@ -12,6 +12,7 @@ import General from 'components/Product/General.jsx';
 import ProductSearch from 'components/ProductSearch/ProductSearch.jsx';
 import Root from 'components/Root/Root.js'
 import checkout from 'components/checkout/checkout.jsx';
+import ProductContent from 'components/ProductContent/ProductContent.jsx';
 
 render(<Provider store={store}>
     <Router history={browserHistory}>
@@ -24,6 +25,7 @@ render(<Provider store={store}>
         <Route path="checkout" component={checkout}/>
         <Route path="profile" component={Downloads}/>
         <Route path="EditProduct/:productid" component={General}/>
+          <Route path="ProductContent/:productid" component={ProductContent}/>
       </Route>
     </Router>
   </Provider>,
