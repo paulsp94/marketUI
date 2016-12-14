@@ -6,6 +6,10 @@
 
 /*}*/
 
+html {
+       overflow-y: scroll;
+}
+
 .background {
     overflow: auto;
 }
