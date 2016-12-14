@@ -43,6 +43,8 @@ app.get('/api', function (req, res) {
  * **/
 app.get('/stripe/callback', function (request, response) {
   var stripeConfig = config['config']['stripe'];
+  var userId = request.query.state;
+
   axios.post(stripeConfig['accessTokenUrl'], {
     client_secret: stripeConfig['clientSecretKey'],
     code: request.query.code,
@@ -53,14 +55,15 @@ app.get('/stripe/callback', function (request, response) {
       var userData = callback.data;
       var update = {};
       userData['_id'] = newUserKey;
+      userData['UserId'] = userId;
       update[`/Users/${newUserKey}`] = userData;
 
       return firebase.database().ref().update(update).then(() => {
-        response.redirect('/profile');
+        response.redirect('/');
       });
     })
     .catch(function (error) {
-      response.redirect('/profile');
+      response.redirect('/');
     });
 });
 
