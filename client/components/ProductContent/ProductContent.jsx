@@ -8,12 +8,23 @@ import Subheader from '../Subheader/Subheader.jsx';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import RaisedButton from 'material-ui/RaisedButton';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
-import {Tabs, Tab} from 'material-ui/Tabs';
-import Slider from 'material-ui/Slider';
 import ReactMarkdown from 'react-markdown';
 import { productEditValidationDetails } from '../../action/action.jsx';
 
-var data = "<h1>dscdscashdiashdiasidiasdiiasd</h1>  <h3>Added stripe button in the profile page #3</h3> <h3>Added stripe button in the profile page #3</h3> <h3>Added stripe button in the profile page #3</h3> <h3>Added stripe button in the profile page #3</h3> <h3>Added stripe button in the profile page #3</h3> <h3>Added stripe button in the profile page #3</h3> <h3>Added stripe button in the profile page #3</h3> <h3>Added stripe button in the profile page #3</h3> <h3>Added stripe button in the profile page #3</h3> <h3>Added stripe button in the profile page #3</h3>";
+import FontIcon from 'material-ui/FontIcon';
+import Paper from 'material-ui/Paper';
+import MenuItem from 'material-ui/MenuItem';
+import Menu from 'material-ui/Menu';
+import RemoveRedEye from 'material-ui/svg-icons/image/remove-red-eye';
+import PersonAdd from 'material-ui/svg-icons/social/person-add';
+import ContentLink from 'material-ui/svg-icons/content/link';
+import Divider from 'material-ui/Divider';
+import ContentCopy from 'material-ui/svg-icons/content/content-copy';
+import Download from 'material-ui/svg-icons/file/file-download';
+import Delete from 'material-ui/svg-icons/action/delete';
+import Flexbox from 'flexbox-react';
+
+var data = "Take me to [pookie](#pookie) \n <a name='pookie2'></a> \n # This is an <h1> tag\n## This is an <h2> tag\n###### This is an <h6> tag # This is an <h1> tag\n\n# This is an <h2> tag\n ###### This is an <h6> tag # This is an <h1> tag\n## This is an <h2> tag\n###### This is an <h6> tag # This is an <h1> tag\n## This is an <h2> tag\n###### This is an <h6> tag # This is an <h1> tag\n\n# This is an <h2> tag\n###### This is an <h6> tag # This is an <h1> tag\n## This is an <h2> tag\n###### This is an <h6> tag # This is an <h1> tag\n## This is an <h2> tag\n###### This is an <h6> tag # This is an <h1> tag\n\n# This is an <h2> tag\n###### This is an <h6> tag # This is an <h1> tag\n  ## This is an <h2> tag\n###### This is an <h6> tag # This is an <h1> tag\n## This is an <h2> tag\n###### This is an <h6> tag # This is an <h1> tag\n\n# This is an <h2> tag\n###### This is an <h6> tag # This is an <h1> tag\n## This is an <h2> tag\n###### This is an <h6> tag\n### <a name='pookie'></a>Some heading";
 
 function mapStateToProps(store) {
     return { userdetails: store.userdetails};
@@ -26,7 +37,6 @@ function mapDispatchToProps(dispatch) {
 }
 
 @connect(mapStateToProps, mapDispatchToProps)
-
 
 
 class  ProductContent extends React.Component{
@@ -47,7 +57,20 @@ class  ProductContent extends React.Component{
         var thisIsMyCopy = data;
         return (
             <div className="">
-                <div className="Productcontent" style={{backgroundColor: "#efeadd", paddingBottom: "0.5%"}}>
+             <Paper className="contentSidebar">
+      <Menu>
+        <MenuItem primaryText="Author Info" leftIcon={<RemoveRedEye />} />
+        <MenuItem primaryText="Ask Question" leftIcon={<PersonAdd />} />
+        <MenuItem primaryText="Download" leftIcon={<Download />} />
+        <MenuItem primaryText="----" />
+        <MenuItem primaryText="Header Title1" href="#pookie"/>
+        <MenuItem primaryText="Header Title2" href="#pookie2"/>
+        <MenuItem primaryText="Header Title3"/>
+        <MenuItem primaryText="Header Title4"/>
+      </Menu>
+    </Paper>
+             
+                <div className="contentDownload" style={{backgroundColor: "#efeadd"}}>
                     <ReactMarkdown source={thisIsMyCopy} escapeHtml={false} />
                 </div>
             </div>
