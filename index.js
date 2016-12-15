@@ -6,6 +6,8 @@ var firebase = require('firebase');
 var compress = require('compression');
 var layouts = require('express-ejs-layouts');
 var config = require('./config');
+var stripe = require("stripe")(config['config']['stripe']['clientSecretKey']);
+var bodyParser = require('body-parser');
 var app = express();
 
 app.set('layout');
@@ -13,6 +15,8 @@ app.set('view engine', 'ejs');
 app.set('view options', {layout: 'layout'});
 app.set('views', path.join(process.cwd(), '/server/views'));
 
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 app.use(compress());
 app.use(layouts);
 app.use('/client', express.static(path.join(process.cwd(), '/client')));
@@ -65,6 +69,35 @@ app.get('/stripe/callback', function (request, response) {
     .catch(function (error) {
       response.redirect('/');
     });
+});
+
+/**
+ * Endpoint to make the charges request to the Stripe
+ *
+ * Required Params: token => Stripe token Id
+ *  it makes the payment request to the stripe and on success responds with status ok
+ * **/
+app.post('/stripe/checkout', function(request, response) {
+  var paymentParams = request.body;
+
+  var chargePercent = 10; // TODO change as per business need
+  var applicationFee = parseInt((chargePercent * paymentParams.amount) / 100);
+
+  stripe.charges.create({
+    amount: paymentParams.amount,
+    currency: 'usd',
+    source: paymentParams.token,
+    destination: paymentParams.sellerId,
+    description: "Rscript.Market Transaction",
+    application_fee: applicationFee // amount in cents
+  }, function(err, charge) {
+    if(err) {
+      response.sendStatus(400);
+    } else {
+      // TODO handle record keeping here, if needed
+      response.sendStatus(200);
+    }
+  });
 });
 
 app.get('/*', function (req, res) {
