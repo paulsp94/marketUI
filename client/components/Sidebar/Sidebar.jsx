@@ -17,6 +17,7 @@ import Chip from 'material-ui/Chip';
 import { EnternewComment, ProductComments } from '../../action/action.jsx';
 var firebase = require('firebase');
 import firebase_details from '../../Firebase/Firebase';
+import StripeCheckout from '../stripe/checkout';
 
 function mapDispatchToProps (dispatch) {
   return bindActionCreators({
@@ -228,7 +229,10 @@ class Sidebar extends React.Component {
             </TableBody>
           </Table>
           <RaisedButton label="Add To Card" style={{ margin: 12 }}/>
-          <RaisedButton label="Buy & Checkout" style={{ margin: 12 }}/>
+          {/*// TODO feed me real data, amount in cents */}
+          <StripeCheckout
+            amount={1000}
+            sellerId={'acct_19QfusKwrXhx81rS'} />
         </div>
       </div>
     }
