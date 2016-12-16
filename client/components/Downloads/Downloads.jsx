@@ -30,9 +30,6 @@ var productspecificdata = [
     {Productname:"Product 3", IntegrationTime:"3-4 Hours", Complexity: "7.5/10", compatibilty:"C++", Price:"$20",rate:"2.5/10"},
 ];
 
-
-
-
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({
         currentuserid,
@@ -46,7 +43,6 @@ function mapStateToProps(store) {
 }
 
 @connect(mapStateToProps, mapDispatchToProps)
-
 
 class  Downloads extends React.Component{
 

@@ -54,11 +54,6 @@ export default class Header extends React.Component {
           </Link>
         </li>
         <li>
-          <Link to="/checkout" className="">
-            checkout
-          </Link>
-        </li>
-        <li>
           <Link to="/General" className="">
             ProductCreation
           </Link>
@@ -83,11 +78,7 @@ export default class Header extends React.Component {
           Search
         </Link>
       </li>
-      <li>
-        <Link to="/checkout" className="">
-          checkout
-        </Link>
-      </li>
+   
       <li>
         <a className="cursor-pointer" onClick={this.toggleAuthModal}>Login / Sign Up</a>
       </li>

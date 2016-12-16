@@ -220,14 +220,23 @@ h1 {
 }
 
 .contentHeader{
-	max-width: 1000px;
+	max-width: 1200px;
+	min-width: 1200px;
     margin-right: auto;
     margin-left: auto;
     padding-top: 0%;
     margin-top: 0%;
 }
 
-
+.contentMarkdown{
+	max-width: 80%;
+	min-width: 80%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-top: 0%;
+    margin-top: 0%;
+    float: right;
+}
 
 .welcome-text{
 	margin-top: 90px;

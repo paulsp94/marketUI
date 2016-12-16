@@ -172,8 +172,6 @@ class Sidebar extends React.Component {
                 </TableRow>
               </TableBody>
             </Table>
-            <RaisedButton label="Add To Card" style={{ margin: 12 }}/>
-            <RaisedButton label="Buy & Checkout" style={{ margin: 12 }}/>
           </Card></div>
       </div>
     }
@@ -212,7 +210,6 @@ class Sidebar extends React.Component {
 
           <div style={{ flexWrap: "wrap", margin: 9 }}>
             <h4 ><strong> Maintenance: </strong></h4>
-            <h5> 5 Versions</h5>
             <p > Last Updated 20-11-2015 </p>
           </div>
 

@@ -228,7 +228,6 @@ class Sidebar extends React.Component {
               </TableRow>
             </TableBody>
           </Table>
-          <RaisedButton label="Add To Card" style={{ margin: 12 }}/>
           {/*// TODO feed me real data, amount in cents */}
           <StripeCheckout
             amount={1000}

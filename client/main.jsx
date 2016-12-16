@@ -22,7 +22,6 @@ render(<Provider store={store}>
         <Route path="ItemPreview/:productid" component={ItemPreview}/>
         <Route path="General" component={General}/>
         <Route path="ProductSearch" component={ProductSearch}/>
-        <Route path="checkout" component={checkout}/>
         <Route path="profile" component={Downloads}/>
         <Route path="EditProduct/:productid" component={General}/>
           <Route path="ProductContent/:productid" component={ProductContent}/>

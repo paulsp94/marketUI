@@ -56,21 +56,21 @@ class  ProductContent extends React.Component{
 
         var thisIsMyCopy = data;
         return (
-            <div className="">
+            <div className="contentDownload">
              <Paper className="contentSidebar">
-      <Menu>
-        <MenuItem primaryText="Author Info" leftIcon={<RemoveRedEye />} />
-        <MenuItem primaryText="Ask Question" leftIcon={<PersonAdd />} />
-        <MenuItem primaryText="Download" leftIcon={<Download />} />
-        <MenuItem primaryText="----" />
-        <MenuItem primaryText="Header Title1" href="#pookie"/>
-        <MenuItem primaryText="Header Title2" href="#pookie2"/>
-        <MenuItem primaryText="Header Title3"/>
-        <MenuItem primaryText="Header Title4"/>
-      </Menu>
-    </Paper>
+              <Menu>
+                <MenuItem primaryText="Author Info" leftIcon={<RemoveRedEye />} />
+                <MenuItem primaryText="Ask Question" leftIcon={<PersonAdd />} />
+                <MenuItem primaryText="Download" leftIcon={<Download />} />
+                <MenuItem primaryText="----" />
+                <MenuItem primaryText="Header Title1" href="#pookie"/>
+                <MenuItem primaryText="Header Title2" href="#pookie2"/>
+                <MenuItem primaryText="Header Title3"/>
+                <MenuItem primaryText="Header Title4"/>
+              </Menu>
+            </Paper>
              
-                <div className="contentDownload" style={{backgroundColor: "#efeadd"}}>
+                <div className="contentMarkdown" style={{backgroundColor: "#efeadd"}}>
                     <ReactMarkdown source={thisIsMyCopy} escapeHtml={false} />
                 </div>
             </div>

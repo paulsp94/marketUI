@@ -32,15 +32,8 @@ class ContentSidebar extends React.Component{
                         <Tab label="Content" >
                             <Card expanded={this.state.expanded}>
                                 <div className="createproduct">
-                                <RaisedButton label="Create Product" style={{ margin: 12}} />
+                                <RaisedButton label="Create Product" href="" style={{ margin: 12}} />
                                 </div>
-                                <hr/>
-                                
-                                <CardText>
-                                    <div className="userdescribation">
-                                        Rating graph over time
-                                    </div>
-                                </CardText>
                                 <hr/>
 
                                 <CardText>
