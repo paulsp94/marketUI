@@ -1,6 +1,7 @@
 import React, {PropTypes} from 'react';
 import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios';
+import firebase from 'firebase';
 
 import config from '../../config/index';
 
@@ -13,12 +14,14 @@ class StripeCheckoutComponent extends React.Component {
   }
 
   _tokenHandler(token) {
-    let {amount, sellerId} = this.props;
+    let {amount, sellerId, productId} = this.props;
 
     axios.post(config['stripe']['checkoutUrl'], {
       token: token.id,
       amount: amount,
-      sellerId: sellerId
+      sellerId: sellerId,
+      productId: productId,
+      buyerId: firebase.auth().currentUser.uid
     }).then((response) => {
       // TODO Handle the successful payment based on UI design
       alert('Payment was successful');
@@ -51,7 +54,11 @@ StripeCheckoutComponent.propTypes = {
   /**
    * Holds the id of the seller
    * */
-  sellerId: PropTypes.string.isRequired
+  sellerId: PropTypes.string.isRequired,
+  /**
+   * Holds the id of the published product
+   * */
+  productId: PropTypes.string.isRequired
 };
 
 export default StripeCheckoutComponent;

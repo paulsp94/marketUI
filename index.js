@@ -79,7 +79,6 @@ app.get('/stripe/callback', function (request, response) {
  * **/
 app.post('/stripe/checkout', function(request, response) {
   var paymentParams = request.body;
-
   var chargePercent = 10; // TODO change as per business need
   var applicationFee = parseInt((chargePercent * paymentParams.amount) / 100);
 
@@ -94,8 +93,18 @@ app.post('/stripe/checkout', function(request, response) {
     if(err) {
       response.sendStatus(400);
     } else {
-      // TODO handle record keeping here, if needed
-      response.sendStatus(200);
+      var newSalesKey = firebase.database().ref().child('sales').push().key;
+      var update = {};
+      update[`/sales/${newSalesKey}`] = {
+        _id: newSalesKey,
+        buyerId: paymentParams.buyerId,
+        productId: paymentParams.productId,
+        paymentDetails: charge
+      };
+
+      return firebase.database().ref().update(update).then(() => {
+        response.sendStatus(200);
+      });
     }
   });
 });
