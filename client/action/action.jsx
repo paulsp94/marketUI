@@ -475,33 +475,26 @@ export function  productEditValidationDetails(productid) {
 
 export function  productSellerandstripeid(productid) {
     return function (dispatch) {
+      firebase.database().ref(`Publishedproduct/${productid}`).once('value').then((snapshot) => {
+        let sellerId = snapshot.val().UserId;
 
-        firebase.database().ref('Publishedproduct').orderByChild('Productid').equalTo(productid).on("child_added", (snapshot) => {
+        firebase.database().ref(`Users`).once('value').then((response) => {
+          let sellers = response.val();
 
-            var Productownerid = snapshot.val().UserId;
-
-            console.log(Productownerid,'PRODUCTOWNERID');
-
-            console.log('1');
-
-                firebase.database().ref('Users').orderByChild('UserId').equalTo(Productownerid).on("child_added", (snapshot) => {
-
-                console.log('2');
-
-                var stripeuserid = snapshot.val().stripe_user_id;
-
-                console.log('stripe id is',stripeuserid,'stripeuserid');
-
-                // dispatch({
-                //     type: "STRIPEUSERID",
-                //     payload: {
-                //         stripeuserid: stripeuserid,
-                //         productownerid: Productownerid
-                //     }
-                // })
-
-             });
-        });
+          Object.keys(sellers).forEach(function (key) {
+            let seller = sellers[key];
+            if (seller.UserId === sellerId) {
+              dispatch({
+                type: "STRIPEUSERID",
+                payload: {
+                  stripeuserid: seller.stripe_user_id,
+                  productownerid: sellerId
+                }
+              })
+            }
+          });
+        })
+      });
     }
 }
 

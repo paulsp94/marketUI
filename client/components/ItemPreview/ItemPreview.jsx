@@ -91,8 +91,13 @@ class  ItemPreview extends Component{
             return (
                 <div className="background">
                     <Itemview productcoredetails = {productcorealldetails} Description = {productdesdetail}/>
-                    <Sidebar productcoredetails={productcorealldetails} Description={productdesdetail}
-                             Sidebar={prodsidebardet} ProductId={this.state.ProductId} Comments = {allcomment}/>
+                    <Sidebar productcoredetails={productcorealldetails}
+                             Description={productdesdetail}
+                             Sidebar={prodsidebardet}
+                             ProductId={this.state.ProductId}
+                             Comments = {allcomment}
+                             sellerStripeAccountId={this.props.userdetails.stripeuserid}
+                    />
                 </div>
             )
         }
