@@ -473,5 +473,37 @@ export function  productEditValidationDetails(productid) {
     }
 }
 
+export function  productSellerandstripeid(productid) {
+    return function (dispatch) {
+
+        firebase.database().ref('Publishedproduct').orderByChild('Productid').equalTo(productid).on("child_added", (snapshot) => {
+
+            var Productownerid = snapshot.val().UserId;
+
+            console.log(Productownerid,'PRODUCTOWNERID');
+
+            console.log('1');
+
+                firebase.database().ref('Users').orderByChild('UserId').equalTo(Productownerid).on("child_added", (snapshot) => {
+
+                console.log('2');
+
+                var stripeuserid = snapshot.val().stripe_user_id;
+
+                console.log('stripe id is',stripeuserid,'stripeuserid');
+
+                // dispatch({
+                //     type: "STRIPEUSERID",
+                //     payload: {
+                //         stripeuserid: stripeuserid,
+                //         productownerid: Productownerid
+                //     }
+                // })
+
+             });
+        });
+    }
+}
+
 export default user;
 

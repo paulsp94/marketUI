@@ -15,6 +15,8 @@ export default function userdetails(state={
     publishedproduct:false,
     currentuserproducts:false,
     validation:false,
+    productsellerid:false,
+    stripeuserid:false,
 }, action){
     switch (action.type){
 
@@ -106,6 +108,18 @@ export default function userdetails(state={
         {
             return {...state, validation: action.payload}
         }
+
+        case "PRODUCTOWNERID":
+        {
+            return{...state, productsellerid:action.payload}
+        }
+
+        case "STRIPEUSERID":
+        {
+            return{...state, stripeuserid:action.payload}
+        }
+
+
 
 
         default: return state;
