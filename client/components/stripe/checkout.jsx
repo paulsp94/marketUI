@@ -34,6 +34,7 @@ class StripeCheckoutComponent extends React.Component {
 
     return (
       <StripeCheckout
+        //email="makeawish880@gmail.com" // TODO pass down user email here if needs to be prefilled
         token={this._tokenHandler}
         amount={amount}
         currency="USD"

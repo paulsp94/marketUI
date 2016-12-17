@@ -116,7 +116,9 @@ export default function userdetails(state={
 
         case "STRIPEUSERID":
         {
-            return{...state, stripeuserid:action.payload}
+            return{...state,
+              stripeuserid: action.payload.stripeuserid
+            }
         }
 
 

@@ -18,6 +18,7 @@ import { EnternewComment, ProductComments } from '../../action/action.jsx';
 var firebase = require('firebase');
 import firebase_details from '../../Firebase/Firebase';
 import StripeCheckout from '../stripe/checkout';
+import {productSellerandstripeid} from '../../action/action';
 
 function mapDispatchToProps (dispatch) {
   return bindActionCreators({
@@ -118,6 +119,11 @@ class Sidebar extends React.Component {
     });
   }
 
+  componentDidMount() {
+    let {ProductId} = this.props;
+    productSellerandstripeid(ProductId);
+  }
+
   Item () {
 
     var curr_icon = this.productDetails();
@@ -215,6 +221,7 @@ class Sidebar extends React.Component {
   render () {
 
     var currentstate = this.state.Currentstate;
+    let {productcoredetails, sellerStripeAccountId} = this.props;
 
     if (currentstate == '0') {
       var subheader = <div>
@@ -223,15 +230,18 @@ class Sidebar extends React.Component {
             <TableBody displayRowCheckbox={this.state.showCheckboxes} adjustForCheckbox={this.state.showCheckboxes}>
               <TableRow  >
                 <TableRowColumn style={{ textAlign: 'center' }}>Rating: 4.5</TableRowColumn>
-                <TableRowColumn style={{ textAlign: 'center' }}> {this.props.productcoredetails.Price} </TableRowColumn>
+                <TableRowColumn style={{ textAlign: 'center' }}> {productcoredetails.Price} </TableRowColumn>
                 <TableRowColumn style={{ textAlign: 'center' }}>Sold: 310</TableRowColumn>
               </TableRow>
             </TableBody>
           </Table>
           {/*// TODO feed me real data, amount in cents */}
-          <StripeCheckout
-            amount={1000}
-            sellerId={'acct_19QfusKwrXhx81rS'} />
+          {
+            sellerStripeAccountId ?
+              <StripeCheckout
+                amount={parseInt(productcoredetails.Price * 100)}
+                sellerId={sellerStripeAccountId} /> : null
+          }
         </div>
       </div>
     }
