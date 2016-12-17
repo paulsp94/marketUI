@@ -1,4 +1,4 @@
-import React, {PropTypes} from 'react';
+import React, {PropTypes, contextTypes} from 'react';
 import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios';
 import firebase from 'firebase';
@@ -23,8 +23,7 @@ class StripeCheckoutComponent extends React.Component {
       productId: productId,
       buyerId: firebase.auth().currentUser.uid
     }).then((response) => {
-      // TODO Handle the successful payment based on UI design
-      alert('Payment was successful');
+      this.context.router.push('/profile');
     }).catch(err => {
       console.error('[Stripe]', typeof err, err);
       // TODO Handle payment errors based on UI design
@@ -45,6 +44,10 @@ class StripeCheckoutComponent extends React.Component {
     )
   }
 }
+
+StripeCheckoutComponent.contextTypes = {
+  router: React.PropTypes.object.isRequired
+};
 
 StripeCheckoutComponent.propTypes = {
   /**
