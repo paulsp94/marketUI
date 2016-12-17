@@ -48,17 +48,11 @@ class  ItemPreview extends Component{
         })
 
         this.props.currentproductstore(ProductId);
-        //var Productidobject = this.props.userdetails.Productid;
-        //var ProductIdarray = Object.keys(Productidobject).map(key => Productidobject[key]);
-        //var ProductId = [].concat.apply([], ProductIdarray);
-        //ProductId = ProductId[0];
-
         this.props.ProductSidebar(ProductId);
         this.props.Description(ProductId);
         this.props.productCoreDetails(ProductId);
         this.props.ProductComments(ProductId);
 
-        //console.log('this is param value',this.props.params.productid);
 
     }
 

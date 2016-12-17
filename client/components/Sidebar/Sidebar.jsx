@@ -223,7 +223,7 @@ class Sidebar extends React.Component {
             <TableBody displayRowCheckbox={this.state.showCheckboxes} adjustForCheckbox={this.state.showCheckboxes}>
               <TableRow  >
                 <TableRowColumn style={{ textAlign: 'center' }}>Rating: 4.5</TableRowColumn>
-                <TableRowColumn style={{ textAlign: 'center' }}>$10</TableRowColumn>
+                <TableRowColumn style={{ textAlign: 'center' }}> {this.props.productcoredetails.Price} </TableRowColumn>
                 <TableRowColumn style={{ textAlign: 'center' }}>Sold: 310</TableRowColumn>
               </TableRow>
             </TableBody>

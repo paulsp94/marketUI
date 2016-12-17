@@ -55,7 +55,7 @@ class Product extends React.Component{
                             <RaisedButton label="4.8" style={{ margin: 1, width: "100%"}} />
                         </Flexbox>
                         <Flexbox flexGrow={1}>
-                            <RaisedButton label={this.props.item.Price} style={{ margin: 1, width: "100%"}} /> 
+                            <RaisedButton label={this.props.item.Price} style={{ margin: 1, width: "100%"}} />
                         </Flexbox>
                         <Flexbox flexGrow={1}>
                             <RaisedButton label="223" style={{ margin: 1, width: "100%"}} />
