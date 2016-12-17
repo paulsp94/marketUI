@@ -91,6 +91,7 @@ app.post('/stripe/checkout', function(request, response) {
     application_fee: applicationFee // amount in cents
   }, function(err, charge) {
     if(err) {
+      console.log(err);
       response.sendStatus(400);
     } else {
       var newSalesKey = firebase.database().ref().child('sales').push().key;
