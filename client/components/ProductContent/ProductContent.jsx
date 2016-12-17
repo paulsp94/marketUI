@@ -23,6 +23,7 @@ import ContentCopy from 'material-ui/svg-icons/content/content-copy';
 import Download from 'material-ui/svg-icons/file/file-download';
 import Delete from 'material-ui/svg-icons/action/delete';
 import Flexbox from 'flexbox-react';
+<meta name="viewport" content="width=device-width" />
 
 var data = "Take me to [pookie](#pookie) \n <a name='pookie2'></a> \n # This is an <h1> tag\n## This is an <h2> tag\n###### This is an <h6> tag # This is an <h1> tag\n\n# This is an <h2> tag\n ###### This is an <h6> tag # This is an <h1> tag\n## This is an <h2> tag\n###### This is an <h6> tag # This is an <h1> tag\n## This is an <h2> tag\n###### This is an <h6> tag # This is an <h1> tag\n\n# This is an <h2> tag\n###### This is an <h6> tag # This is an <h1> tag\n## This is an <h2> tag\n###### This is an <h6> tag # This is an <h1> tag\n## This is an <h2> tag\n###### This is an <h6> tag # This is an <h1> tag\n\n# This is an <h2> tag\n###### This is an <h6> tag # This is an <h1> tag\n  ## This is an <h2> tag\n###### This is an <h6> tag # This is an <h1> tag\n## This is an <h2> tag\n###### This is an <h6> tag # This is an <h1> tag\n\n# This is an <h2> tag\n###### This is an <h6> tag # This is an <h1> tag\n## This is an <h2> tag\n###### This is an <h6> tag\n### <a name='pookie'></a>Some heading";
 
@@ -57,20 +58,18 @@ class  ProductContent extends React.Component{
         var thisIsMyCopy = data;
         return (
             <div className="contentDownload">
-             <Paper className="contentSidebar">
-              <Menu>
-                <MenuItem primaryText="Author Info" leftIcon={<RemoveRedEye />} />
-                <MenuItem primaryText="Ask Question" leftIcon={<PersonAdd />} />
+             <div className="contentSidebar contentSidebarColor">
+                <MenuItem primaryText="Author Info" className="contentSidebarColor" leftIcon={<RemoveRedEye />} />
+                <MenuItem primaryText="Ask Question" className="contentSidebarColor" leftIcon={<PersonAdd />} />
                 <MenuItem primaryText="Download" leftIcon={<Download />} />
                 <MenuItem primaryText="----" />
                 <MenuItem primaryText="Header Title1" href="#pookie"/>
                 <MenuItem primaryText="Header Title2" href="#pookie2"/>
                 <MenuItem primaryText="Header Title3"/>
                 <MenuItem primaryText="Header Title4"/>
-              </Menu>
-            </Paper>
+            </div>
              
-                <div className="contentMarkdown" style={{backgroundColor: "#efeadd"}}>
+                <div className="contentMarkdown" style={{backgroundColor: "#fff"}}>
                     <ReactMarkdown source={thisIsMyCopy} escapeHtml={false} />
                 </div>
             </div>

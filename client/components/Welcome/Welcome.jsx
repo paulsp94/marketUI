@@ -31,10 +31,17 @@ var Welcome = React.createClass({
                         <p> We are now available in 25 countries! </p>
                     </div>
                     <div className="welcome-text" style={{marginTop:'40px'}}>
-                        <RaisedButton href="/ProductSearch" label='explore' style={{marginRight: '5px'}} /> 
                     </div>
-                    <div className='welcome-info'>
-                        <p> this density map was  <br/> created with R and C4D</p>
+                    <div className="welcomeBoard">
+                        <div className="welcome-info-header">
+                            <p> free item of the month </p>
+                        </div>
+                        <div className='welcome-info'>
+                            <p> Learn to create 3D animated density maps (as seen on the right) by connecting R to Cinema 4D. All tools and techniques are explained in the tutorial. Available until 1-1-2017.</p>
+                        </div>
+                        <div style={{textAlign:"center"}} className="welcome-info-header">
+                            <RaisedButton label="Download" href="/ProductContent/-KYiHgYGx6V5mL4uiQed" style={{}} />
+                        </div>
                     </div>
                 </div>
                 
