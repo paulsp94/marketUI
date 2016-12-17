@@ -8,7 +8,7 @@ import { hashHistory } from 'react-router';
 import Subheader from '../Subheader/Subheader.jsx';
 import Sidebar from '../Sidebar/Sidebar.jsx';
 import Itemview from './Itemview.jsx';
-import { fetchuserdetails, productCoreDetails, Description, ProductSidebar, currentproductstore, ProductComments} from '../../action/action.jsx'
+import { fetchuserdetails, productCoreDetails, Description, ProductSidebar, currentproductstore, ProductComments, productSellerandstripeid} from '../../action/action.jsx'
 
    function mapDispatchToProps(dispatch) {
         return bindActionCreators({
@@ -17,7 +17,8 @@ import { fetchuserdetails, productCoreDetails, Description, ProductSidebar, curr
                 Description,
                 ProductSidebar,
                 currentproductstore,
-                ProductComments
+                ProductComments,
+                productSellerandstripeid
             }, dispatch);
     }
 
@@ -52,11 +53,13 @@ class  ItemPreview extends Component{
         this.props.Description(ProductId);
         this.props.productCoreDetails(ProductId);
         this.props.ProductComments(ProductId);
-
+        this.props.productSellerandstripeid(ProductId);
 
     }
 
     render(){
+
+        console.log('stripe id is',this.props.userdetails.stripeuserid);
     
         var productdetails = this.props.userdetails.Productcoredetails;
         var productobject = Object.keys(productdetails).map(key => productdetails[key]);
