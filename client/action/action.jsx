@@ -484,7 +484,7 @@ export function  productSellerandstripeid(productid) {
 
             console.log('1');
 
-                firebase.database().ref('Users').orderByChild('UserId').equalTo(Productownerid).on("child_added", (snapshot) => {
+                firebase.database().ref('Users').orderByChild('UserId').equalTo(Productownerid).once("child_added", (snapshot) => {
 
                 console.log('2');
 
