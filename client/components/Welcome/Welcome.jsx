@@ -6,6 +6,8 @@ import Subheader from '../Subheader/Subheader.jsx';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import RaisedButton from 'material-ui/RaisedButton';
 import Flexbox from 'flexbox-react';
+<meta name="viewport" content="width=device-width" />
+
 
 
 var Welcome = React.createClass({ 
@@ -28,7 +30,7 @@ var Welcome = React.createClass({
                         <h1> Welcome to the Rscript.Market</h1>
                         <br/>
                         <p> Discover the newest code snippets of the R universe </p>
-                        <p> We are now available in 25 countries! </p>
+                        <p> or share your own expertise</p>
                     </div>
                     <div className="welcome-text" style={{marginTop:'40px'}}>
                     </div>

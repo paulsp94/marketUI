@@ -35,22 +35,6 @@ class ContentSidebar extends React.Component{
                                 <RaisedButton label="Create Product" href="" style={{ margin: 12}} />
                                 </div>
                                 <hr/>
-
-                                <CardText>
-                                    <div className="userdescribation">
-                                        sells Over Time Graph
-                                    </div>
-                                </CardText>
-                                <hr/>
-
-                                <CardText>
-                                    <div className="userdescribation">
-                                        <strong>Average rating</strong> - {this.props.productname[4]} <br/><br/>
-                                        <strong>  Price -</strong> - {this.props.productname[5]}
-                                    </div>
-                                </CardText>
-
-                                <hr/>
                             </Card>
                         </Tab>
                     </Tabs>
