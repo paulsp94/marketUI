@@ -39,20 +39,18 @@ class Content extends React.Component{
 
         if(this.props.validation == "RIGHTVALIDATION") {
 
-            var productdetails = this.props.userdetails.Content;
 
-            console.log('content are', productdetails);
+            firebase.database().ref('Content').orderByChild('ProductId').equalTo(ProductId).once("child_added", (snapshot) => {
 
-            var productobject = Object.keys(productdetails).map(key => productdetails[key]);
-            var productcoredetails = [].concat.apply([], productobject);
+                var Description = snapshot.val().textfieldvalue1;
 
-            console.log('content detail detail',productcoredetails);
 
-            var Description = productcoredetails[0].Description;
+                this.setState({
+                    textfieldvalue: Description
+                });
 
-            this.setState({
-                textfieldvalue: Description
             });
+
         }
 
         else{
@@ -165,7 +163,7 @@ class Content extends React.Component{
                    <CommandBar farItems={ commands } items = {leftCommands} />
                     <div className="product-tab2">
                         <div className="markdowncode">
-                        <textarea onChange={this.textBox1.bind(this)} className="textarea" placeholder="Add here your markdown or html code" ref={(efg) => this.textbox = efg}  name="textbox">
+                        <textarea value={this.state.textfieldvalue} onChange={this.textBox1.bind(this)} className="textarea" placeholder="Add here your markdown or html code" ref={(efg) => this.textbox = efg}  name="textbox">
                         </textarea>
                         </div>
                         <div className="markdowntext">

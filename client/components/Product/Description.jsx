@@ -42,14 +42,14 @@ class  Descriptiondetails extends React.Component{
 
         if(this.props.validation == "RIGHTVALIDATION") {
 
-            var productdetails = this.props.userdetails.Description;
-            var productobject = Object.keys(productdetails).map(key => productdetails[key]);
-            var productcoredetails = [].concat.apply([], productobject);
+            firebase.database().ref('Description').orderByChild('ProductId').equalTo(ProductId).once("child_added", (snapshot) => {
 
-            var Description = productcoredetails[0].Description;
+                var Description = snapshot.val().textfieldvalue1;
 
-            this.setState({
-                textfieldvalue1 :Description
+                this.setState({
+                    textfieldvalue1 :Description
+                });
+
             });
 
         }
@@ -163,7 +163,7 @@ class  Descriptiondetails extends React.Component{
                 <CommandBar farItems={ commands } items = {leftCommands}/>
                     <div className="product-tab2">
                         <div className="markdowncode" >
-                            <textarea className="textarea" placeholder="Add here your markdown or html code" ref={(eg) => this.textbox1 = eg}  name="textbox1" onChange={this.textBox1.bind(this)}>
+                            <textarea value={this.state.textfieldvalue1} className="textarea" placeholder="Add here your markdown or html code" ref={(eg) => this.textbox1 = eg}  name="textbox1" onChange={this.textBox1.bind(this)}>
                             </textarea>
                         </div>
 

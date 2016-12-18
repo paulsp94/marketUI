@@ -50,34 +50,31 @@ class  GeneralProfile extends React.Component{
     }
 
     componentWillMount(){
-        this.props.currentuserid();
-        var ProductId = this.props.ProductId;
-        //this.props.productCoreDetails(ProductId);
 
+        var ProductId = this.props.ProductId;
 
         if(this.props.validation == "RIGHTVALIDATION") {
 
-            var productdetails = this.props.userdetails.Productcoredetails;
-            var productobject = Object.keys(productdetails).map(key => productdetails[key]);
-            var productcoredetails = [].concat.apply([], productobject);
+            firebase.database().ref('ProductCoreDetails').orderByChild('ProductId').equalTo(ProductId).on("child_added", (snapshot) => {
 
-            var title = productcoredetails[0].Title;
-            var subtitle= productcoredetails[0].SubTitle;
-            var describtion= productcoredetails[0].Description;
-            var price= productcoredetails[0].Price;
-            var category= productcoredetails[0].category;
-            var avatarURL = productcoredetails[0].Mainimage;
-            var avatarURL1 = productcoredetails[0].Subimage;
+                var productid= snapshot.val().ProductId;
+                var Price= snapshot.val().Price;
+                var Description= snapshot.val().Description;
+                var Mainimage= snapshot.val().mainImage;
+                var Title= snapshot.val().Title;
+                var Subimage= snapshot.val().subImage;
+                var SubTitle= snapshot.val().Subtitle;
+                var category= snapshot.val().category;
 
-
-            this.setState({
-                title :title,
-                subtitle:subtitle,
-                describtion:category,
-                price:price,
-                category:category,
-                avatarURL:avatarURL,
-                avatarURL1:avatarURL1,
+                this.setState({
+                    title :Title,
+                    subtitle:SubTitle,
+                    describtion:category,
+                    price:Price,
+                    category:category,
+                    avatarURL:Mainimage,
+                    avatarURL1:Subimage,
+                });
             });
         }
 
@@ -191,7 +188,6 @@ class  GeneralProfile extends React.Component{
 
     render(){
 
-        console.log(this.props.userdetails.Productcoredetails);
 
         var style = {
             height : "300px",
@@ -211,8 +207,8 @@ class  GeneralProfile extends React.Component{
 
                             <div className="productdisplayleft">
                             <Card style={{padding: 20, backgroundColor: "white"}}>
-                                      <input name="title" ref={(a) => this.title = a} type="text" className="inputfield-signup1" placeholder="Title" onChange={this.TiTle.bind(this)}/>
-                                      <input name="subtitle" ref={(c) => this.subTitle = c} type="text" className="inputfield-signup1" placeholder="sub-title" onChange={this.SubTitle.bind(this)}/><br/><br/>
+                                      <input value={this.state.title} name="title" ref={(a) => this.title = a} type="text" className="inputfield-signup1" placeholder="Title" onChange={this.TiTle.bind(this)}/>
+                                      <input value={this.state.subtitle} name="subtitle" ref={(c) => this.subTitle = c} type="text" className="inputfield-signup1" placeholder="sub-title" onChange={this.SubTitle.bind(this)}/><br/><br/>
                                  <FileUploader
                                         accept="image/*"
                                         name="avatar"
@@ -245,9 +241,9 @@ class  GeneralProfile extends React.Component{
                                           </optgroup>
                                       </select>
 
-                                      <textarea name="textarea" ref={(d) => this.textarea = d} className="textarea1" placeholder="Description about Product"
+                                      <textarea value={this.state.describtion} name="textarea" ref={(d) => this.textarea = d} className="textarea1" placeholder="Description about Product"
                                                 onChange={this.DescriPtion.bind(this)}/> <br/> <br/>
-                                      <input name="Price" ref={(ef) => this.Price = ef}  type="text" className="inputfield-signup1"
+                                      <input value={this.state.price} name="Price" ref={(ef) => this.Price = ef}  type="text" className="inputfield-signup1"
                                       placeholder="Price in $"
                                       onChange={this.PriCe.bind(this)}/><br/><br/>
                             </Card>

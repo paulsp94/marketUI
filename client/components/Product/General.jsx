@@ -128,11 +128,6 @@ class  General extends React.Component{
                 ProductID: ProductId
             });
 
-            this.props.productCoreDetails(ProductId);
-            this.props.Description(ProductId);
-            this.props.ProductSidebar(ProductId);
-            this.props.ProductContent(ProductId);
-
         }
     }
 
