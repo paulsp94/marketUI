@@ -15,7 +15,6 @@ export default class Content extends React.Component{
         this.state= {
             filldetails:'',
         };
-
     }
 
     updateItem(event){
@@ -31,9 +30,7 @@ export default class Content extends React.Component{
 
     render(){
 
-        var Style = {
-
-        };
+        var Style = {};
 
         return (
                 <Card style={{ marginRight: "2%", marginLeft: "2%", marginTop: 9}} onClick={this.updateItem.bind(this)}>
@@ -44,7 +41,6 @@ export default class Content extends React.Component{
                             <div className="text-part">
 
                                 <h4> <strong> {this.props.item.Title} </strong> </h4>
-                                <br/>  <hr/> <br/>
                                 <RaisedButton onClick={this.EditDetails.bind(this)} label="Edit Details" style={{ margin: 12}} />
                             </div>
 

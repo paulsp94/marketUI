@@ -254,7 +254,7 @@ class Sidebar extends React.Component {
 
     return (
       <div className="sidebar">
-        <Card expanded={this.state.expanded} onExpandChange={this.handleExpandChange}>
+        <Card style={{backgroundColor: "#fdfdfb"}} expanded={this.state.expanded} onExpandChange={this.handleExpandChange}>
 
           <Tabs>
             <Tab label="Item" onActive={this.Item.bind(this)}> </Tab>

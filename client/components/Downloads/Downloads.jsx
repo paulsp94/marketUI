@@ -221,6 +221,9 @@ class  Downloads extends React.Component{
                                 </Tab>
 
                                 <Tab label="Content" onActive={this.Content.bind(this)}>
+                                    <Card style={{ marginRight: "2%", marginLeft: "2%", marginTop: 9}}>
+
+                                    </Card>
                                     {Contentdata}
                                 </Tab>
                             </Tabs>

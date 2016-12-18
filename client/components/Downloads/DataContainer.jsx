@@ -43,10 +43,7 @@ class  DataContainer extends React.Component{
                 <img className="productimage" src={this.props.item.Subimage} style = {Style}/>
                 <div className="text-part">
                 <h4> <strong> {this.props.item.name} </strong> </h4>
-                    <br/> <br/>
                     <RaisedButton onClick={this.ProductContentDownload.bind(this)} label="Download" style={{ margin: 12}} />
-                    <RaisedButton label={this.props.item.Price} style={{ margin: 12}} />
-
                 </div>
                 </CardText>
             </div>
