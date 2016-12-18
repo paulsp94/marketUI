@@ -53,6 +53,56 @@ class  GeneralProfile extends React.Component{
         this.props.currentuserid();
         var ProductId = this.props.ProductId;
         //this.props.productCoreDetails(ProductId);
+
+
+        if(this.props.validation == "RIGHTVALIDATION") {
+
+            var productdetails = this.props.userdetails.Productcoredetails;
+            var productobject = Object.keys(productdetails).map(key => productdetails[key]);
+            var productcoredetails = [].concat.apply([], productobject);
+
+            var title = productcoredetails[0].Title;
+            var subtitle= productcoredetails[0].SubTitle;
+            var describtion= productcoredetails[0].Description;
+            var price= productcoredetails[0].Price;
+            var category= productcoredetails[0].category;
+            var avatarURL = productcoredetails[0].Mainimage;
+            var avatarURL1 = productcoredetails[0].Subimage;
+
+
+            this.setState({
+                title :title,
+                subtitle:subtitle,
+                describtion:category,
+                price:price,
+                category:category,
+                avatarURL:avatarURL,
+                avatarURL1:avatarURL1,
+            });
+        }
+
+        else{
+            var title = '';
+            var subtitle= '';
+            var describtion= '';
+            var price= '';
+            var category= '';
+            var avatarURL = '';
+            var avatarURL1 = '';
+
+
+            this.setState({
+                title :title,
+                subtitle:subtitle,
+                describtion:category,
+                price:price,
+                category:category,
+                avatarURL:avatarURL,
+                avatarURL1:avatarURL1,
+            });
+
+        }
+
     }
 
     TiTle(){

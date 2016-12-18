@@ -34,6 +34,39 @@ class Content extends React.Component{
         };
     }
 
+    componentWillMount(){
+        var ProductId = this.props.ProductId;
+
+        if(this.props.validation == "RIGHTVALIDATION") {
+
+            var productdetails = this.props.userdetails.Content;
+
+            console.log('content are', productdetails);
+
+            var productobject = Object.keys(productdetails).map(key => productdetails[key]);
+            var productcoredetails = [].concat.apply([], productobject);
+
+            console.log('content detail detail',productcoredetails);
+
+            var Description = productcoredetails[0].Description;
+
+            this.setState({
+                textfieldvalue: Description
+            });
+        }
+
+        else{
+
+            var Description = '';
+
+            this.setState({
+                textfieldvalue: Description
+            });
+
+        }
+
+    }
+
       handleClick(event){
         var newShowSyntax =  this.state.showSyntax ? false : true;
         this.setState({
