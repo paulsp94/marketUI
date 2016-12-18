@@ -59,7 +59,6 @@ class  ItemPreview extends Component{
 
     render(){
 
-        console.log('stripe id is',this.props.userdetails.stripeuserid);
     
         var productdetails = this.props.userdetails.Productcoredetails;
         var productobject = Object.keys(productdetails).map(key => productdetails[key]);

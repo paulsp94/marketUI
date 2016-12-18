@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
@@ -6,11 +8,23 @@ import ReactMarkdown from 'react-markdown';
 var firebase = require('firebase');
 import firebase_details from '../../Firebase/Firebase';
 import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
+import { Description } from '../../action/action.jsx';
+
+function mapStateToProps(store) {
+    return { userdetails: store.userdetails};
+}
+
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({
+        Description
+    }, dispatch);
+}
+
+@connect(mapStateToProps, mapDispatchToProps)
 
 
 
-
-class  Description extends React.Component{
+class  Descriptiondetails extends React.Component{
 
     constructor(props) {
         super(props);
@@ -21,6 +35,34 @@ class  Description extends React.Component{
             showSyntax: false,
             Error:'',
         };
+    }
+
+    componentWillMount(){
+        var ProductId = this.props.ProductId;
+
+        if(this.props.validation == "RIGHTVALIDATION") {
+
+            firebase.database().ref('Description').orderByChild('ProductId').equalTo(ProductId).once("child_added", (snapshot) => {
+
+                var Description = snapshot.val().textfieldvalue1;
+
+                this.setState({
+                    textfieldvalue1 :Description
+                });
+
+            });
+
+        }
+
+        else{
+            var Description = '';
+
+            this.setState({
+                textfieldvalue1 :Description
+            });
+
+        }
+
     }
 
     handleClick(event){
@@ -121,7 +163,7 @@ class  Description extends React.Component{
                 <CommandBar farItems={ commands } items = {leftCommands}/>
                     <div className="product-tab2">
                         <div className="markdowncode" >
-                            <textarea className="textarea" placeholder="Add here your markdown or html code" ref={(eg) => this.textbox1 = eg}  name="textbox1" onChange={this.textBox1.bind(this)}>
+                            <textarea value={this.state.textfieldvalue1} className="textarea" placeholder="Add here your markdown or html code" ref={(eg) => this.textbox1 = eg}  name="textbox1" onChange={this.textBox1.bind(this)}>
                             </textarea>
                         </div>
 
@@ -136,7 +178,7 @@ class  Description extends React.Component{
     }
 }
 
-export default Description;
+export default Descriptiondetails;
 
 
 

@@ -225,7 +225,6 @@ class  Downloads extends React.Component{
 
                                     </Card>
                                     {Contentdata}
-
                                 </Tab>
                             </Tabs>
                             </Card>

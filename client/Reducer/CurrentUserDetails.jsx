@@ -17,6 +17,7 @@ export default function userdetails(state={
     validation:false,
     productsellerid:false,
     stripeuserid:false,
+    content:false,
 }, action){
     switch (action.type){
 
@@ -121,8 +122,10 @@ export default function userdetails(state={
             }
         }
 
-
-
+        case "CONTENT":
+        {
+            return{...state, content:action.payload}
+        }
 
         default: return state;
 

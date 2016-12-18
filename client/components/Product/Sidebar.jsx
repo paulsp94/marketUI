@@ -46,6 +46,48 @@ class ProductSidebar extends React.Component {
 
   componentWillMount () {
     this.props.currentuserid();
+
+      var ProductId = this.props.ProductId;
+
+      if(this.props.validation == "RIGHTVALIDATION") {
+
+          firebase.database().ref('ProductSidebar').orderByChild('Productid').equalTo(ProductId).once("child_added", (snapshot) => {
+
+              var IntegrationTime = snapshot.val().IntegrationTime;
+              var Packages = snapshot.val().Packages;
+              var compatibility = snapshot.val().compatibility;
+              var complexity = snapshot.val().complexity;
+              var tags = snapshot.val().tags;
+
+              this.setState({
+                  packages: Packages,
+                  complexity: complexity,
+                  integrationTime: IntegrationTime,
+                  compatibility: compatibility,
+                  tags: tags,
+              })
+          });
+      }
+
+      else {
+
+          var IntegrationTime = '';
+          var Packages = '';
+          var compatibility = '';
+          var complexity = '';
+          var tags = '';
+
+          this.setState({
+              packages: Packages,
+              complexity: complexity,
+              integrationTime: IntegrationTime,
+              compatibility: compatibility,
+              tags: tags,
+          })
+
+      }
+
+
   }
 
   onPackagesChange = (packages) => {
@@ -89,8 +131,6 @@ class ProductSidebar extends React.Component {
     UserId = UserId[0];
 
     this.props.submitPublishedproducts(ProductId, UserId);
-
-    console.log(this.props.userdetails.publishedproduct);
 
   };
 
