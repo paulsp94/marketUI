@@ -34,6 +34,37 @@ class Content extends React.Component{
         };
     }
 
+    componentWillMount(){
+        var ProductId = this.props.ProductId;
+
+        if(this.props.validation == "RIGHTVALIDATION") {
+
+
+            firebase.database().ref('Content').orderByChild('ProductId').equalTo(ProductId).once("child_added", (snapshot) => {
+
+                var Description = snapshot.val().textfieldvalue1;
+
+
+                this.setState({
+                    textfieldvalue: Description
+                });
+
+            });
+
+        }
+
+        else{
+
+            var Description = '';
+
+            this.setState({
+                textfieldvalue: Description
+            });
+
+        }
+
+    }
+
       handleClick(event){
         var newShowSyntax =  this.state.showSyntax ? false : true;
         this.setState({
@@ -132,7 +163,7 @@ class Content extends React.Component{
                    <CommandBar farItems={ commands } items = {leftCommands} />
                     <div className="product-tab2">
                         <div className="markdowncode">
-                        <textarea onChange={this.textBox1.bind(this)} className="textarea" placeholder="Add here your markdown or html code" ref={(efg) => this.textbox = efg}  name="textbox">
+                        <textarea value={this.state.textfieldvalue} onChange={this.textBox1.bind(this)} className="textarea" placeholder="Add here your markdown or html code" ref={(efg) => this.textbox = efg}  name="textbox">
                         </textarea>
                         </div>
                         <div className="markdowntext">

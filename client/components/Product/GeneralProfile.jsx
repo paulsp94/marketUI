@@ -50,9 +50,56 @@ class  GeneralProfile extends React.Component{
     }
 
     componentWillMount(){
-        this.props.currentuserid();
+
         var ProductId = this.props.ProductId;
-        //this.props.productCoreDetails(ProductId);
+
+        if(this.props.validation == "RIGHTVALIDATION") {
+
+            firebase.database().ref('ProductCoreDetails').orderByChild('ProductId').equalTo(ProductId).on("child_added", (snapshot) => {
+
+                var productid= snapshot.val().ProductId;
+                var Price= snapshot.val().Price;
+                var Description= snapshot.val().Description;
+                var Mainimage= snapshot.val().mainImage;
+                var Title= snapshot.val().Title;
+                var Subimage= snapshot.val().subImage;
+                var SubTitle= snapshot.val().Subtitle;
+                var category= snapshot.val().category;
+
+                this.setState({
+                    title :Title,
+                    subtitle:SubTitle,
+                    describtion:category,
+                    price:Price,
+                    category:category,
+                    avatarURL:Mainimage,
+                    avatarURL1:Subimage,
+                });
+            });
+        }
+
+        else{
+            var title = '';
+            var subtitle= '';
+            var describtion= '';
+            var price= '';
+            var category= '';
+            var avatarURL = '';
+            var avatarURL1 = '';
+
+
+            this.setState({
+                title :title,
+                subtitle:subtitle,
+                describtion:category,
+                price:price,
+                category:category,
+                avatarURL:avatarURL,
+                avatarURL1:avatarURL1,
+            });
+
+        }
+
     }
 
     TiTle(){
@@ -141,7 +188,6 @@ class  GeneralProfile extends React.Component{
 
     render(){
 
-        console.log(this.props.userdetails.Productcoredetails);
 
         var style = {
             height : "300px",
@@ -161,8 +207,8 @@ class  GeneralProfile extends React.Component{
 
                             <div className="productdisplayleft">
                             <Card style={{padding: 20, backgroundColor: "white"}}>
-                                      <input name="title" ref={(a) => this.title = a} type="text" className="inputfield-signup1" placeholder="Title" onChange={this.TiTle.bind(this)}/>
-                                      <input name="subtitle" ref={(c) => this.subTitle = c} type="text" className="inputfield-signup1" placeholder="sub-title" onChange={this.SubTitle.bind(this)}/><br/><br/>
+                                      <input value={this.state.title} name="title" ref={(a) => this.title = a} type="text" className="inputfield-signup1" placeholder="Title" onChange={this.TiTle.bind(this)}/>
+                                      <input value={this.state.subtitle} name="subtitle" ref={(c) => this.subTitle = c} type="text" className="inputfield-signup1" placeholder="sub-title" onChange={this.SubTitle.bind(this)}/><br/><br/>
                                  <FileUploader
                                         accept="image/*"
                                         name="avatar"
@@ -195,9 +241,9 @@ class  GeneralProfile extends React.Component{
                                           </optgroup>
                                       </select>
 
-                                      <textarea name="textarea" ref={(d) => this.textarea = d} className="textarea1" placeholder="Description about Product"
+                                      <textarea value={this.state.describtion} name="textarea" ref={(d) => this.textarea = d} className="textarea1" placeholder="Description about Product"
                                                 onChange={this.DescriPtion.bind(this)}/> <br/> <br/>
-                                      <input name="Price" ref={(ef) => this.Price = ef}  type="text" className="inputfield-signup1"
+                                      <input value={this.state.price} name="Price" ref={(ef) => this.Price = ef}  type="text" className="inputfield-signup1"
                                       placeholder="Price in $"
                                       onChange={this.PriCe.bind(this)}/><br/><br/>
                             </Card>

@@ -1,4 +1,3 @@
-
 import * as user from '../action/action.jsx';
 var firebase = require('firebase');
 import firebase_details from '../Firebase/Firebase';
@@ -21,7 +20,7 @@ export function currentuserdetails (){
     return {
         type:"CURRENTUSERDETAILS",
         payload:{
-          Userid:Userid
+            Userid:Userid
         }
     }
 }
@@ -30,12 +29,12 @@ export function changepassword (newpassword){
     return function (dispatch) {
         var user = firebase.auth().currentUser;
         user.updatePassword(newpassword).then(function() {
-        dispatch ({
-            type: "CHANGEPASSWORDETAILS",
-            payload: {
-                password: "Changed Successfully"
-            }
-        })
+            dispatch ({
+                type: "CHANGEPASSWORDETAILS",
+                payload: {
+                    password: "Changed Successfully"
+                }
+            })
         }, function(error) {
             dispatch ({
                 type: "CHANGEPASSWORDETAILS",
@@ -143,6 +142,7 @@ export function  productCoreDetails(productid) {
                     Title: data123.val().Title,
                     Subimage: data123.val().subImage,
                     SubTitle: data123.val().Subtitle,
+                    category:data123.val().category,
                 });
             });
 
@@ -203,51 +203,78 @@ export function  ProductSidebar(productid) {
     }
 }
 
+export function  ProductContent(productid) {
+    return function (dispatch) {
+        console.log('23');
+
+        var Content = [];
+        firebase.database().ref('Content').orderByChild('Productid').equalTo(productid).on("value", (snapshot) => {
+
+
+            snapshot.forEach((data123) => {
+                Content.push({
+                    Content: data123.val().textfieldvalue1,
+                });
+            });
+
+            console.log('CONTENT IS',Content);
+
+            dispatch ({
+                type: "CONTENT",
+                payload: {
+                    Content: Content
+                }
+            })
+        });
+
+    }
+}
+
 export function  UserCreatedProduct() {
 
     var user = firebase.auth().currentUser;
     var Userid = user.uid;
 
     return function (dispatch) {
-    var groupid = [];
-    firebase.database().ref('Product_creation').orderByChild('userid').equalTo(Userid).on("value", (snapshot) => {
+        var groupid = [];
+        firebase.database().ref('Product_creation').orderByChild('userid').equalTo(Userid).on("value", (snapshot) => {
 
-        snapshot.forEach((data12) => {
-            groupid.push({
-                productid: data12.val().ProductId
+            snapshot.forEach((data12) => {
+                groupid.push({
+                    productid: data12.val().ProductId
+                });
             });
+
+            var productallid = [];
+            for(var i= 0; i < groupid.length;i++) {
+
+                var currentproductid = groupid[i].productid;
+
+                firebase.database().ref('ProductCoreDetails').orderByChild('ProductId').equalTo(currentproductid).on("value", (snapshot) => {
+
+                    snapshot.forEach((data123) => {
+                        productallid.push({
+                            productid: data123.val().ProductId,
+                            Price: data123.val().Price,
+                            Description: data123.val().Description,
+                            Mainimage: data123.val().mainImage,
+                            Title: data123.val().Title,
+                            Subimage: data123.val().subImage,
+                        });
+                    });
+
+                    dispatch({
+                        type: "USERCREATEPRODUCTS",
+                        payload: {
+                            productallid
+                        }
+                    })
+                });
+            }
+
         });
 
-        var productallid = [];
-        for(var i= 0; i < groupid.length;i++) {
-
-            var currentproductid = groupid[i].productid;
-
-            firebase.database().ref('ProductCoreDetails').orderByChild('ProductId').equalTo(currentproductid).on("value", (snapshot) => {
-
-                snapshot.forEach((data123) => {
-                    productallid.push({
-                        productid: data123.val().ProductId,
-                        Price: data123.val().Price,
-                        Description: data123.val().Description,
-                        Mainimage: data123.val().mainImage,
-                        Title: data123.val().Title,
-                        Subimage: data123.val().subImage,
-                    });
-                });
-
-                dispatch({
-                    type: "USERCREATEPRODUCTS",
-                    payload: {
-                        productallid
-                    }
-                })
-            });
-        }
-
-    });
-
-}
+    }
 }
 
 export function EnternewComment(Comment,ProductId,name){
@@ -304,6 +331,7 @@ export function  submitProductGeneralDetails(ProductId,title,subtitle,describtio
             Price: price,
             mainImage: url,
             subImage: url1,
+            category:category,
         });
 
         firebase.database().ref("Product_creation/" + ProductId).set({
@@ -448,18 +476,59 @@ export function  FetchAllCurrentUserproduct() {
 
 export function  productEditValidationDetails(productid) {
     return function (dispatch) {
-        firebase.database().ref('Product_creation').orderByChild('ProductId').equalTo(productid).on("child_added", (snapshot) => {
-            var Productuserid = snapshot.val().userid;
-            var user = firebase.auth().currentUser;
-            var currentUserid = user.uid;
 
-            if(currentUserid == Productuserid){
-                dispatch({
-                    type: "EDITVALIDATION",
-                    payload: {
-                        producteditvalidation : "RIGHTVALIDATION"
+        var user = firebase.auth().currentUser;
+        var currentUserid = user.uid;
+
+        var query = firebase.database().ref('Product_creation');
+
+        query.once("value", (snapshot) => {
+
+            if(snapshot.exists()){
+
+                var myObj = snapshot.val();
+
+                var arr =[];
+                for( var i in myObj ) {
+                    if (myObj.hasOwnProperty(i)){
+                        arr.push(myObj[i]);
                     }
-                })
+                }
+
+                for(var i = 0; i< arr.length+1; i++){
+
+                    var currentvaluearray = arr[i];
+
+                    if(i == arr.length){
+                            dispatch({
+                                type: "EDITVALIDATION",
+                                payload: {
+                                    producteditvalidation : "WRONGVALIDATION"
+                                }
+                            })
+                    }
+
+                    else{
+
+                        var tableproductid = currentvaluearray.ProductId;
+                        var tableuserid = currentvaluearray.userid;
+
+                        if(tableproductid == productid){
+
+                            if(tableuserid == currentUserid){
+
+                                dispatch({
+                                    type: "EDITVALIDATION",
+                                    payload: {
+                                        producteditvalidation : "RIGHTVALIDATION"
+                                    }
+                                })
+
+                                break;
+                            }
+                        }
+                    }
+                }
             }
             else{
                 dispatch({
@@ -469,34 +538,34 @@ export function  productEditValidationDetails(productid) {
                     }
                 })
             }
+
         });
     }
 }
 
 export function  productSellerandstripeid(productid) {
     return function (dispatch) {
-      firebase.database().ref(`Publishedproduct/${productid}`).once('value').then((snapshot) => {
-        let sellerId = snapshot.val().UserId;
+        firebase.database().ref(`Publishedproduct/${productid}`).once('value').then((snapshot) => {
+            let sellerId = snapshot.val().UserId;
 
-        firebase.database().ref(`Users`).once('value').then((response) => {
-          let sellers = response.val();
+            firebase.database().ref(`Users`).once('value').then((response) => {
+                let sellers = response.val();
 
-          Object.keys(sellers).forEach(function (key) {
-            let seller = sellers[key];
-            if (seller.UserId === sellerId) {
-              dispatch({
-                type: "STRIPEUSERID",
-                payload: {
-                  stripeuserid: seller.stripe_user_id,
-                  productownerid: sellerId
-                }
-              })
-            }
-          });
-        })
-      });
+                Object.keys(sellers).forEach(function (key) {
+                    let seller = sellers[key];
+                    if (seller.UserId === sellerId) {
+                        dispatch({
+                            type: "STRIPEUSERID",
+                            payload: {
+                                stripeuserid: seller.stripe_user_id,
+                                productownerid: sellerId
+                            }
+                        })
+                    }
+                });
+            })
+        });
     }
 }
 
 export default user;
-
