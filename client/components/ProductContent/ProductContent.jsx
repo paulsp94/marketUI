@@ -1,37 +1,27 @@
-import React, {Component} from 'react';
-import {Link} from "react-router";
-import {withRouter} from 'react-router';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import {hashHistory} from 'react-router';
-import Subheader from '../Subheader/Subheader.jsx';
-import injectTapEventPlugin from 'react-tap-event-plugin';
-import RaisedButton from 'material-ui/RaisedButton';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import ReactMarkdown from 'react-markdown';
-import {productEditValidationDetails} from '../../action/action.jsx';
-
-import FontIcon from 'material-ui/FontIcon';
-import Paper from 'material-ui/Paper';
+import { productEditValidationDetails } from '../../action/action.jsx';
 import MenuItem from 'material-ui/MenuItem';
-import Menu from 'material-ui/Menu';
 import RemoveRedEye from 'material-ui/svg-icons/image/remove-red-eye';
 import PersonAdd from 'material-ui/svg-icons/social/person-add';
-import ContentLink from 'material-ui/svg-icons/content/link';
-import Divider from 'material-ui/Divider';
-import ContentCopy from 'material-ui/svg-icons/content/content-copy';
 import Download from 'material-ui/svg-icons/file/file-download';
-import Delete from 'material-ui/svg-icons/action/delete';
-import Flexbox from 'flexbox-react';
 import Cheerio from 'cheerio';
+import Loading from 'react-loading';
+import styles from './ProductContent.scss'
+import classNames from 'classnames/bind'
+import RaisedButton from 'material-ui/RaisedButton';
 
-var data = "Take me to [pookie](#pookie) \n <a name='Test Title1'></a> \n # This is an <h1> tag\n## This is an <h2> tag\n###### This is an <h6> tag # This is an <h1> tag\n\n# This is an <h2> tag\n ###### This is an <h6> tag # This is an <h1> tag\n## This is an <h2> tag\n###### This is an <h6> tag # This is an <h1> tag\n## This is an <h2> tag\n###### This is an <h6> tag # This is an <h1> tag\n\n# This is an <h2> tag\n###### This is an <h6> tag # This is an <h1> tag\n## This is an <h2> tag\n###### This is an <h6> tag # This is an <h1> tag\n## This is an <h2> tag\n###### This is an <h6> tag # This is an <h1> tag\n\n# This is an <h2> tag\n###### This is an <h6> tag # This is an <h1> tag\n  ## This is an <h2> tag\n###### This is an <h6> tag # This is an <h1> tag\n## This is an <h2> tag\n###### This is an <h6> tag # This is an <h1> tag\n\n# This is an <h2> tag\n###### This is an <h6> tag # This is an <h1> tag\n## This is an <h2> tag\n###### This is an <h6> tag\n### <a name='Test Title2'></a>Some heading";
+const cx = classNames.bind(styles)
 
-function mapStateToProps(store) {
-  return {userdetails: store.userdetails};
+var data = "Take me to [pookie](#pookie) \n <a name='Test Title1' level='title'></a><a name='Test Title1' level='subtitle'></a><a name='Test Title1' level='subtitle'></a> \n # This is an <h1> tag\n## This is an <h2> tag\n###### This is an <h6> tag # This is an <h1> tag\n\n# This is an <h2> tag\n ###### This is an <h6> tag # This is an <h1> tag\n## This is an <h2> tag\n###### This is an <h6> tag # This is an <h1> tag\n## This is an <h2> tag\n###### This is an <h6> tag # This is an <h1> tag\n\n# This is an <h2> tag\n###### This is an <h6> tag # This is an <h1> tag\n## This is an <h2> tag\n###### This is an <h6> tag # This is an <h1> tag\n## This is an <h2> tag\n###### This is an <h6> tag # This is an <h1> tag\n\n# This is an <h2> tag\n###### This is an <h6> tag # This is an <h1> tag\n  ## This is an <h2> tag\n###### This is an <h6> tag # This is an <h1> tag\n## This is an <h2> tag\n###### This is an <h6> tag # This is an <h1> tag\n\n# This is an <h2> tag\n###### This is an <h6> tag # This is an <h1> tag\n## This is an <h2> tag\n###### This is an <h6> tag\n### <a name='Test Title2'></a>Some heading";
+
+function mapStateToProps (store) {
+  return { userdetails: store.userdetails };
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps (dispatch) {
   return bindActionCreators({
     productEditValidationDetails
   }, dispatch);
@@ -41,40 +31,93 @@ function mapDispatchToProps(dispatch) {
 
 class ProductContent extends React.Component {
 
-  constructor(props) {
+  constructor (props) {
 
     super(props);
-    this.state = {};
+    this.state = {
+      preparingData: true,
+      htmlData: null,
+      authorProfile: false,
+      contentData: true,
+      comments: false
+    };
   }
 
-  createLists() {
+  componentWillMount () {
     let anchorTags = Cheerio.load(data)('a');
     let list = [];
-    anchorTags.map((index, anchorTag) => {
-      list.push(
-        <MenuItem key={index}
-                  primaryText={anchorTag.attribs.name}
-                  href={`#${anchorTag.attribs.name}`}/>);
+    for (let [index, anchorTag] of anchorTags.toArray().entries()) {
+      let titleAttributes = {
+        key: index,
+        primaryText: anchorTag.attribs.name,
+        href: `#${anchorTag.attribs.name}`
+      };
+
+      if (anchorTag.attribs.level === 'subtitle') {
+        titleAttributes['style'] = {
+          backgroundColor: '#fff'
+        };
+      }
+      list.push(<MenuItem {...titleAttributes}/>)
+    }
+
+    this.setState({
+      preparingData: false,
+      htmlData: list
     });
-    return list;
   }
 
-  render() {
-    return (
+  render () {
+    let { preparingData, htmlData, authorProfile, comments, contentData } = this.state;
+
+    let renderContent = preparingData ? <Loading type='spin' color='#000000'/> :
       <div className="contentDownload">
         <div className="contentSidebar contentSidebarColor">
-          <MenuItem primaryText="Author Info" className="contentSidebarColor" leftIcon={<RemoveRedEye />}/>
-          <MenuItem primaryText="Ask Question" className="contentSidebarColor" leftIcon={<PersonAdd />}/>
+          <MenuItem
+            onClick={() => this.setState({
+              authorProfile: true,
+              comments: false,
+              contentData: false
+            })}
+            primaryText="Author Info"
+            className="contentSidebarColor"
+            leftIcon={<RemoveRedEye />}
+          />
+          <MenuItem
+            onClick={() => this.setState({
+              authorProfile: false,
+              comments: true,
+              contentData: false
+            })}
+            primaryText="Ask Question"
+            className="contentSidebarColor" leftIcon={<PersonAdd />}
+          />
           <MenuItem primaryText="Download" leftIcon={<Download />}/>
           <MenuItem primaryText="----"/>
-          {this.createLists()}
+          {htmlData}
         </div>
 
-        <div className="contentMarkdown" style={{backgroundColor: "#fff"}}>
-          <ReactMarkdown source={data} escapeHtml={false}/>
+        <div className="contentMarkdown" style={{ backgroundColor: "#fff" }}>
+          {!contentData && <div className={cx('backlink-container')}>
+            <RaisedButton
+              label="Back To Content"
+              primary
+              onClick={() => this.setState({ contentData: true, authorProfile: false, comments: false })}
+            />
+          </div>}
+          {contentData && <ReactMarkdown source={data} escapeHtml={false}/>}
+          {authorProfile &&
+          <div>
+            <h1>Author Profile</h1>
+          </div>}
+          {comments &&
+          <div>
+            <h1>Comments</h1>
+          </div>}
         </div>
       </div>
-    )
+
+    return (renderContent);
   }
 }
 

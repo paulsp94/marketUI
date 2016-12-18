@@ -201,7 +201,7 @@ h1 {
 	text-align: center; 
 	padding-left: 3%;
 	padding-right: 3%;
-	background-color: #dbd1b4;
+	background-color: #FFF8E1;
 }
 
 .Productcontent{
@@ -275,6 +275,12 @@ h1 {
 	background-color: rgba(255,255,255,0.6);
 	min-width: 250px;
 	max-width: 250px;
+}
+
+@media	(max-width: 1200px) {
+	.welcomeBoard{
+		background: rgba(255, 255, 255, 0.85);
+	}
 }
 
 .sub-header {
