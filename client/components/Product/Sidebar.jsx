@@ -72,10 +72,10 @@ class ProductSidebar extends React.Component {
       else {
 
           var IntegrationTime = '';
-          var Packages = '';
-          var compatibility = '';
+          var Packages = [];
+          var compatibility = [];
           var complexity = '';
-          var tags = '';
+          var tags = [];
 
           this.setState({
               packages: Packages,
