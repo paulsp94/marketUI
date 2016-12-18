@@ -55,41 +55,30 @@ class ProductContent extends React.Component {
     let anchorTags = Cheerio.load(data)('a');
     let list = [];
     for (let [index, anchorTag] of anchorTags.toArray().entries()) {
-      if (anchorTag.attribs.level === 'title') {
-        let title = {
-          key: index,
-          primaryText: anchorTag.attribs.name,
-          href: `#${anchorTag.attribs.name}`
-        };
-        list.push(title);
-      } else {
-        let subtitle = {
-          key: index,
-          style: {backgroundColor: "#fff"},
-          primaryText: anchorTag.attribs.name,
-          href: `#${anchorTag.attribs.name}`
-        };
-        list.push(subtitle);
-      }
-    }
+      let titleAttributes = {
+        key: index,
+        primaryText: anchorTag.attribs.name,
+        href: `#${anchorTag.attribs.name}`
+      };
 
-    let titleElems = [];
-    for (let item of list) {
-      titleElems.push(
-        <MenuItem {...item} />
-      );
+      if (anchorTag.attribs.level === 'subtitle') {
+        titleAttributes['style'] = {
+          backgroundColor: '#fff'
+        };
+      }
+      list.push(<MenuItem {...titleAttributes}/>)
     }
 
     this.setState({
       preparingData: false,
-      htmlData: titleElems
+      htmlData: list
     });
   }
 
   render() {
     let {preparingData, htmlData} = this.state;
 
-    let renderContent = preparingData ? <Loading type='spin' color='#000000' /> :
+    let renderContent = preparingData ? <Loading type='spin' color='#000000'/> :
       <div className="contentDownload">
         <div className="contentSidebar contentSidebarColor">
           <MenuItem primaryText="Author Info" className="contentSidebarColor" leftIcon={<RemoveRedEye />}/>
@@ -104,7 +93,7 @@ class ProductContent extends React.Component {
         </div>
       </div>
 
-    return(renderContent);
+    return (renderContent);
   }
 }
 
