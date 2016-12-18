@@ -9,6 +9,11 @@ import PersonAdd from 'material-ui/svg-icons/social/person-add';
 import Download from 'material-ui/svg-icons/file/file-download';
 import Cheerio from 'cheerio';
 import Loading from 'react-loading';
+import styles from './ProductContent.scss'
+import classNames from 'classnames/bind'
+import RaisedButton from 'material-ui/RaisedButton';
+
+const cx = classNames.bind(styles)
 
 var data = "Take me to [pookie](#pookie) \n <a name='Test Title1' level='title'></a><a name='Test Title1' level='subtitle'></a><a name='Test Title1' level='subtitle'></a> \n # This is an <h1> tag\n## This is an <h2> tag\n###### This is an <h6> tag # This is an <h1> tag\n\n# This is an <h2> tag\n ###### This is an <h6> tag # This is an <h1> tag\n## This is an <h2> tag\n###### This is an <h6> tag # This is an <h1> tag\n## This is an <h2> tag\n###### This is an <h6> tag # This is an <h1> tag\n\n# This is an <h2> tag\n###### This is an <h6> tag # This is an <h1> tag\n## This is an <h2> tag\n###### This is an <h6> tag # This is an <h1> tag\n## This is an <h2> tag\n###### This is an <h6> tag # This is an <h1> tag\n\n# This is an <h2> tag\n###### This is an <h6> tag # This is an <h1> tag\n  ## This is an <h2> tag\n###### This is an <h6> tag # This is an <h1> tag\n## This is an <h2> tag\n###### This is an <h6> tag # This is an <h1> tag\n\n# This is an <h2> tag\n###### This is an <h6> tag # This is an <h1> tag\n## This is an <h2> tag\n###### This is an <h6> tag\n### <a name='Test Title2'></a>Some heading";
 
@@ -93,12 +98,13 @@ class ProductContent extends React.Component {
         </div>
 
         <div className="contentMarkdown" style={{ backgroundColor: "#fff" }}>
-          {!contentData &&
-          <a className="link-unstyled cursor-pointer" onClick={() => this.setState({
-            contentData: true,
-            authorProfile: false,
-            comments: false
-          })}>back to content</a>}
+          {!contentData && <div className={cx('backlink-container')}>
+            <RaisedButton
+              label="Back To Content"
+              primary
+              onClick={() => this.setState({ contentData: true, authorProfile: false, comments: false })}
+            />
+          </div>}
           {contentData && <ReactMarkdown source={data} escapeHtml={false}/>}
           {authorProfile &&
           <div>
