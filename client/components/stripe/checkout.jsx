@@ -39,8 +39,15 @@ class StripeCheckoutComponent extends React.Component {
         //email="makeawish880@gmail.com" // TODO pass down user email here if needs to be prefilled
         token={this._tokenHandler}
         amount={amount}
+        name="Rscript.Market"
+        bitcoin
+        alipay
         currency="USD"
-        stripeKey={config['stripe']['publishableKey']}/>
+        stripeKey={config['stripe']['publishableKey']}>
+        <button className="btn btn-primary">
+         Buy with Card or Bitcoin
+        </button>
+        </StripeCheckout>
     )
   }
 }
