@@ -10,6 +10,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import Paper from 'material-ui/Paper';
 
+
 class  DataContainer extends React.Component{
 
     constructor(props) {
@@ -22,7 +23,7 @@ class  DataContainer extends React.Component{
     }
 
     updateItem(event){
-        var productname = this.props.item.name;
+        var productname = this.props.item.productid;
         this.props.ViewItem(productname);
     }
 
@@ -42,7 +43,7 @@ class  DataContainer extends React.Component{
                 <CardText>
                 <img className="productimage" src={this.props.item.Subimage} style = {Style}/>
                 <div className="text-part">
-                <h4> <strong> {this.props.item.name} </strong> </h4>
+                <h4> <strong> {this.props.item.Title} </strong> </h4>
                     <RaisedButton onClick={this.ProductContentDownload.bind(this)} label="Download" style={{ margin: 12}} />
                 </div>
                 </CardText>

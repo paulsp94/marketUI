@@ -568,4 +568,39 @@ export function  productSellerandstripeid(productid) {
     }
 }
 
+export function  UserDownloadedProduct() {
+
+    var user = firebase.auth().currentUser;
+    var Userid = user.uid;
+
+    return function (dispatch) {
+        var productalldeatils = [];
+        firebase.database().ref('sales').orderByChild('buyerId').equalTo(Userid).on("child_added", (snapshot) => {
+
+            var productid = snapshot.val().productId;
+
+            firebase.database().ref('ProductCoreDetails').orderByChild('ProductId').equalTo(productid).on("child_added", (snapshot) => {
+
+
+                productalldeatils.push({
+                        productid: snapshot.val().ProductId,
+                        Mainimage: snapshot.val().mainImage,
+                        Title: snapshot.val().Title,
+                        Subimage: snapshot.val().subImage,
+                    });
+
+                dispatch({
+                    type: "USERDOWNLOADEDPRODUCTS",
+                    payload: {
+                        productalldeatils:productalldeatils
+                    }
+                })
+            });
+
+        });
+
+    }
+}
+
+
 export default user;

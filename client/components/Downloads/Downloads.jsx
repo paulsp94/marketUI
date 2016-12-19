@@ -10,31 +10,16 @@ import Profile from './Profile.jsx';
 import ProfileSidebar from './ProfileSidebar.jsx';
 import Content from './Content.jsx';
 import ContentSidebar from './ContentSidebar.jsx';
-import { currentuserid, UserCreatedProduct, FetchAllCurrentUserproduct } from '../../action/action.jsx';
+import { currentuserid, UserCreatedProduct, FetchAllCurrentUserproduct, UserDownloadedProduct } from '../../action/action.jsx';
 
 
-var datacontainer = [
-    {image:"https://images.unsplash.com/photo-1461632830798-3adb3034e4c8?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=90a14bfc86ece2e02bb67cb5decef29b", Price:"$5", name: "Product 1" },
-    {image:"https://images.unsplash.com/photo-1468070454955-c5b6932bd08d?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=098777638826d5753222a09116959b23", Price:"$10", name: "Product 2" },
-    {image:"https://images.unsplash.com/photo-1452626038306-9aae5e071dd3?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=f043061c9a5cdbd0fc2f114e2f52f0fd", Price:"$15", name: "Product 3" }
-];
-
-var data1 = [
-    {image:"https://images.unsplash.com/photo-1461632830798-3adb3034e4c8?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=90a14bfc86ece2e02bb67cb5decef29b", Price:"$5", name: "Product 1",rate:"4.5/10" },
-    {image:"https://images.unsplash.com/photo-1468070454955-c5b6932bd08d?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=098777638826d5753222a09116959b23", Price:"$10", name: "Product 2",rate:"8.5/10" },
-];
-
-var productspecificdata = [
-    {Productname:"Product 1", IntegrationTime:"7-8 Hours", Complexity: "8/10", compatibilty:" Php7", Price:"$15",rate:"5/10" },
-    {Productname:"Product 2", IntegrationTime:"1-2 Hours", Complexity: "3.5/10", compatibilty:"Java", Price:"$250",rate:"7.5/10"},
-    {Productname:"Product 3", IntegrationTime:"3-4 Hours", Complexity: "7.5/10", compatibilty:"C++", Price:"$20",rate:"2.5/10"},
-];
 
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({
         currentuserid,
         UserCreatedProduct,
         FetchAllCurrentUserproduct,
+        UserDownloadedProduct
     }, dispatch);
 }
 
@@ -54,50 +39,33 @@ class  Downloads extends React.Component{
             productname:'',
             profiletab:'',
             Contentdata:'',
+            currentProduct:'',
+            firstvalue:'',
+            Productsidebarid:'',
         };
     }
 
     componentWillMount(){
-        var specific_data = productspecificdata[0];
-        var arr =[];
-        for( var ij in specific_data ) {
-            if (specific_data.hasOwnProperty(ij)){
-                arr.push(specific_data[ij]);
-            }
-        }
 
-        this.setState({
-            productname : arr,
-        });
 
         var profiletab = 1;
         this.setState({
             profiletab : profiletab,
+            firstvalue: "0"
         });
+
 
     }
 
+    componentDidMount(){
+        this.props.UserDownloadedProduct();
+    }
+
     productData(productname){
-
-        for(var i=0; i<productspecificdata.length; i++){
-            var productdata = [];
-            var specific_data = productspecificdata[i];
-            var currentproduct = productspecificdata[i].Productname;
-            if(currentproduct == productname){
-
-                var arr =[];
-                for( var ij in specific_data ) {
-                    if (specific_data.hasOwnProperty(ij)){
-                        arr.push(specific_data[ij]);
-                    }
-                }
-
-                this.setState({
-                    productname : arr,
-                });
-                break;
-            }
-        }
+        this.setState({
+            firstvalue: "1",
+            Productsidebarid: productname
+        });
     }
 
     productData1(productname){
@@ -151,27 +119,37 @@ class  Downloads extends React.Component{
 
     render(){
 
-        //console.log(this.props.userdetails.currentuserproducts);
-
-        // download section will changed soon
-        if(this.props.userdetails.currentuserproducts == false){
+        //all Download section
+        if(this.props.userdetails.userdownloadetails == false){
             var data = [];
+            var currentProduct = '';
         }
         else {
-            var data = this.props.userdetails.currentuserproducts.products;
+            var data = this.props.userdetails.userdownloadetails.productalldeatils;
             var data = Object.keys(data).map(key => data[key]);
+
+            // all sidebar details
+            if(this.state.firstvalue == "0"){
+                var currentProduct = data[0].productid;
+            }
+            else {
+                var currentProduct = this.state.Productsidebarid;
+            }
+
         }
 
         var productspecificdata = this.state.productname;
         var profiletab = this.state.profiletab;
+
+
         if(profiletab == '1'){
             var sidebar = <ProfileSidebar/>
         }
         else if(profiletab == '2'){
-            var sidebar = <ContentSidebar productname={productspecificdata}/>
+            var sidebar = <ContentSidebar/>
         }
         else {
-            var sidebar = <Sidebar productname={productspecificdata}/>
+            var sidebar = <Sidebar productid={currentProduct}/>
         }
 
         var Usercreatedproductobject = this.props.userdetails.UserCreatedProduct;

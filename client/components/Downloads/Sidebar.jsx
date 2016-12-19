@@ -11,6 +11,8 @@ import {
   TableRowColumn
 } from 'material-ui/Table';
 import RaisedButton from 'material-ui/RaisedButton';
+var firebase = require('firebase');
+import firebase_details from '../../Firebase/Firebase';
 import Chip from 'material-ui/Chip';
 
 class Sidebar extends React.Component {
@@ -22,6 +24,11 @@ class Sidebar extends React.Component {
       Currentstate: '',
       expanded: false,
       showCheckboxes: false,
+        IntegrationTime:'',
+        Packages:[],
+        complexity:'',
+        compatibility:[],
+        tags:[],
     };
   }
 
@@ -30,7 +37,30 @@ class Sidebar extends React.Component {
     this.setState({
       Currentstate: statevalue
     });
+
+      var productid = this.props.productid;
+      firebase.database().ref('ProductSidebar').orderByChild('Productid').equalTo(productid).on("child_added", (snapshot) => {
+
+
+          var IntegrationTime = snapshot.val().IntegrationTime;
+          var Packages= snapshot.val().Packages;
+          var compatibility= snapshot.val().compatibility;
+          var complexity= snapshot.val().complexity;
+          var tags= snapshot.val().tags;
+
+          this.setState({
+              IntegrationTime,
+              Packages,
+              complexity,
+              compatibility,
+              tags
+          })
+      });
+
   }
+
+
+
 
   Item () {
 
@@ -157,7 +187,9 @@ class Sidebar extends React.Component {
   }
 
   render () {
+
     var currentstate = this.state.Currentstate;
+
 
     if (currentstate == '0') {
       var subheader = <div>
@@ -182,45 +214,38 @@ class Sidebar extends React.Component {
     if (currentstate == '0') {
       var prodctdetails =
         <div className="sidebar-bottom">
-          <h4><strong> {this.props.productname[0]} </strong> <br/></h4>
+          <h4><strong> {this.props.productid} </strong> <br/></h4>
 
           <Card>
-            <h4 style={{ float: "left", marginLeft: 3 }}><strong>Packages:</strong> <br/></h4>
-            <div style={{ display: "flex", flexWrap: "wrap", margin: 9 }}>
-              <Chip style={{ float: "left", margin: 4 }}>Shiny </Chip>
-              <Chip style={{ float: "left", margin: 4 }}>ggplot </Chip>
-              <Chip style={{ float: "left", margin: 4 }}>dplyr </Chip>
-            </div>
+              <h4><strong>Packages:</strong></h4>
+              <div style={{ display: "flex", flexWrap: "wrap", margin: 9 }}>
+              {this.state.Packages.map((item, index) =>
+                  <Chip key={index} style={{ float: "left", margin: 4 }}>{item}</Chip>
+              )}
+              </div>
           </Card>
 
 
           <div style={{ flexWrap: 'wrap', margin: 9 }}>
             <h4><strong>Complexity:</strong></h4>
-            <p> {this.props.productname[2]} </p>
+            <p> {this.state.complexity} </p>
             <h4><strong>Integration Time: </strong></h4>
-            {this.props.productname[1]}
+            {this.state.IntegrationTime}
           </div>
 
           <Card>
             <h4 style={{ float: "left", marginLeft: 3 }}><strong> Compatibilty: </strong> <br/></h4>
             <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-              <Chip style={{ float: "left", margin: 4 }}> {this.props.productname[3]} </Chip>
+              <Chip style={{ float: "left", margin: 4 }}> {this.state.compatibility} </Chip>
             </div>
           </Card>
-
-          <div style={{ flexWrap: "wrap", margin: 9 }}>
-            <h4 ><strong> Maintenance: </strong></h4>
-            <p > Last Updated 20-11-2015 </p>
-          </div>
 
           <Card>
             <h4 style={{ float: "left", marginLeft: 3 }}><strong> Tags: </strong></h4>
             <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-              <Chip style={{ float: "left", margin: 4 }}>Html </Chip>
-              <Chip style={{ float: "left", margin: 4 }}>CSS </Chip>
-              <Chip style={{ float: "left", margin: 4 }}>Javascript </Chip>
-              <Chip style={{ float: "left", margin: 4 }}>Jquery </Chip>
-              <Chip style={{ float: "left", margin: 4 }}>Firebase </Chip>
+                {this.state.tags.map((item, index) =>
+                    <Chip key={index} style={{ float: "left", margin: 4 }}>{item}</Chip>
+                )}
             </div>
           </Card>
         </div>;
