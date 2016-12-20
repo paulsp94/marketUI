@@ -10,6 +10,8 @@ import Profile from './Profile.jsx';
 import ProfileSidebar from './ProfileSidebar.jsx';
 import Content from './Content.jsx';
 import ContentSidebar from './ContentSidebar.jsx';
+var firebase = require('firebase');
+import firebase_details from '../../Firebase/Firebase';
 import { currentuserid, UserCreatedProduct, FetchAllCurrentUserproduct, UserDownloadedProduct } from '../../action/action.jsx';
 
 
@@ -41,7 +43,13 @@ class  Downloads extends React.Component{
             Contentdata:'',
             currentProduct:'',
             firstvalue:'',
-            Productsidebarid:'',
+            Productsidebarid:[],
+            productalldeatils:[],
+            IntegrationTime:'',
+            Packages:[],
+            complexity:'',
+            compatibility:[],
+            tags:[],
         };
     }
 
@@ -58,13 +66,81 @@ class  Downloads extends React.Component{
     }
 
     componentDidMount(){
-        this.props.UserDownloadedProduct();
+
+        var user = firebase.auth().currentUser;
+        var Userid = user.uid;
+
+            var productalldeatils = [];
+            firebase.database().ref('sales').orderByChild('buyerId').equalTo(Userid).on("child_added", (snapshot) => {
+
+                var productid = snapshot.val().productId;
+
+                firebase.database().ref('ProductCoreDetails').orderByChild('ProductId').equalTo(productid).on("child_added", (snapshot) => {
+
+
+                    productalldeatils.push({
+                        productid: snapshot.val().ProductId,
+                        Mainimage: snapshot.val().mainImage,
+                        Title: snapshot.val().Title,
+                        Subimage: snapshot.val().subImage,
+                    });
+
+
+                    var productfirstid = productalldeatils[0].productid
+
+
+                    var productallsidebardeatils = [];
+                    firebase.database().ref('ProductSidebar').orderByChild('Productid').equalTo(productfirstid).once("child_added", (snapshot) => {
+
+
+
+                            var IntegrationTime= snapshot.val().IntegrationTime;
+                            var Packages= snapshot.val().Packages;
+                            var compatibility= snapshot.val().compatibility;
+                            var complexity= snapshot.val().complexity;
+                            var tags= snapshot.val().tags;
+
+
+                        this.setState({
+                            IntegrationTime,
+                            Packages,
+                            compatibility,
+                            complexity,
+                            tags
+                        })
+                    });
+
+
+                    this.setState({
+                        productalldeatils:productalldeatils
+                    })
+
+                });
+
+            });
+
     }
 
     productData(productname){
-        this.setState({
-            firstvalue: "1",
-            Productsidebarid: productname
+
+        var productalldeatils = [];
+        firebase.database().ref('ProductSidebar').orderByChild('Productid').equalTo(productname).once("child_added", (snapshot) => {
+
+
+            var IntegrationTime= snapshot.val().IntegrationTime;
+            var Packages= snapshot.val().Packages;
+            var compatibility= snapshot.val().compatibility;
+            var complexity= snapshot.val().complexity;
+            var tags= snapshot.val().tags;
+
+
+            this.setState({
+                IntegrationTime,
+                Packages,
+                compatibility,
+                complexity,
+                tags
+            });
         });
     }
 
@@ -119,24 +195,9 @@ class  Downloads extends React.Component{
 
     render(){
 
-        //all Download section
-        if(this.props.userdetails.userdownloadetails == false){
-            var data = [];
-            var currentProduct = '';
-        }
-        else {
-            var data = this.props.userdetails.userdownloadetails.productalldeatils;
-            var data = Object.keys(data).map(key => data[key]);
+        var data = this.state.productalldeatils
 
-            // all sidebar details
-            if(this.state.firstvalue == "0"){
-                var currentProduct = data[0].productid;
-            }
-            else {
-                var currentProduct = this.state.Productsidebarid;
-            }
-
-        }
+        var currentProduct = this.state.Productsidebarid;
 
         var productspecificdata = this.state.productname;
         var profiletab = this.state.profiletab;
@@ -149,7 +210,7 @@ class  Downloads extends React.Component{
             var sidebar = <ContentSidebar/>
         }
         else {
-            var sidebar = <Sidebar productid={currentProduct}/>
+            var sidebar = <Sidebar IntegrationTime={this.state.IntegrationTime} Packages={this.state.Packages} compatibility={this.state.compatibility} tags={this.state.tags} complexity={this.state.complexity} productsidebar={currentProduct}/>
         }
 
         var Usercreatedproductobject = this.props.userdetails.UserCreatedProduct;
