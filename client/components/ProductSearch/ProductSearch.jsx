@@ -35,6 +35,7 @@ class  ProductSearch extends React.Component{
         super(props);
         this.state= {
             questdata:[],
+            filter:'',
         };
     }
 
@@ -42,13 +43,34 @@ class  ProductSearch extends React.Component{
         this.props.FetchAllPublishedproduct();
     }
 
+    SearchFilter(filter){
+        this.setState({
+            filter
+        })
+    }
+
     render(){
+
+        console.log('filter is',this.state.filter)
 
         var allproducts = this.props.userdetails.Productalldetails;
 
         var UserId = Object.keys(allproducts).map(key => allproducts[key]);
 
         var mergedProduct = [].concat.apply([], UserId);
+
+        if(this.state.filter == ''){
+            var filtereddata = mergedProduct;
+        }
+        else {
+            var filtereddata= mergedProduct.filter(
+                (detail) =>{
+                    return detail.Title.toLowerCase().indexOf(this.state.filter.toLowerCase()) !==  -1
+                }
+            );
+
+
+        }
 
         if(allproducts == false){
             return(
@@ -63,9 +85,9 @@ class  ProductSearch extends React.Component{
             return (
                     <div>
                         <div className="container-search">
-                            <Tags/>
+                            <Tags onUpdateFilter={this.SearchFilter.bind(this)}/>
                             {
-                                mergedProduct.map((detail)=> {
+                                filtereddata.map((detail)=> {
                                     return <Product item={detail}
                                     />
                                 })

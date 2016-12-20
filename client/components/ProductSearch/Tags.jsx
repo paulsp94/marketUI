@@ -23,6 +23,10 @@ class Tags extends React.Component{
         };
     }
 
+    searchFilter(event){
+        this.props.onUpdateFilter(event.target.value.substr(0,20));
+    }
+
     render(){
 
         return (
@@ -47,7 +51,7 @@ class Tags extends React.Component{
                             <RaisedButton label="Other" style={{margin: 3, width: "100%"}} primary={true} />                   
               </Flexbox>
               <Flexbox flexGrow={1} flexShrink={1}>
-                   <input type="text" className="search" placeholder="Search Product"/>
+                   <input type="text" className="search" placeholder="Search Product" onChange={this.searchFilter.bind(this)}/>
                    <select className="sort">
                        <optgroup label="Sort">
                            <option value=""> Sort </option>
