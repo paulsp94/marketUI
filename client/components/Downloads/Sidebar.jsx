@@ -53,54 +53,24 @@ class Sidebar extends React.Component {
 
   Comments () {
 
+      console.log('comments are',this.props.productcomment);
     var curr_icon = <div>
       <div className="sidebar-bottom">
         <CardText>
-          <div className="usercommentname">
-            <h4><strong> Komaldeep Singh </strong> <br/></h4>
-          </div>
-          <div className="usercomments">
-            <p>
-              Standard Demo-Text seit 1500, als ein unbekannter Schriftsteller eine Hand voll Wörter
-              nahm und diese durcheinander warf um ein Musterbuch zu
-            </p>
-          </div>
-          <hr/>
 
-          <hr/>
-          <div className="usercommentname">
-            <h4><strong> Sonam Malhotra </strong> <br/></h4>
-          </div>
-          <div className="usercomments">
-            <p>
-              Mittlerweile gibt es mehrere Versionen des Lorem Ipsum, einige zufällig, andere
-              bewusst (beeinflusst von Witz und des eigenen Geschmacks)
-            </p>
-          </div>
-          <hr/>
-
-          <hr/>
-          <div className="usercommentname">
-            <h4><strong> Sonam </strong> <br/></h4>
-          </div>
-          <div className="usercomments">
-            <p>
-              Can you guide me ? How to improve the performance of this
-            </p>
-          </div>
-          <hr/>
-
-          <hr/>
-          <div className="usercommentname">
-            <h4><strong> Sonam </strong> <br/></h4>
-          </div>
-          <div className="usercomments">
-            <p>
-              Can you guide me ? How to improve the performance of this
-            </p>
-          </div>
-          <hr/>
-
+            {this.props.productcomment.map((item, index) =>
+            <div>
+                <div className="usercommentname">
+                <h4><strong> {item.Username} </strong> <br/></h4>
+                </div>
+                <div className="usercomments">
+                <p>
+                    {item.Comment}
+                </p>
+                </div>
+                <hr/>
+            </div>
+            )}
         </CardText>
       </div>
     </div>;
@@ -162,6 +132,8 @@ class Sidebar extends React.Component {
   }
 
   render () {
+
+      console.log('comments are',this.props.productcomment);
 
     var currentstate = this.state.Currentstate;
 

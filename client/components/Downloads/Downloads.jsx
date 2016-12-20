@@ -50,6 +50,7 @@ class  Downloads extends React.Component{
             complexity:'',
             compatibility:[],
             tags:[],
+            productcomment:[],
         };
     }
 
@@ -62,7 +63,6 @@ class  Downloads extends React.Component{
             firstvalue: "0"
         });
 
-
     }
 
     componentDidMount(){
@@ -70,7 +70,8 @@ class  Downloads extends React.Component{
         var user = firebase.auth().currentUser;
         var Userid = user.uid;
 
-            var productalldeatils = [];
+        var productalldeatils = [];
+        var productcomment = [];
             firebase.database().ref('sales').orderByChild('buyerId').equalTo(Userid).on("child_added", (snapshot) => {
 
                 var productid = snapshot.val().productId;
@@ -92,13 +93,11 @@ class  Downloads extends React.Component{
                     var productallsidebardeatils = [];
                     firebase.database().ref('ProductSidebar').orderByChild('Productid').equalTo(productfirstid).once("child_added", (snapshot) => {
 
-
-
-                            var IntegrationTime= snapshot.val().IntegrationTime;
-                            var Packages= snapshot.val().Packages;
-                            var compatibility= snapshot.val().compatibility;
-                            var complexity= snapshot.val().complexity;
-                            var tags= snapshot.val().tags;
+                        var IntegrationTime= snapshot.val().IntegrationTime;
+                        var Packages= snapshot.val().Packages;
+                        var compatibility= snapshot.val().compatibility;
+                        var complexity= snapshot.val().complexity;
+                        var tags= snapshot.val().tags;
 
 
                         this.setState({
@@ -108,6 +107,23 @@ class  Downloads extends React.Component{
                             complexity,
                             tags
                         })
+                    });
+
+
+                    firebase.database().ref('Products_User_Comments').orderByChild('ProductId').equalTo(productfirstid).on("child_added", (snapshot) => {
+
+
+                        productcomment.push({
+                            productid: snapshot.val().ProductId,
+                            Comment: snapshot.val().Comment,
+                            Username:snapshot.val().Username,
+                        });
+
+
+                        this.setState({
+                            productcomment
+                        });
+
                     });
 
 
@@ -123,6 +139,7 @@ class  Downloads extends React.Component{
 
     productData(productname){
 
+        var productcomment = [];
         var productalldeatils = [];
         firebase.database().ref('ProductSidebar').orderByChild('Productid').equalTo(productname).once("child_added", (snapshot) => {
 
@@ -141,6 +158,22 @@ class  Downloads extends React.Component{
                 complexity,
                 tags
             });
+        });
+
+
+        firebase.database().ref('Products_User_Comments').orderByChild('ProductId').equalTo(productname).on("child_added", (snapshot) => {
+
+
+                productcomment.push({
+                    productid: snapshot.val().ProductId,
+                    Comment: snapshot.val().Comment,
+                    Username: snapshot .val().Username,
+                });
+
+            this.setState({
+                productcomment
+            });
+
         });
     }
 
@@ -210,7 +243,14 @@ class  Downloads extends React.Component{
             var sidebar = <ContentSidebar/>
         }
         else {
-            var sidebar = <Sidebar IntegrationTime={this.state.IntegrationTime} Packages={this.state.Packages} compatibility={this.state.compatibility} tags={this.state.tags} complexity={this.state.complexity} productsidebar={currentProduct}/>
+            var sidebar = <Sidebar
+                IntegrationTime={this.state.IntegrationTime}
+                Packages={this.state.Packages}
+                compatibility={this.state.compatibility}
+                tags={this.state.tags}
+                complexity={this.state.complexity}
+                productsidebar={currentProduct}
+                productcomment={this.state.productcomment} />
         }
 
         var Usercreatedproductobject = this.props.userdetails.UserCreatedProduct;
