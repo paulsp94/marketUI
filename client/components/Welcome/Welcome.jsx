@@ -30,19 +30,19 @@ var Welcome = React.createClass({
                         <h1> Welcome to the Rscript.Market</h1>
                         <br/>
                         <p> Discover the newest code snippets of the R universe </p>
-                        <p> or share your own expertise</p>
+                        <p> During this beta everything is free!</p>
                     </div>
                     <div className="welcome-text" style={{marginTop:'40px'}}>
                     </div>
                     <div className="welcomeBoard">
                         <div className="welcome-info-header">
-                            <p> free item of the month </p>
+                            <p> BETA TEST Awards </p>
                         </div>
                         <div className='welcome-info'>
-                            <p> Learn to create 3D animated density maps (as seen on the right) by connecting R to Cinema 4D. All tools and techniques are explained in the tutorial. Available until 1-1-2017.</p>
+                            <p> To make the BETA launch a bit more exciting, we are giving away 150$ for the 5 best items created until 9th of january 2017. More information below.</p>
                         </div>
                         <div style={{textAlign:"center"}} className="welcome-info-header">
-                            <RaisedButton label="Download" href="/ProductContent/-KYiHgYGx6V5mL4uiQed" style={{}} />
+                            <RaisedButton label="More Info" href="/ProductContent/-KYiHgYGx6V5mL4uiQed" style={{}} />
                         </div>
                     </div>
                 </div>
