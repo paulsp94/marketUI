@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactMarkdown from 'react-markdown';
 import RaisedButton from 'material-ui/RaisedButton';
 import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card';
+import LazyLoad from 'react-lazyload';
 
 export default class Itemview extends React.Component {
 
@@ -36,7 +37,9 @@ export default class Itemview extends React.Component {
             <CardMedia
               overlay={
                 <CardTitle title={this.props.productcoredetails.Title} subtitle={this.props.productcoredetails.SubTitle}/>}>
-              <img src={this.props.productcoredetails.Mainimage}/>
+              <LazyLoad height={'100%'} resize={true} >
+                <img src={this.props.productcoredetails.Mainimage}/>
+              </LazyLoad>
             </CardMedia>
 
             <Card style={{ marginRight: 40, marginLeft: 40 }}>

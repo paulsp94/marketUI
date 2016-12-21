@@ -64,6 +64,11 @@ export default class Header extends React.Component {
           </Link>
         </li>
         <li>
+          <Link to="/Contact" className="">
+            Contact
+          </Link>
+        </li>
+        <li>
           <a className="cursor-pointer" onClick={this.logout}>Logout</a>
         </li>
       </ul>
@@ -78,7 +83,11 @@ export default class Header extends React.Component {
           Search
         </Link>
       </li>
-   
+       <li>
+          <Link to="/Contact" className="">
+            Contact
+          </Link>
+        </li>
       <li>
         <a className="cursor-pointer" onClick={this.toggleAuthModal}>Login / Sign Up</a>
       </li>

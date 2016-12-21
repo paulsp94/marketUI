@@ -19,6 +19,7 @@ var firebase = require('firebase');
 import firebase_details from '../../Firebase/Firebase';
 import StripeCheckout from '../stripe/checkout';
 import {productSellerandstripeid} from '../../action/action';
+import LazyLoad from 'react-lazyload';
 
 function mapDispatchToProps (dispatch) {
   return bindActionCreators({
@@ -177,7 +178,9 @@ class Sidebar extends React.Component {
     var curr_icon = <div>
       <hr/>
       <div className="sidebar-bottom">
+       <LazyLoad height={'100%'} resize={true} >
         <img className="Userimage" src={'client/Images/deep.jpg'}/> <br/>
+       </LazyLoad> 
         <CardText>
           <div className="userdescribation">
             <p>
