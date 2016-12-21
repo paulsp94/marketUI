@@ -33,15 +33,13 @@ export default class Itemview extends React.Component {
         <div className="container">
 
           <Card style={{ backgroundColor: "#efeadd" }}>
-
+            <LazyLoad height={'100%'} resize={true} >
             <CardMedia
               overlay={
                 <CardTitle title={this.props.productcoredetails.Title} subtitle={this.props.productcoredetails.SubTitle}/>}>
-              <LazyLoad height={'100%'} resize={true} >
                 <img src={this.props.productcoredetails.Mainimage}/>
-              </LazyLoad>
             </CardMedia>
-
+              </LazyLoad>
             <Card style={{ marginRight: 40, marginLeft: 40 }}>
               {button}
               <CardText >

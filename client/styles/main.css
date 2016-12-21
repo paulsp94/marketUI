@@ -566,9 +566,10 @@ h1 {
 
 .Userimage {
     border: 0px solid white;
-    width: 50%;
+    width:100%;
     float: none;
-    margin-left: 3%;
+    padding:0 20%;
+    
 }
 
 .usercommentname {

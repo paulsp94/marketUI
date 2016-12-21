@@ -178,9 +178,11 @@ class Sidebar extends React.Component {
     var curr_icon = <div>
       <hr/>
       <div className="sidebar-bottom">
-       <LazyLoad height={'100%'} resize={true} >
-        <img className="Userimage" src={'client/Images/deep.jpg'}/> <br/>
-       </LazyLoad> 
+       
+        <img className="Userimage" src={'/client/Images/deep.jpg'}/> 
+        
+        <br/>
+        
         <CardText>
           <div className="userdescribation">
             <p>
