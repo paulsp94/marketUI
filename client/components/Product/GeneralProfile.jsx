@@ -4,7 +4,9 @@ import { bindActionCreators } from 'redux';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
+import SelectField from 'material-ui/SelectField';
 import FlatButton from 'material-ui/FlatButton';
+import MenuItem from 'material-ui/MenuItem';
 
 var firebase = require('firebase');
 import firebase_details from '../../Firebase/Firebase';
@@ -134,11 +136,9 @@ class  GeneralProfile extends React.Component{
         });
     }
 
-    ProdctCategory(){
-        var category = this.Category.value;
-        this.setState({
-            category :category
-        });
+    ProdctCategory = (event, index, value) => {
+        //var category = this.Category.value;
+        this.setState({category : value});
     }
 
     SubMit(){
@@ -155,7 +155,7 @@ class  GeneralProfile extends React.Component{
 
         if(title == '' || subtitle == '' || describtion == '' || price == '' || category == ''|| url == ''|| url1 == ''){
             this.setState({
-                Error:"Please fill Every Detail",
+                Error: "Please fill Every Detail",
             });
         }
         else {
@@ -207,39 +207,37 @@ class  GeneralProfile extends React.Component{
         };
 
         return (
+               /*<p>This is the creation page! here you can interactivly create your content. Don't forget to save & publish your work </p>*/
                 <div className="product-tab" >
-                      <div className="left-panel">
-                          <div style={{margin: 20}} >
-                            <p>This is the creation page! here you can interactivly create your content. Don't forget to save & publish your work </p>
-                          </div>
-                          <div className="warning">
-                              {this.state.Error}
-                          </div>
+                    <div className="left-panel">
 
-                            <div className="productdisplayleft">
-                            <Card style={{padding: 20, backgroundColor: "white"}}>
+                          <Card style={{ margin: '10px auto', width: 550 }}>
+                                <div className="warning" style={{margin:'20 0 0 100'}} >
+                                    {this.state.Error}
+                                </div>
                                  <CardTitle
                                    title="General"
                                    subtitle=""
                                    align = 'left'
                                  />
                                  <CardText>
-                                     <TextField value={this.state.title} name="title" ref={(a) => this.title = a}  type="text" placeholder="Title" onChange={this.TiTle.bind(this)} fullWidth={true} />
-                                     <TextField value={this.state.subtitle} name="subtitle" ref={(c) => this.subTitle = c} type="text"  placeholder="sub-title" onChange={this.SubTitle.bind(this)} fullWidth={true}/>
+                                     <TextField value={this.state.title} ref={(d) => this.title = d}  name="title" type="text" placeholder="Title" onChange={this.TiTle.bind(this)}  fullWidth={true} />
+                                     <TextField value={this.state.subtitle} ref={(d) => this.subTitle = d}  name="subtitle" type="text"  placeholder="sub-title" onChange={this.SubTitle.bind(this)}  fullWidth={true}/>
 
+                                    {/*
                                      <FlatButton label="Choose Image" labelPosition="before" primary={true}>
-                                          <input type="file" style={style.imageInput}
-                                              accept="image/*"
-                                              name="avatar"
-                                              randomizeFilename
-                                              storageRef={firebase.storage().ref('images')}
-                                              onUploadStart={this.handleUploadStart}
-                                              onUploadError={this.handleUploadError}
-                                              onUploadSuccess={this.handleUploadSuccess}
-                                              onProgress={this.handleProgress} />
-                                    </FlatButton>
+                                      <input type="file" style={style.imageInput}
+                                          accept="image/*"
+                                          name="avatar"
+                                          randomizeFilename
+                                          storageRef={firebase.storage().ref('images')}
+                                          onUploadStart={this.handleUploadStart}
+                                          onUploadError={this.handleUploadError}
+                                          onUploadSuccess={this.handleUploadSuccess}
+                                          onProgress={this.handleProgress}  />
+                                    </FlatButton> */}
 
-                                    <!-- ... -->
+                                    <br/><br/><br/>
                                      <FileUploader
                                             accept="image/*"
                                             name="avatar"
@@ -249,7 +247,7 @@ class  GeneralProfile extends React.Component{
                                             onUploadError={this.handleUploadError}
                                             onUploadSuccess={this.handleUploadSuccess}
                                             onProgress={this.handleProgress} />
-
+                                        <br/>
                                         <FileUploader
                                             accept="image/*"
                                             name="avatar"
@@ -259,34 +257,32 @@ class  GeneralProfile extends React.Component{
                                             onUploadError={this.handleUploadError1}
                                             onUploadSuccess={this.handleUploadSuccess1}
                                             onProgress={this.handleProgress1} />
-                                    <!-- ... -->
-                                          <select name="Category" ref={(ab) => this.Category = ab} className="inputfield-signup1" onChange={this.ProdctCategory.bind(this)}>
-                                              <optgroup label="Category">
-                                              <option value="Category">  Category </option>
-                                                  <option value="Machine-Learning">  Machine-Learning </option>
-                                                  <option value="Big-Data"> Big-Data </option>
-                                                  <option value="Algorithms">  Algorithms </option>
-                                                  <option value="Graphics">  Graphics </option>
-                                                  <option value="Other">  Other </option>
-                                                  <option value="Web or Shiny">  Web or Shiny </option>
-                                              </optgroup>
-                                          </select>
 
-                                          <textarea value={this.state.describtion} name="textarea" ref={(d) => this.textarea = d} className="textarea1" placeholder="Description about Product"
+                                        <SelectField
+                                          floatingLabelText = "Category"
+                                          value = {this.state.category}
+                                          onChange = {this.ProdctCategory.bind(this)}
+                                          fullWidth = {true}
+                                        >
+                                          <MenuItem value="Machine-Learning" primaryText="Machine-Learning" />
+                                          <MenuItem value="Big-Data" primaryText="Big-Data" />
+                                          <MenuItem value="Algorithms" primaryText="Algorithms" />
+                                          <MenuItem value="Graphics" primaryText="Graphics" />
+                                          <MenuItem value="Other" primaryText="Other" />
+                                          <MenuItem value="Web or Shiny" primaryText="Web or Shiny" />
+                                        </SelectField>
+
+                                        <textarea value={this.state.describtion} name="textarea" ref={(d) => this.textarea = d} className="textarea1" placeholder="Description about Product"
                                                     onChange={this.DescriPtion.bind(this)}/> <br/> <br/>
-                                          <input value={this.state.price} name="Price" ref={(ef) => this.Price = ef}  type="text" className="inputfield-signup1"
-                                          placeholder="Price in $"
-                                          onChange={this.PriCe.bind(this)}/><br/><br/>
 
-                                          <div className="product-header">
-                                            <RaisedButton onClick={this.SubMit.bind(this)} label=" Save" primary={true} style={{ margin: 12}}/>
-                                          </div>
-                                      </CardText>
+                                        <TextField value={this.state.price} ref={(d) => this.Price = d} name="Price" type="text" placeholder="Price in $" onChange={this.PriCe.bind(this)} fullWidth={true} />
+                                        <div className="product-header">
+                                          <RaisedButton onClick={this.SubMit.bind(this)} label=" Save" primary={true} style={{ margin: 12}}/>
+                                        </div>
+                                    </CardText>
                             </Card>
-
-
-                          </div>
                       </div>
+
                       <div className="right-panel">
                           <div className="container2">
                                   <CardMedia
