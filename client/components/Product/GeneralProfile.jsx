@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
+import TextField from 'material-ui/TextField';
 var firebase = require('firebase');
 import firebase_details from '../../Firebase/Firebase';
 var FileInput = require('react-file-input');
@@ -207,6 +208,7 @@ class  GeneralProfile extends React.Component{
 
                             <div className="productdisplayleft">
                             <Card style={{padding: 20, backgroundColor: "white"}}>
+                                      <TextField hintText="Phone" floatingLabelText="Phone" name="phone" errorText= {this.state.errorText} onChange={this.onChange.bind(this)} />
                                       <input value={this.state.title} name="title" ref={(a) => this.title = a} type="text" className="inputfield-signup1" placeholder="Title" onChange={this.TiTle.bind(this)}/>
                                       <input value={this.state.subtitle} name="subtitle" ref={(c) => this.subTitle = c} type="text" className="inputfield-signup1" placeholder="sub-title" onChange={this.SubTitle.bind(this)}/><br/><br/>
                                  <FileUploader
@@ -250,7 +252,7 @@ class  GeneralProfile extends React.Component{
                                       <div className="product-header">
                                         <RaisedButton onClick={this.SubMit.bind(this)} label=" Save" primary={true} style={{ margin: 12}}/>
                                       </div>
-                                      
+
                             </Card>
 
 
