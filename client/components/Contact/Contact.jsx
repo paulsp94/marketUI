@@ -6,51 +6,42 @@ import Subheader from '../Subheader/Subheader.jsx';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import RaisedButton from 'material-ui/RaisedButton';
 import Flexbox from 'flexbox-react';
+import TextField from 'material-ui/TextField';
+import Divider from 'material-ui/Divider/Divider';
+
 <meta name="viewport" content="width=device-width" />
 
 var Contact = React.createClass({ 
-
-
     render(){
-        var style = { backgroundImage: 'url(https://picload.org/image/raorapid/front_page.jpg)', 
-                      height: '100%', 
-                      width: '100%', 
-                      top: '0px',
-                      backgroundRepeat: 'no-repeat', 
-                      backgroundPosition: 'right top', 
-                      backgroundSize: 'cover',
-                      position: 'absolute'};
-
+        var style = { backgroundColor: 'white',
+                      margin: 'auto',
+                      marginTop: '40px', 
+                      height: '80%', 
+                      width: '60%'
+                  };
         return (
-            <div>
                 <div style={style}>
-                    <div className="welcome-text">
-                        <h1> Welcome to the Rscript.Market</h1>
-                        <br/>
-                        <p> Discover the newest code snippets of the R universe </p>
-                        <p> During this beta everything is free!</p>
-                    </div>
-                    <div className="welcome-text" style={{marginTop:'40px'}}>
-                    </div>
-                    <div className="welcomeBoard">
-                        <div className="welcome-info-header">
-                            <p> BETA TEST Awards </p>
-                        </div>
-                        <div className='welcome-info'>
-                            <p> To make the BETA launch a bit more exciting, we are giving away 150$ for the 5 best items created until 9th of january 2017. More information below.</p>
-                        </div>
-                        <div style={{textAlign:"center"}} className="welcome-info-header">
-                            <RaisedButton label="More Info" href="/Contact" style={{}} />
-                        </div>
-                    </div>
+                    <div id={'contact_div'}>
+                        <span>Please Input Your Message :</span>    
+                        <TextField hintText={'Message'} /*floatingLabelText={'Message'}*/ className={'contact_text'}/> 
+                         <br />    
+                        <span style={{paddingLeft:'88px'}}>Your Address :</span>    
+                        <TextField hintText={'Address'} /*floatingLabelText={'Message'}*/ className={'contact_text'}/>
+                        <br />    
+                        <span style={{paddingLeft:'38px'}}>Your Company Name :</span>    
+                        <TextField hintText={'Company Name'} /*floatingLabelText={'Message'}*/ className={'contact_text'}/>
+                        <br />
+                        <br />
+                        <Divider /> 
+                        <br />
+                        <div style={{padding:'0 45%'}}>    
+                         <RaisedButton primary={true} label="Contact" href="" />
+                        </div>  
+                    </div> 
                 </div>
-                
-            </div>
         )
     }
 
 });
 
 module.exports = Contact;
-
-
