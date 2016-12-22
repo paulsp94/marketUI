@@ -198,7 +198,7 @@ h1 {
 
 .welcome-info-header{
 	text-transform: capitalize;
-	text-align: center; 
+	text-align: center;
 	padding-left: 3%;
 	padding-right: 3%;
 	background-color: #FFF8E1;
@@ -251,7 +251,7 @@ h1 {
 
 @media (min-width: 0px) and (max-width: 1200px) {
 	.contentSidebar{
-		display: none; 
+		display: none;
  	}
  	.contentMarkdown{
  		max-width: 100%;

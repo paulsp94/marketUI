@@ -4,12 +4,15 @@ import { bindActionCreators } from 'redux';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
+import FlatButton from 'material-ui/FlatButton';
+
 var firebase = require('firebase');
 import firebase_details from '../../Firebase/Firebase';
 var FileInput = require('react-file-input');
 import FileUploader from 'react-firebase-file-uploader';
 import Flexbox from 'flexbox-react';
 import { currentuserid, submitProductGeneralDetails, productCoreDetails } from '../../action/action.jsx';
+
 
 function mapStateToProps(store) {
     return { userdetails: store.userdetails};
@@ -189,70 +192,96 @@ class  GeneralProfile extends React.Component{
 
     render(){
 
-
         var style = {
             height : "300px",
+            imageInput: {
+              cursor: 'pointer',
+              position: 'absolute',
+              top: 0,
+              bottom: 0,
+              right: 0,
+              left: 0,
+              width: '100%',
+              opacity: 0,
+            },
         };
 
         return (
-            <div className="Profiledata">
-                <Card style={{marginRight: "1%", marginLeft: "1%", marginTop: 9}}>
-                    <div className="product-tab" >
+                <div className="product-tab" >
                       <div className="left-panel">
-                          <div style={{marginTop: 25}}>
-                            <p> This is the creation page! here you can interactivly create your content. Don't forget to save & publish your work </p>
-                            </div>
+                          <div style={{margin: 20}} >
+                            <p>This is the creation page! here you can interactivly create your content. Don't forget to save & publish your work </p>
+                          </div>
                           <div className="warning">
                               {this.state.Error}
                           </div>
 
                             <div className="productdisplayleft">
                             <Card style={{padding: 20, backgroundColor: "white"}}>
-                                      <TextField hintText="Phone" floatingLabelText="Phone" name="phone" errorText= {this.state.errorText} onChange={this.onChange.bind(this)} />
-                                      <input value={this.state.title} name="title" ref={(a) => this.title = a} type="text" className="inputfield-signup1" placeholder="Title" onChange={this.TiTle.bind(this)}/>
-                                      <input value={this.state.subtitle} name="subtitle" ref={(c) => this.subTitle = c} type="text" className="inputfield-signup1" placeholder="sub-title" onChange={this.SubTitle.bind(this)}/><br/><br/>
-                                 <FileUploader
-                                        accept="image/*"
-                                        name="avatar"
-                                        randomizeFilename
-                                        storageRef={firebase.storage().ref('images')}
-                                        onUploadStart={this.handleUploadStart}
-                                        onUploadError={this.handleUploadError}
-                                        onUploadSuccess={this.handleUploadSuccess}
-                                        onProgress={this.handleProgress} />
+                                 <CardTitle
+                                   title="General"
+                                   subtitle=""
+                                   align = 'left'
+                                 />
+                                 <CardText>
+                                     <TextField value={this.state.title} name="title" ref={(a) => this.title = a}  type="text" placeholder="Title" onChange={this.TiTle.bind(this)} fullWidth={true} />
+                                     <TextField value={this.state.subtitle} name="subtitle" ref={(c) => this.subTitle = c} type="text"  placeholder="sub-title" onChange={this.SubTitle.bind(this)} fullWidth={true}/>
 
-                                    <FileUploader
-                                        accept="image/*"
-                                        name="avatar"
-                                        randomizeFilename
-                                        storageRef={firebase.storage().ref('images')}
-                                        onUploadStart={this.handleUploadStart1}
-                                        onUploadError={this.handleUploadError1}
-                                        onUploadSuccess={this.handleUploadSuccess1}
-                                        onProgress={this.handleProgress1} />
+                                     <FlatButton label="Choose Image" labelPosition="before" primary={true}>
+                                          <input type="file" style={style.imageInput}
+                                              accept="image/*"
+                                              name="avatar"
+                                              randomizeFilename
+                                              storageRef={firebase.storage().ref('images')}
+                                              onUploadStart={this.handleUploadStart}
+                                              onUploadError={this.handleUploadError}
+                                              onUploadSuccess={this.handleUploadSuccess}
+                                              onProgress={this.handleProgress} />
+                                    </FlatButton>
 
-                                      <select name="Category" ref={(ab) => this.Category = ab} className="inputfield-signup1" onChange={this.ProdctCategory.bind(this)}>
-                                          <optgroup label="Category">
-                                          <option value="Category">  Category </option>
-                                              <option value="Machine-Learning">  Machine-Learning </option>
-                                              <option value="Big-Data"> Big-Data </option>
-                                              <option value="Algorithms">  Algorithms </option>
-                                              <option value="Graphics">  Graphics </option>
-                                              <option value="Other">  Other </option>
-                                              <option value="Web or Shiny">  Web or Shiny </option>
-                                          </optgroup>
-                                      </select>
+                                    <!-- ... -->
+                                     <FileUploader
+                                            accept="image/*"
+                                            name="avatar"
+                                            randomizeFilename
+                                            storageRef={firebase.storage().ref('images')}
+                                            onUploadStart={this.handleUploadStart}
+                                            onUploadError={this.handleUploadError}
+                                            onUploadSuccess={this.handleUploadSuccess}
+                                            onProgress={this.handleProgress} />
 
-                                      <textarea value={this.state.describtion} name="textarea" ref={(d) => this.textarea = d} className="textarea1" placeholder="Description about Product"
-                                                onChange={this.DescriPtion.bind(this)}/> <br/> <br/>
-                                      <input value={this.state.price} name="Price" ref={(ef) => this.Price = ef}  type="text" className="inputfield-signup1"
-                                      placeholder="Price in $"
-                                      onChange={this.PriCe.bind(this)}/><br/><br/>
+                                        <FileUploader
+                                            accept="image/*"
+                                            name="avatar"
+                                            randomizeFilename
+                                            storageRef={firebase.storage().ref('images')}
+                                            onUploadStart={this.handleUploadStart1}
+                                            onUploadError={this.handleUploadError1}
+                                            onUploadSuccess={this.handleUploadSuccess1}
+                                            onProgress={this.handleProgress1} />
+                                    <!-- ... -->
+                                          <select name="Category" ref={(ab) => this.Category = ab} className="inputfield-signup1" onChange={this.ProdctCategory.bind(this)}>
+                                              <optgroup label="Category">
+                                              <option value="Category">  Category </option>
+                                                  <option value="Machine-Learning">  Machine-Learning </option>
+                                                  <option value="Big-Data"> Big-Data </option>
+                                                  <option value="Algorithms">  Algorithms </option>
+                                                  <option value="Graphics">  Graphics </option>
+                                                  <option value="Other">  Other </option>
+                                                  <option value="Web or Shiny">  Web or Shiny </option>
+                                              </optgroup>
+                                          </select>
 
-                                      <div className="product-header">
-                                        <RaisedButton onClick={this.SubMit.bind(this)} label=" Save" primary={true} style={{ margin: 12}}/>
-                                      </div>
+                                          <textarea value={this.state.describtion} name="textarea" ref={(d) => this.textarea = d} className="textarea1" placeholder="Description about Product"
+                                                    onChange={this.DescriPtion.bind(this)}/> <br/> <br/>
+                                          <input value={this.state.price} name="Price" ref={(ef) => this.Price = ef}  type="text" className="inputfield-signup1"
+                                          placeholder="Price in $"
+                                          onChange={this.PriCe.bind(this)}/><br/><br/>
 
+                                          <div className="product-header">
+                                            <RaisedButton onClick={this.SubMit.bind(this)} label=" Save" primary={true} style={{ margin: 12}}/>
+                                          </div>
+                                      </CardText>
                             </Card>
 
 
@@ -291,8 +320,7 @@ class  GeneralProfile extends React.Component{
                               </div>
                           </div>
                     </div>
-                </Card>
-            </div>
+
         )
     }
 }
