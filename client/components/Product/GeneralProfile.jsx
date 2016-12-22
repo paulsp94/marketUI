@@ -246,10 +246,13 @@ class  GeneralProfile extends React.Component{
                                       <input value={this.state.price} name="Price" ref={(ef) => this.Price = ef}  type="text" className="inputfield-signup1"
                                       placeholder="Price in $"
                                       onChange={this.PriCe.bind(this)}/><br/><br/>
+
+                                      <div className="product-header">
+                                        <RaisedButton onClick={this.SubMit.bind(this)} label=" Save" primary={true} style={{ margin: 12}}/>
+                                      </div>
+                                      
                             </Card>
-                            <div className="product-header">
-                              <RaisedButton onClick={this.SubMit.bind(this)} label=" Save" primary={true} style={{ margin: 12}}/>
-                            </div>
+
 
                           </div>
                       </div>
@@ -293,6 +296,3 @@ class  GeneralProfile extends React.Component{
 }
 
 export default GeneralProfile;
-
-
-
