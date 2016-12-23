@@ -65,9 +65,8 @@ class  ProductSearch extends React.Component{
                         <div className="container-search">
                             <Tags/>
                             {
-                                mergedProduct.map((detail)=> {
-                                    return <Product item={detail}
-                                    />
+                                mergedProduct.map((detail, index)=> {
+                                    return <Product item={detail} key={index}/>
                                 })
                             }
                         </div>
