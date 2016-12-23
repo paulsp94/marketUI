@@ -11,6 +11,7 @@ import {Tabs, Tab} from 'material-ui/Tabs';
 import Slider from 'material-ui/Slider';
 import Flexbox from 'flexbox-react';
 import { productCoreDetails, currentproductstore, } from '../../action/action.jsx'
+import LazyLoad from 'react-lazyload';
 
 
 function mapStateToProps(store) {
@@ -47,7 +48,9 @@ class Product extends React.Component{
         return (
             <div className="productdetails" onClick={this.productDetails.bind(this)}>
                 <Card className="product-search" style={{padding: 0}}>
+                  <LazyLoad height={'100%'} resize={true} > 
                     <img className="product_image" src={this.props.item.Subimage}/>
+                  </LazyLoad>
                     <h5>{this.props.item.Title}</h5>
                     <h5> {this.props.item.Description} </h5>
                     <Flexbox flexDirection="row">

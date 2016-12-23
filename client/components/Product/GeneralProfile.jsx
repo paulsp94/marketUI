@@ -9,6 +9,7 @@ var FileInput = require('react-file-input');
 import FileUploader from 'react-firebase-file-uploader';
 import Flexbox from 'flexbox-react';
 import { currentuserid, submitProductGeneralDetails, productCoreDetails } from '../../action/action.jsx';
+import LazyLoad from 'react-lazyload';
 
 function mapStateToProps(store) {
     return { userdetails: store.userdetails};
@@ -257,7 +258,9 @@ class  GeneralProfile extends React.Component{
                           <div className="container2">
                                   <CardMedia
                                       overlay={<CardTitle title={this.state.title} subtitle={this.state.subtitle}/>}>
-                                      <img style ={{height: 400}} src={this.state.avatarURL} />
+                                       <LazyLoad height={'100%'} resize={true} >
+                                        <img style ={{height: 400}} src={this.state.avatarURL} />
+                                      </LazyLoad>
                                   </CardMedia>
                                   </div>
 
@@ -266,7 +269,9 @@ class  GeneralProfile extends React.Component{
 
 
                                   <Card className="product-search" style={{padding: 0}}>
+                                     <LazyLoad height={'100%'} resize={true} >
                                       <img className="product_image" src={this.state.avatarURL1}/>
+                                     </LazyLoad> 
                                       <h5>{this.state.title}</h5>
                                       <h5> {this.state.describtion}</h5>
                                       <Flexbox flexDirection="row">

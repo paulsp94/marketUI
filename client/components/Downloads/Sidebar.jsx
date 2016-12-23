@@ -14,6 +14,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 var firebase = require('firebase');
 import firebase_details from '../../Firebase/Firebase';
 import Chip from 'material-ui/Chip';
+import LazyLoad from 'react-lazyload';
 
 class Sidebar extends React.Component {
 
@@ -90,7 +91,9 @@ class Sidebar extends React.Component {
     var curr_icon = <div>
       <hr/>
       <div className="sidebar-bottom">
-        <img className="Userimage" src={'client/Images/deep.jpg'}/> <br/>
+        <LazyLoad height={'100%'} resize={true} >
+          <img className="Userimage" src={'client/Images/deep.jpg'}/> <br/>
+        </LazyLoad>
         <CardText>
           <div className="userdescribation">
             <p>

@@ -75,6 +75,7 @@
     "react-file-input": "0.2.5",
     "react-firebase-file-uploader": "2.0.0",
     "react-infinity": "1.2.2",
+    "react-lazyload": "2.2.0",
     "react-loading": "0.0.9",
     "react-markdown": "2.4.2",
     "react-native-openpgp": "github:orhan/react-native-openpgp",
