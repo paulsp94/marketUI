@@ -132,26 +132,6 @@ html {
     margin-bottom: 15;
 }
 
-.search {
-    background-color: white;
-    color: #000000;
-    margin-left: 2px;
-    height: auto;
-    font-size: 16px;
-    margin-top: 3px;
-    margin-bottom: 3px;
-}
-
-.sort {
-    background-color: white;
-    color: #000000;
-    margin-left: 2px;
-    height: auto;
-    font-size: 16px;
-    margin-top: 3px;
-    margin-bottom: 3px;
-}
-
 .addbar {
     margin-bottom: 5%;
 }
