@@ -19,7 +19,6 @@ import firebase from 'firebase';
 import firebase_details from '../../Firebase/Firebase';
 import StripeCheckout from '../stripe/checkout';
 import {productSellerandstripeid} from '../../action/action';
-import LazyLoad from 'react-lazyload';
 
 function mapDispatchToProps (dispatch) {
   return bindActionCreators({
@@ -277,7 +276,7 @@ class Sidebar extends React.Component {
             <TableBody displayRowCheckbox={this.state.showCheckboxes} adjustForCheckbox={this.state.showCheckboxes}>
               <TableRow  >
                 <TableRowColumn style={{ textAlign: 'center' }}>Rating: {productcoredetails.rating || 'N/A'}</TableRowColumn>
-                <TableRowColumn style={{ textAlign: 'center' }}> {productcoredetails.Price} </TableRowColumn>
+                <TableRowColumn style={{ textAlign: 'center' }}> ${productcoredetails.Price} </TableRowColumn>
                 <TableRowColumn style={{ textAlign: 'center' }}>Sold: 310</TableRowColumn>
               </TableRow>
             </TableBody>
