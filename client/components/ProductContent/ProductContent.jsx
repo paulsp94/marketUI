@@ -12,6 +12,8 @@ import Loading from 'react-loading';
 import styles from './ProductContent.scss'
 import classNames from 'classnames/bind'
 import RaisedButton from 'material-ui/RaisedButton';
+var firebase = require('firebase');
+import firebase_details from '../../Firebase/Firebase';
 
 const cx = classNames.bind(styles)
 
@@ -35,11 +37,12 @@ class ProductContent extends React.Component {
 
     super(props);
     this.state = {
-      preparingData: true,
-      htmlData: null,
-      authorProfile: false,
-      contentData: true,
-      comments: false
+        preparingData: true,
+        htmlData: null,
+        authorProfile: false,
+        contentData: true,
+        comments: "",
+        allcomments:'',
     };
   }
 
@@ -67,7 +70,36 @@ class ProductContent extends React.Component {
     });
   }
 
+
+  componentDidMount(){
+
+      var ProductId = this.props.params.productid;
+
+      var allcomments = [];
+      firebase.database().ref('Products_User_Comments').orderByChild('ProductId').equalTo(ProductId).on("child_added", (snapshot) => {
+
+          allcomments.push({
+              productid: snapshot.val().ProductId,
+              Comment: snapshot.val().Comment,
+              Username: snapshot .val().Username,
+          });
+
+          this.setState({
+              allcomments
+          });
+
+      });
+
+      this.setState({
+          ProductId: ProductId,
+          allcomments:allcomments,
+      });
+
+  }
+
   render () {
+
+
     let { preparingData, htmlData, authorProfile, comments, contentData } = this.state;
 
     let renderContent = preparingData ? <Loading type='spin' color='#000000'/> :
@@ -95,6 +127,7 @@ class ProductContent extends React.Component {
           <MenuItem primaryText="Download" leftIcon={<Download />}/>
           <MenuItem primaryText="----"/>
           {htmlData}
+
         </div>
 
         <div className="contentMarkdown" style={{ backgroundColor: "#fff" }}>
@@ -113,6 +146,20 @@ class ProductContent extends React.Component {
           {comments &&
           <div>
             <h1>Comments</h1>
+              {this.state.allcomments.map((item, index) =>
+                  <div>
+                      <div className="usercommentname">
+                          <h4><strong> {item.Username} </strong> <br/></h4>
+                      </div>
+                      <div className="usercomments">
+                          <p>
+                              {item.Comment}
+                          </p>
+                      </div>
+                      <hr/>
+                  </div>
+              )}
+
           </div>}
         </div>
       </div>

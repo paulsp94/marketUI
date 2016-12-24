@@ -12,7 +12,7 @@ import Slider from 'material-ui/Slider';
 import Flexbox from 'flexbox-react';
 import { productCoreDetails, currentproductstore, } from '../../action/action.jsx'
 import LazyLoad from 'react-lazyload';
-
+import StarRatingComponent from 'react-star-rating-component';
 
 function mapStateToProps(store) {
     return { userdetails: store.userdetails};
@@ -54,8 +54,12 @@ class Product extends React.Component{
                     <h5>{this.props.item.Title}</h5>
                     <h5> {this.props.item.Description} </h5>
                     <Flexbox flexDirection="row">
-                        <Flexbox flexGrow={1}>
-                            <RaisedButton label={this.props.item.rating || 'NA'} style={{ margin: 1, width: "100%"}} />
+                        <Flexbox flexGrow={1} marginTop={10}>
+                          <StarRatingComponent
+                            name="rating" /* name of the radio input, it is required */
+                            value={this.props.item.rating || 0} /* number of selected icon (`0` - none, `1` - first) */
+                            editing={false}
+                          />
                         </Flexbox>
                         <Flexbox flexGrow={1}>
                             <RaisedButton label={this.props.item.Price} style={{ margin: 1, width: "100%"}} />

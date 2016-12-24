@@ -4,6 +4,7 @@ import TextField from 'material-ui/TextField';
 import {orange500, blue500} from 'material-ui/styles/colors';
 import Divider from 'material-ui/Divider/Divider';
 import Flexbox from 'flexbox-react';
+import {Input, TextArea, GenericInput} from 'react-text-input';
 
 <meta name="viewport" content="width=device-width" />
 
@@ -19,9 +20,12 @@ var Contact = React.createClass({
                          <br />    
                         <span >Your Name :</span>    
                         <TextField hintText={'Name'} /*floatingLabelText={'Message'}*/ className={'contact_text'}/>
+                        <br />
                         <br />    
-                        <span>&nbsp;&nbsp;&nbsp;Message :</span>    
-                        <TextField hintText={'Message'} /*floatingLabelText={'Message'}*/ className={'contact_text'}/>
+                        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Message :</span>    
+                        <TextArea defaultValue="Message" className="message-textarea"/>
+                        <br />
+                        <br />
                         <br />
                         <br />
                         <div>    

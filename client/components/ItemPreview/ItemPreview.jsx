@@ -46,7 +46,7 @@ class  ItemPreview extends Component{
 
         this.setState({
             ProductId: ProductId
-        })
+        });
 
         this.props.currentproductstore(ProductId);
         this.props.ProductSidebar(ProductId);
