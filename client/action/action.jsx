@@ -96,6 +96,8 @@ export function  FetchAllPublishedproduct() {
                     Mainimage: snapshot.val().mainImage,
                     Title: snapshot.val().Title,
                     Subimage: snapshot.val().subImage,
+                    rating: snapshot.val().rating,
+                    downloadCount: snapshot.val().downloadCount
                 });
 
                 dispatch({
@@ -143,6 +145,8 @@ export function  productCoreDetails(productid) {
                     Subimage: data123.val().subImage,
                     SubTitle: data123.val().Subtitle,
                     category:data123.val().category,
+                    downloadCount:data123.val().downloadCount,
+                    rating: data123.val().rating
                 });
             });
 
@@ -205,7 +209,6 @@ export function  ProductSidebar(productid) {
 
 export function  ProductContent(productid) {
     return function (dispatch) {
-        console.log('23');
 
         var Content = [];
         firebase.database().ref('Content').orderByChild('Productid').equalTo(productid).on("value", (snapshot) => {
@@ -216,8 +219,6 @@ export function  ProductContent(productid) {
                     Content: data123.val().textfieldvalue1,
                 });
             });
-
-            console.log('CONTENT IS',Content);
 
             dispatch ({
                 type: "CONTENT",

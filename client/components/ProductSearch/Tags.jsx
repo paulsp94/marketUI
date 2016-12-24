@@ -12,7 +12,10 @@ import ReactMarkdown from 'react-markdown';
 var firebase = require('firebase');
 import firebase_details from '../../Firebase/Firebase';
 import Flexbox from 'flexbox-react';
-
+import TextField from 'material-ui/TextField';
+import SelectField from 'material-ui/SelectField';
+import MenuItem from 'material-ui/MenuItem';
+import FlatButton from 'material-ui/FlatButton';
 class Tags extends React.Component{
 
     constructor(props) {
@@ -27,41 +30,48 @@ class Tags extends React.Component{
         this.props.onUpdateFilter(event.target.value.substr(0,20));
     }
 
+    state = {
+    selectfield_value: 'New',
+    };
+
+    handleChange = (event, index, selectfield_value) => this.setState({selectfield_value});
     render(){
 
         return (
             <div className="tags">
             <Flexbox flexDirection="row">
-              <Flexbox flexGrow={1} flexShrink={1}>
-                            <RaisedButton label="Shiny & Web" style={{margin: 3, width: "100%"}} primary={true} />
+              <Flexbox flexGrow={1} flexShrink={1} style={{height:'45px'}}>
+                            <FlatButton label="Shiny & Web" style={{margin: 3, width: "100%",height:'100%',}} primary={true} />
               </Flexbox>
                <Flexbox flexGrow={1} flexShrink={1}>
-                            <RaisedButton label="Machine Learning" style={{margin: 3, width: "100%"}} primary={true} />                   
+                            <FlatButton label="Machine Learning" style={{margin: 3, width: "100%",height:'45px'}} primary={true} />                   
               </Flexbox>
               <Flexbox flexGrow={1} flexShrink={1}>
-                             <RaisedButton label="Big Data" style={{margin: 3, width: "100%"}} primary={true} />                   
+                             <FlatButton label="Big Data" style={{margin: 3, width: "100%",height:'45px'}} primary={true} />                   
               </Flexbox>
               <Flexbox flexGrow={1} flexShrink={1}>
-                            <RaisedButton label="Algorithms" style={{margin: 3, width: "100%"}} primary={true} />                   
+                            <FlatButton label="Algorithms" style={{margin: 3, width: "100%",height:'45px'}} primary={true} />                   
               </Flexbox>
               <Flexbox flexGrow={1} flexShrink={1}>
-                            <RaisedButton label="Graphics" style={{margin: 3, width: "100%"}} primary={true} />                   
+                            <FlatButton label="Graphics" style={{margin: 3, width: "100%",height:'45px'}} primary={true} />                   
               </Flexbox>
                <Flexbox flexGrow={1} flexShrink={1}>
-                            <RaisedButton label="Other" style={{margin: 3, width: "100%"}} primary={true} />                   
+                            <FlatButton label="Other" style={{margin: 3, width: "100%",height:'45px'}} primary={true} />                   
               </Flexbox>
-              <Flexbox flexGrow={1} flexShrink={1}>
-                   <input type="text" className="search" placeholder="Search Product" onChange={this.searchFilter.bind(this)}/>
-                   <select className="sort">
-                       <optgroup label="Sort">
-                           <option value=""> Sort </option>
-                           <option value="New"> New </option>
-                           <option value="Last Day"> Last Day </option>
-                           <option value="1 week old"> 1 week old </option>
-                           <option value="1 Month old"> 1 Month old</option>
-                           <option value="1 Year old"> 1 Year old </option>
-                       </optgroup>
-                   </select>
+              
+                  <Flexbox flexGrow={1} flexShrink={1}>
+                   <TextField hintText={'Search Product'} hintStyle={{color:'rgb(0, 188, 212)'}} onChange={this.searchFilter.bind(this)} className={'search'} style={{color:'rgb(0, 188, 212)',fontSize:'16px',fontWeight:'100',width:'140px',height:'45px',marginTop:'4px'}}/>
+                    <SelectField className={''} 
+                        value={this.state.selectfield_value}
+                        onChange={this.handleChange.bind(this)}
+                        style={{height:'45px',marginTop:'4px',marginLeft:'13px',width:'150px'}}
+                      >
+                        <MenuItem value={'New'} primaryText="New" />
+                        <MenuItem value={'Last Day'} primaryText="Last Day" />
+                        <MenuItem value={'1 Week old'} primaryText="1 Week old" />
+                        <MenuItem value={'1 Month old'} primaryText="1 Month old" />
+                        <MenuItem value={'1 Year old'} primaryText="1 Year old" />
+                      </SelectField>
                    </Flexbox>
         </Flexbox>
                 
@@ -71,6 +81,3 @@ class Tags extends React.Component{
 }
 
 export default Tags;
-
-
-

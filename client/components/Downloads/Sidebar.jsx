@@ -14,6 +14,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 var firebase = require('firebase');
 import firebase_details from '../../Firebase/Firebase';
 import Chip from 'material-ui/Chip';
+import LazyLoad from 'react-lazyload';
 
 class Sidebar extends React.Component {
 
@@ -53,7 +54,7 @@ class Sidebar extends React.Component {
 
   Comments () {
 
-      console.log('comments are',this.props.productcomment);
+
     var curr_icon = <div>
       <div className="sidebar-bottom">
         <CardText>
@@ -90,7 +91,9 @@ class Sidebar extends React.Component {
     var curr_icon = <div>
       <hr/>
       <div className="sidebar-bottom">
-        <img className="Userimage" src={'client/Images/deep.jpg'}/> <br/>
+        <LazyLoad height={'100%'} resize={true} >
+          <img className="Userimage" src={'client/Images/deep.jpg'}/> <br/>
+        </LazyLoad>
         <CardText>
           <div className="userdescribation">
             <p>
@@ -133,8 +136,6 @@ class Sidebar extends React.Component {
 
   render () {
 
-      console.log('comments are',this.props.productcomment);
-
     var currentstate = this.state.Currentstate;
 
 
@@ -161,7 +162,7 @@ class Sidebar extends React.Component {
     if (currentstate == '0') {
       var prodctdetails =
         <div className="sidebar-bottom">
-          <h4><strong>        </strong> <br/></h4>
+          <h4><strong>  </strong> <br/></h4>
 
           <Card>
               <h4><strong>Packages:</strong></h4>

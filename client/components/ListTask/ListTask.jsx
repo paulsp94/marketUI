@@ -4,6 +4,7 @@ import {withRouter} from 'react-router';
 import { hashHistory } from 'react-router';
 import Details from './Details';
 import { PropTypes } from 'react'
+import LazyLoad from 'react-lazyload';
 
 class ListTask extends React.Component{
 
@@ -79,11 +80,11 @@ class ListTask extends React.Component{
                 <div className="addbar">
 
                     <br/>
-                    <button className="button1"  onClick={this.selectall.bind(this)}> <img className="logo12" src ={'client/Images/selall.gif'}/> </button>
-                    <button className="button1" > <img className="logo12" src ={'client/Images/del.gif'}/> </button>
+                    <button className="button1"  onClick={this.selectall.bind(this)}>  <LazyLoad height={'100%'} resize={true} ><img className="logo12" src ={'client/Images/selall.gif'}/></LazyLoad> </button>
+                    <button className="button1" >  <LazyLoad height={'100%'} resize={true} ><img className="logo12" src ={'client/Images/del.gif'}/></LazyLoad> </button>
 
-                    <button className="button"  onClick={this.delete.bind(this)}> <img className="logo12" src ={'client/Images/deletesel.gif'}/> </button>
-                    <button className="button" onClick={this.add.bind(this)}>  <img src ={'client/Images/add.gif'}/> </button>
+                    <button className="button"  onClick={this.delete.bind(this)}>  <LazyLoad height={'100%'} resize={true} ><img className="logo12" src ={'client/Images/deletesel.gif'}/></LazyLoad> </button>
+                    <button className="button" onClick={this.add.bind(this)}>   <LazyLoad height={'100%'} resize={true} ><img src ={'client/Images/add.gif'}/></LazyLoad> </button>
 
                 </div>
 

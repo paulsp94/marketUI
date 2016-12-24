@@ -32,15 +32,12 @@ export default class Itemview extends React.Component {
         <div className="container">
 
           <Card style={{ backgroundColor: "#efeadd" }}>
-
             <CardMedia
               overlay={
                 <CardTitle title={this.props.productcoredetails.Title} subtitle={this.props.productcoredetails.SubTitle}/>}>
-              <img src={this.props.productcoredetails.Mainimage}/>
+                <img src={this.props.productcoredetails.Mainimage}/>
             </CardMedia>
-
             <Card style={{ marginRight: 40, marginLeft: 40 }}>
-              {button}
               <CardText >
                 <div className="code">
                   <ReactMarkdown source={thisIsMyCopy}/>

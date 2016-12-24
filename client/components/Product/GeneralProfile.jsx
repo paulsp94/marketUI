@@ -287,7 +287,7 @@ class  GeneralProfile extends React.Component{
                           <div className="container2">
                                   <CardMedia
                                       overlay={<CardTitle title={this.state.title} subtitle={this.state.subtitle}/>}>
-                                      <img style ={{height: 400}} src={this.state.avatarURL} />
+                                        <img style ={{height: 400}} src={this.state.avatarURL} />
                                   </CardMedia>
                                   </div>
 
