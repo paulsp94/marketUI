@@ -16,7 +16,6 @@ import TextField from 'material-ui/TextField';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import FlatButton from 'material-ui/FlatButton';
-
 class Tags extends React.Component{
 
     constructor(props) {
@@ -32,41 +31,53 @@ class Tags extends React.Component{
     }
 
     state = {
-    selectfield_value: 'Sort',
+    selectfield_value: 'New',
     };
 
     handleChange = (event, index, selectfield_value) => this.setState({selectfield_value});
     render(){
 
         return (
-            <div className="row">
-                <div className="col-md-1 col-lg-1 col-sm-3 col-xs-4"><FlatButton label="Shiny & Web" primary={true} style={{width:'130px',height:'45px'}} /> </div>
-                <div className="col-md-1 col-lg-1 col-sm-3 col-xs-4"><FlatButton label="Machine Learning" primary={true} style={{width:'100px',marginTop:'4px',height:'40px'}} /> </div>            
-                <div className="col-md-1 col-lg-1 col-sm-3 col-xs-4"><FlatButton label="Big Data" primary={true} style={{width:'100px',height:'45px'}} />   </div>           
-                <div className="col-md-1 col-lg-1 col-sm-3 col-xs-4"><FlatButton label="Algorithms" primary={true} style={{width:'100px',height:'45px'}} />   </div>                
-                <div className="col-md-1 col-lg-1 col-sm-3 col-xs-4"><FlatButton label="Graphics"  primary={true} style={{width:'100px',height:'45px'}} />    </div>           
-                <div className="col-md-1 col-lg-1 col-sm-3 col-xs-4"><FlatButton label="Other" primary={true} style={{width:'100px',height:'45px'}} />    </div>               
-                <div className="col-md-1 col-lg-1 col-sm-3 col-xs-6" >
-                   <TextField hintText={'Search Product'} hintStyle={{color:'rgb(0, 188, 212)'}} onChange={this.searchFilter.bind(this)}  style={{marginLeft:'15px',width:'130px',color:'rgb(0, 188, 212)',fontSize:'16px',fontWeight:'100'}} /></div>  
-                <div className="col-md-1" style={{width:'80px'}}></div>
-                <div className="col-md-1 col-lg-1 col-sm-3 col-xs-6" ><SelectField 
+            <div className="tags">
+            <Flexbox flexDirection="row">
+              <Flexbox flexGrow={1} flexShrink={1} style={{height:'45px'}}>
+                            <FlatButton label="Shiny & Web" style={{margin: 3, width: "100%",height:'100%',}} primary={true} />
+              </Flexbox>
+               <Flexbox flexGrow={1} flexShrink={1}>
+                            <FlatButton label="Machine Learning" style={{margin: 3, width: "100%",height:'45px'}} primary={true} />                   
+              </Flexbox>
+              <Flexbox flexGrow={1} flexShrink={1}>
+                             <FlatButton label="Big Data" style={{margin: 3, width: "100%",height:'45px'}} primary={true} />                   
+              </Flexbox>
+              <Flexbox flexGrow={1} flexShrink={1}>
+                            <FlatButton label="Algorithms" style={{margin: 3, width: "100%",height:'45px'}} primary={true} />                   
+              </Flexbox>
+              <Flexbox flexGrow={1} flexShrink={1}>
+                            <FlatButton label="Graphics" style={{margin: 3, width: "100%",height:'45px'}} primary={true} />                   
+              </Flexbox>
+               <Flexbox flexGrow={1} flexShrink={1}>
+                            <FlatButton label="Other" style={{margin: 3, width: "100%",height:'45px'}} primary={true} />                   
+              </Flexbox>
+              
+                  <Flexbox flexGrow={1} flexShrink={1}>
+                   <TextField hintText={'Search Product'} hintStyle={{color:'rgb(0, 188, 212)'}} onChange={this.searchFilter.bind(this)} className={'search'} style={{color:'rgb(0, 188, 212)',fontSize:'16px',fontWeight:'100',width:'140px',height:'45px',marginTop:'4px'}}/>
+                    <SelectField className={''} 
                         value={this.state.selectfield_value}
                         onChange={this.handleChange.bind(this)}
-                        style={{width:'140px'}}
-                          >
+                        style={{height:'45px',marginTop:'4px',marginLeft:'13px',width:'150px'}}
+                      >
                         <MenuItem value={'New'} primaryText="New" />
                         <MenuItem value={'Last Day'} primaryText="Last Day" />
                         <MenuItem value={'1 Week old'} primaryText="1 Week old" />
                         <MenuItem value={'1 Month old'} primaryText="1 Month old" />
                         <MenuItem value={'1 Year old'} primaryText="1 Year old" />
                       </SelectField>
-                 </div>   
+                   </Flexbox>
+        </Flexbox>
+                
             </div>
         )
     }
 }
 
 export default Tags;
-
-
-
