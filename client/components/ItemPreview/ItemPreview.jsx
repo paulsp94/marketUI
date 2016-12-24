@@ -59,7 +59,6 @@ class  ItemPreview extends Component{
 
     render(){
 
-    
         var productdetails = this.props.userdetails.Productcoredetails;
         var productobject = Object.keys(productdetails).map(key => productdetails[key]);
         var productcoredetails = [].concat.apply([], productobject);
