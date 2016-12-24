@@ -43,31 +43,46 @@ class ProductContent extends React.Component {
         contentData: true,
         comments: "",
         allcomments:'',
+        Content:'',
     };
   }
 
   componentWillMount () {
-    let anchorTags = Cheerio.load(data)('a');
-    let list = [];
-    for (let [index, anchorTag] of anchorTags.toArray().entries()) {
-      let titleAttributes = {
-        key: index,
-        primaryText: anchorTag.attribs.name,
-        href: `#${anchorTag.attribs.name}`
-      };
 
-      if (anchorTag.attribs.level === 'subtitle') {
-        titleAttributes['style'] = {
-          backgroundColor: '#fff'
-        };
-      }
-      list.push(<MenuItem {...titleAttributes}/>)
-    }
 
-    this.setState({
-      preparingData: false,
-      htmlData: list
-    });
+      var ProductId = this.props.params.productid;
+
+
+      firebase.database().ref('Content').orderByChild('ProductId').equalTo(ProductId).on("child_added", (snapshot) => {
+
+
+          var Content = snapshot.val().textfieldvalue1;
+
+          let anchorTags = Cheerio.load(Content)('a');
+          let list = [];
+          for (let [index, anchorTag] of anchorTags.toArray().entries()) {
+              let titleAttributes = {
+                  key: index,
+                  primaryText: anchorTag.attribs.name,
+                  href: `#${anchorTag.attribs.name}`
+              };
+
+              if (anchorTag.attribs.level === 'subtitle') {
+                  titleAttributes['style'] = {
+                      backgroundColor: '#fff'
+                  };
+              }
+              list.push(<MenuItem {...titleAttributes}/>)
+          }
+
+          this.setState({
+              preparingData: false,
+              htmlData: list,
+              Content: Content,
+          });
+
+      });
+
   }
 
 
@@ -102,7 +117,8 @@ class ProductContent extends React.Component {
 
     let { preparingData, htmlData, authorProfile, comments, contentData } = this.state;
 
-    let renderContent = preparingData ? <Loading type='spin' color='#000000'/> :
+    let renderContent =
+        // preparingData ? <Loading type='spin' color='#000000'/> :
       <div className="contentDownload">
         <div className="contentSidebar contentSidebarColor">
           <MenuItem
@@ -138,7 +154,7 @@ class ProductContent extends React.Component {
               onClick={() => this.setState({ contentData: true, authorProfile: false, comments: false })}
             />
           </div>}
-          {contentData && <ReactMarkdown source={data} escapeHtml={false}/>}
+          {contentData && <ReactMarkdown source={this.state.Content} escapeHtml={false}/>}
           {authorProfile &&
           <div>
             <h1>Author Profile</h1>

@@ -209,7 +209,6 @@ export function  ProductSidebar(productid) {
 
 export function  ProductContent(productid) {
     return function (dispatch) {
-        console.log('23');
 
         var Content = [];
         firebase.database().ref('Content').orderByChild('Productid').equalTo(productid).on("value", (snapshot) => {
@@ -220,8 +219,6 @@ export function  ProductContent(productid) {
                     Content: data123.val().textfieldvalue1,
                 });
             });
-
-            console.log('CONTENT IS',Content);
 
             dispatch ({
                 type: "CONTENT",
