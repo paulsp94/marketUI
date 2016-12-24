@@ -8,19 +8,21 @@ import RaisedButton from 'material-ui/RaisedButton';
 import Flexbox from 'flexbox-react';
 import TextField from 'material-ui/TextField';
 import Divider from 'material-ui/Divider/Divider';
+import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+
 
 <meta name="viewport" content="width=device-width" />
 
 var Contact = React.createClass({ 
     render(){
-        var style = { backgroundColor: 'white',
+        var style = { 
                       margin: 'auto',
-                      marginTop: '190px', 
-                      height: '50%', 
-                      width: '60%'
+                      width: '60%',
+                      textAlign: 'center'
                   };
         return (
-                <div style={style}>
+                  <div className="container-search" style={{paddingTop:'5%'}}>
+                  <Card style={style}>
                     <div id={'contact_div'}>
                         <span>Please Input Your Message :</span>    
                         <TextField hintText={'Message'} /*floatingLabelText={'Message'}*/ className={'contact_text'}/> 
@@ -38,6 +40,7 @@ var Contact = React.createClass({
                          <RaisedButton primary={true} label="Contact" href="" />
                         </div>  
                     </div> 
+                </Card>                    
                 </div>
         )
     }

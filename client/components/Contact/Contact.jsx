@@ -3,15 +3,17 @@ import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import {orange500, blue500} from 'material-ui/styles/colors';
 import Divider from 'material-ui/Divider/Divider';
+import Flexbox from 'flexbox-react';
 
 <meta name="viewport" content="width=device-width" />
 
 var Contact = React.createClass({ 
     render(){
         return (
-               
-                    <div className={'container-contact'}>
-                      <div style={{}}>
+                <div >
+                   <Flexbox flexDirection="column" style={{width: '600px', margin:'auto'}}>
+                    <Flexbox flexGrow={1}>
+                    <div className={'container-contact-up'}>
                         <span> Your Email :</span>    
                         <TextField hintText={'Email'} /*floatingLabelText={'Message'}*/ className={'contact_text'}/> 
                          <br />    
@@ -25,22 +27,23 @@ var Contact = React.createClass({
                         <div>    
                          <RaisedButton primary={true} label="Contact" href="" />
                         </div>
-                        <br />
-                      </div>
-                        
-                        <Divider /> 
-                        <br />
-                        <div style={{lineHeight:'30px',border:'1px solid lightgrey'}}>
-                          <span>Company Name : Rscript.Market</span><br />
-                          <span>Company Address :     </span><br />
+                        <br/>
+                    </div>
+                    </Flexbox>
+                    <Flexbox flexGrow={1}>
+                    <div  className={'container-contact-down'}>
+                        <div>
+                          <span>Company Name : Vaionex Corporation</span><br />
+                          <span>Company Address :  Dover, Delaware  </span><br />
                           <span>Company Phone Number : </span><br />
-                          <span>Company Email Address :</span><br />
+                          <span>Company Email Address : contact@rscript.market</span><br />
                         </div>
                     </div>
-
+                    </Flexbox>
+                    </Flexbox>
+                </div>
         )
     }
-
 });
 
 module.exports = Contact;

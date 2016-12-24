@@ -6,7 +6,6 @@ import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'mat
 import Paper from 'material-ui/Paper';
 import {withRouter} from 'react-router';
 import { browserHistory } from 'react-router'
-import LazyLoad from 'react-lazyload';
 
 export default class Content extends React.Component{
 
@@ -37,9 +36,7 @@ export default class Content extends React.Component{
                 <Card style={{ marginRight: "2%", marginLeft: "2%", marginTop: 9}} onClick={this.updateItem.bind(this)}>
                     <div className="Product" >
                         <CardText>
-                            <LazyLoad height={'100%'} resize={true} >   
                                 <img className="productimage" src={this.props.item.Subimage} style = {Style}/>
-                            </LazyLoad>
                             <div className="text-part">
 
                                 <h4> <strong> {this.props.item.Title} </strong> </h4>

@@ -9,7 +9,6 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import RaisedButton from 'material-ui/RaisedButton';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import Paper from 'material-ui/Paper';
-import LazyLoad from 'react-lazyload';
 
 class  DataContainer extends React.Component{
 
@@ -41,9 +40,7 @@ class  DataContainer extends React.Component{
             <Card style={{ marginRight: "2%", marginLeft: "2%", marginTop: 9}} onClick={this.updateItem.bind(this)}>
             <div className="Product" >
                 <CardText>
-                 <LazyLoad height={'100%'} resize={true} >
                     <img className="productimage" src={this.props.item.Subimage} style = {Style}/>
-                 </LazyLoad>
                 <div className="text-part">
                 <h4> <strong> {this.props.item.Title} </strong> </h4>
                     <RaisedButton onClick={this.ProductContentDownload.bind(this)} label="Download" style={{ margin: 12}} />

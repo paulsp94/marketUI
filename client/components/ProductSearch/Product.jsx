@@ -48,14 +48,14 @@ class Product extends React.Component{
         return (
             <div className="productdetails" onClick={this.productDetails.bind(this)}>
                 <Card className="product-search" style={{padding: 0}}>
-                  <LazyLoad height={'100%'} resize={true} > 
+                  <LazyLoad height={'150px'} resize={true} offset={[200,200]} > 
                     <img className="product_image" src={this.props.item.Subimage}/>
                   </LazyLoad>
                     <h5>{this.props.item.Title}</h5>
                     <h5> {this.props.item.Description} </h5>
                     <Flexbox flexDirection="row">
                         <Flexbox flexGrow={1}>
-                            <RaisedButton label={this.props.item.rating || 'N/A'} style={{ margin: 1, width: "100%"}} />
+                            <RaisedButton label={this.props.item.rating || 'NA'} style={{ margin: 1, width: "100%"}} />
                         </Flexbox>
                         <Flexbox flexGrow={1}>
                             <RaisedButton label={this.props.item.Price} style={{ margin: 1, width: "100%"}} />
