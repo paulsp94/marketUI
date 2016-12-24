@@ -104,6 +104,14 @@ app.post('/stripe/checkout', function(request, response) {
       };
 
       return firebase.database().ref().update(update).then(() => {
+        firebase
+          .database().ref(`ProductCoreDetails/${paymentParams.productId}`)
+          .once('value')
+          .then(function(snapshot) {
+            var details = snapshot.val();
+            details.downloadCount = details.downloadCount ? (details.downloadCount + 1) : 1;
+            firebase.database().ref(`ProductCoreDetails/${paymentParams.productId}`).set(details);
+          });
         response.sendStatus(200);
       });
     }
