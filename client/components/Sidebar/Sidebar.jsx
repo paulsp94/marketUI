@@ -20,6 +20,7 @@ import firebase_details from '../../Firebase/Firebase';
 import StripeCheckout from '../stripe/checkout';
 import {productSellerandstripeid} from '../../action/action';
 import LazyLoad from 'react-lazyload';
+import StarRatingComponent from 'react-star-rating-component';
 
 function mapDispatchToProps (dispatch) {
   return bindActionCreators({
@@ -107,20 +108,6 @@ class Sidebar extends React.Component {
 
           </div>
         </Card>
-
-        <h4 style={{ float: "left", marginLeft: 3 }}><strong> Rate: </strong></h4>
-        <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-          <form style={{ marginLeft: 30 }} onSubmit={this._submitHandler}>
-            <input style={{ marginTop: 6}}
-                   type="number"
-                   ref={(a) => this.setState({rating: a})}
-                   min="1"
-                   max="5"
-                   placeholder="Rate the Product"
-                   className="inputfield-signup1"/>
-            <RaisedButton onClick={this._submitHandler} label="Submit" primary={true} style={{ margin: 12}}/>
-          </form>
-        </div>
       </div>
     )
 
@@ -239,34 +226,25 @@ class Sidebar extends React.Component {
 
   }
 
-  _submitHandler(e) {
-    e.preventDefault();
-    let rating = this.state.rating.value;
+  _submitHandler(nextValue, prevValue, name) {
     let {productcoredetails} = this.props;
+    let newRating = nextValue;
 
-    if(rating && (rating >= 1) && (rating <= 5)) {
-      firebase
-        .database().ref(`ProductCoreDetails/${productcoredetails.productid}`)
-        .once('value')
-        .then((snapshot) => {
-          let details = snapshot.val();
-          let currentRating = parseFloat(details.rating);
-          let newRating = currentRating;
-
-          if(currentRating) {
-            newRating = ((parseFloat(details.rating) || 0) + parseFloat(rating)) / 2;
-          } else {
-            newRating = parseFloat(rating);
-          }
-
-          details.rating = newRating;
-          firebase.database().ref(`ProductCoreDetails/${productcoredetails.productid}`).set(details);
-      });
+    if(prevValue) {
+      newRating = (nextValue + prevValue) / 2;
     }
+
+    firebase
+      .database().ref(`ProductCoreDetails/${productcoredetails.productid}`)
+      .once('value')
+      .then((snapshot) => {
+        let details = snapshot.val();
+        details.rating = newRating;
+        firebase.database().ref(`ProductCoreDetails/${productcoredetails.productid}`).set(details);
+      });
   }
 
   render () {
-
     var currentstate = this.state.Currentstate;
     let {productcoredetails, sellerStripeAccountId} = this.props;
 
@@ -276,7 +254,14 @@ class Sidebar extends React.Component {
           <Table >
             <TableBody displayRowCheckbox={this.state.showCheckboxes} adjustForCheckbox={this.state.showCheckboxes}>
               <TableRow  >
-                <TableRowColumn style={{ textAlign: 'center' }}>Rating: {productcoredetails.rating || 'N/A'}</TableRowColumn>
+                <TableRowColumn style={{ textAlign: 'center' }}>
+                  <span style={{display: 'block'}}>Rating: </span>
+                  <StarRatingComponent
+                    name="rating" /* name of the radio input, it is required */
+                    value={productcoredetails.rating || 0} /* number of selected icon (`0` - none, `1` - first) */
+                    onStarClick={this._submitHandler} /* on icon click handler */
+                  />
+                </TableRowColumn>
                 <TableRowColumn style={{ textAlign: 'center' }}> {productcoredetails.Price} </TableRowColumn>
                 <TableRowColumn style={{ textAlign: 'center' }}>Sold: 310</TableRowColumn>
               </TableRow>
