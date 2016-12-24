@@ -97,6 +97,7 @@ export function  FetchAllPublishedproduct() {
                     Title: snapshot.val().Title,
                     Subimage: snapshot.val().subImage,
                     rating: snapshot.val().rating,
+                    downloadCount: snapshot.val().downloadCount
                 });
 
                 dispatch({
@@ -144,6 +145,7 @@ export function  productCoreDetails(productid) {
                     Subimage: data123.val().subImage,
                     SubTitle: data123.val().Subtitle,
                     category:data123.val().category,
+                    downloadCount:data123.val().downloadCount,
                     rating: data123.val().rating
                 });
             });
