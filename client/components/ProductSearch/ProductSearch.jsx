@@ -27,7 +27,6 @@ function mapDispatchToProps(dispatch) {
 
 @connect(mapStateToProps, mapDispatchToProps)
 
-
 class  ProductSearch extends React.Component{
 
     constructor(props) {
@@ -52,11 +51,8 @@ class  ProductSearch extends React.Component{
     render(){
 
         var allproducts = this.props.userdetails.Productalldetails;
-
         var UserId = Object.keys(allproducts).map(key => allproducts[key]);
-
         var mergedProduct = [].concat.apply([], UserId);
-
 
         if(this.state.filter == ''){
             var filtereddata = mergedProduct;
@@ -67,10 +63,7 @@ class  ProductSearch extends React.Component{
                     return detail.Title.toLowerCase().indexOf(this.state.filter.toLowerCase()) !==  -1
                 }
             );
-
-
         }
-
         if(allproducts == false){
             return(
             <div className="background">
