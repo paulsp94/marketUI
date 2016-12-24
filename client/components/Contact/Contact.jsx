@@ -10,7 +10,7 @@ import Flexbox from 'flexbox-react';
 var Contact = React.createClass({ 
     render(){
         return (
-                <div >
+                <div className="container-search">
                    <Flexbox flexDirection="column" style={{width: '600px', margin:'auto'}}>
                     <Flexbox flexGrow={1}>
                     <div className={'container-contact-up'}>

@@ -18,30 +18,26 @@ var Contact = React.createClass({
         var style = { 
                       margin: 'auto',
                       width: '60%',
-                      textAlign: 'center'
+                      paddingLeft: '2px',
                   };
         return (
-                  <div className="container-search" style={{paddingTop:'5%'}}>
+              <div className="container-search" style={{paddingTop:'1px'}}>
                   <Card style={style}>
-                    <div id={'contact_div'}>
-                        <span>Please Input Your Message :</span>    
-                        <TextField hintText={'Message'} /*floatingLabelText={'Message'}*/ className={'contact_text'}/> 
-                         <br />    
-                        <span style={{paddingLeft:'88px'}}>Your Address :</span>    
-                        <TextField hintText={'Address'} /*floatingLabelText={'Message'}*/ className={'contact_text'}/>
-                        <br />    
-                        <span style={{paddingLeft:'38px'}}>Your Company Name :</span>    
-                        <TextField hintText={'Company Name'} /*floatingLabelText={'Message'}*/ className={'contact_text'}/>
-                        <br />
-                        <br />
-                        <Divider /> 
-                        <br />
-                        <div style={{padding:'0 45%'}}>    
-                         <RaisedButton primary={true} label="Contact" href="" />
-                        </div>  
-                    </div> 
-                </Card>                    
-                </div>
+                   <h2 style={{textAlign:'center'}}> Beta Test Awards </h2>
+                   </Card> 
+                  <Card style={style}>
+                <p> to award the active participation in the Rscript.Market Beta, we will give away 250$ for the 5 best items   created until the end of the Beta. These are the rules and guidelines: </p>
+                <ul>
+                <li> 5 winners will be selected - each one will be awared with 50$</li>
+                <li> The winners are determined by rating/amount downloads/facebook votings/comments </li> 
+                <li> Winning items need to be free of any copy right/license infringement </li>
+                <li> The price will be paid out in either bitcoin or via paypal in $ </li>
+                <li> The winners are announced on the rscript.market front page at the 9th of january, we will then contact the account email to collect contact information and provide information about the payment </li> 
+                </ul>
+                <br/>
+                <p> for any open question please send a mail to contact@rscript.market </p>
+                </Card>                   
+              </div>
         )
     }
 

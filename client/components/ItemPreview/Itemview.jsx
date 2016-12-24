@@ -38,7 +38,6 @@ export default class Itemview extends React.Component {
                 <img src={this.props.productcoredetails.Mainimage}/>
             </CardMedia>
             <Card style={{ marginRight: 40, marginLeft: 40 }}>
-              {button}
               <CardText >
                 <div className="code">
                   <ReactMarkdown source={thisIsMyCopy}/>
