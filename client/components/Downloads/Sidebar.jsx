@@ -54,7 +54,7 @@ class Sidebar extends React.Component {
 
   Comments () {
 
-      console.log('comments are',this.props.productcomment);
+
     var curr_icon = <div>
       <div className="sidebar-bottom">
         <CardText>
@@ -136,8 +136,6 @@ class Sidebar extends React.Component {
 
   render () {
 
-      console.log('comments are',this.props.productcomment);
-
     var currentstate = this.state.Currentstate;
 
 
@@ -164,7 +162,7 @@ class Sidebar extends React.Component {
     if (currentstate == '0') {
       var prodctdetails =
         <div className="sidebar-bottom">
-          <h4><strong>        </strong> <br/></h4>
+          <h4><strong>  </strong> <br/></h4>
 
           <Card>
               <h4><strong>Packages:</strong></h4>
@@ -211,7 +209,7 @@ class Sidebar extends React.Component {
           <Tabs>
             <Tab label="Item" onActive={this.Item.bind(this)}> </Tab>
             <Tab label="Comments" onActive={this.Comments.bind(this)}> </Tab>
-            <Tab label="Supports" onActive={this.Support.bind(this)}> </Tab>
+            <Tab label="Support" onActive={this.Support.bind(this)}> </Tab>
           </Tabs>
 
           {subheader}

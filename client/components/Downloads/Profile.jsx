@@ -213,6 +213,7 @@ class  Profile extends React.Component{
                    <CardText>
 
                     <br/>
+                    <p> placeholder for "creator" tools like support </p>
 
                     <Dialog
                         actions={actions1}

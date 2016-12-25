@@ -90,14 +90,16 @@ export function  FetchAllPublishedproduct() {
               let product = snapshot.val();
               if(product.status === 'published') {
                 productallid.push({
-                  productid: product.ProductId,
-                  Price: product.Price,
-                  Description: product.Description,
-                  Mainimage: product.mainImage,
-                  Title: product.Title,
-                  Subimage: product.subImage,
-                  rating: product.rating,
-                  downloadCount: product.downloadCount
+
+                    productid: snapshot.val().ProductId,
+                    Price: snapshot.val().Price,
+                    Description: snapshot.val().Description,
+                    Mainimage: snapshot.val().mainImage,
+                    Title: snapshot.val().Title,
+                    Subimage: snapshot.val().subImage,
+                    rating: snapshot.val().rating,
+                    downloadCount: snapshot.val().downloadCount,
+                    category: snapshot.val().category,
                 });
 
                 dispatch({
@@ -210,7 +212,6 @@ export function  ProductSidebar(productid) {
 
 export function  ProductContent(productid) {
     return function (dispatch) {
-        console.log('23');
 
         var Content = [];
         firebase.database().ref('Content').orderByChild('Productid').equalTo(productid).on("value", (snapshot) => {
@@ -221,8 +222,6 @@ export function  ProductContent(productid) {
                     Content: data123.val().textfieldvalue1,
                 });
             });
-
-            console.log('CONTENT IS',Content);
 
             dispatch ({
                 type: "CONTENT",

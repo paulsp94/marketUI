@@ -146,8 +146,12 @@ class ProductSidebar extends React.Component {
 
     const { packages, complexity, integrationTime, compatibility, tags } = this.state;
     return (
+
+
       <div className="product-tab">
+
         <div className="left-panel">
+
 
           <Card style={{ margin: '10px auto', width: 550 }}>
             <div className="warning">
@@ -160,6 +164,7 @@ class ProductSidebar extends React.Component {
 
             <CardText>
               {/* packages */}
+
               <MaterialTagsInput
                 value={packages}
                 onChange={this.onPackagesChange.bind(this)}
@@ -277,4 +282,3 @@ class ProductSidebar extends React.Component {
 }
 
 export default ProductSidebar;
-

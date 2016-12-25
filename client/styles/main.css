@@ -234,11 +234,12 @@ h1 {
 }
 
 .welcome-info-header{
-  text-transform: capitalize;
-  text-align: center; 
-  padding-left: 3%;
-  padding-right: 3%;
-  background-color: #FFF8E1;
+	text-transform: capitalize;
+	text-align: center;
+	padding-left: 3%;
+	padding-right: 3%;
+	background-color: #FFF8E1;
+
 }
 
 .Productcontent{
@@ -287,14 +288,15 @@ h1 {
 }
 
 @media (min-width: 0px) and (max-width: 1200px) {
-  .contentSidebar{
-    display: none; 
-  }
-  .contentMarkdown{
-    max-width: 100%;
-    width: 100%;
-    float: none;
-  }
+	.contentSidebar{
+		display: none;
+ 	}
+ 	.contentMarkdown{
+ 		max-width: 100%;
+ 		width: 100%;
+ 		float: none;
+ 	}
+
 }
 
 .welcome-text{
@@ -893,7 +895,7 @@ h1 {
 
 @media (min-width: 1440px) and (max-width: 1679px) {
     .container-search {
-        width: 1300px;
+        width: 1265px;
     }
     .imagecontainer {
         width: 100%;
@@ -920,7 +922,7 @@ h1 {
 
 @media (min-width: 1680px) and (max-width: 1919px) {
     .container-search {
-        width: 1300px;
+        width: 1265px;
     }
     .imagecontainer {
         width: 100%;
@@ -947,7 +949,7 @@ h1 {
 
 @media (min-width: 1900px) {
     .container-search {
-        width: 1300px;
+        width: 1265px;
     }
     .imagecontainer {
         width: 100%;
