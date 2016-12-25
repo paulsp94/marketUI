@@ -22,28 +22,35 @@ export default class Header extends React.Component {
     firebase.auth().onAuthStateChanged(firebaseUser => {
       this.setState({
         loggedIn: (null !== firebaseUser)
-      })
+      });
 
       if (firebaseUser) {
-        console.log("Logged IN", firebaseUser);
+        // TODO: remove this block of code when going live
+        // Placed here only for testing purposes.
+        // Makes the logged in user `ADMIN`
+        // let newAdminKey = firebase.database().ref().child('admin').push().key;
+        // let update = {};
+        // update[`/admin/${newAdminKey}`] = {
+        //   userId: firebase.auth().currentUser.uid
+        // };
+        // firebase.database().ref().update(update);
+        // END OF BLOCK
+
+        firebase.database().ref('admin').once('value')
+          .then((snapshot) => {
+            let data = snapshot.val();
+            let currentUser = firebase.auth().currentUser;
+            for(let adminKey of Object.keys(data)) {
+              let adminData = data[adminKey];
+              if(currentUser.uid === adminData.userId) {
+                this.setState({isAdmin: true});
+              }
+            }
+          })
       } else {
         console.log('Not logged in');
       }
     });
-  }
-
-  componentDidMount() {
-    firebase.database().ref('admin').once('value')
-      .then((snapshot) => {
-        let data = snapshot.val();
-        let currentUser = firebase.auth().currentUser;
-        for(let adminKey of Object.keys(data)) {
-          let adminData = data[adminKey];
-          if(currentUser.uid === adminData.userId) {
-            this.setState({isAdmin: true});
-          }
-        }
-      })
   }
 
   toggleAuthModal = () => {
