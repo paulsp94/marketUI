@@ -100,6 +100,7 @@ export function  FetchAllPublishedproduct() {
                   rating: product.rating,
                   downloadCount: product.downloadCount,
                   category: product.category,
+                  category: product.category,
                 });
 
                 dispatch({
