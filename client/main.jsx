@@ -15,6 +15,7 @@ import checkout from 'components/checkout/checkout.jsx';
 import ProductContent from 'components/ProductContent/ProductContent.jsx';
 import Contact from 'components/Contact/Contact';
 import MoreInfo from 'components/MoreInfo/MoreInfo';
+import AdminContainer from './containers/Admin';
 
 render(<Provider store={store}>
     <Router history={browserHistory}>
@@ -29,6 +30,7 @@ render(<Provider store={store}>
         <Route path="MoreInfo" component={MoreInfo}/>
         <Route path="EditProduct/:productid" component={General}/>
         <Route path="ProductContent/:productid" component={ProductContent}/>
+        <Route path="admin" component={AdminContainer}/>
       </Route>
     </Router>
   </Provider>,
