@@ -83,29 +83,30 @@ export function  FetchAllPublishedproduct() {
         var groupid = [];
         var productallid = [];
         firebase.database().ref('Publishedproduct').orderByChild('ProductId').on("child_added", (snapshot) => {
-
             var groupid = snapshot.val().Productid;
             var currentproductid = groupid;
 
             firebase.database().ref('ProductCoreDetails').orderByChild('ProductId').equalTo(currentproductid).on("child_added", (snapshot) => {
-
+              let product = snapshot.val();
+              if(product.status === 'published') {
                 productallid.push({
-                    productid: snapshot.val().ProductId,
-                    Price: snapshot.val().Price,
-                    Description: snapshot.val().Description,
-                    Mainimage: snapshot.val().mainImage,
-                    Title: snapshot.val().Title,
-                    Subimage: snapshot.val().subImage,
-                    rating: snapshot.val().rating,
-                    downloadCount: snapshot.val().downloadCount
+                  productid: product.ProductId,
+                  Price: product.Price,
+                  Description: product.Description,
+                  Mainimage: product.mainImage,
+                  Title: product.Title,
+                  Subimage: product.subImage,
+                  rating: product.rating,
+                  downloadCount: product.downloadCount
                 });
 
                 dispatch({
-                    type: "ALLPRODUCTDETAILS",
-                    payload: {
-                        products : productallid
-                    }
+                  type: "ALLPRODUCTDETAILS",
+                  payload: {
+                    products : productallid
+                  }
                 })
+              }
             });
         });
     }

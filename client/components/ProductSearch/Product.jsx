@@ -53,7 +53,7 @@ class Product extends React.Component{
                     <h5>{this.props.item.Title}</h5>
                     <h5> {this.props.item.Description} </h5>
                     <Flexbox flexDirection="row">
-                        <Flexbox flexGrow={1} marginTop={'10'}>
+                        <Flexbox flexGrow={1} marginTop="10px">
                           <StarRatingComponent
                             name="rating" /* name of the radio input, it is required */
                             value={this.props.item.rating || 0} /* number of selected icon (`0` - none, `1` - first) */
