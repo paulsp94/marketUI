@@ -97,7 +97,8 @@ export function  FetchAllPublishedproduct() {
                     Title: snapshot.val().Title,
                     Subimage: snapshot.val().subImage,
                     rating: snapshot.val().rating,
-                    downloadCount: snapshot.val().downloadCount
+                    downloadCount: snapshot.val().downloadCount,
+                    category: snapshot.val().category,
                 });
 
                 dispatch({

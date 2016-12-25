@@ -36,6 +36,7 @@ class  ProductSearch extends React.Component{
         this.state= {
             questdata:[],
             filter:'',
+            category:'',
         };
     }
 
@@ -49,6 +50,13 @@ class  ProductSearch extends React.Component{
         })
     }
 
+    cateGoryFilter(filtervalue){
+
+        this.setState({
+            filter:filtervalue
+        })
+    }
+
     render(){
 
         var allproducts = this.props.userdetails.Productalldetails;
@@ -58,18 +66,41 @@ class  ProductSearch extends React.Component{
         var mergedProduct = [].concat.apply([], UserId);
 
 
-        if(this.state.filter == ''){
+
+        if(this.state.filter == 'Shiny & Web'){
+             var filtereddata = mergedProduct.filter(function (detail) { return detail.category == 'Web or Shiny'});
+        }
+
+        else if(this.state.filter == 'Machine Learning'){
+             var filtereddata = mergedProduct.filter(function (detail) { return detail.category == 'Machine-Learning'});
+        }
+
+        else if(this.state.filter == 'Big Data'){
+             var filtereddata = mergedProduct.filter(function (detail) { return detail.category == 'Big-Data'});
+        }
+
+        else if(this.state.filter == 'Algorithms'){
+             var filtereddata = mergedProduct.filter(function (detail) { return detail.category == 'Algorithms'});
+        }
+
+        else if(this.state.filter == 'Graphics'){
+             var filtereddata = mergedProduct.filter(function (detail) { return detail.category == 'Graphics'});
+        }
+
+        else if(this.state.filter == 'Other'){
+             var filtereddata = mergedProduct.filter(function (detail) { return detail.category == 'Other'});
+        }
+        else if(this.state.filter == '' || this.state.filter == 'All Product'){
             var filtereddata = mergedProduct;
         }
         else {
-            var filtereddata= mergedProduct.filter(
-                (detail) =>{
-                    return detail.Title.toLowerCase().indexOf(this.state.filter.toLowerCase()) !==  -1
-                }
-            );
-
-
+                var filtereddata = mergedProduct.filter(
+                    (detail) => {
+                        return detail.Title.toLowerCase().indexOf(this.state.filter.toLowerCase()) !== -1
+                    }
+                );
         }
+
 
         if(allproducts == false){
             return(
@@ -84,7 +115,7 @@ class  ProductSearch extends React.Component{
             return (
                     <div>
                         <div className="container-search">
-                            <Tags onUpdateFilter={this.SearchFilter.bind(this)}/>
+                            <Tags onUpdateFilter={this.SearchFilter.bind(this)} cateGoryFilter={this.cateGoryFilter.bind(this)}/>
                             {
                                 filtereddata.map((detail, index)=> {
                                     return <Product item={detail} key={index} />

@@ -35,28 +35,39 @@ class Tags extends React.Component{
     };
 
     handleChange = (event, index, selectfield_value) => this.setState({selectfield_value});
+
+    cateGoryFilter(value){
+        this.props.cateGoryFilter(value);
+    }
+
+
     render(){
 
         return (
             <div className="tags">
             <Flexbox flexDirection="row">
-              <Flexbox flexGrow={1} flexShrink={1} style={{height:'45px'}}>
-                            <FlatButton label="Shiny & Web" style={{margin: 3, width: "100%",height:'100%',}} primary={true} />
+
+                <Flexbox flexGrow={1} flexShrink={1}>
+                    <FlatButton onClick={this.cateGoryFilter.bind(this,"All Product")} label="All Product" style={{margin: 3, width: "100%",height:'45px'}} primary={true} />
+                </Flexbox>
+
+                <Flexbox flexGrow={1} flexShrink={1} style={{height:'45px'}}>
+                            <FlatButton onClick={this.cateGoryFilter.bind(this , "Shiny & Web")} label="Shiny & Web" style={{margin: 3, width: "100%",height:'100%',}} primary={true} />
               </Flexbox>
                <Flexbox flexGrow={1} flexShrink={1}>
-                            <FlatButton label="Machine Learning" style={{margin: 3, width: "100%",height:'45px'}} primary={true} />                   
+                            <FlatButton onClick={this.cateGoryFilter.bind(this, "Machine Learning")} label="Machine Learning" style={{margin: 3, width: "100%",height:'45px'}} primary={true} />
               </Flexbox>
               <Flexbox flexGrow={1} flexShrink={1}>
-                             <FlatButton label="Big Data" style={{margin: 3, width: "100%",height:'45px'}} primary={true} />                   
+                             <FlatButton onClick={this.cateGoryFilter.bind(this,"Big Data")} label="Big Data" style={{margin: 3, width: "100%",height:'45px'}} primary={true} />
               </Flexbox>
               <Flexbox flexGrow={1} flexShrink={1}>
-                            <FlatButton label="Algorithms" style={{margin: 3, width: "100%",height:'45px'}} primary={true} />                   
+                            <FlatButton onClick={this.cateGoryFilter.bind(this,"Algorithms")} label="Algorithms" style={{margin: 3, width: "100%",height:'45px'}} primary={true} />
               </Flexbox>
               <Flexbox flexGrow={1} flexShrink={1}>
-                            <FlatButton label="Graphics" style={{margin: 3, width: "100%",height:'45px'}} primary={true} />                   
+                            <FlatButton onClick={this.cateGoryFilter.bind(this,"Graphics")} label="Graphics" style={{margin: 3, width: "100%",height:'45px'}} primary={true} />
               </Flexbox>
                <Flexbox flexGrow={1} flexShrink={1}>
-                            <FlatButton label="Other" style={{margin: 3, width: "100%",height:'45px'}} primary={true} />                   
+                            <FlatButton onClick={this.cateGoryFilter.bind(this,"Other")} label="Other" style={{margin: 3, width: "100%",height:'45px'}} primary={true} />
               </Flexbox>
               
                   <Flexbox flexGrow={1} flexShrink={1}>
