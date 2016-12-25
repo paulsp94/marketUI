@@ -66,7 +66,7 @@ class Tags extends React.Component{
                         onChange={this.handleChange.bind(this)}
                         style={{height:'45px',marginLeft:'13px',width:'170px', color:'white'}}
                         labelStyle={{color:'rgb(0, 188, 212)'}}
-                   5  >
+                     >
                         <MenuItem value={'Newest'} primaryText="Newest" />
                         <MenuItem value={'Rating'} primaryText="Rating" />
                         <MenuItem value={'Popularity'} primaryText="Popularity" />
