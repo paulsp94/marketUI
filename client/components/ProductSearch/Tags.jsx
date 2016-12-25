@@ -41,36 +41,36 @@ class Tags extends React.Component{
             <div className="tags">
             <Flexbox flexDirection="row">
               <Flexbox flexGrow={1} flexShrink={1} style={{height:'45px'}}>
-                            <FlatButton label="Shiny & Web" style={{margin: 3, width: "100%",height:'100%',}} primary={true} />
+                            <FlatButton label="Shiny & Web" style={{width: "100%",height:'100%',}} primary={true} />
               </Flexbox>
                <Flexbox flexGrow={1} flexShrink={1}>
-                            <FlatButton label="Machine Learning" style={{margin: 3, width: "100%",height:'45px'}} primary={true} />                   
+                            <FlatButton label="Machine Learning" style={{width: "100%",height:'45px'}} primary={true} />                   
               </Flexbox>
               <Flexbox flexGrow={1} flexShrink={1}>
-                             <FlatButton label="Big Data" style={{margin: 3, width: "100%",height:'45px'}} primary={true} />                   
+                             <FlatButton label="Big Data" style={{width: "100%",height:'45px'}} primary={true} />                   
               </Flexbox>
               <Flexbox flexGrow={1} flexShrink={1}>
-                            <FlatButton label="Algorithms" style={{margin: 3, width: "100%",height:'45px'}} primary={true} />                   
+                            <FlatButton label="Algorithms" style={{width: "100%",height:'45px'}} primary={true} />                   
               </Flexbox>
               <Flexbox flexGrow={1} flexShrink={1}>
-                            <FlatButton label="Graphics" style={{margin: 3, width: "100%",height:'45px'}} primary={true} />                   
+                            <FlatButton label="Graphics" style={{width: "100%",height:'45px'}} primary={true} />                   
               </Flexbox>
                <Flexbox flexGrow={1} flexShrink={1}>
-                            <FlatButton label="Other" style={{margin: 3, width: "100%",height:'45px'}} primary={true} />                   
+                            <FlatButton label="Other" style={{width: "100%",height:'45px'}} primary={true} />                   
               </Flexbox>
               
                   <Flexbox flexGrow={1} flexShrink={1}>
-                   <TextField hintText={'Search Product'} hintStyle={{color:'rgb(0, 188, 212)'}} onChange={this.searchFilter.bind(this)} className={'search'} style={{color:'rgb(0, 188, 212)',fontSize:'16px',fontWeight:'100',width:'140px',height:'45px',marginTop:'4px'}}/>
+                   <TextField hintText={'Search...'} hintStyle={{color:'rgb(0, 188, 212)'}} onChange={this.searchFilter.bind(this)} className={'search'} style={{color:'rgb(0, 188, 212)',fontSize:'16px',fontWeight:'500',width:'170px',height:'45px'}} inputStyle={{color:'white'}}/>
                     <SelectField className={''} 
                         value={this.state.selectfield_value}
                         onChange={this.handleChange.bind(this)}
-                        style={{height:'45px',marginTop:'4px',marginLeft:'13px',width:'150px'}}
-                      >
-                        <MenuItem value={'New'} primaryText="New" />
-                        <MenuItem value={'Last Day'} primaryText="Last Day" />
-                        <MenuItem value={'1 Week old'} primaryText="1 Week old" />
-                        <MenuItem value={'1 Month old'} primaryText="1 Month old" />
-                        <MenuItem value={'1 Year old'} primaryText="1 Year old" />
+                        style={{height:'45px',marginLeft:'13px',width:'170px', color:'white'}}
+                        labelStyle={{color:'rgb(0, 188, 212)'}}
+                   5  >
+                        <MenuItem value={'Newest'} primaryText="Newest" />
+                        <MenuItem value={'Rating'} primaryText="Rating" />
+                        <MenuItem value={'Popularity'} primaryText="Popularity" />
+                        <MenuItem value={'Price'} primaryText="Price" />
                       </SelectField>
                    </Flexbox>
         </Flexbox>
