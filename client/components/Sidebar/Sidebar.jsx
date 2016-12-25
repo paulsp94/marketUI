@@ -222,7 +222,6 @@ class Sidebar extends React.Component {
         this.setState({
             Currentstate: statevalue
         });
-
     }
 
     _submitHandler(nextValue, prevValue, name) {
@@ -253,15 +252,15 @@ class Sidebar extends React.Component {
                 <Table >
                   <TableBody displayRowCheckbox={this.state.showCheckboxes} adjustForCheckbox={this.state.showCheckboxes}>
                     <TableRow  >
+                      
+                      <TableRowColumn style={{ textAlign: 'center' }}> ${productcoredetails.Price} </TableRowColumn>
                       <TableRowColumn style={{ textAlign: 'center' }}>
-                        <span style={{display: 'block'}}>Rating: </span>
                         <StarRatingComponent
                             name="rating" /* name of the radio input, it is required */
                             value={productcoredetails.rating || 0} /* number of selected icon (`0` - none, `1` - first) */
                             onStarClick={this._submitHandler} /* on icon click handler */
                         />
                       </TableRowColumn>
-                      <TableRowColumn style={{ textAlign: 'center' }}> {productcoredetails.Price} </TableRowColumn>
                       <TableRowColumn style={{ textAlign: 'center' }}>
                         Sold: {productcoredetails.downloadCount || 0}
                       </TableRowColumn>

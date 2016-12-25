@@ -209,7 +209,7 @@ class Sidebar extends React.Component {
           <Tabs>
             <Tab label="Item" onActive={this.Item.bind(this)}> </Tab>
             <Tab label="Comments" onActive={this.Comments.bind(this)}> </Tab>
-            <Tab label="Supports" onActive={this.Support.bind(this)}> </Tab>
+            <Tab label="Support" onActive={this.Support.bind(this)}> </Tab>
           </Tabs>
 
           {subheader}

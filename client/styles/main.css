@@ -895,7 +895,7 @@ h1 {
 
 @media (min-width: 1440px) and (max-width: 1679px) {
     .container-search {
-        width: 1300px;
+        width: 1265px;
     }
     .imagecontainer {
         width: 100%;
@@ -922,7 +922,7 @@ h1 {
 
 @media (min-width: 1680px) and (max-width: 1919px) {
     .container-search {
-        width: 1300px;
+        width: 1265px;
     }
     .imagecontainer {
         width: 100%;
@@ -949,7 +949,7 @@ h1 {
 
 @media (min-width: 1900px) {
     .container-search {
-        width: 1300px;
+        width: 1265px;
     }
     .imagecontainer {
         width: 100%;

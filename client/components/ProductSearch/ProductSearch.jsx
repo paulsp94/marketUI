@@ -27,7 +27,6 @@ function mapDispatchToProps(dispatch) {
 
 @connect(mapStateToProps, mapDispatchToProps)
 
-
 class  ProductSearch extends React.Component{
 
     constructor(props) {
@@ -60,11 +59,8 @@ class  ProductSearch extends React.Component{
     render(){
 
         var allproducts = this.props.userdetails.Productalldetails;
-
         var UserId = Object.keys(allproducts).map(key => allproducts[key]);
-
         var mergedProduct = [].concat.apply([], UserId);
-
 
 
         if(this.state.filter == 'Shiny & Web'){
