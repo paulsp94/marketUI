@@ -336,6 +336,7 @@ export function  submitProductGeneralDetails(ProductId,title,subtitle,describtio
             mainImage: url,
             subImage: url1,
             category:category,
+            status: 'submitted'
         });
 
         firebase.database().ref("Product_creation/" + ProductId).set({
