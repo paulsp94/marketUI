@@ -14,7 +14,7 @@ config.output = {
   path: './client/dist',
   pathInfo: true,
   publicPath: '/client/dist/',
-  filename: 'bundle.[hash].min.js'
+  filename: 'bundle.deploy.min.js'
 };
 
 config.plugins = config.plugins.concat([
@@ -60,8 +60,9 @@ config.plugins = config.plugins.concat([
 
 config.module.loaders = config.module.loaders.concat([
   {test: /\.jsx?$/, loaders: [ 'react-hot', 'babel'], exclude: /node_modules/},
-  { test: /\.scss$/, loader: 'style!css?modules&importLoaders=2&sourceMap&localIdentName=[local]___[hash:base64:5]!autoprefixer?browsers=last 2 version!sass?outputStyle=expanded&sourceMap' },
-  {test: /\.json$/, loader: 'json'}
+  {test: /\.scss$/, loader: 'style!css?modules&importLoaders=2&sourceMap&localIdentName=[local]___[hash:base64:5]!autoprefixer?browsers=last 2 version!sass?outputStyle=expanded&sourceMap' },
+  {test: /\.json$/, loader: 'json'},
+  {test: /\.css$/, loader: 'style!css?modules', include: /flexboxgrid/, }
 ]);
 
 module.exports = config;
