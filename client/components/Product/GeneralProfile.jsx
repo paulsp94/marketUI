@@ -298,7 +298,7 @@ class  GeneralProfile extends React.Component{
                                   <Card className="product-search" style={{padding: 0}}>
                                       <img className="product_image" src={this.state.avatarURL1}/>
                                       <h5>{this.state.title}</h5>
-                                      <h5> {this.state.describtion}</h5>
+                                      <h5 style={{height: '35px'}}> {this.state.describtion}</h5>
                                       <Flexbox flexDirection="row">
                                           <Flexbox flexGrow={1}>
                                               <RaisedButton label="rating" style={{ margin: 1, width: "100%"}} />
