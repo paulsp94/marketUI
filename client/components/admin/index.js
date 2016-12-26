@@ -57,7 +57,7 @@ class AdminComponent extends React.Component {
   }
 
   _clickHandler(product) {
-    browserHistory.push('ItemPreview/'+ product.ProductId);
+    browserHistory.push('EditProduct/'+ product.ProductId);
   }
 
   render() {
