@@ -238,7 +238,10 @@ class Sidebar extends React.Component {
       .once('value')
       .then((snapshot) => {
         let details = snapshot.val();
+        details.ratedCount = details.ratedCount ? details.ratedCount + 1 : 1;
         details.rating = newRating;
+        let oldAverage = prevValue ? prevValue : 0;
+        details.rating = ((oldAverage * (details.ratedCount - 1)) + nextValue) / details.ratedCount;
         firebase.database().ref(`ProductCoreDetails/${productcoredetails.productid}`).set(details);
       });
   }
