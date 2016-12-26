@@ -164,28 +164,95 @@ class  GeneralProfile extends React.Component{
             var ProductId = this.props.ProductId;
             // this.props.submitProductGeneralDetails(ProductId,title,subtitle,describtion,price,category,url,url1,UserId);
 
-            firebase.database().ref('ProductCoreDetails/' + ProductId).set({
-                ProductId: ProductId,
-                Title: title,
-                Subtitle: subtitle,
-                Description: describtion,
-                Price: price,
-                mainImage: url,
-                subImage: url1,
-                category:category,
-                status: 'submitted'
+            firebase.database().ref('ProductCoreDetails').child(ProductId).once("value", (snapshot) => {
+
+                console.log(snapshot.exists(),'snapshot exists');
+                if(snapshot.exists()) {
+                    var product = snapshot.val();
+
+                    console.log('snapshot value is',snapshot.val());
+
+                    console.log(product.status);
+
+                    if (product.status === 'published') {
+
+                        firebase.database().ref('ProductCoreDetails/' + ProductId).set({
+                            ProductId: ProductId,
+                            Title: title,
+                            Subtitle: subtitle,
+                            Description: describtion,
+                            Price: price,
+                            mainImage: url,
+                            subImage: url1,
+                            category: category,
+                            status: 'published'
+                        });
+
+                        firebase.database().ref("Product_creation/" + ProductId).set({
+                            ProductId: ProductId,
+                            userid: UserId[0],
+                        });
+
+
+                        this.setState({
+                            submitstatus: "Submitted Safely"
+                        })
+
+                    }
+                    else {
+
+                        firebase.database().ref('ProductCoreDetails/' + ProductId).set({
+                            ProductId: ProductId,
+                            Title: title,
+                            Subtitle: subtitle,
+                            Description: describtion,
+                            Price: price,
+                            mainImage: url,
+                            subImage: url1,
+                            category: category,
+                            status: 'submitted'
+                        });
+
+                        firebase.database().ref("Product_creation/" + ProductId).set({
+                            ProductId: ProductId,
+                            userid: UserId[0],
+                        });
+
+
+                        this.setState({
+                            submitstatus: "Submitted Safely"
+                        })
+
+                    }
+                }
+
+                else {
+
+                    firebase.database().ref('ProductCoreDetails/' + ProductId).set({
+                        ProductId: ProductId,
+                        Title: title,
+                        Subtitle: subtitle,
+                        Description: describtion,
+                        Price: price,
+                        mainImage: url,
+                        subImage: url1,
+                        category: category,
+                        status: 'submitted'
+                    });
+
+                    firebase.database().ref("Product_creation/" + ProductId).set({
+                        ProductId: ProductId,
+                        userid: UserId[0],
+                    });
+
+
+                    this.setState({
+                        submitstatus: "Submitted Safely"
+                    })
+
+                }
+
             });
-
-            firebase.database().ref("Product_creation/" + ProductId).set({
-                ProductId: ProductId,
-                userid: UserId[0],
-            });
-
-
-            this.setState({
-                submitstatus: "Submitted Safely"
-            })
-
 
         }
 

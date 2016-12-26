@@ -32,9 +32,8 @@ class ContentSidebar extends React.Component{
                         <Tab label="Content" >
                             <Card expanded={this.state.expanded}>
                                 <div className="createproduct">
-                                <RaisedButton label="Create Product" href="/General" style={{ margin: 12}} />
                                <Link to="/General" className="">
-                                    ProductCreation
+                                   <RaisedButton label="Create Product" style={{ margin: 12}} />
                                 </Link>
                                 </div>
                                 <hr/>

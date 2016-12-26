@@ -85,15 +85,15 @@ export default class Header extends React.Component {
       <ul className="nav navbar-nav navbar pull-right">
      
         <li>
-            <IconMenu
-            iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
-          >
+            <IconMenu iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}>
+
             <MenuItem primaryText="Contact" href="/Contact"/>
             <MenuItem primaryText="About"/>
             <MenuItem primaryText="Forms" />
             <MenuItem primaryText="Help" />
             <MenuItem primaryText="Sign out" onClick={this.logout}/>
-          </IconMenu>
+
+            </IconMenu>
        </li>
        {
             isAdmin ?
