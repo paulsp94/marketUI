@@ -1,4 +1,5 @@
 import React, {PropTypes} from 'react';
+import { browserHistory } from 'react-router';
 import LazyLoad from 'react-lazyload';
 import {Card} from 'material-ui/Card';
 import Toggle from 'material-ui/Toggle';
@@ -32,7 +33,7 @@ class AdminComponent extends React.Component {
         let response = snapshot.val();
         let products = [];
 
-        for(let productKey of Object.keys(response)) {
+        for (let productKey of Object.keys(response)) {
           products.push(response[productKey]);
         }
         this.setState({products: products});
@@ -55,52 +56,60 @@ class AdminComponent extends React.Component {
       })
   }
 
+  _clickHandler(product) {
+    browserHistory.push('ItemPreview/'+ product.ProductId);
+  }
+
   render() {
 
-    return(
-      <div>
+    return (
+      <div className="admin">
         {
           this.state.products.map((product, index) => {
-            return <div className="admin product-details" key={index} >
-              <Card className="product-search">
-                <LazyLoad height={'150px'} resize={true} offset={[200,200]} >
-                  <img className="product_image" src={product.subImage} />
-                </LazyLoad>
-                <h5>{product.Title}</h5>
-                <h5>{product.Description}</h5>
-                <Flexbox flexDirection="row">
-                  <Flexbox flexGrow={1} className="product-rating">
-                    <StarRatingComponent
-                      name="rating" /* name of the radio input, it is required */
-                      value={product.rating || 0} /* number of selected icon (`0` - none, `1` - first) */
-                      editing={false}
-                    />
-                  </Flexbox>
-                  <Flexbox flexGrow={1}>
-                    <RaisedButton className="raised-btn" label={`${product.Price || 0}`} />
-                  </Flexbox>
-                  <Flexbox flexGrow={1}>
-                    <RaisedButton className="raised-btn" label={`${product.downloadCount || 0}`} />
-                  </Flexbox>
-                </Flexbox>
-                <Flexbox flexDirection="row" className="action-container">
-                  <Flexbox flexGrow={1}>
-                    <RaisedButton
-                      className="raised-btn"
-                      label={product.status === 'published' ? 'Published' : 'Not Published'} />
-                  </Flexbox>
-                  <Flexbox flexGrow={1}>
-                    <Toggle
-                      onToggle={() => { this._toggleHandler(product.ProductId) }}
-                      className="status-toggle"
-                      defaultToggled = {product.status === 'published'}
-                      labelPosition="left"
-                      label="Action"
+            return (
+              <div className="product-details" key={index} onClick={() => { this._clickHandler(product) }}>
+                <Card className="product-search">
+                  <LazyLoad height={'150px'} resize={true} offset={[200, 200]}>
+                    <img className="product_image" src={product.subImage}/>
+                  </LazyLoad>
+                  <h5 style={{height: '35px'}}>{product.Title}</h5>
+                  <h5 style={{height: '35px'}}>{product.Description}</h5>
+                  <Flexbox flexDirection="row">
+                    <Flexbox flexGrow={1}>
+                      <RaisedButton label={`${product.Price || 0}`} style={{ margin: 1, width: "100%"}}/>
+                    </Flexbox>
+                    <Flexbox flexGrow={1} marginTop={'10px'} marginLeft={'12px'}>
+                      <StarRatingComponent
+                        name="rating" /* name of the radio input, it is required */
+                        value={product.rating || 0} /* number of selected icon (`0` - none, `1` - first) */
+                        editing={false}
                       />
+                    </Flexbox>
+                    <Flexbox flexGrow={1}>
+                      <RaisedButton label={`${product.downloadCount || 0}`} style={{ margin: 1, width: "100%"}}/>
+                    </Flexbox>
                   </Flexbox>
-                </Flexbox>
-              </Card>
-            </div>
+                  <Flexbox flexDirection="row" className="action-container">
+                    <Flexbox flexGrow={1}>
+                      <RaisedButton
+                        className="raised-btn"
+                        label={product.status === 'published' ? 'Published' : 'Not Published'}/>
+                    </Flexbox>
+                    <Flexbox flexGrow={1}>
+                      <Toggle
+                        onToggle={() => {
+                          this._toggleHandler(product.ProductId)
+                        }}
+                        className="status-toggle"
+                        defaultToggled={product.status === 'published'}
+                        labelPosition="left"
+                        label="Action"
+                      />
+                    </Flexbox>
+                  </Flexbox>
+                </Card>
+              </div>
+            )
           })
         }
       </div>

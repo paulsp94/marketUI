@@ -54,7 +54,6 @@ class  ItemPreview extends Component{
         this.props.productCoreDetails(ProductId);
         this.props.ProductComments(ProductId);
         this.props.productSellerandstripeid(ProductId);
-
     }
 
     render(){
@@ -84,7 +83,7 @@ class  ItemPreview extends Component{
             var productcorealldetails = productcoredetails[0];
             var productdesdetail = descriptiondetails[0];
             var prodsidebardet = sidebardetails[0];
-            var allcomment = this.props.userdetails.allcomments.productcomment;
+            var allcomment = this.props.userdetails.allcomments ? this.props.userdetails.allcomments.productcomment : [];
 
             return (
                 <div className="background">

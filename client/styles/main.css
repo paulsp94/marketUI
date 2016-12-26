@@ -1154,26 +1154,16 @@ only screen and (min-device-pixel-ratio: 1.5) {
 
 /* Admin css */
 
-.admin .product-search{
+.admin{
   margin-top: 1rem;
-  padding: 0;
-}
-
-.admin .product-search .product-rating {
-  margin-top: 5px;
-}
-
-.admin .action-container {
-  height: 38px;
 }
 
 .admin .action-container .status-toggle {
   margin-top: 5px;
 }
 
-.admin.product-details .raised-btn {
+.admin .action-container .raised-btn {
   width: 100%;
-  margin: 1px;
 }
 
 
