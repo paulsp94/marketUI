@@ -52,7 +52,7 @@ class  General extends React.Component{
     checkvalidation(productid){
 
         var user = firebase.auth().currentUser;
-        var currentUserid = user.uid;
+
 
         var query = firebase.database().ref('Product_creation');
 
@@ -84,10 +84,9 @@ class  General extends React.Component{
 
                         var tableproductid = currentvaluearray.ProductId;
                         var tableuserid = currentvaluearray.userid;
+                        if(tableproductid == productid && user){
 
-                        if(tableproductid == productid){
-
-                            if(tableuserid == currentUserid){
+                            if(tableuserid == user.uid){
 
                                 this.setState({
                                     producteditvalidation : "RIGHTVALIDATION"

@@ -308,11 +308,10 @@ class  GeneralProfile extends React.Component{
                                  <CardTitle
                                    title="General"
                                    subtitle=""
-                                   align = 'left'
                                  />
                                  <CardText>
-                                     <input className="inputfield-signup1" value={this.state.title} ref={(d) => this.title = d}  name="title" type="text" placeholder="Title" onChange={this.TiTle.bind(this)}  fullWidth={true} />
-                                     <input className="inputfield-signup1" value={this.state.subtitle} ref={(de) => this.subTitle = de}  name="subtitle" type="text"  placeholder="sub-title" onChange={this.SubTitle.bind(this)}  fullWidth={true}/>
+                                     <input className="inputfield-signup1" value={this.state.title} ref={(d) => this.title = d}  name="title" type="text" placeholder="Title" onChange={this.TiTle.bind(this)} />
+                                     <input className="inputfield-signup1" value={this.state.subtitle} ref={(de) => this.subTitle = de}  name="subtitle" type="text"  placeholder="sub-title" onChange={this.SubTitle.bind(this)}/>
 
                                     {/*
                                      <FlatButton label="Choose Image" labelPosition="before" primary={true}>
@@ -351,9 +350,7 @@ class  GeneralProfile extends React.Component{
                                         <SelectField
                                           floatingLabelText = "Category"
                                           value = {this.state.category}
-                                          onChange = {this.ProdctCategory.bind(this)}
-                                          fullWidth = {true}
-                                        >
+                                          onChange = {this.ProdctCategory.bind(this)}>
                                             <MenuItem value="Choose the Category" primaryText="Choose the Category" />
                                           <MenuItem value="Machine-Learning" primaryText="Machine-Learning" />
                                           <MenuItem value="Big-Data" primaryText="Big-Data" />
@@ -366,7 +363,7 @@ class  GeneralProfile extends React.Component{
                                         <textarea value={this.state.describtion} name="textarea" ref={(d) => this.textarea = d} className="textarea1" placeholder="Description about Product"
                                                     onChange={this.DescriPtion.bind(this)}/> <br/> <br/>
 
-                                        <input className="inputfield-signup1" value={this.state.price} ref={(d) => this.Price = d} name="Price" type="text" placeholder="Price in $" onChange={this.PriCe.bind(this)} fullWidth={true} />
+                                        <input className="inputfield-signup1" value={this.state.price} ref={(d) => this.Price = d} name="Price" type="text" placeholder="Price in $" onChange={this.PriCe.bind(this)} />
                                         <div className="product-header">
                                           <RaisedButton onClick={this.SubMit.bind(this)} label=" Save" primary={true} style={{ margin: 12}}/>
                                             <br/>
@@ -397,7 +394,7 @@ class  GeneralProfile extends React.Component{
                                               <RaisedButton label="rating" style={{ margin: 1, width: "100%"}} />
                                           </Flexbox>
                                           <Flexbox flexGrow={1}>
-                                              <RaisedButton label={this.state.price} style={{ margin: 1, width: "100%"}} />
+                                              <RaisedButton label={`${this.state.price || 0}`} style={{ margin: 1, width: "100%"}} />
                                           </Flexbox>
                                           <Flexbox flexGrow={1}>
                                               <RaisedButton label="nr sold" style={{ margin: 1, width: "100%"}} />
