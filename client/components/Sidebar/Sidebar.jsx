@@ -54,7 +54,7 @@ class Sidebar extends React.Component {
 
         return (
             <div className="sidebar-bottom">
-              <h4><strong> {this.props.productcoredetails.Title} </strong> <br/></h4>
+              {/* <h4><strong> {this.props.productcoredetails.Title} </strong> <br/></h4> */}
               {
                 this.props.Sidebar ?
                   <div>
@@ -94,7 +94,7 @@ class Sidebar extends React.Component {
                     <div style={{ flexWrap: "wrap", margin: 9 }}>
                       <h4 ><strong> Maintenance: </strong></h4>
                       <h5> 5 Versions</h5>
-                      <p> Last Updated 20-11-2015 </p>
+                      <p> Last Updated 20-11-2016 </p>
                     </div>
 
                     <Card>
@@ -185,7 +185,7 @@ class Sidebar extends React.Component {
           <hr/>
           <div className="sidebar-bottom">
 
-            <img className="Userimage" src={'/client/Images/deep.jpg'}/>
+            <img className="Userimage"/>
 
             <br/>
 
@@ -298,7 +298,7 @@ class Sidebar extends React.Component {
                         <div className="usercommentname">
                           <input name="comment" ref={(g) => this.comment = g} onKeyDown={this.keyPress.bind(this)}
                                  className="inputfield-signup1" type="text"
-                                 placeholder="Ask Your Questions or Queries about the product"/>
+                                 placeholder="Ask Questions about the product"/>
                           <br/>
                         </div>
                       </CardText>

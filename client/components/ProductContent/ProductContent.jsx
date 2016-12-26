@@ -17,7 +17,7 @@ import firebase_details from '../../Firebase/Firebase';
 
 const cx = classNames.bind(styles)
 
-var data = "Take me to [pookie](#pookie) \n <a name='Test Title1' level='title'></a><a name='Test Title1' level='subtitle'></a><a name='Test Title1' level='subtitle'></a> \n # This is an <h1> tag\n## This is an <h2> tag\n###### This is an <h6> tag # This is an <h1> tag\n\n# This is an <h2> tag\n ###### This is an <h6> tag # This is an <h1> tag\n## This is an <h2> tag\n###### This is an <h6> tag # This is an <h1> tag\n## This is an <h2> tag\n###### This is an <h6> tag # This is an <h1> tag\n\n# This is an <h2> tag\n###### This is an <h6> tag # This is an <h1> tag\n## This is an <h2> tag\n###### This is an <h6> tag # This is an <h1> tag\n## This is an <h2> tag\n###### This is an <h6> tag # This is an <h1> tag\n\n# This is an <h2> tag\n###### This is an <h6> tag # This is an <h1> tag\n  ## This is an <h2> tag\n###### This is an <h6> tag # This is an <h1> tag\n## This is an <h2> tag\n###### This is an <h6> tag # This is an <h1> tag\n\n# This is an <h2> tag\n###### This is an <h6> tag # This is an <h1> tag\n## This is an <h2> tag\n###### This is an <h6> tag\n### <a name='Test Title2'></a>Some heading";
+var data = "";
 
 function mapStateToProps (store) {
   return { userdetails: store.userdetails };

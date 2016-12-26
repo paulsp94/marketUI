@@ -37,12 +37,13 @@ class ProfileSidebar extends React.Component {
           <Tab label="header">
             <Card expanded={this.state.expanded}>
               <CardText>
-                {
+                {/*
                   this._userId() ?
                     <a href={this._stripeUrl()} className="stripe-connect">
                       <span>Connect with Stripe</span>
                     </a> : null
-                }
+                */}
+                In this beta not all features are integrated (like this stripe connect button)
               </CardText>
             </Card>
           </Tab>
