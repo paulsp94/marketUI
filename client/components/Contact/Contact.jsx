@@ -5,10 +5,11 @@ import {orange500, blue500} from 'material-ui/styles/colors';
 import Divider from 'material-ui/Divider/Divider';
 import Flexbox from 'flexbox-react';
 import {Input, TextArea, GenericInput} from 'react-text-input';
+var nodemailer = require('nodemailer');
 
-<meta name="viewport" content="width=device-width" />
 
-var Contact = React.createClass({ 
+var Contact = React.createClass({
+
     render(){
         return (
                 <div className="">
@@ -16,10 +17,10 @@ var Contact = React.createClass({
                     <Flexbox flexGrow={1}>
                     <div className={'container-contact-up'}>
                         <span> Your Email :</span>    
-                        <TextField hintText={'Email'} /*floatingLabelText={'Message'}*/ className={'contact_text'}/> 
+                        <TextField hintText={'Email'} className={'contact_text'}/>
                          <br />    
                         <span >Your Name :</span>    
-                        <TextField hintText={'Name'} /*floatingLabelText={'Message'}*/ className={'contact_text'}/>
+                        <TextField hintText={'Name'} className={'contact_text'}/>
                         <br />
                         <br />    
                         <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Message :</span>    
@@ -28,7 +29,7 @@ var Contact = React.createClass({
                         <br />
                         <br />
                         <div>    
-                         <RaisedButton primary={true} label="Contact" href="" />
+                         <RaisedButton primary={true} label="Contact"  onClick=""/>
                         </div>
                     </div>
                     </Flexbox>
