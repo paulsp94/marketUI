@@ -50,7 +50,6 @@ class  ProductSearch extends React.Component{
     }
 
     cateGoryFilter(filtervalue){
-
         this.setState({
             filter:filtervalue
         })

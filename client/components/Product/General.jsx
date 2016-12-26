@@ -45,15 +45,30 @@ class  General extends React.Component{
         this.state= {
             ProductID:'',
             producteditvalidation:false,
+            isAdmin:'',
         };
     }
 
 
     checkvalidation(productid){
 
+
+        firebase.database().ref('admin').once('value')
+            .then((snapshot) => {
+                let data = snapshot.val();
+
+                let currentUser = firebase.auth().currentUser;
+                for(let adminKey of Object.keys(data)) {
+                    let adminData = data[adminKey];
+                    if(currentUser.uid === adminData.userId) {
+                        this.setState({
+                            producteditvalidation : "RIGHTVALIDATION"
+                        });
+                    }
+                }
+            })
+
         var user = firebase.auth().currentUser;
-
-
         var query = firebase.database().ref('Product_creation');
 
         query.once("value", (snapshot) => {
@@ -78,6 +93,7 @@ class  General extends React.Component{
                         this.setState({
                             producteditvalidation:"WRONGVALIDATION"
                         })
+
                     }
 
                     else{
@@ -132,7 +148,7 @@ class  General extends React.Component{
 
     render(){
 
-        if(this.state.producteditvalidation == false){
+        if(this.state.producteditvalidation == false ){
             return (
             <div className="background">
                 <div className="loader">
