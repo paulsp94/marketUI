@@ -5,7 +5,7 @@ import {orange500, blue500} from 'material-ui/styles/colors';
 import Divider from 'material-ui/Divider/Divider';
 import Flexbox from 'flexbox-react';
 import {Input, TextArea, GenericInput} from 'react-text-input';
-var nodemailer = require('nodemailer');
+
 
 
 var Contact = React.createClass({
