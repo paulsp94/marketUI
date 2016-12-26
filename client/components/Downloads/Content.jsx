@@ -23,7 +23,6 @@ export default class Content extends React.Component{
     }
 
     EditDetails(){
-        console.log('hey it click me');
         var productid = this.props.item.productid;
         browserHistory.push('EditProduct/'+ productid);
     }

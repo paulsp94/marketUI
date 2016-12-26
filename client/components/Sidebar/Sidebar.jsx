@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {Link} from "react-router";
+import {withRouter} from 'react-router';
+import { browserHistory } from 'react-router';
 import { bindActionCreators } from 'redux';
 import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card';
 import { Tabs, Tab } from 'material-ui/Tabs';
@@ -191,28 +194,7 @@ class Sidebar extends React.Component {
 
             <CardText>
               <div className="userdescribation">
-                <p>
-                  I have successful Web Developer with Nearly 2 Year experience.
-
-                  Currently working as freelancer/contract Front hand Developer in Germany.
-
-                  My Core Expertise is
-
-                  React.js, Flux, Fetch Api and Redux
-                  Web designing ( Html, css3, JavaScript and jQuery )
-                  Backhand development (Php Laravel framework, MySQL, Firebase)
-                </p>
-                <hr/>
-                <strong>Email:</strong> komaldeep1993@gmail.com<br/>
-                <h4><strong> Experience </strong> <br/></h4>
-                <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-                  <Chip style={{ float: "left", margin: 2 }}>Html </Chip>
-                  <Chip style={{ float: "left", margin: 2 }}>CSS </Chip>
-                  <Chip style={{ float: "left", margin: 2 }}>Javascript </Chip>
-                  <Chip style={{ float: "left", margin: 2 }}>Jquery </Chip>
-                  <Chip style={{ float: "left", margin: 2 }}>Firebase3 </Chip>
-                </div>
-
+               Feature Comming SOON
               </div>
             </CardText>
           </div>
@@ -243,6 +225,11 @@ class Sidebar extends React.Component {
             });
     }
 
+    ProductContentDownload(){
+        var productid = this.props.ProductId;
+        browserHistory.push('ProductContent/'+ productid);
+    }
+
     render () {
         var currentstate = this.state.Currentstate;
         let {productcoredetails, sellerStripeAccountId} = this.props;
@@ -268,14 +255,18 @@ class Sidebar extends React.Component {
                     </TableRow>
                   </TableBody>
                 </Table>
+
+
+                  <RaisedButton label="Download Content" onClick={this.ProductContentDownload.bind(this)} primary={true} style={{ margin: 12}}/>
                   {/*// TODO feed me real data, amount in cents */}
                   {
-                      sellerStripeAccountId ?
-                          <StripeCheckout
-                              productId={productcoredetails.productid}
-                              amount={parseInt(productcoredetails.Price * 100)}
-                              sellerId={sellerStripeAccountId} /> : null
+                      /*sellerStripeAccountId ?*/
+                          /*<StripeCheckout*/
+                              /*productId={productcoredetails.productid}*/
+                              /*amount={parseInt(productcoredetails.Price * 100)}*/
+                              /*sellerId={sellerStripeAccountId} /> : null*/
                   }
+
               </div>
             </div>
         }
