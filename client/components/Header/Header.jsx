@@ -89,8 +89,8 @@ export default class Header extends React.Component {
 
             <MenuItem primaryText="Contact" href="/Contact"/>
             <MenuItem primaryText="About"/>
-            <MenuItem primaryText="Forms" />
-            <MenuItem primaryText="Help" />
+            <MenuItem primaryText="Policy" />
+            <MenuItem primaryText="Impressum" />
             <MenuItem primaryText="Sign out" onClick={this.logout}/>
             </IconMenu>
        </li>

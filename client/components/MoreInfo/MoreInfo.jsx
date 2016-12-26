@@ -26,9 +26,9 @@ var Contact = React.createClass({
                    <h2 style={{textAlign:'center'}}> Beta Test Awards </h2>
                    </Card> 
                   <Card style={style}>
-                <p> to award the active participation in the Rscript.Market Beta, we will give away 250$ for the 5 best items   created until the end of the Beta. These are the rules and guidelines: </p>
+                <p> to award the active participation in the Rscript.Market Beta, we will give away 150$ for the 3 best items   created until the end of the Beta. These are the rules and guidelines: </p>
                 <ul>
-                <li> 5 winners will be selected - each one will be awared with 50$</li>
+                <li> 3 winners will be selected - each one will be awared with 50$</li>
                 <li> The winners are determined by rating/amount downloads/facebook votings/comments </li> 
                 <li> Winning items need to be free of any copy right/license infringement </li>
                 <li> The price will be paid out in either bitcoin or via paypal in $ </li>
