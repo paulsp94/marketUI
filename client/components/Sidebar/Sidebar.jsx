@@ -230,19 +230,16 @@ class Sidebar extends React.Component {
 
     _submitHandler(nextValue, prevValue, name) {
         let {productcoredetails} = this.props;
-        let newRating = nextValue;
-
-        if(prevValue) {
-            newRating = (nextValue + prevValue) / 2;
-        }
 
         firebase
             .database().ref(`ProductCoreDetails/${productcoredetails.productid}`)
             .once('value')
             .then((snapshot) => {
-                let details = snapshot.val();
-                details.rating = newRating;
-                firebase.database().ref(`ProductCoreDetails/${productcoredetails.productid}`).set(details);
+              let details = snapshot.val();
+              details.ratedCount = details.ratedCount ? details.ratedCount + 1 : 1;
+              let oldAverage = prevValue ? prevValue : 0;
+              details.rating = ((oldAverage * (details.ratedCount - 1)) + nextValue) / details.ratedCount;
+              firebase.database().ref(`ProductCoreDetails/${productcoredetails.productid}`).set(details);
             });
     }
 
