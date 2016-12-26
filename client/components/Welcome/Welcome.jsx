@@ -39,10 +39,10 @@ var Welcome = React.createClass({
                             <p> BETA TEST Awards </p>
                         </div>
                         <div className='welcome-info'>
-                            <p> To make the BETA launch a bit more exciting, we are giving away 150$ for the 5 best items created until 9th of january 2017. More information below.</p>
+                            <p> To make the beta launch a bit more exciting, we are giving away 150$ for the 5 best items created until 9th of january 2017. More information below.</p>
                         </div>
                         <div style={{textAlign:"center"}} className="welcome-info-header">
-                            <RaisedButton label="More Info" href="/MoreInfo"/*/-KYiHgYGx6V5mL4uiQed"*/ style={{}} />
+                            <RaisedButton label="More Info" href="/MoreInfo" style={{}} />
                         </div>
                     </div>
                 </div>

@@ -83,6 +83,7 @@ export function  FetchAllPublishedproduct() {
         var groupid = [];
         var productallid = [];
         firebase.database().ref('Publishedproduct').orderByChild('ProductId').on("child_added", (snapshot) => {
+
             var groupid = snapshot.val().Productid;
             var currentproductid = groupid;
 
@@ -90,16 +91,16 @@ export function  FetchAllPublishedproduct() {
               let product = snapshot.val();
               if(product.status === 'published') {
                 productallid.push({
-
-                    productid: snapshot.val().ProductId,
-                    Price: snapshot.val().Price,
-                    Description: snapshot.val().Description,
-                    Mainimage: snapshot.val().mainImage,
-                    Title: snapshot.val().Title,
-                    Subimage: snapshot.val().subImage,
-                    rating: snapshot.val().rating,
-                    downloadCount: snapshot.val().downloadCount,
-                    category: snapshot.val().category,
+                  productid: product.ProductId,
+                  Price: product.Price,
+                  Description: product.Description,
+                  Mainimage: product.mainImage,
+                  Title: product.Title,
+                  Subimage: product.subImage,
+                  rating: product.rating,
+                  downloadCount: product.downloadCount,
+                  category: product.category,
+                  category: product.category,
                 });
 
                 dispatch({

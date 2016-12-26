@@ -41,7 +41,6 @@ class StripeCheckoutComponent extends React.Component {
         amount={amount}
         name="Rscript.Market"
         bitcoin
-        alipay
         currency="USD"
         stripeKey={config['stripe']['publishableKey']}>
         <button className="btn btn-primary">

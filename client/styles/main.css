@@ -484,6 +484,8 @@ h1 {
     border: none;
 }
 
+
+
 .buttons {
     background-color: transparent;
     width: 30%;
@@ -1173,5 +1175,7 @@ only screen and (min-device-pixel-ratio: 1.5) {
   width: 100%;
   margin: 1px;
 }
+
+
 
 

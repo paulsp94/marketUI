@@ -48,7 +48,7 @@ class Tags extends React.Component{
             <Flexbox flexDirection="row">
 
                 <Flexbox flexGrow={1} flexShrink={1}>
-                    <FlatButton onClick={this.cateGoryFilter.bind(this,"All Product")} label="All Product" style={{margin: 3, width: "100%",height:'45px'}} primary={true} />
+                    <FlatButton onClick={this.cateGoryFilter.bind(this,"All Product")} label="All" style={{margin: 3, width: "100%",height:'45px'}} primary={true} />
                 </Flexbox>
 
                 <Flexbox flexGrow={1} flexShrink={1} style={{height:'45px'}}>
