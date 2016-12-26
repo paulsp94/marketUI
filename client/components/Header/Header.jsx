@@ -36,17 +36,17 @@ export default class Header extends React.Component {
         // firebase.database().ref().update(update);
         // END OF BLOCK
 
-        firebase.database().ref('admin').once('value')
-          .then((snapshot) => {
-            let data = snapshot.val();
-            let currentUser = firebase.auth().currentUser;
-            for(let adminKey of Object.keys(data)) {
-              let adminData = data[adminKey];
-              if(currentUser.uid === adminData.userId) {
-                this.setState({isAdmin: true});
-              }
-            }
-          })
+        // firebase.database().ref('admin').once('value')
+        //   .then((snapshot) => {
+        //     let data = snapshot.val();
+        //     let currentUser = firebase.auth().currentUser;
+        //     for(let adminKey of Object.keys(data)) {
+        //       let adminData = data[adminKey];
+        //       if(currentUser.uid === adminData.userId) {
+        //         this.setState({isAdmin: true});
+        //       }
+        //     }
+        //   })
       } else {
         console.log('Not logged in');
       }

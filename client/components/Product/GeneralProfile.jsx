@@ -7,7 +7,6 @@ import TextField from 'material-ui/TextField';
 import SelectField from 'material-ui/SelectField';
 import FlatButton from 'material-ui/FlatButton';
 import MenuItem from 'material-ui/MenuItem';
-
 var firebase = require('firebase');
 import firebase_details from '../../Firebase/Firebase';
 var FileInput = require('react-file-input');
@@ -51,6 +50,7 @@ class  GeneralProfile extends React.Component{
             isUploading1: false,
             progress1: 0,
             avatarURL1: '',
+            submitstatus:'',
         };
 
     }
@@ -111,7 +111,7 @@ class  GeneralProfile extends React.Component{
     TiTle(){
         var title = this.title.value;
         this.setState({
-            title :title
+            title: title
         });
     }
 
@@ -123,6 +123,7 @@ class  GeneralProfile extends React.Component{
     }
 
     DescriPtion(){
+
         var describtion = this.textarea.value;
         this.setState({
             describtion :describtion
@@ -153,7 +154,7 @@ class  GeneralProfile extends React.Component{
         var UserIdobject = this.props.userdetails.userid;
         var UserId = Object.keys(UserIdobject).map(key => UserIdobject[key]);
 
-        if(title == '' || subtitle == '' || describtion == '' || price == '' || category == ''|| url == ''|| url1 == ''){
+        if(title == '' || subtitle == '' || describtion == '' || price == '' || category == ''|| url == ''|| url1 == ''|| title == undefined || subtitle == undefined || describtion == undefined || price == undefined || category == undefined || url == undefined|| url1 == undefined){
             this.setState({
                 Error: "Please fill Every Detail",
             });
@@ -161,8 +162,30 @@ class  GeneralProfile extends React.Component{
         else {
 
             var ProductId = this.props.ProductId;
+            // this.props.submitProductGeneralDetails(ProductId,title,subtitle,describtion,price,category,url,url1,UserId);
 
-            this.props.submitProductGeneralDetails(ProductId,title,subtitle,describtion,price,category,url,url1,UserIdobject,UserId);
+            firebase.database().ref('ProductCoreDetails/' + ProductId).set({
+                ProductId: ProductId,
+                Title: title,
+                Subtitle: subtitle,
+                Description: describtion,
+                Price: price,
+                mainImage: url,
+                subImage: url1,
+                category:category,
+                status: 'submitted'
+            });
+
+            firebase.database().ref("Product_creation/" + ProductId).set({
+                ProductId: ProductId,
+                userid: UserId[0],
+            });
+
+
+            this.setState({
+                submitstatus: "Submitted Safely"
+            })
+
 
         }
 
@@ -221,8 +244,8 @@ class  GeneralProfile extends React.Component{
                                    align = 'left'
                                  />
                                  <CardText>
-                                     <TextField value={this.state.title} ref={(d) => this.title = d}  name="title" type="text" placeholder="Title" onChange={this.TiTle.bind(this)}  fullWidth={true} />
-                                     <TextField value={this.state.subtitle} ref={(d) => this.subTitle = d}  name="subtitle" type="text"  placeholder="sub-title" onChange={this.SubTitle.bind(this)}  fullWidth={true}/>
+                                     <input className="inputfield-signup1" value={this.state.title} ref={(d) => this.title = d}  name="title" type="text" placeholder="Title" onChange={this.TiTle.bind(this)}  fullWidth={true} />
+                                     <input className="inputfield-signup1" value={this.state.subtitle} ref={(de) => this.subTitle = de}  name="subtitle" type="text"  placeholder="sub-title" onChange={this.SubTitle.bind(this)}  fullWidth={true}/>
 
                                     {/*
                                      <FlatButton label="Choose Image" labelPosition="before" primary={true}>
@@ -264,6 +287,7 @@ class  GeneralProfile extends React.Component{
                                           onChange = {this.ProdctCategory.bind(this)}
                                           fullWidth = {true}
                                         >
+                                            <MenuItem value="Choose the Category" primaryText="Choose the Category" />
                                           <MenuItem value="Machine-Learning" primaryText="Machine-Learning" />
                                           <MenuItem value="Big-Data" primaryText="Big-Data" />
                                           <MenuItem value="Algorithms" primaryText="Algorithms" />
@@ -275,9 +299,11 @@ class  GeneralProfile extends React.Component{
                                         <textarea value={this.state.describtion} name="textarea" ref={(d) => this.textarea = d} className="textarea1" placeholder="Description about Product"
                                                     onChange={this.DescriPtion.bind(this)}/> <br/> <br/>
 
-                                        <TextField value={this.state.price} ref={(d) => this.Price = d} name="Price" type="text" placeholder="Price in $" onChange={this.PriCe.bind(this)} fullWidth={true} />
+                                        <input className="inputfield-signup1" value={this.state.price} ref={(d) => this.Price = d} name="Price" type="text" placeholder="Price in $" onChange={this.PriCe.bind(this)} fullWidth={true} />
                                         <div className="product-header">
                                           <RaisedButton onClick={this.SubMit.bind(this)} label=" Save" primary={true} style={{ margin: 12}}/>
+                                            <br/>
+                                            {this.state.submitstatus}
                                         </div>
                                     </CardText>
                             </Card>

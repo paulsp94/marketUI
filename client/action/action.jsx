@@ -324,7 +324,7 @@ export function  ProductComments(Productid) {
     }
 }
 
-export function  submitProductGeneralDetails(ProductId,title,subtitle,describtion,price,category,url,url1,UserIdobject,UserId) {
+export function  submitProductGeneralDetails(ProductId,title,subtitle,describtion,price,category,url,url1,UserId) {
 
     return function (dispatch) {
         firebase.database().ref('ProductCoreDetails/' + ProductId).set({

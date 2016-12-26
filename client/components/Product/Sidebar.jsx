@@ -141,7 +141,6 @@ class ProductSidebar extends React.Component {
     }
     else {
       var message = this.props.userdetails.publishedproduct.submitDetails;
-      console.log(message);
     }
 
     const { packages, complexity, integrationTime, compatibility, tags } = this.state;
@@ -223,7 +222,6 @@ class ProductSidebar extends React.Component {
 
             <RaisedButton onClick={this.subMit.bind(this)} label=" Save" style={{ margin: 12 }}/>
             <RaisedButton onClick={this.Publish.bind(this)} label="Publish" style={{ margin: 12 }}/>
-
 
           </Card>
         </div>
