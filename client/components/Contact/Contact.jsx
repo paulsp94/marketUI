@@ -11,7 +11,7 @@ import {Input, TextArea, GenericInput} from 'react-text-input';
 var Contact = React.createClass({ 
     render(){
         return (
-                <div className="container-search">
+                <div className="">
                    <Flexbox flexDirection="column" style={{width: '600px', margin:'auto'}}>
                     <Flexbox flexGrow={1}>
                     <div className={'container-contact-up'}>
@@ -27,11 +27,9 @@ var Contact = React.createClass({
                         <br />
                         <br />
                         <br />
-                        <br />
                         <div>    
                          <RaisedButton primary={true} label="Contact" href="" />
                         </div>
-                        <br/>
                     </div>
                     </Flexbox>
                     <Flexbox flexGrow={1}>

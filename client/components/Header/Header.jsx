@@ -1,7 +1,13 @@
-import React from 'react';
 import { Link } from 'react-router'
 import * as firebase from 'firebase';
 import AuthModal from 'components/Auth/AuthModal';
+import React, { Component } from 'react';
+
+import IconMenu from 'material-ui/IconMenu';
+import MenuItem from 'material-ui/MenuItem';
+import IconButton from 'material-ui/IconButton';
+import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
+
 
 export default class Header extends React.Component {
 
@@ -65,9 +71,31 @@ export default class Header extends React.Component {
   render () {
     let {loggedIn, isAdmin} = this.state;
 
-    const content = loggedIn ?
+    const contentLoggedIn = loggedIn ? 
+                            <li>
+                              <Link to="/profile" className="">
+                                Profile
+                              </Link>
+                            </li> :  
+                            <li>
+                               <a className="cursor-pointer" onClick={this.toggleAuthModal}>Login / Sign Up</a>
+                           </li>;
+
+    const content = 
       <ul className="nav navbar-nav navbar pull-right">
-        {
+     
+        <li>
+            <IconMenu
+            iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
+          >
+            <MenuItem primaryText="Contact" href="/Contact"/>
+            <MenuItem primaryText="About"/>
+            <MenuItem primaryText="Forms" />
+            <MenuItem primaryText="Help" />
+            <MenuItem primaryText="Sign out" onClick={this.logout}/>
+          </IconMenu>
+       </li>
+       {
             isAdmin ?
             <li>
               <Link to="/admin" className="">
@@ -75,55 +103,20 @@ export default class Header extends React.Component {
               </Link>
             </li> : null
         }
-        <li>
-          <Link to="/" className="">
-            Home
-          </Link>
-        </li>
+           {contentLoggedIn}
+    
         <li>
           <Link to="/ProductSearch" className="">
             Search
           </Link>
         </li>
         <li>
-          <Link to="/General" className="">
-            ProductCreation
+          <Link to="/" className="">
+            Home
           </Link>
-        </li>
-        <li>
-          <Link to="/profile" className="">
-            Profile
-          </Link>
-        </li>
-        <li>
-          <Link to="/Contact" className="">
-            Contact
-          </Link>
-        </li>
-        <li>
-          <a className="cursor-pointer" onClick={this.logout}>Logout</a>
         </li>
       </ul>
-      : <ul className="nav navbar-nav navbar pull-right">
-      <li>
-        <Link to="/" className="">
-          Home
-        </Link>
-      </li>
-      <li>
-        <Link to="/ProductSearch" className="">
-          Search
-        </Link>
-      </li>
-       <li>
-          <Link to="/Contact" className="">
-            Contact
-          </Link>
-        </li>
-      <li>
-        <a className="cursor-pointer" onClick={this.toggleAuthModal}>Login / Sign Up</a>
-      </li>
-    </ul>
+      
     return (
       <div>
         <AuthModal open={this.state.openAuthModal} toggleAuthModal={this.toggleAuthModal}/>
