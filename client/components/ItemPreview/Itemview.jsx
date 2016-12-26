@@ -24,7 +24,7 @@ export default class Itemview extends React.Component {
       var button = <RaisedButton label="Preview" style={{ marginLeft: "44%", marginRight: "44%" }}/>
     }
 
-    var thisIsMyCopy = this.props.Description.Description;
+    var thisIsMyCopy = this.props.Description ? this.props.Description.Description : null;
 
     return (
       <div>
@@ -40,7 +40,9 @@ export default class Itemview extends React.Component {
             <Card style={{ marginRight: 40, marginLeft: 40 }}>
               <CardText >
                 <div className="code">
-                  <ReactMarkdown source={thisIsMyCopy}/>
+                  {
+                    thisIsMyCopy ? <ReactMarkdown source={thisIsMyCopy}/> : null
+                  }
                 </div>
               </CardText>
             </Card>

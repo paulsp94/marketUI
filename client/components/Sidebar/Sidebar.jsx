@@ -55,58 +55,62 @@ class Sidebar extends React.Component {
         return (
             <div className="sidebar-bottom">
               <h4><strong> {this.props.productcoredetails.Title} </strong> <br/></h4>
+              {
+                this.props.Sidebar ?
+                  <div>
+                    <Card>
+                      <h4 style={{ float: "left", marginLeft: 3 }}><strong>Packages:</strong> <br/></h4>
+                      <div style={{ display: "flex", flexWrap: "wrap", margin: 9 }}>
 
-              <Card>
-                <h4 style={{ float: "left", marginLeft: 3 }}><strong>Packages:</strong> <br/></h4>
-                <div style={{ display: "flex", flexWrap: "wrap", margin: 9 }}>
+                        {
+                          this.props.Sidebar.Packages.map((detail, index)=> {
+                            return <Chip style={{ float: "left", margin: 4 }} key={index}> {detail}</Chip>
+                          })
+                        }
 
-                    {
-                        this.props.Sidebar.Packages.map((detail)=> {
-                            return <Chip style={{ float: "left", margin: 4 }}> {detail}</Chip>
-                        })
-                    }
+                      </div>
+                    </Card>
 
-                </div>
-              </Card>
+                    <div style={{ flexWrap: 'wrap', margin: 9 }}>
+                      <h4><strong>Complexity:</strong></h4>
+                      <p>  {this.props.Sidebar.complexity} </p>
+                      <h4><strong>Integration Time: </strong></h4>
+                      {this.props.Sidebar.IntegrationTime}
+                    </div>
 
-              <div style={{ flexWrap: 'wrap', margin: 9 }}>
-                <h4><strong>Complexity:</strong></h4>
-                <p>  {this.props.Sidebar.complexity} </p>
-                <h4><strong>Integration Time: </strong></h4>
-                  {this.props.Sidebar.IntegrationTime}
-              </div>
+                    <Card>
+                      <h4 style={{ float: "left", marginLeft: 3 }}><strong> Compatibilty: </strong> <br/></h4>
+                      <div style={{ display: 'flex', flexWrap: 'wrap' }}>
 
-              <Card>
-                <h4 style={{ float: "left", marginLeft: 3 }}><strong> Compatibilty: </strong> <br/></h4>
-                <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+                        {
+                          this.props.Sidebar.compatibility.map((detail, index)=> {
+                            return <Chip style={{ float: "left", margin: 4 }} key={index}> {detail}</Chip>
+                          })
+                        }
 
-                    {
-                        this.props.Sidebar.compatibility.map((detail)=> {
-                            return <Chip style={{ float: "left", margin: 4 }}> {detail}</Chip>
-                        })
-                    }
+                      </div>
+                    </Card>
 
-                </div>
-              </Card>
+                    <div style={{ flexWrap: "wrap", margin: 9 }}>
+                      <h4 ><strong> Maintenance: </strong></h4>
+                      <h5> 5 Versions</h5>
+                      <p> Last Updated 20-11-2015 </p>
+                    </div>
 
-              <div style={{ flexWrap: "wrap", margin: 9 }}>
-                <h4 ><strong> Maintenance: </strong></h4>
-                <h5> 5 Versions</h5>
-                <p> Last Updated 20-11-2015 </p>
-              </div>
+                    <Card>
+                      <h4 style={{ float: "left", marginLeft: 3 }}><strong> Tags: </strong></h4>
+                      <div style={{ display: 'flex', flexWrap: 'wrap' }}>
 
-              <Card>
-                <h4 style={{ float: "left", marginLeft: 3 }}><strong> Tags: </strong></h4>
-                <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+                        {
+                          this.props.Sidebar.tags.map((detail, index)=> {
+                            return <Chip style={{ float: "left", margin: 4 }} key={index}> {detail}</Chip>
+                          })
+                        }
 
-                    {
-                        this.props.Sidebar.tags.map((detail)=> {
-                            return <Chip style={{ float: "left", margin: 4 }}> {detail}</Chip>
-                        })
-                    }
-
-                </div>
-              </Card>
+                      </div>
+                    </Card>
+                  </div> : null
+              }
             </div>
         )
 
@@ -303,9 +307,9 @@ class Sidebar extends React.Component {
                       </CardText>
 
                         {
-                            allcomment.map((detail)=> {
+                            allcomment.map((detail, index)=> {
                                 return (
-                                    <CardText>
+                                    <CardText key={index}>
                                       <div className="usercommentname">
                                         <h4><strong> {detail.Username} </strong> <br/></h4>
                                       </div>

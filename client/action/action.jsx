@@ -552,24 +552,26 @@ export function  productEditValidationDetails(productid) {
 export function  productSellerandstripeid(productid) {
     return function (dispatch) {
         firebase.database().ref(`Publishedproduct/${productid}`).once('value').then((snapshot) => {
+          if(snapshot.val()) {
             let sellerId = snapshot.val().UserId;
 
             firebase.database().ref(`Users`).once('value').then((response) => {
-                let sellers = response.val();
+              let sellers = response.val();
 
-                Object.keys(sellers).forEach(function (key) {
-                    let seller = sellers[key];
-                    if (seller.UserId === sellerId) {
-                        dispatch({
-                            type: "STRIPEUSERID",
-                            payload: {
-                                stripeuserid: seller.stripe_user_id,
-                                productownerid: sellerId
-                            }
-                        })
+              Object.keys(sellers).forEach(function (key) {
+                let seller = sellers[key];
+                if (seller.UserId === sellerId) {
+                  dispatch({
+                    type: "STRIPEUSERID",
+                    payload: {
+                      stripeuserid: seller.stripe_user_id,
+                      productownerid: sellerId
                     }
-                });
+                  })
+                }
+              });
             })
+          }
         });
     }
 }
