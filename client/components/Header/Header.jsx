@@ -34,12 +34,12 @@ export default class Header extends React.Component {
         // TODO: remove this block of code when going live
         // Placed here only for testing purposes.
         // Makes the logged in user `ADMIN`
-         let newAdminKey = firebase.database().ref().child('admin').push().key;
-         let update = {};
-         update[`/admin/${newAdminKey}`] = {
-           userId: firebase.auth().currentUser.uid
-         };
-         firebase.database().ref().update(update);
+        //  let newAdminKey = firebase.database().ref().child('admin').push().key;
+        //  let update = {};
+        //  update[`/admin/${newAdminKey}`] = {
+        //    userId: firebase.auth().currentUser.uid
+        //  };
+        //  firebase.database().ref().update(update);
         // END OF BLOCK
 
         // firebase.database().ref('admin').once('value')
