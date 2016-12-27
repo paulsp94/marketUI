@@ -150,7 +150,8 @@ export function  productCoreDetails(productid) {
                     SubTitle: data123.val().Subtitle,
                     category:data123.val().category,
                     downloadCount:data123.val().downloadCount,
-                    rating: data123.val().rating
+                    rating: data123.val().rating,
+                    date:data123.val().date
                 });
             });
 

@@ -153,6 +153,21 @@ class  GeneralProfile extends React.Component{
         var url1= this.state.avatarURL1;
         var UserIdobject = this.props.userdetails.userid;
         var UserId = Object.keys(UserIdobject).map(key => UserIdobject[key]);
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth()+1; //January is 0!
+        var yyyy = today.getFullYear();
+
+        if(dd<10) {
+            dd='0'+dd
+        }
+
+        if(mm<10) {
+            mm='0'+mm
+        }
+
+        var today = mm+'/'+dd+'/'+yyyy;
+
 
         if(title == '' || subtitle == '' || describtion == '' || price == '' || category == ''|| url == ''|| url1 == ''|| title == undefined || subtitle == undefined || describtion == undefined || price == undefined || category == undefined || url == undefined|| url1 == undefined){
             this.setState({
@@ -185,7 +200,8 @@ class  GeneralProfile extends React.Component{
                             mainImage: url,
                             subImage: url1,
                             category: category,
-                            status: 'published'
+                            status: 'published',
+                            date:today,
                         });
 
                         firebase.database().ref("Product_creation/" + ProductId).set({
@@ -210,7 +226,8 @@ class  GeneralProfile extends React.Component{
                             mainImage: url,
                             subImage: url1,
                             category: category,
-                            status: 'submitted'
+                            status: 'submitted',
+                            date:today,
                         });
 
                         firebase.database().ref("Product_creation/" + ProductId).set({
@@ -237,7 +254,8 @@ class  GeneralProfile extends React.Component{
                         mainImage: url,
                         subImage: url1,
                         category: category,
-                        status: 'submitted'
+                        status: 'submitted',
+                        date:today,
                     });
 
                     firebase.database().ref("Product_creation/" + ProductId).set({

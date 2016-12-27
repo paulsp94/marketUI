@@ -96,8 +96,7 @@ class Sidebar extends React.Component {
 
                     <div style={{ flexWrap: "wrap", margin: 9 }}>
                       <h4 ><strong> Maintenance: </strong></h4>
-                      <h5> 5 Versions</h5>
-                      <p> Last Updated 20-11-2016 </p>
+                      <p> Last Updated {this.props.productcoredetails.date} </p>
                     </div>
 
                     <Card>
@@ -231,6 +230,7 @@ class Sidebar extends React.Component {
     }
 
     render () {
+
         var currentstate = this.state.Currentstate;
         let {productcoredetails, sellerStripeAccountId} = this.props;
 
