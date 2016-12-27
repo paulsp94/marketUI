@@ -43,7 +43,7 @@ become a <strong>member</strong> of our community. You will have an <strong>RScr
 <p>
     5. During your time with us you agree to follow the ground rules outlined in these terms so please read and understand them. If you don’t accept the terms
     then we’ll be sad, but you will need to leave because your presence on and use of the RScript Market sites is conditional on your acceptance to be bound by
-    these terms and the <a href="https://envato.com/privacy">Privacy Policy</a> whether you become a member or not.
+    these terms and the Privacy> whether you become a member or not.
 </p>
 <p>
     <strong>How browsing and membership works</strong>
@@ -920,7 +920,7 @@ infringe the intellectual property rights of a third party. (Each author provide
 </p>
 <ol start="1" type="1">
     <li>
-For more information about how we use cookies, web beacons and similar technologies see our cookie policy        <a href="https://envato.com/cookies/">here</a> and for more general information on cookies, see http://www.allaboutcookies.org.
+For more information about how we use cookies, web beacons and similar technologies see our cookie policy and for more general information on cookies, see http://www.allaboutcookies.org.
     </li>
     <li>
         Generally speaking, when you visit our Site, there's certain information that's recorded which is generally anonymous information and may not reveal
@@ -962,7 +962,7 @@ For more information about how we use cookies, web beacons and similar technolog
     <li>
         Occasionally, we may use third party advertising companies to serve ads based on prior visits to some Site. These advertising companies use cookies to
         anonymously collect data. No personally identifiable information is collected by these cookies. The anonymous data they collect is kept separate from
-        the personal information about you as a user. Read more about your options in our <a href="https://envato.com/cookies/">cookie policy</a>.
+        the personal information about you as a user. Read more about your options in ourcookie policy.
     </li>
 </ol>
 <p>
@@ -1456,7 +1456,7 @@ Tells us about the content that you claim infringes your copyright, including a 
     </li>
 </ul>
 <p>
-By law, you need to sign and date your notice. If you send us the information via    <a href="https://help.market.envato.com/hc/en-us/requests/new"><strong>RScript Market Help</strong></a> please note that by entering your full name you are
+By law, you need to sign and date your notice. If you send us the information via  RScript Market Help please note that by entering your full name you are
     providing us with your digital signature which is legally binding. If you want to sign a physical document you'll need to scan the document and attach it
     to the help ticket.
 </p>
