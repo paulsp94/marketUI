@@ -1166,6 +1166,11 @@ only screen and (min-device-pixel-ratio: 1.5) {
   width: 100%;
 }
 
+.policyCard {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+}
 
 
 

@@ -21,7 +21,8 @@ var Policy = React.createClass({
                   <Card>
                    <h2 style={{textAlign:'center',margin:10, padding: 10}}> Terms of Service & Privacy Policies </h2>
                    </Card> 
-                  <Card>
+                   <div style={{paddingTop: 10, marginLeft: '5%' , marginRight: '5%'}}>
+                  <Card className="policyCard">
 
 <p>
 1. Hello and welcome! Glad to have you on board. When we say ‘<strong>we</strong>’, ‘<strong>us</strong>’, ‘<strong>R script Market</strong>’ or ‘    <strong>Vaionex</strong>’, it’s because that’s who we are and we own and run the <strong>RScript Market</strong> site.
@@ -727,7 +728,7 @@ infringe the intellectual property rights of a third party. (Each author provide
 </p>
                 
                 </Card>       
-                <Card>
+                <Card className="policyCard">
 <p>
     <strong>Welcome to RScript Market's Privacy Policy</strong>
 </p>
@@ -1019,7 +1020,7 @@ For more information about how we use cookies, web beacons and similar technolog
     RScript Market Privacy Policy v1.0, effective date Dec 20, 2016
 </p>
                 </Card>   
-                <Card>
+                <Card className="policyCard">
                 <p>
     <strong>Welcome to Item Support</strong>
 </p>
@@ -1303,7 +1304,7 @@ For more information about how we use cookies, web beacons and similar technolog
     Version 1.0 - Effective date: December 19, 2016.
 </p>
                 </Card>      
-                <Card>
+                <Card className="policyCard">
                 <p>
     <strong>RScript Market Content Policy</strong>
 </p>
@@ -1646,7 +1647,7 @@ Tell us about the rights you claim, the basis of the ownership claim, and where 
     to use this system you can always email to <a href="mailto:copyright@rscript.market">copyright@rscript.market</a>.
 </p>
                 </Card>   
-                <Card>
+                <Card className="policyCard">
                 <p>
     <strong>Community Rules</strong>
 </p>
@@ -1772,7 +1773,7 @@ Tell us about the rights you claim, the basis of the ownership claim, and where 
     misappropriate the intellectual property rights of any third party.
 </p>
                 </Card>
-                <Card>
+                <Card className="policyCard">
                 <p>
     <strong>RScript Market and Intellectual Property</strong>
 </p>
@@ -1866,7 +1867,7 @@ Tell us about the rights you claim, the basis of the ownership claim, and where 
     </li>
 </ol>
                 </Card>
-                <Card>
+                <Card className="policyCard">
                 <p>
     Standard Competition Terms &amp; Conditions (in title &amp; online)
 </p>
@@ -2056,6 +2057,7 @@ Tell us about the rights you claim, the basis of the ownership claim, and where 
     Title and Title's address] for a free copy of such token or coupons.
 </p>
                 </Card>
+                </div>
               </div>
         )
     }

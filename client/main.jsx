@@ -30,7 +30,7 @@ render(<Provider store={store}>
         <Route path="General" component={General}/>
         <Route path="ProductSearch" component={ProductSearch}/>
         <Route path="profile" component={Downloads}/>
-        <Route path="Contact" component={Contact}/>
+        <Route path="Support" component={Contact}/>
         <Route path="MoreInfo" component={MoreInfo}/>
         <Route path="Policy" component={Policy}/>
         <Route path="About" component={About}/>
