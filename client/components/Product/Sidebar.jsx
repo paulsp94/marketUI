@@ -144,8 +144,8 @@ class ProductSidebar extends React.Component {
     }
 
     const { packages, complexity, integrationTime, compatibility, tags } = this.state;
-    return (
 
+    return (
 
       <div className="product-tab">
 
@@ -216,8 +216,8 @@ class ProductSidebar extends React.Component {
               <MaterialTagsInput
                 value={tags}
                 onChange={this.onTagsChange.bind(this)}
-                label="Tags"
-              />
+                label="Tags"/>
+
             </CardText>
 
             <RaisedButton onClick={this.subMit.bind(this)} label=" Save" style={{ margin: 12 }}/>

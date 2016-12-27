@@ -181,14 +181,8 @@ class  GeneralProfile extends React.Component{
 
             firebase.database().ref('ProductCoreDetails').child(ProductId).once("value", (snapshot) => {
 
-                console.log(snapshot.exists(),'snapshot exists');
                 if(snapshot.exists()) {
                     var product = snapshot.val();
-
-                    console.log('snapshot value is',snapshot.val());
-
-                    console.log(product.status);
-
                     if (product.status === 'published') {
 
                         firebase.database().ref('ProductCoreDetails/' + ProductId).set({

@@ -87,6 +87,10 @@ html {
     border-color: red;
 }
 
+.knowledgetags{
+    text-align: left;
+}
+
 .navbar {
     margin-bottom: 0px;
     list-style-type: none;

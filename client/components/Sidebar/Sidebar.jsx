@@ -48,6 +48,9 @@ class Sidebar extends React.Component {
             showCheckboxes: false,
             Commentvalue: '',
             allcomment: '',
+            Description:'',
+            tags:[],
+
         };
 
         this._submitHandler = this._submitHandler.bind(this);
@@ -131,6 +134,25 @@ class Sidebar extends React.Component {
     componentDidMount() {
         let {ProductId} = this.props;
         productSellerandstripeid(ProductId);
+
+        var ProductID = this.props.ProductId;
+        firebase.database().ref('Product_creation/'+ ProductID).once("value", (snapshot) => {
+
+            var Userid = snapshot.val().userid;
+
+            firebase.database().ref('ProductOwnerDetails/' + Userid).on("value", (snapshot) => {
+
+                var Description = snapshot.val().Description;
+                var tags = snapshot.val().tags;
+
+                this.setState({
+                    Description: Description,
+                    tags: tags,
+                })
+            });
+
+        });
+
     }
 
     Item () {
@@ -189,12 +211,20 @@ class Sidebar extends React.Component {
 
             <img className="Userimage"/>
 
-            <br/>
 
-            <CardText>
-              <div className="userdescribation">
-                Placeholder: feature comming soon.
+              <CardText>
+                  <div className="userdescribation">
+                      {this.state.Description}
+                  </div>
+                  <br/>
+
+              <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+
+                  {this.state.tags.map((item, index) =>
+                      <Chip key={index} style={{ float: "left", margin: 4 }}>{item}</Chip>
+                  )}
               </div>
+
             </CardText>
           </div>
         </div>;

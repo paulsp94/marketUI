@@ -4,11 +4,14 @@ import { Tab as MuiTab } from 'material-ui/Tabs';
 import RaisedButton from 'material-ui/RaisedButton';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
-import * as firebase from 'firebase';
+var firebase = require('firebase');
+import firebase_details from '../../Firebase/Firebase';
 import TextField from 'material-ui/TextField';
+import MaterialTagsInput from '../_common/MaterialTagsInput';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 var user = require('../../action/action.jsx');
+
 import { fetchuserdetails, changepassword, changeemaildetails } from '../../action/action.jsx'
 
 
@@ -36,11 +39,28 @@ class  Profile extends React.Component{
             open1:false,
             open2:false,
             open3:false,
+            tags:[],
+            Desxription:'',
         };
     }
 
     componentWillMount(){
         this.props.fetchuserdetails();
+    }
+
+    componentDidMount(){
+        var user = firebase.auth().currentUser;
+        var Userid = user.uid;
+        firebase.database().ref('ProductOwnerDetails/'+ Userid ).once("value", (snapshot) => {
+
+            var Description = snapshot.val().Description;
+            var tags = snapshot.val().tags;
+
+            this.setState({
+                Desxription:Description,
+                tags:tags,
+            })
+        });
     }
 
     Dropboxopen4(){
@@ -88,6 +108,30 @@ class  Profile extends React.Component{
         else{
             console.log('didnt match');
         }
+    }
+
+    onTagsChange = (tags) => {
+        this.setState({ tags })
+    };
+
+    TextFieldValue(){
+        this.setState({
+            Desxription:this.textarea.value
+        })
+    }
+
+    SubmitUserDetails(){
+
+        var description = this.state.Desxription;
+        var tags = this.state.tags;
+        var user = firebase.auth().currentUser;
+        var Userid = user.uid;
+
+        firebase.database().ref('ProductOwnerDetails/' + Userid).set({
+            Description:description,
+            tags:tags,
+        });
+
     }
 
     render(){
@@ -213,7 +257,7 @@ class  Profile extends React.Component{
                    <CardText>
 
                     <br/>
-                    <p> placeholder for "creator" tools like support </p>
+                       <strong><p> Profile Details </p></strong>
 
                     <Dialog
                         actions={actions1}
@@ -228,6 +272,18 @@ class  Profile extends React.Component{
                         open={this.state.open2}
                         onRequestClose={this.Dropboxcloase3.bind(this)}>
                     </Dialog>
+
+                       <textarea value={this.state.Desxription} onChange={this.TextFieldValue.bind(this)} name="textarea" ref={(d) => this.textarea = d} className="textarea1" placeholder="Description about Product"/> <br/> <br/>
+
+                       <div className="knowledgetags">
+                       <MaterialTagsInput
+                           value = {this.state.tags}
+                           onChange = {this.onTagsChange.bind(this)}
+                           label = "Your Expertise Knowledge"
+                       />
+                       </div>
+                       <RaisedButton onClick={this.SubmitUserDetails.bind(this)} label="Save Changes"  secondary={true} style={{ margin: 12}} />
+
 
                 </CardText>
                 </Card>
