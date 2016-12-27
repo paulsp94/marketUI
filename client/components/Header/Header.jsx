@@ -85,7 +85,12 @@ export default class Header extends React.Component {
       <ul className="nav navbar-nav navbar pull-right">
      
         <li>
-            <IconMenu iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}>
+            <IconMenu
+      iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
+      anchorOrigin={{horizontal: 'middle', vertical: 'top'}}
+      targetOrigin={{horizontal: 'middle', vertical: 'bottom'}}
+    >
+            
             <Link to="/Support" style={{ textDecoration: 'none' }}>
               <MenuItem primaryText="Support"/>
             </Link>

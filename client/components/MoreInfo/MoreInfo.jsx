@@ -30,12 +30,12 @@ var Contact = React.createClass({
                 <ul>
                 <li> 3 winners will be selected - each one will be awared with 50$</li>
                 <li> The winners are determined by rating/amount downloads/facebook votings/comments </li> 
-                <li> Winning items need to be free of any copy right/license infringement </li>
+                <li> Winning items may not be subject to of copy right/license infringement </li>
                 <li> The price will be paid out in either bitcoin or via paypal in $ </li>
                 <li> The winners are announced on the rscript.market front page at the 9th of january, we will then contact the account email to collect contact information and provide information about the payment </li> 
                 </ul>
                 <br/>
-                <p> all actions must be in compliance with our policy </p> 
+                <p> all actions must be in compliance with our <Link to="/Policy"> terms & policy </Link>  </p> 
                 <p> for any open question please send a mail to contact@rscript.market </p>
                 </Card>                   
               </div>
