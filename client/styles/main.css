@@ -238,8 +238,7 @@ h1 {
 	text-align: center;
 	padding-left: 3%;
 	padding-right: 3%;
-	background-color: #FFF8E1;
-
+	background-color: #FFD54F;
 }
 
 .Productcontent{
@@ -1167,10 +1166,15 @@ only screen and (min-device-pixel-ratio: 1.5) {
 }
 
 .policyCard {
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 5px;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 1%;
 }
+
+.sideLink {
+        text-decoration: none;
+}
+
 
 
 

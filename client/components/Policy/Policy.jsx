@@ -21,7 +21,7 @@ var Policy = React.createClass({
                   <Card>
                    <h2 style={{textAlign:'center',margin:10, padding: 10}}> Terms of Service & Privacy Policies </h2>
                    </Card> 
-                   <div style={{paddingTop: 10, marginLeft: '5%' , marginRight: '5%'}}>
+                   <div style={{paddingTop: 3}}>
                   <Card className="policyCard">
 
 <p>

@@ -86,10 +86,18 @@ export default class Header extends React.Component {
      
         <li>
             <IconMenu iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}>
-              <MenuItem primaryText="Support" href="/Support"/>
-              <MenuItem primaryText="About" href="/About"/>
-              <MenuItem primaryText="Policy" href="/Policy"/>
-              <MenuItem primaryText="Impressum" href="/Impressum"/>
+            <Link to="/Support" style={{ textDecoration: 'none' }}>
+              <MenuItem primaryText="Support"/>
+            </Link>
+            <Link to="/About" style={{ textDecoration: 'none' }}>
+              <MenuItem primaryText="About" />
+            </Link>
+            <Link to="/Policy" style={{ textDecoration: 'none' }}>      
+              <MenuItem primaryText="Policy" />
+            </Link>
+            <Link to="/Impressum" style={{ textDecoration: 'none' }}>
+              <MenuItem primaryText="Impressum"/>
+            </Link> 
               <MenuItem primaryText="Sign out" onClick={this.logout}/>
             </IconMenu>
        </li>

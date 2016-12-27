@@ -5,7 +5,6 @@ import { hashHistory } from 'react-router';
 import Subheader from '../Subheader/Subheader.jsx';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import RaisedButton from 'material-ui/RaisedButton';
-import Flexbox from 'flexbox-react';
 <meta name="viewport" content="width=device-width" />
 
 
@@ -42,7 +41,9 @@ var Welcome = React.createClass({
                             <p> To make the beta launch a bit more exciting, we are giving away 150$ for the 5 best items created until 9th of january 2017. More information below.</p>
                         </div>
                         <div style={{textAlign:"center"}} className="welcome-info-header">
-                            <RaisedButton label="More Info" href="/MoreInfo" style={{}} />
+                        <Link to="/MoreInfo" className="">
+                            <RaisedButton label="More Info" style={{}} />
+                        </Link>
                         </div>
                     </div>
                 </div>

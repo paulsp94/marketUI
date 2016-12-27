@@ -25,7 +25,7 @@ var About = React.createClass({
                    <h2 style={{textAlign:'center'}}> About </h2>
                    </Card> 
                   <Card style={style}>
-                  This section is added the next days. 
+                  <p> We are a team of developers who wanted to change the landscape of R. By creating and sharing content we hope to enrich the R ecosystem in the next years. More comming soon. </p>
                 </Card>                   
               </div>
         )
