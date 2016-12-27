@@ -83,12 +83,13 @@ export default class Header extends React.Component {
 
     const content = 
       <ul className="nav navbar-nav navbar pull-right">
-     
+
         <li>
             <IconMenu
       iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
       anchorOrigin={{horizontal: 'middle', vertical: 'top'}}
       targetOrigin={{horizontal: 'middle', vertical: 'bottom'}}
+      style={{paddingRight: 27}}
     >
             
             <Link to="/Support" style={{ textDecoration: 'none' }}>
@@ -106,6 +107,8 @@ export default class Header extends React.Component {
               <MenuItem primaryText="Sign out" onClick={this.logout}/>
             </IconMenu>
        </li>
+         {contentLoggedIn}
+
        {
             isAdmin ?
             <li>
@@ -114,7 +117,6 @@ export default class Header extends React.Component {
               </Link>
             </li> : null
         }
-           {contentLoggedIn}
     
         <li>
           <Link to="/ProductSearch" className="">

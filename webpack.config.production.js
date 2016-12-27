@@ -64,8 +64,7 @@ config.module.loaders = config.module.loaders.concat([
         loaders: ['react-hot', 'babel']
     },
   {test: /\.scss$/, loader: 'style!css?modules&importLoaders=2&sourceMap&localIdentName=[local]___[hash:base64:5]!autoprefixer?browsers=last 2 version!sass?outputStyle=expanded&sourceMap' },
-  {test: /\.json$/, loader: 'json'},
-  {test: /\.css$/, loader: 'style!css?modules', include: /flexboxgrid/, }
+  {test: /\.json$/, loader: 'json'}
 ]);
 
 module.exports = config;

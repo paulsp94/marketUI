@@ -48,41 +48,42 @@ class Tags extends React.Component{
             <Flexbox flexDirection="row">
 
                 <Flexbox flexGrow={1} flexShrink={1}>
-                    <FlatButton onClick={this.cateGoryFilter.bind(this,"All Product")} label="All" style={{margin: 3, width: "100%",height:'45px'}} primary={true} />
+                    <FlatButton onClick={this.cateGoryFilter.bind(this,"All Product")} label="All" style={{margin: 3, width: "100%",height:'45px', color:'white'}}  />
                 </Flexbox>
 
                 <Flexbox flexGrow={1} flexShrink={1} style={{height:'45px'}}>
-                            <FlatButton onClick={this.cateGoryFilter.bind(this , "Shiny & Web")} label="Shiny & Web" style={{margin: 3, width: "100%",height:'100%',}} primary={true} />
+                            <FlatButton onClick={this.cateGoryFilter.bind(this , "Shiny & Web")} label="Shiny & Web" style={{margin: 3, width: "100%",height:'100%', color:"white"}}/>
               </Flexbox>
                <Flexbox flexGrow={1} flexShrink={1}>
-                            <FlatButton onClick={this.cateGoryFilter.bind(this, "Machine Learning")} label="Machine Learning" style={{margin: 3, width: "100%",height:'45px'}} primary={true} />
+                            <FlatButton onClick={this.cateGoryFilter.bind(this, "Machine Learning")} label="Machine Learning" style={{margin: 3, width: "100%",height:'45px', color:'white'}}  />
               </Flexbox>
               <Flexbox flexGrow={1} flexShrink={1}>
-                             <FlatButton onClick={this.cateGoryFilter.bind(this,"Big Data")} label="Big Data" style={{margin: 3, width: "100%",height:'45px'}} primary={true} />
+                             <FlatButton onClick={this.cateGoryFilter.bind(this,"Big Data")} label="Big Data" style={{margin: 3, width: "100%",height:'45px', color:'white'}}  />
               </Flexbox>
               <Flexbox flexGrow={1} flexShrink={1}>
-                            <FlatButton onClick={this.cateGoryFilter.bind(this,"Algorithms")} label="Algorithms" style={{margin: 3, width: "100%",height:'45px'}} primary={true} />
+                            <FlatButton onClick={this.cateGoryFilter.bind(this,"Algorithms")} label="Algorithms" style={{margin: 3, width: "100%",height:'45px', color:'white'}}  />
               </Flexbox>
               <Flexbox flexGrow={1} flexShrink={1}>
-                            <FlatButton onClick={this.cateGoryFilter.bind(this,"Graphics")} label="Graphics" style={{margin: 3, width: "100%",height:'45px'}} primary={true} />
+                            <FlatButton onClick={this.cateGoryFilter.bind(this,"Graphics")} label="Graphics" style={{margin: 3, width: "100%",height:'45px', color:'white'}}  />
               </Flexbox>
                <Flexbox flexGrow={1} flexShrink={1}>
-                            <FlatButton onClick={this.cateGoryFilter.bind(this,"Other")} label="Other" style={{margin: 3, width: "100%",height:'45px'}} primary={true} />
+                            <FlatButton onClick={this.cateGoryFilter.bind(this,"Other")} label="Other" style={{margin: 3, width: "100%",height:'45px', color:'white'}}  />
               </Flexbox>
               
                   <Flexbox flexGrow={1} flexShrink={1}>
-                   <TextField hintText={'Search...'} hintStyle={{color:'rgb(0, 188, 212)'}} onChange={this.searchFilter.bind(this)} className={'search'} style={{color:'rgb(0, 188, 212)',fontSize:'16px',fontWeight:'500',width:'170px',height:'45px'}} inputStyle={{color:'white'}}/>
+                  
                     <SelectField className={''} 
                         value={this.state.selectfield_value}
                         onChange={this.handleChange.bind(this)}
-                        style={{height:'45px',marginLeft:'13px',width:'170px', color:'white'}}
-                        labelStyle={{color:'rgb(0, 188, 212)'}}
+                        style={{width:'170px', color:'white'}}
+                        labelStyle={{color:'white'}}
                      >
                         <MenuItem value={'Newest'} primaryText="Newest" />
                         <MenuItem value={'Rating'} primaryText="Rating" />
                         <MenuItem value={'Popularity'} primaryText="Popularity" />
                         <MenuItem value={'Price'} primaryText="Price" />
                       </SelectField>
+                       <TextField hintText={'Search...'} hintStyle={{color:'white'}} onChange={this.searchFilter.bind(this)} className={'search'} style={{marginLeft:'10px',color:'white',fontWeight:'400',width:'170px'}} inputStyle={{color:'white'}}/>
                    </Flexbox>
              </Flexbox>
                 

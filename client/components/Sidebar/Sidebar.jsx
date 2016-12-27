@@ -241,7 +241,8 @@ class Sidebar extends React.Component {
                   <TableBody displayRowCheckbox={this.state.showCheckboxes} adjustForCheckbox={this.state.showCheckboxes}>
                     <TableRow  >
                       
-                      <TableRowColumn style={{ textAlign: 'center' }}> ${productcoredetails.Price} </TableRowColumn>
+                      {/*<TableRowColumn style={{ textAlign: 'center' }}> ${productcoredetails.Price} </TableRowColumn>*/}
+                      <TableRowColumn style={{ textAlign: 'center' }}> FREE </TableRowColumn>
                       <TableRowColumn style={{ textAlign: 'center' }}>
                         <StarRatingComponent
                             name="rating" /* name of the radio input, it is required */
@@ -257,7 +258,7 @@ class Sidebar extends React.Component {
                 </Table>
 
 
-                  <RaisedButton label="Download Content" onClick={this.ProductContentDownload.bind(this)} primary={true} style={{ margin: 12}}/>
+                  <RaisedButton label="Download" onClick={this.ProductContentDownload.bind(this)} secondary={true} style={{ margin: 12}}/>
                   {/*// TODO feed me real data, amount in cents */}
                   {
                       /*sellerStripeAccountId ?*/
