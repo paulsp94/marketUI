@@ -13,36 +13,33 @@ var Contact = React.createClass({
     render(){
         return (
                 <div className="">
+       
                    <Flexbox flexDirection="column" style={{width: '600px', margin:'auto'}}>
-                    <Flexbox flexGrow={1}>
-                    <div className={'container-contact-up'}>
-                        <span> Your Email :</span>    
-                        <TextField hintText={'Email'} className={'contact_text'}/>
-                         <br />    
-                        <span >Your Name :</span>    
-                        <TextField hintText={'Name'} className={'contact_text'}/>
-                        <br />
-                        <br />    
-                        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Message :</span>    
-                        <TextArea defaultValue="Message" className="message-textarea"/>
-                        <br />
-                        <br />
-                        <br />
-                        <div>    
-                         <RaisedButton primary={true} label="Contact"  onClick=""/>
-                        </div>
-                    </div>
-                    </Flexbox>
-                    <Flexbox flexGrow={1}>
-                    <div  className={'container-contact-down'}>
+                   <Flexbox flexGrow={1}>
+                    <div  className={'container-contact-up'}>
                         <div>
-                          <span>Company Name : Vaionex Corporation</span><br />
-                          <span>Company Address :  Dover, Delaware  </span><br />
-                          <span>Company Phone Number : </span><br />
-                          <span>Company Email Address : contact@rscript.market</span><br />
+                          <p> If (you have questions || suggestions || found a bug) {'{'}<br/>
+                          &nbsp;  &nbsp;  &nbsp;  &nbsp;  answer(name,message, t = 2) <br/>
+                           {'}'}
+                          </p>
                         </div>
                     </div>
                     </Flexbox>
+                    <Flexbox flexGrow={1}>
+                    <div className={'container-contact-down'}>
+                        <form method="POST" action="http://formspree.io/contact@rscript.market">
+                        <TextField type="email" name="email" hintText={'Email'} className={'contact_text'}/>
+                         <br />    
+                         <br />    
+                         <textarea name="message" className="message-textarea" placeholder="Your message"></textarea>    
+                        <br />
+                        <br />
+                        <RaisedButton type="submit" primary={true} label="Contact"  onClick=""/>
+
+                        </form>
+                    </div>
+                    </Flexbox>
+                    
                     </Flexbox>
                 </div>
         )

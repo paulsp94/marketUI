@@ -5,7 +5,6 @@ import { hashHistory } from 'react-router';
 import Subheader from '../Subheader/Subheader.jsx';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import RaisedButton from 'material-ui/RaisedButton';
-import Flexbox from 'flexbox-react';
 <meta name="viewport" content="width=device-width" />
 
 
@@ -30,19 +29,21 @@ var Welcome = React.createClass({
                         <h1> Welcome to the Rscript.Market</h1>
                         <br/>
                         <p> Discover the newest code snippets of the R universe </p>
-                        <p> During this beta everything is free!</p>
+                        <p> In this beta everything is free!</p>
                     </div>
                     <div className="welcome-text" style={{marginTop:'40px'}}>
                     </div>
                     <div className="welcomeBoard">
-                        <div className="welcome-info-header">
-                            <p> BETA TEST Awards </p>
+                        <div className="welcome-info-header" style={{padding: 2, marginBottom: 10}}>
+                            <h4> Beta Test Awards </h4>
                         </div>
                         <div className='welcome-info'>
-                            <p> To make the beta launch a bit more exciting, we are giving away 150$ for the 5 best items created until 9th of january 2017. More information below.</p>
+                            <p> To make the beta launch a bit more exciting, we are giving away 150$ for the 3 best items created until 9th of january 2017. More information below.</p>
                         </div>
                         <div style={{textAlign:"center"}} className="welcome-info-header">
-                            <RaisedButton label="More Info" href="/MoreInfo" style={{}} />
+                        <Link to="/MoreInfo" className="">
+                            <RaisedButton label="More Info" style={{}} />
+                        </Link>
                         </div>
                     </div>
                 </div>

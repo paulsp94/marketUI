@@ -101,7 +101,7 @@ class  ProductSearch extends React.Component{
             return(
             <div className="background">
                 <div className="loader">
-                    <Loading type='spin' color='#000000' />
+                    <Loading type='spin' color='#ffffff' />
                 </div>
             </div>
             )

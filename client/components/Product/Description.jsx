@@ -100,7 +100,7 @@ class  Descriptiondetails extends React.Component{
 
     render(){
         var thisIsMyCopy1 = this.state.showSyntax ?  this.state.markdownSyntax : this.state.textfieldvalue1;
-        const leftCommands = [
+        const leftCommands = [ {/*
                            {
                         key: 'new',
                         name: 'New',
@@ -138,7 +138,7 @@ class  Descriptiondetails extends React.Component{
                         name: 'Upload',
                         icon: 'Upload',
                         onClick: () => alert('upload')
-                      },
+                      }, */}
         ];
         const commands = [
                       {

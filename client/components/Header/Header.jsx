@@ -83,17 +83,32 @@ export default class Header extends React.Component {
 
     const content = 
       <ul className="nav navbar-nav navbar pull-right">
-     
-        <li>
-            <IconMenu iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}>
 
-            <MenuItem primaryText="Contact" href="/Contact"/>
-            <MenuItem primaryText="About"/>
-            <MenuItem primaryText="Policy" />
-            <MenuItem primaryText="Impressum" />
-            <MenuItem primaryText="Sign out" onClick={this.logout}/>
+        <li>
+            <IconMenu
+      iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
+      anchorOrigin={{horizontal: 'middle', vertical: 'top'}}
+      targetOrigin={{horizontal: 'middle', vertical: 'bottom'}}
+      style={{paddingRight: 27}}
+    >
+            
+            <Link to="/Support" style={{ textDecoration: 'none' }}>
+              <MenuItem primaryText="Support"/>
+            </Link>
+            <Link to="/About" style={{ textDecoration: 'none' }}>
+              <MenuItem primaryText="About" />
+            </Link>
+            <Link to="/Policy" style={{ textDecoration: 'none' }}>      
+              <MenuItem primaryText="Policy" />
+            </Link>
+            <Link to="/Impressum" style={{ textDecoration: 'none' }}>
+              <MenuItem primaryText="Impressum"/>
+            </Link> 
+              <MenuItem primaryText="Sign out" onClick={this.logout}/>
             </IconMenu>
        </li>
+         {contentLoggedIn}
+
        {
             isAdmin ?
             <li>
@@ -102,7 +117,6 @@ export default class Header extends React.Component {
               </Link>
             </li> : null
         }
-           {contentLoggedIn}
     
         <li>
           <Link to="/ProductSearch" className="">
@@ -122,7 +136,7 @@ export default class Header extends React.Component {
         <nav className="navbar navbar-default navbar-static-top">
           <div className="">
             <div className="navbar-header">
-              <Link to="ProductSearch" className="navbar-brand">
+              <Link to="/" className="navbar-brand">
                 Rscript.Market
               </Link>
             </div>

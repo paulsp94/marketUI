@@ -99,7 +99,7 @@ class Content extends React.Component{
     render(){
         var thisIsMyCopy = this.state.showSyntax ?  this.state.markdownSyntax : this.state.textfieldvalue;
         const leftCommands = [
-                           {
+                           {/*
                         key: 'new',
                         name: 'New',
                         icon: 'Add',
@@ -130,13 +130,13 @@ class Content extends React.Component{
                             onClick: () => alert('word doc')
                           }
                         ]
-                      },
+                      }, 
                       {
                         key: 'upload',
                         name: 'Upload',
                         icon: 'Upload',
                         onClick: () => alert('upload')
-                      },
+                      },*/}
                       
 
         ];
