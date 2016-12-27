@@ -35,6 +35,7 @@ var Contact = React.createClass({
                 <li> The winners are announced on the rscript.market front page at the 9th of january, we will then contact the account email to collect contact information and provide information about the payment </li> 
                 </ul>
                 <br/>
+                <p> all actions must be in compliance with our policy </p> 
                 <p> for any open question please send a mail to contact@rscript.market </p>
                 </Card>                   
               </div>

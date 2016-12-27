@@ -86,12 +86,11 @@ export default class Header extends React.Component {
      
         <li>
             <IconMenu iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}>
-
-            <MenuItem primaryText="Contact" href="/Contact"/>
-            <MenuItem primaryText="About"/>
-            <MenuItem primaryText="Policy" />
-            <MenuItem primaryText="Impressum" />
-            <MenuItem primaryText="Sign out" onClick={this.logout}/>
+              <MenuItem primaryText="Support" href="/Contact"/>
+              <MenuItem primaryText="About" href="/About"/>
+              <MenuItem primaryText="Policy" href="/Policy"/>
+              <MenuItem primaryText="Impressum" href="/Impressum"/>
+              <MenuItem primaryText="Sign out" onClick={this.logout}/>
             </IconMenu>
        </li>
        {
@@ -122,7 +121,7 @@ export default class Header extends React.Component {
         <nav className="navbar navbar-default navbar-static-top">
           <div className="">
             <div className="navbar-header">
-              <Link to="ProductSearch" className="navbar-brand">
+              <Link to="/" className="navbar-brand">
                 Rscript.Market
               </Link>
             </div>

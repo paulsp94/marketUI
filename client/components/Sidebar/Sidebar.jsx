@@ -194,7 +194,7 @@ class Sidebar extends React.Component {
 
             <CardText>
               <div className="userdescribation">
-               Feature Comming SOON
+                Placeholder: feature comming soon.
               </div>
             </CardText>
           </div>

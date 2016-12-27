@@ -14,6 +14,8 @@ import classNames from 'classnames/bind'
 import RaisedButton from 'material-ui/RaisedButton';
 var firebase = require('firebase');
 import firebase_details from '../../Firebase/Firebase';
+import Divider from 'material-ui/Divider';
+
 
 const cx = classNames.bind(styles)
 
@@ -114,7 +116,6 @@ class ProductContent extends React.Component {
 
   render () {
 
-
     let { preparingData, htmlData, authorProfile, comments, contentData } = this.state;
 
     let renderContent =
@@ -140,9 +141,9 @@ class ProductContent extends React.Component {
             primaryText="Ask Question"
             className="contentSidebarColor" leftIcon={<PersonAdd />}
           />
-          <MenuItem primaryText="Download" leftIcon={<Download />}/>
-          <MenuItem primaryText="----"/>
-          {htmlData}
+          {/* <MenuItem primaryText="Download" leftIcon={<Download />}/> */}
+          <Divider />
+            {htmlData}
 
         </div>
 
@@ -159,9 +160,8 @@ class ProductContent extends React.Component {
           <div>
             <h1>Author Profile</h1>
           </div>}
-          {comments &&
+          {comments && 
           <div>
-            <h1>Comments</h1>
               {this.state.allcomments.map((item, index) =>
                   <div>
                       <div className="usercommentname">

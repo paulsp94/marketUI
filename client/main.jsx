@@ -15,6 +15,10 @@ import checkout from 'components/checkout/checkout.jsx';
 import ProductContent from 'components/ProductContent/ProductContent.jsx';
 import Contact from 'components/Contact/Contact';
 import MoreInfo from 'components/MoreInfo/MoreInfo';
+import Policy from 'components/Policy/Policy.jsx';
+import About from 'components/About/About.jsx';
+import Impressum from 'components/Impressum/Impressum.jsx';
+
 import AdminContainer from './containers/Admin';
 
 render(<Provider store={store}>
@@ -28,6 +32,9 @@ render(<Provider store={store}>
         <Route path="profile" component={Downloads}/>
         <Route path="Contact" component={Contact}/>
         <Route path="MoreInfo" component={MoreInfo}/>
+        <Route path="Policy" component={Policy}/>
+        <Route path="About" component={About}/>
+        <Route path="Impressum" component={Impressum}/>
         <Route path="EditProduct/:productid" component={General}/>
         <Route path="ProductContent/:productid" component={ProductContent}/>
         <Route path="admin" component={AdminContainer}/>
