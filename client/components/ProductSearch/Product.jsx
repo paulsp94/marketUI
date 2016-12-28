@@ -46,12 +46,10 @@ class Product extends React.Component{
     render(){
         return (
             <div className="productdetails" onClick={this.productDetails.bind(this)}>
-                <Card className="product-search" style={{padding: 0}} >
+                <Card className="product-search" style={{padding: 0, backgroundColor:'eceff1'}} >
                     <LazyLoad height={'150px'} resize={true} offset={[200,200]} >
                         <img className="product_image" src={this.props.item.Subimage}/>
-                    </LazyLoad>5
-                    <h5>{this.props.item.Title}</h5>
-                    <h5 style={{height: '35px'}}> {this.props.item.Description} </h5>
+                    </LazyLoad>
                     <Flexbox flexDirection="row">
                         <Flexbox flexGrow={1}>
                             {/*<RaisedButton label={this.props.item.Price} style={{ margin: 1, width: "100%"}} />*/}
@@ -69,6 +67,9 @@ class Product extends React.Component{
                                           style={{ margin: 1, width: "100%"}} />
                         </Flexbox>
                     </Flexbox>
+                    <h5><b>{this.props.item.Title}</b></h5>
+                    <h5 style={{height: '40px', paddingBottom: '3px'}}> {this.props.item.Description} </h5>
+                    
                 </Card>
             </div>
         )

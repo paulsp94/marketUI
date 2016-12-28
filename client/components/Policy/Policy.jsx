@@ -264,7 +264,7 @@ To learn more about item support, like what items are covered, what authors prov
 </p>
 <p>
     25. Given the nature of digital content, a refund on a purchase is not granted unless one of the promises given by the author in section 21 has been
-    breached, or a refund is required under the <a href="https://themeforest.net/page/customer_refund_policy">RScript Market Refund Rules</a> or Australian
+    breached, or a refund is required under the RScript Market Refund Rules or Australian
     consumer law or other relevant consumer protection laws.
 </p>
 <p>

@@ -15,18 +15,64 @@ html {
 }
 
 .container-search {
-    width: auto;
+    min-height: 100%;
+    height: 100%;
     /*overflow: auto;*/
     margin-left: auto;
     margin-right: auto;
-    background-color: white;
-    background: none;
+    background-color: rgba(255,255,255,0.1);
 }
 
-/*  Added by Daniyel for Contact Page*/
-.contact_text{
-
+.navColor {
+    background-color: #EEEEEE;
 }
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+color: #000;  /*Sets the text hover color on navbar*/
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active >   
+ a:hover, .navbar-default .navbar-nav > .active > a:focus {
+color: black; /*BACKGROUND color for active*/
+background-color: #030033;
+}
+
+  .navbar-default {
+    background-color: #EEEEEE;
+    border-color: #030033;
+}
+
+
+ .nav > li > a:hover,
+ .nav > li > a:focus {
+    text-decoration: none;
+    background-color: silver; /*Change rollover cell color here*/
+  }
+
+
+  .navbar-default .navbar-nav > li > a {
+   color: #37474F; /*Change active text color here*/
+    }
+
+.container-search-flex {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    justify-content: center;
+}
+
+.row {
+    width: auto;
+    padding-right: 1px;
+    padding-left: 0px;
+    background-color: rgba(255,255,255,0.2);
+}
+
 .message-textarea {
     height: 120px;
     width: 65%;
@@ -156,6 +202,7 @@ html {
     float: left;
     text-align: center;
     margin-bottom: 15px;
+    background-color: #eceff1;
 }
 
 .addbar {
@@ -181,6 +228,13 @@ h3 {
     -moz-border-radius: 0px;
     color: black;
     border: solid black 1px;
+}
+
+.tags {
+    margin-right: 35px;
+    margin-left: 35px;
+    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 .table-dark {
@@ -209,7 +263,7 @@ h3 {
 }
 
 body {
-    background: #455A64 ;
+    background: #00284c ;
     font-family: Roboto, Arial, sans-serif;
     width: 100%;
     height: 100%;
@@ -520,7 +574,6 @@ h1 {
 .container {
     margin-left: 2%;
     height: auto;
-    background-color: none;
     padding: 0%;
     margin-left: 14%;
     float: left;

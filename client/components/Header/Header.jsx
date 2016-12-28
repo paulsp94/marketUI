@@ -120,7 +120,7 @@ export default class Header extends React.Component {
     
         <li>
           <Link to="/ProductSearch" className="">
-            Search
+            Explore
           </Link>
         </li>
         <li>
@@ -133,13 +133,11 @@ export default class Header extends React.Component {
     return (
       <div>
         <AuthModal open={this.state.openAuthModal} toggleAuthModal={this.toggleAuthModal}/>
-        <nav className="navbar navbar-default navbar-static-top">
+        <nav className="navbar navbar-default navbar-static-top navColor">
           <div className="">
-            <div className="navbar-header">
-              <Link to="/" className="navbar-brand">
-                Rscript.Market
+              <Link to="/" className="navbar-brand" style={{color:'#37474F'}}>
+                <h3> R.Codes </h3>
               </Link>
-            </div>
             {content}
           </div>
         </nav>
