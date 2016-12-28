@@ -70,7 +70,6 @@ class ProfileSidebar extends React.Component {
 
                   <h4 style={{ float: "left", marginLeft: 3 }}><strong> Tags: </strong></h4>
                   <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-
                       {this.state.tags.map((item, index) =>
                               <Chip key={index} style={{ float: "left", margin: 4 }}>{item}</Chip>
                       )}

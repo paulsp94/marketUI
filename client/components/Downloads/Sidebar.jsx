@@ -91,31 +91,18 @@ class Sidebar extends React.Component {
     var curr_icon = <div>
       <hr/>
       <div className="sidebar-bottom">
-        <LazyLoad height={'100%'} resize={true} >
-          <img className="Userimage" src={'client/Images/deep.jpg'}/> <br/>
-        </LazyLoad>
         <CardText>
           <div className="userdescribation">
             <p>
-              I have successful Web Developer with Nearly 2 Year experience.
-
-              Currently working as freelancer/contract Front hand Developer in Germany.
-
-              My Core Expertise is
-
-              React.js, Flux, Fetch Api and Redux
-              Web designing ( Html, css3, JavaScript and jQuery )
-              Backhand development (Php Laravel framework, MySQL, Firebase)
+                {this.props.UserDescription}
             </p>
             <hr/>
-            <strong>Email:</strong> komaldeep1993@gmail.com<br/>
+            <strong>Email:</strong> {this.props.Useremail} <br/>
             <h4><strong> Experience </strong> <br/></h4>
             <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-              <Chip style={{ float: "left", margin: 2 }}>Html </Chip>
-              <Chip style={{ float: "left", margin: 2 }}>CSS </Chip>
-              <Chip style={{ float: "left", margin: 2 }}>Javascript </Chip>
-              <Chip style={{ float: "left", margin: 2 }}>Jquery </Chip>
-              <Chip style={{ float: "left", margin: 2 }}>Firebase </Chip>
+                {this.props.Usertags.map((item, index) =>
+                    <Chip key={index} style={{ float: "left", margin: 4 }}>{item}</Chip>
+                )}
             </div>
 
           </div>

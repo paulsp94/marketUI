@@ -50,6 +50,7 @@ class Sidebar extends React.Component {
             allcomment: '',
             Description:'',
             tags:[],
+            email:'',
 
         };
 
@@ -133,9 +134,9 @@ class Sidebar extends React.Component {
 
     componentDidMount() {
         let {ProductId} = this.props;
+
         productSellerandstripeid(ProductId);
 
-        var ProductID = this.props.ProductId;
         firebase.database().ref('Product_creation/'+ ProductID).once("value", (snapshot) => {
 
             var Userid = snapshot.val().userid;
@@ -144,10 +145,12 @@ class Sidebar extends React.Component {
 
                 var Description = snapshot.val().Description;
                 var tags = snapshot.val().tags;
+                var email = snapshot.val().email;
 
                 this.setState({
                     Description: Description,
                     tags: tags,
+                    email:email,
                 })
             });
 
@@ -204,7 +207,6 @@ class Sidebar extends React.Component {
     }
 
     Support () {
-
         var curr_icon = <div>
           <hr/>
           <div className="sidebar-bottom">
@@ -213,6 +215,11 @@ class Sidebar extends React.Component {
 
 
               <CardText>
+
+                  <div className="userdescribation">
+                      <strong>Contact Email- </strong>{this.state.email}
+                  </div>
+                  <br/>
                   <div className="userdescribation">
                       {this.state.Description}
                   </div>

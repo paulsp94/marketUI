@@ -126,10 +126,12 @@ class  Profile extends React.Component{
         var tags = this.state.tags;
         var user = firebase.auth().currentUser;
         var Userid = user.uid;
+        var email = user.email;
 
         firebase.database().ref('ProductOwnerDetails/' + Userid).set({
             Description:description,
             tags:tags,
+            email:email,
         });
 
     }

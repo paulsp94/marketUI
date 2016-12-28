@@ -51,6 +51,10 @@ class  Downloads extends React.Component{
             compatibility:[],
             tags:[],
             productcomment:[],
+            UserDescription:'',
+            Usertags:[],
+            Useremail:'',
+
         };
     }
 
@@ -89,6 +93,26 @@ class  Downloads extends React.Component{
 
 
                     var productfirstid = productalldeatils[0].productid
+
+
+                    firebase.database().ref('Product_creation/'+ productfirstid).once("value", (snapshot) => {
+
+                        var Userid = snapshot.val().userid;
+
+                        firebase.database().ref('ProductOwnerDetails/' + Userid).on("value", (snapshot) => {
+
+                            var Description = snapshot.val().Description;
+                            var tags = snapshot.val().tags;
+                            var email = snapshot.val().email;
+
+                            this.setState({
+                                UserDescription: Description,
+                                Usertags: tags,
+                                Useremail:email,
+                            })
+                        });
+
+                    });
 
 
                     var productallsidebardeatils = [];
@@ -142,6 +166,9 @@ class  Downloads extends React.Component{
 
         var productcomment = [];
         var productalldeatils = [];
+
+
+
         firebase.database().ref('ProductSidebar').orderByChild('Productid').equalTo(productname).once("child_added", (snapshot) => {
 
 
@@ -176,6 +203,27 @@ class  Downloads extends React.Component{
             });
 
         });
+
+
+        firebase.database().ref('Product_creation/'+ productname).once("value", (snapshot) => {
+
+            var Userid = snapshot.val().userid;
+
+            firebase.database().ref('ProductOwnerDetails/' + Userid).on("value", (snapshot) => {
+
+                var Description = snapshot.val().Description;
+                var tags = snapshot.val().tags;
+                var email = snapshot.val().email;
+
+                this.setState({
+                    UserDescription: Description,
+                    Usertags: tags,
+                    Useremail:email,
+                })
+            });
+
+        });
+
     }
 
     productData1(productname){
@@ -234,6 +282,7 @@ class  Downloads extends React.Component{
         var currentProduct = this.state.Productsidebarid;
 
         var productspecificdata = this.state.productname;
+
         var profiletab = this.state.profiletab;
 
 
@@ -251,7 +300,11 @@ class  Downloads extends React.Component{
                 tags={this.state.tags}
                 complexity={this.state.complexity}
                 productsidebar={currentProduct}
-                productcomment={this.state.productcomment} />
+                productcomment={this.state.productcomment}
+                UserDescription={this.state.UserDescription}
+                Usertags={this.state.Usertags}
+                Useremail={this.state.Useremail}
+            />
         }
 
         var Usercreatedproductobject = this.props.userdetails.UserCreatedProduct;
