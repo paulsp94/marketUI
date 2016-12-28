@@ -75,7 +75,7 @@ class Tags extends React.Component{
                     <SelectField className={''} 
                         value={this.state.selectfield_value}
                         onChange={this.handleChange.bind(this)}
-                        style={{width:'170px', color:'white'}}
+                        style={{width:'170px', color:'white', marginLeft: '30px'}}
                         labelStyle={{color:'white'}}
                      >
                         <MenuItem value={'Newest'} primaryText="Newest" />
@@ -83,7 +83,7 @@ class Tags extends React.Component{
                         <MenuItem value={'Popularity'} primaryText="Popularity" />
                         <MenuItem value={'Price'} primaryText="Price" />
                       </SelectField>
-                       <TextField hintText={'Search...'} hintStyle={{color:'white'}} onChange={this.searchFilter.bind(this)} className={'search'} style={{marginLeft:'10px',color:'white',fontWeight:'400',width:'170px'}} inputStyle={{color:'white'}}/>
+                       <TextField hintText={'Search...'} hintStyle={{color:'white'}} onChange={this.searchFilter.bind(this)} className={'search'} style={{marginLeft:'10px',marginRight:'0px',color:'white',fontWeight:'400',width:'170px'}} inputStyle={{color:'white'}}/>
                    </Flexbox>
              </Flexbox>
                 

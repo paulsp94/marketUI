@@ -108,8 +108,8 @@ class  ProductSearch extends React.Component{
         }
         else {
             return (
-                    <div>
-                        <div className="container-search">
+                    <div  className="container-search-flex">
+                        <div className="row" >
                             <Tags onUpdateFilter={this.SearchFilter.bind(this)} cateGoryFilter={this.cateGoryFilter.bind(this)}/>
                             {
                                 filtereddata.map((detail, index)=> {

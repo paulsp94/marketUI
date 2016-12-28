@@ -26,10 +26,13 @@ var Welcome = React.createClass({
             <div>
                 <div style={style}>
                     <div className="welcome-text">
-                        <h1> Welcome to the Rscript.Market</h1>
+                        <h1> Welcome R.Codes</h1>
                         <br/>
                         <p> Discover the newest code snippets of the R universe </p>
-                        <p> In this beta everything is free!</p>
+                        <br/>
+                         <Link to="/ProductSearch" className="">
+                            <RaisedButton label="Explore" style={{}} />
+                        </Link>
                     </div>
                     <div className="welcome-text" style={{marginTop:'40px'}}>
                     </div>
