@@ -133,11 +133,12 @@ class Sidebar extends React.Component {
     }
 
     componentDidMount() {
+
         let {ProductId} = this.props;
 
         productSellerandstripeid(ProductId);
 
-        firebase.database().ref('Product_creation/'+ ProductID).once("value", (snapshot) => {
+        firebase.database().ref('Product_creation/'+ ProductId).once("value", (snapshot) => {
 
             var Userid = snapshot.val().userid;
 
