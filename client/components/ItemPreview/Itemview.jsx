@@ -37,7 +37,7 @@ export default class Itemview extends React.Component {
                 <CardTitle title={this.props.productcoredetails.Title} subtitle={this.props.productcoredetails.SubTitle}/>}>
                 <img src={this.props.productcoredetails.Mainimage}/>
             </CardMedia>
-            <Card style={{ marginRight: 40, marginLeft: 40 }}>
+            <Card className="itemPreviewMargins">
               <CardText >
                 <div className="code">
                   {

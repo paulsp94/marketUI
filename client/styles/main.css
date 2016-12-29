@@ -54,6 +54,7 @@ background-color: #030033;
    color: #37474F; /*Change active text color here*/
     }
 
+
 .container-search-flex {
     height: 100%;
     padding: 0;
@@ -68,10 +69,20 @@ background-color: #030033;
 
 .row {
     width: auto;
-    padding-right: 1px;
+    padding-right: 0px;
     padding-left: 0px;
     background-color: rgba(255,255,255,0.2);
 }
+
+@media (max-width: 1199px){
+    .row{
+        width: 95%;
+        margin: auto;
+        margin-top: 15px;
+        background-color: rgba(255,255,255,0);
+    }
+}
+
 
 .message-textarea {
     height: 120px;
@@ -235,6 +246,13 @@ h3 {
     margin-left: 35px;
     margin-bottom: 20px;
     margin-top: 20px;
+}
+
+
+@media (max-width: 1199px){
+    .tags {
+        display: none;
+}
 }
 
 .table-dark {
@@ -481,7 +499,7 @@ h1 {
     opacity: 0.68;
     text-shadow: none;
     box-shadow: none;
-    outline: 0
+    outline: 0;
 }
 
 .submitbutton2 {
@@ -571,12 +589,22 @@ h1 {
     color: black;
 }
 
+@media (min-width: 1200px){
 .container {
-    margin-left: 2%;
     height: auto;
     padding: 0%;
     margin-left: 14%;
     float: left;
+}
+}
+
+@media (max-width: 1199px){
+    .container {
+    height: auto;
+    width: 100%;
+    padding: 0%;
+    float: left;
+}
 }
 
 .container2 {
@@ -860,7 +888,18 @@ h1 {
 
 .ReactTags__suggestions {}
 
-@media (min-width: 800px) and (max-width: 1099px) {
+.itemPreviewMargins{
+    margin-right: 40px;
+    margin-left: 40px;
+}
+
+@media (max-width: 1099px) {
+
+    .itemPreviewMargins{
+    margin-right: 0px; 
+    margin-left: 0px;
+    }
+
     .container-search {
         width: 100%;
     }
@@ -877,19 +916,18 @@ h1 {
         border: 0px solid white;
         background-size: cover;
     }
-    .container {
-        margin-left: 30px;
-        width: 500px;
-    }
+
     .sidebar {
-        width: 400px;
+        width: 100%;
+        padding-right: 0px;
+        padding-left: 0px;
+        margin-top: 10px;
         height: auto;
-        min-height: 900px;
         float: right;
     }
 }
 
-@media (min-width: 1100px) and (max-width: 1279px) {
+@media (min-width: 1200px) and (max-width: 1279px) {
     .container-search {
         width: 100%;
     }

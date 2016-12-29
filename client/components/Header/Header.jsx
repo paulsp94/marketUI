@@ -89,7 +89,7 @@ export default class Header extends React.Component {
       iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
       anchorOrigin={{horizontal: 'middle', vertical: 'top'}}
       targetOrigin={{horizontal: 'middle', vertical: 'bottom'}}
-      style={{paddingRight: 27}}
+      style={{marginRight: 27}}
     >
             
             <Link to="/Support" style={{ textDecoration: 'none' }}>

@@ -47,30 +47,31 @@ class Tags extends React.Component{
             <div className="tags">
             <Flexbox flexDirection="row">
 
-                <Flexbox flexGrow={1} flexShrink={1}>
+
+                <Flexbox flexGrow={1}>
                     <FlatButton onClick={this.cateGoryFilter.bind(this,"All Product")} label="All" style={{margin: 3, width: "100%",height:'45px', color:'white'}}  />
                 </Flexbox>
 
-                <Flexbox flexGrow={1} flexShrink={1} style={{height:'45px'}}>
+                <Flexbox flexGrow={1} style={{height:'45px'}}>
                             <FlatButton onClick={this.cateGoryFilter.bind(this , "Shiny & Web")} label="Shiny & Web" style={{margin: 3, width: "100%",height:'100%', color:"white"}}/>
               </Flexbox>
-               <Flexbox flexGrow={1} flexShrink={1}>
+               <Flexbox flexGrow={1}>
                             <FlatButton onClick={this.cateGoryFilter.bind(this, "Machine Learning")} label="Machine Learning" style={{margin: 3, width: "100%",height:'45px', color:'white'}}  />
               </Flexbox>
-              <Flexbox flexGrow={1} flexShrink={1}>
+              <Flexbox flexGrow={1}>
                              <FlatButton onClick={this.cateGoryFilter.bind(this,"Big Data")} label="Big Data" style={{margin: 3, width: "100%",height:'45px', color:'white'}}  />
               </Flexbox>
-              <Flexbox flexGrow={1} flexShrink={1}>
+              <Flexbox flexGrow={1}>
                             <FlatButton onClick={this.cateGoryFilter.bind(this,"Algorithms")} label="Algorithms" style={{margin: 3, width: "100%",height:'45px', color:'white'}}  />
               </Flexbox>
-              <Flexbox flexGrow={1} flexShrink={1}>
+              <Flexbox flexGrow={1}>
                             <FlatButton onClick={this.cateGoryFilter.bind(this,"Graphics")} label="Graphics" style={{margin: 3, width: "100%",height:'45px', color:'white'}}  />
               </Flexbox>
-               <Flexbox flexGrow={1} flexShrink={1}>
+               <Flexbox flexGrow={1}>
                             <FlatButton onClick={this.cateGoryFilter.bind(this,"Other")} label="Other" style={{margin: 3, width: "100%",height:'45px', color:'white'}}  />
               </Flexbox>
               
-                  <Flexbox flexGrow={1} flexShrink={1}>
+                  <Flexbox flexGrow={1} >
                   
                     <SelectField className={''} 
                         value={this.state.selectfield_value}
