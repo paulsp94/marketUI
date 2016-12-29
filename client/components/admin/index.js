@@ -67,10 +67,10 @@ class AdminComponent extends React.Component {
         {
           this.state.products.map((product, index) => {
             return (
-              <div className="product-details" key={index} onClick={() => { this._clickHandler(product) }}>
+              <div className="product-details" key={index} >
                 <Card className="product-search">
                   <LazyLoad height={'150px'} resize={true} offset={[200, 200]}>
-                    <img className="product_image" src={product.subImage}/>
+                    <img className="product_image" onClick={() => { this._clickHandler(product) }} src={product.subImage}/>
                   </LazyLoad>
                   <h5 style={{height: '35px'}}>{product.Title}</h5>
                   <h5 style={{height: '35px'}}>{product.Description}</h5>

@@ -47,7 +47,6 @@ class Tags extends React.Component{
             <div className="tags">
             <Flexbox flexDirection="row">
 
-
                 <Flexbox flexGrow={1}>
                     <FlatButton onClick={this.cateGoryFilter.bind(this,"All Product")} label="All" style={{margin: 3, width: "100%",height:'45px', color:'white'}}  />
                 </Flexbox>
@@ -71,7 +70,7 @@ class Tags extends React.Component{
                             <FlatButton onClick={this.cateGoryFilter.bind(this,"Other")} label="Other" style={{margin: 3, width: "100%",height:'45px', color:'white'}}  />
               </Flexbox>
               
-                  <Flexbox flexGrow={1} >
+                  <Flexbox flexGrow={1} flexShrink={1}>
                   
                     <SelectField className={''} 
                         value={this.state.selectfield_value}
@@ -84,7 +83,7 @@ class Tags extends React.Component{
                         <MenuItem value={'Popularity'} primaryText="Popularity" />
                         <MenuItem value={'Price'} primaryText="Price" />
                       </SelectField>
-                       <TextField hintText={'Search...'} hintStyle={{color:'white'}} onChange={this.searchFilter.bind(this)} className={'search'} style={{marginLeft:'10px',marginRight:'0px',color:'white',fontWeight:'400',width:'170px'}} inputStyle={{color:'white'}}/>
+                       <TextField hintText={'Search...'} hintStyle={{color:'white'}} onChange={this.searchFilter.bind(this)} className={'search'} style={{marginLeft:'10px',marginRight:'5px',color:'white',fontWeight:'400',width:'170px'}} inputStyle={{color:'white'}}/>
                    </Flexbox>
              </Flexbox>
                 
