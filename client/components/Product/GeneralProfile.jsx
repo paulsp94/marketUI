@@ -395,8 +395,6 @@ class  GeneralProfile extends React.Component{
 
                               <div className="itemCard">
                                 <Card>
-
-
                                   <Card className="product-search" style={{padding: 0}}>
                                       <img className="product_image" src={this.state.avatarURL1}/>
                                       <h5>{this.state.title}</h5>

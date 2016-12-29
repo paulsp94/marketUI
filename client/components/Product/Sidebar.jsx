@@ -36,11 +36,12 @@ class ProductSidebar extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      packages: [],
-      complexity: 5,
-      integrationTime: "15 min",
-      compatibility: [],
-      tags: []
+        packages: [],
+        complexity: 5,
+        integrationTime: "15 min",
+        compatibility: [],
+        tags: [],
+        error:'',
     };
   }
 
@@ -119,7 +120,15 @@ class ProductSidebar extends React.Component {
 
     var ProductId = this.props.ProductId;
 
-    this.props.submitProductsidebarDetails(packages, complexity, integrationTime, compatibility, tags, ProductId);
+
+    if(packages == '' || compatibility == '' || tags == ''){
+        this.setState({
+            error:"Please Fill Every Detail"
+        })
+    }
+    else {
+        this.props.submitProductsidebarDetails(packages, complexity, integrationTime, compatibility, tags, ProductId);
+    }
 
   };
 
@@ -129,9 +138,7 @@ class ProductSidebar extends React.Component {
     var UserIdobject = this.props.userdetails.userid;
     var UserId = Object.keys(UserIdobject).map(key => UserIdobject[key]);
     UserId = UserId[0];
-
     this.props.submitPublishedproducts(ProductId, UserId);
-
   };
 
   render () {
@@ -151,7 +158,9 @@ class ProductSidebar extends React.Component {
 
         <div className="left-panel">
 
-
+            <div className="warning">
+                {this.state.error}
+            </div>
           <Card style={{ margin: '10px auto', width: 550 }}>
             <div className="warning">
               {message}
@@ -220,8 +229,8 @@ class ProductSidebar extends React.Component {
 
             </CardText>
 
-            <RaisedButton onClick={this.subMit.bind(this)} label=" Save" style={{ margin: 12 }}/>
-            <RaisedButton onClick={this.Publish.bind(this)} label="Publish" style={{ margin: 12 }}/>
+            <RaisedButton onClick={this.subMit.bind(this)} primary={true} label=" Save" style={{ margin: 12 }}/>
+            <RaisedButton onClick={this.Publish.bind(this)} primary={true} label="Publish" style={{ margin: 12 }}/>
 
           </Card>
         </div>
