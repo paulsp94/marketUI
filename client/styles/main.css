@@ -83,6 +83,12 @@ background-color: #030033;
 {
     display: none;
 }
+
+.TextCard{
+    background-color: white;
+    text-align: center;
+}
+
 .container-contact-up{
     width: 500px;
     height: auto;

@@ -344,11 +344,18 @@ class  Downloads extends React.Component{
                                     </div>
                                 </Tab>
                                 <Tab label="Downloads" onActive={this.Download.bind(this)}>
-                                    <div>
+                                    <div className="TextCard">
+
+                                        <p>
+                                            <strong>Placeholder:</strong> Robin Put Some text Here
+                                        </p>
+
+
+
                                         {
-                                            data.map((detail)=> {
-                                                return <DataContainer item={detail} ViewItem = {this.productData.bind(this)}/>
-                                            })
+                                            /*data.map((detail)=> {*/
+                                                /*return <DataContainer item={detail} ViewItem = {this.productData.bind(this)}/>*/
+                                            /*})*/
                                         }
                                     </div>
                                 </Tab>
