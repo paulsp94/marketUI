@@ -50,13 +50,16 @@ background-color: #030033;
   }
 
 
-  .navbar-default .navbar-nav > li > a {
+.navbar-default .navbar-nav > li > a {
    color: #37474F; /*Change active text color here*/
     }
 
+.searchTags {
+
+}
 
 .container-search-flex {
-    height: 100%;
+    height: auto;
     padding: 0;
     margin: 0;
     display: -webkit-box;
@@ -68,17 +71,26 @@ background-color: #030033;
 }
 
 .row {
+    width: 1264px;
+    padding-right: 0px;
+    padding-left: 0px;
+    background-color: rgba(255,255,255,0.2);
+}
+
+.rowAuth {
     width: auto;
     padding-right: 0px;
     padding-left: 0px;
     background-color: rgba(255,255,255,0.2);
 }
 
-@media (max-width: 1199px){
+
+
+@media (max-width: 1264px){
     .row{
-        width: 95%;
+        width: 100%;
         margin: auto;
-        margin-top: 15px;
+        margin-top: 0px;
         background-color: rgba(255,255,255,0);
     }
 }
@@ -249,15 +261,14 @@ h3 {
 
 .tags {
     margin-right: 35px;
-    margin-left: 35px;
-    margin-bottom: 20px;
-    margin-top: 20px;
+    margin-left: 0px;
+    margin-top: 15px;
 }
-
 
 @media (max-width: 1199px){
     .tags {
-        display: none;
+        margin-left: 0px;
+        margin-right: 0px;
 }
 }
 
@@ -314,7 +325,7 @@ h1 {
 	text-align: center;
 	padding-left: 3%;
 	padding-right: 3%;
-	background-color: #FFE0B2;
+	background-color: none;
 }
 
 .Productcontent{

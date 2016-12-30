@@ -16,6 +16,8 @@ import TextField from 'material-ui/TextField';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import FlatButton from 'material-ui/FlatButton';
+var MediaQuery = require('react-responsive');
+
 class Tags extends React.Component{
 
     constructor(props) {
@@ -40,38 +42,35 @@ class Tags extends React.Component{
         this.props.cateGoryFilter(value);
     }
 
-
     render(){
 
-        return (
-            <div className="tags">
-            <Flexbox flexDirection="row">
+            const desktopTags = <div className="tags">
+            <Flexbox flexDirection="row" style={{height: '45px'}}>
 
                 <Flexbox flexGrow={1}>
-                    <FlatButton onClick={this.cateGoryFilter.bind(this,"All Product")} label="All" style={{margin: 3, width: "100%",height:'45px', color:'white'}}  />
+                    <FlatButton onClick={this.cateGoryFilter.bind(this,"All Product")} label="All" className="searchTags" style={{margin: 3, width: "100%",height:'45px', color:'white'}}  />
                 </Flexbox>
 
-                <Flexbox flexGrow={1} style={{height:'45px'}}>
-                            <FlatButton onClick={this.cateGoryFilter.bind(this , "Shiny & Web")} label="Shiny & Web" style={{margin: 3, width: "100%",height:'100%', color:"white"}}/>
+                <Flexbox flexGrow={1} className="searchTags" >
+                            <FlatButton onClick={this.cateGoryFilter.bind(this , "Shiny & Web")} label="Shiny&Web" className="searchTags" style={{margin: 3,width: "100%",height:'100%', color:"white"}}/>
               </Flexbox>
                <Flexbox flexGrow={1}>
-                            <FlatButton onClick={this.cateGoryFilter.bind(this, "Machine Learning")} label="Machine Learning" style={{margin: 3, width: "100%",height:'45px', color:'white'}}  />
+                            <FlatButton onClick={this.cateGoryFilter.bind(this, "Machine Learning")} label="Machine&nbsp;Learning" className="searchTags" style={{margin: 3,width: "100%",height:'45px', color:'white'}}  />
               </Flexbox>
               <Flexbox flexGrow={1}>
-                             <FlatButton onClick={this.cateGoryFilter.bind(this,"Big Data")} label="Big Data" style={{margin: 3, width: "100%",height:'45px', color:'white'}}  />
+                             <FlatButton onClick={this.cateGoryFilter.bind(this,"Big Data")} label="Big&nbsp;Data" className="searchTags" style={{margin: 3, width: "100%",height:'45px', color:'white'}}  />
               </Flexbox>
               <Flexbox flexGrow={1}>
-                            <FlatButton onClick={this.cateGoryFilter.bind(this,"Algorithms")} label="Algorithms" style={{margin: 3, width: "100%",height:'45px', color:'white'}}  />
+                            <FlatButton onClick={this.cateGoryFilter.bind(this,"Algorithms")} label="Algorithms" className="searchTags" style={{margin: 3, width: "100%",height:'45px', color:'white'}}  />
               </Flexbox>
               <Flexbox flexGrow={1}>
-                            <FlatButton onClick={this.cateGoryFilter.bind(this,"Graphics")} label="Graphics" style={{margin: 3, width: "100%",height:'45px', color:'white'}}  />
+                            <FlatButton onClick={this.cateGoryFilter.bind(this,"Graphics")} label="Graphics" className="searchTags" style={{margin: 3, width: "100%",height:'45px', color:'white'}}  />
               </Flexbox>
                <Flexbox flexGrow={1}>
-                            <FlatButton onClick={this.cateGoryFilter.bind(this,"Other")} label="Other" style={{margin: 3, width: "100%",height:'45px', color:'white'}}  />
+                            <FlatButton onClick={this.cateGoryFilter.bind(this,"Other")} label="Other" className="searchTags" style={{margin: 3, width: "100%",height:'45px', color:'white'}}  />
               </Flexbox>
-              
-                  <Flexbox flexGrow={1} flexShrink={1}>
-                  
+
+                  <Flexbox flexGrow={1}>
                     <SelectField className={''} 
                         value={this.state.selectfield_value}
                         onChange={this.handleChange.bind(this)}
@@ -83,11 +82,48 @@ class Tags extends React.Component{
                         <MenuItem value={'Popularity'} primaryText="Popularity" />
                         <MenuItem value={'Price'} primaryText="Price" />
                       </SelectField>
-                       <TextField hintText={'Search...'} hintStyle={{color:'white'}} onChange={this.searchFilter.bind(this)} className={'search'} style={{marginLeft:'10px',marginRight:'5px',color:'white',fontWeight:'400',width:'170px'}} inputStyle={{color:'white'}}/>
+                       <TextField hintText={'Search...'} hintStyle={{color:'white'}} onChange={this.searchFilter.bind(this)} className={'search'} style={{marginLeft:'5px',marginRight:'5px',color:'white',fontWeight:'400',width:'150px'}} inputStyle={{color:'white'}}/>
                    </Flexbox>
              </Flexbox>
-                
             </div>
+
+      const mobileTags = <div className="tags">
+            <Flexbox flexDirection="row" style={{height: '45px'}}>
+                <Flexbox flexGrow={1}>
+                    <FlatButton onClick={this.cateGoryFilter.bind(this,"All Product")} label="All" className="searchTags" style={{margin: 3, width: "100%",height:'45px', color:'white'}}  />
+                </Flexbox>
+                <Flexbox flexGrow={1} className="searchTags" >
+                            <FlatButton onClick={this.cateGoryFilter.bind(this , "Shiny & Web")} label="Shiny&Web" className="searchTags" style={{margin: 3,width: "100%",height:'100%', color:"white"}}/>
+              </Flexbox>
+               <Flexbox flexGrow={1}>
+                            <FlatButton onClick={this.cateGoryFilter.bind(this, "Machine Learning")} label="Machine&nbsp;Learning" className="searchTags" style={{margin: 3,width: "100%",height:'45px', color:'white'}}  />
+              </Flexbox>
+              <Flexbox flexGrow={1}>
+                             <FlatButton onClick={this.cateGoryFilter.bind(this,"Big Data")} label="Big&nbsp;Data" className="searchTags" style={{margin: 3, width: "100%",height:'45px', color:'white'}}  />
+              </Flexbox>
+              <Flexbox flexGrow={1}>
+                            <FlatButton onClick={this.cateGoryFilter.bind(this,"Algorithms")} label="Algorithms" className="searchTags" style={{margin: 3, width: "100%",height:'45px', color:'white'}}  />
+              </Flexbox>
+              <Flexbox flexGrow={1}>
+                            <FlatButton onClick={this.cateGoryFilter.bind(this,"Graphics")} label="Graphics" className="searchTags" style={{margin: 3, width: "100%",height:'45px', color:'white'}}  />
+              </Flexbox>
+               <Flexbox flexGrow={1}>
+                            <FlatButton onClick={this.cateGoryFilter.bind(this,"Other")} label="Other" className="searchTags" style={{margin: 3, width: "100%",height:'45px', color:'white'}}  />
+              </Flexbox>
+
+             </Flexbox>
+            </div>
+
+        return (
+        <div>
+              <MediaQuery maxDeviceWidth={1264}>
+                     <div>{mobileTags}</div>;
+              </MediaQuery>
+              <MediaQuery minDeviceWidth={1265}>
+                     <div>{desktopTags}</div>;
+              </MediaQuery>
+           
+        </div>
         )
     }
 }

@@ -14,7 +14,6 @@ import Product from './Product.jsx';
 import Tags from './Tags.jsx';
 import { FetchAllPublishedproduct } from '../../action/action.jsx'
 
-
 function mapStateToProps(store) {
     return { userdetails: store.userdetails};
 }

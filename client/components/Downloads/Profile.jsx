@@ -275,15 +275,17 @@ class  Profile extends React.Component{
                         onRequestClose={this.Dropboxcloase3.bind(this)}>
                     </Dialog>
 
-                       <textarea value={this.state.Desxription} onChange={this.TextFieldValue.bind(this)} name="textarea" ref={(d) => this.textarea = d} className="textarea1" placeholder="Description about Product"/> <br/> <br/>
-
-                       <div className="knowledgetags">
+                        <div className="knowledgetags">
                        <MaterialTagsInput
                            value = {this.state.tags}
                            onChange = {this.onTagsChange.bind(this)}
                            label = "Your Expertise Knowledge"
                        />
                        </div>
+
+                       <textarea value={this.state.Desxription} onChange={this.TextFieldValue.bind(this)} name="textarea" ref={(d) => this.textarea = d} className="textarea1" placeholder="Describe yourself"/> <br/> <br/>
+
+                       
                        <RaisedButton onClick={this.SubmitUserDetails.bind(this)} label="Save Changes"  secondary={true} style={{ margin: 12}} />
 
 

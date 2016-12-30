@@ -53,7 +53,7 @@ class ProfileSidebar extends React.Component {
     return (
       <div className="sidebar">
         <Tabs>
-          <Tab label="header">
+          <Tab label="Your public information">
             <Card expanded={this.state.expanded}>
               <CardText>
                 {/*
@@ -62,7 +62,6 @@ class ProfileSidebar extends React.Component {
                       <span>Connect with Stripe</span>
                     </a> : null
                 */}
-                <strong> Features Coming Soon</strong>
                   <hr/>
 
                   {this.state.Description}<br/><br/>

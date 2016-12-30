@@ -37,7 +37,7 @@ var Welcome = React.createClass({
                     <div className="welcome-text" style={{marginTop:'40px'}}>
                     </div>
                     <div className="welcomeBoard">
-                        <div className="welcome-info-header" style={{padding: 2, marginBottom: 10}}>
+                        <div className="welcome-info-header" style={{padding: 2}}>
                             <h4> Beta Test Awards </h4>
                         </div>
                         <div className='welcome-info'>

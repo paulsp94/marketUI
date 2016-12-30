@@ -160,7 +160,6 @@ class Sidebar extends React.Component {
               </div>
           </Card>
 
-
           <div style={{ flexWrap: 'wrap', margin: 9 }}>
             <h4><strong>Complexity:</strong></h4>
             <p> {this.props.complexity} </p>

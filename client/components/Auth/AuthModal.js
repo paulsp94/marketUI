@@ -5,6 +5,7 @@ import styles from './AuthModal.scss'
 import classNames from 'classnames/bind'
 import * as firebase from 'firebase';
 import TextField from 'material-ui/TextField';
+import {Link} from "react-router";
 
 const cx = classNames.bind(styles)
 
@@ -70,7 +71,7 @@ export default class AuthModal extends React.Component {
         className={cx('auth-container')}
       >
         {!signUp ? <div>
-          <div className="row">
+          <div className="rowAuth">
             <div className="col-sm-6 col-sm-offset-3">
               <form>
                 <div className="form-group">
@@ -116,7 +117,7 @@ export default class AuthModal extends React.Component {
             </div>
           </div>
         </div> : <div>
-          <div className="row">
+          <div className="rowAuth">
             <div className="col-sm-6 col-sm-offset-3">
               <form>
                 <div className="form-group">
@@ -137,6 +138,9 @@ export default class AuthModal extends React.Component {
                     type="password"
                     fullWidth
                   />
+                </div>
+                <div >
+                  by signing up you agree to our <Link to="/Policy"> terms </Link>
                 </div>
                 {errors}
                 <div className={cx('buttons-container')}>
