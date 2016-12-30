@@ -7,8 +7,6 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import RaisedButton from 'material-ui/RaisedButton';
 <meta name="viewport" content="width=device-width" />
 
-
-
 var Welcome = React.createClass({ 
 
 
@@ -26,7 +24,7 @@ var Welcome = React.createClass({
             <div>
                 <div style={style}>
                     <div className="welcome-text">
-                        <h1> Welcome R.Codes</h1>
+                        <h1> Welcome to R.Codes</h1>
                         <br/>
                         <p> Discover the newest code snippets of the R universe </p>
                         <br/>

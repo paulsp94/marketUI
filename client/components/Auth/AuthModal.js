@@ -103,7 +103,7 @@ export default class AuthModal extends React.Component {
                   />
                 </div>
                 <div className="text-center">
-                  Need to Signup?
+                  No account yet?
                 </div>
                 <div className={cx('buttons-container')}>
                   <RaisedButton

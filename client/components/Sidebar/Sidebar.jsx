@@ -289,7 +289,7 @@ class Sidebar extends React.Component {
                         />
                       </TableRowColumn>
                       <TableRowColumn style={{ textAlign: 'center' }}>
-                        Sold: {productcoredetails.downloadCount || 0}
+                        Sells: {productcoredetails.downloadCount || "none"}
                       </TableRowColumn>
                     </TableRow>
                   </TableBody>

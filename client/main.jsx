@@ -37,7 +37,7 @@ render(<Provider store={store}>
         <Route path="Impressum" component={Impressum}/>
         <Route path="EditProduct/:productid" component={General}/>
         <Route path="ProductContent/:productid" component={ProductContent}/>
-        <Route path="admin" component={AdminContainer}/>
+        <Route path="core" component={AdminContainer}/>
       </Route>
     </Router>
   </Provider>,

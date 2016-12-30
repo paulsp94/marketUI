@@ -347,7 +347,8 @@ class  GeneralProfile extends React.Component{
                                             onUploadStart={this.handleUploadStart}
                                             onUploadError={this.handleUploadError}
                                             onUploadSuccess={this.handleUploadSuccess}
-                                            onProgress={this.handleProgress} />
+                                            onProgress={this.handleProgress} 
+                                            />
                                         <br/>
                                         <FileUploader
                                             accept="image/*"
@@ -357,7 +358,8 @@ class  GeneralProfile extends React.Component{
                                             onUploadStart={this.handleUploadStart1}
                                             onUploadError={this.handleUploadError1}
                                             onUploadSuccess={this.handleUploadSuccess1}
-                                            onProgress={this.handleProgress1} />
+                                            onProgress={this.handleProgress1}
+                                             />
 
                                         <SelectField
                                           floatingLabelText = "Category"
