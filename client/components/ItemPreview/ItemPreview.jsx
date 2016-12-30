@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 var Loading = require('react-loading');
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+var firebase = require('firebase');
+import firebase_details from '../../Firebase/Firebase';
 import {Link} from "react-router";
 import {withRouter} from 'react-router';
 import { hashHistory } from 'react-router';
@@ -36,6 +38,7 @@ class  ItemPreview extends Component{
         this.state= {
             filldetails:'',
             ProductId:'',
+            ProductSidebar:[],
         };
 
     }
@@ -49,12 +52,37 @@ class  ItemPreview extends Component{
         });
 
         this.props.currentproductstore(ProductId);
-        this.props.ProductSidebar(ProductId);
+        // this.props.ProductSidebar(ProductId);
         this.props.Description(ProductId);
         this.props.productCoreDetails(ProductId);
         this.props.ProductComments(ProductId);
         this.props.productSellerandstripeid(ProductId);
+
     }
+
+    componentDidMount() {
+
+        var ProductId = this.state.ProductId;
+
+        var ProductSidebar = [];
+        firebase.database().ref('ProductSidebar').orderByChild('Productid').equalTo(ProductId).on("child_added", (snapshot) => {
+
+                ProductSidebar.push({
+                    IntegrationTime: snapshot.val().IntegrationTime,
+                    Packages: snapshot.val().Packages,
+                    compatibility: snapshot.val().compatibility,
+                    complexity: snapshot.val().complexity,
+                    tags: snapshot.val().tags,
+                });
+
+            this.setState({
+                ProductSidebar
+            })
+
+        });
+
+    }
+
 
     render(){
 
@@ -66,11 +94,14 @@ class  ItemPreview extends Component{
         var descriptionobject = Object.keys(prductdescription).map(key => prductdescription[key]);
         var descriptiondetails = [].concat.apply([], descriptionobject);
 
-        var Productsidebarobject = this.props.userdetails.Productsidebar;
-        var sidebarobject = Object.keys(Productsidebarobject).map(key => Productsidebarobject[key]);
-        var sidebardetails = [].concat.apply([], sidebarobject);
+        // var Productsidebarobject = this.props.userdetails.Productsidebar;
+        // var sidebarobject = Object.keys(Productsidebarobject).map(key => Productsidebarobject[key]);
+        // var sidebardetails = [].concat.apply([], sidebarobject);
 
-        if(productdetails == false || prductdescription == false || Productsidebarobject == false){
+        var Productsidebarobject = this.state.ProductSidebar;
+
+
+        if(productdetails == false || prductdescription == false || Productsidebarobject == ''){
             return(
                 <div className="background">
                 <div className="loader">
@@ -82,7 +113,7 @@ class  ItemPreview extends Component{
         else {
             var productcorealldetails = productcoredetails[0];
             var productdesdetail = descriptiondetails[0];
-            var prodsidebardet = sidebardetails[0];
+            var prodsidebardet = Productsidebarobject[0];
             var allcomment = this.props.userdetails.allcomments ? this.props.userdetails.allcomments.productcomment : [];
 
             return (

@@ -82,6 +82,7 @@
     "react-native-openpgp": "github:orhan/react-native-openpgp",
     "react-popout": "0.5.3",
     "react-redux": "4.4.5",
+    "react-responsive": "1.2.5",
     "react-router": "2.6.1",
     "react-safe-promise": "0.1.1",
     "react-spinkit": "1.1.11",
