@@ -119,7 +119,7 @@ export default class Header extends React.Component {
         }
     
         <li>
-          <Link to="/ProductSearch" className="">
+          <Link to="/market" className="">
             Explore
           </Link>
         </li>

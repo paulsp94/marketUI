@@ -28,7 +28,7 @@ var Welcome = React.createClass({
                         <br/>
                         <p> Discover the newest code snippets of the R universe </p>
                         <br/>
-                         <Link to="/ProductSearch" className="">
+                         <Link to="/market" className="">
                             <RaisedButton label="Explore" style={{}} />
                         </Link>
                     </div>

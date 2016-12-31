@@ -17,8 +17,12 @@ var Contact = React.createClass({
     render(){
         var style = { 
                       margin: 'auto',
+                      marginBottom: '5px',
+                      paddingTop: '7px',
+                      paddingBottom: '1px',
                       width: '60%',
-                      paddingLeft: '2px',
+                      paddingLeft: '10px',
+                      paddingRight: '10px'
                   };
         return (
               <div className="container-search" style={{paddingTop:'1px'}}>
@@ -36,8 +40,11 @@ var Contact = React.createClass({
                 </ul>
                 <br/>
                 <p> all actions must be in compliance with our <Link to="/Policy"> terms & policy </Link>  </p> 
-                <p> for any open question please send a mail to contact@rscript.market </p>
-                </Card>                   
+                <p> for any open question please send a mail to support@r.codes </p>
+                </Card>       
+                <Card style={style}>
+                <p> start creating content now by creating an account and publishing your first codes!</p>
+                </Card>            
               </div>
         )
     }

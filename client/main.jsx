@@ -28,7 +28,7 @@ render(<Provider store={store}>
         <Route path="/INDEX" component={Index}/>
         <Route path="ItemPreview/:productid" component={ItemPreview}/>
         <Route path="General" component={General}/>
-        <Route path="ProductSearch" component={ProductSearch}/>
+        <Route path="market" component={ProductSearch}/>
         <Route path="profile" component={Downloads}/>
         <Route path="Support" component={Contact}/>
         <Route path="MoreInfo" component={MoreInfo}/>
