@@ -33,15 +33,13 @@ class  DataContainer extends React.Component{
 
     render(){
 
-        var Style = {
-        };
-
         return (
-            <Card style={{ marginRight: "2%", marginLeft: "2%", marginTop: 9}} onClick={this.updateItem.bind(this)}
+            <Card   style={{ marginRight: "2%", marginLeft: "2%", marginTop: 9}} 
+                    onClick={this.updateItem.bind(this)}
             >
             <div className="Product" >
                 <CardText>
-                    <img className="productimage" src={this.props.item.Subimage} style = {Style}/>
+                    <img className="productimage" src={this.props.item.Subimage}/>
                 <div className="text-part">
                 <h4> <strong> {this.props.item.Title} </strong> </h4>
                     <RaisedButton onClick={this.ProductContentDownload.bind(this)} label="Download" style={{ margin: 12}} />
