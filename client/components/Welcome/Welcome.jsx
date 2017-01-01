@@ -11,7 +11,7 @@ var Welcome = React.createClass({
 
 
     render(){
-        var style = { backgroundImage: 'url(https://picload.org/image/raorapid/front_page.jpg)', 
+        var style = { backgroundImage: 'url(https://firebasestorage.googleapis.com/v0/b/rscriptmarket-66f49.appspot.com/o/statics%2Ffront_page.jpg?alt=media&token=da6f7138-bb1d-46b3-936d-d2bfa278e01c)', 
                       height: '100%', 
                       width: '100%', 
                       top: '0px',
