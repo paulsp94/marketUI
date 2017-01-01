@@ -12,7 +12,9 @@ var firebase = require('firebase');
 import firebase_details from '../../Firebase/Firebase';
 import Product from './Product.jsx';
 import Tags from './Tags.jsx';
-import { FetchAllPublishedproduct } from '../../action/action.jsx'
+import { FetchAllPublishedproduct } from '../../action/action.jsx';
+var MediaQuery = require('react-responsive');
+
 
 function mapStateToProps(store) {
     return { userdetails: store.userdetails};
@@ -33,7 +35,7 @@ class  ProductSearch extends React.Component{
         super(props);
         this.state= {
             questdata:[],
-            filter:'',
+            filter:'none',
             category:'',
         };
     }
@@ -60,7 +62,6 @@ class  ProductSearch extends React.Component{
         var UserId = Object.keys(allproducts).map(key => allproducts[key]);
         var mergedProduct = [].concat.apply([], UserId);
 
-
         if(this.state.filter == 'Shiny & Web'){
              var filtereddata = mergedProduct.filter(function (detail) { return detail.category == 'Web or Shiny'});
         }
@@ -84,7 +85,7 @@ class  ProductSearch extends React.Component{
         else if(this.state.filter == 'Other'){
              var filtereddata = mergedProduct.filter(function (detail) { return detail.category == 'Other'});
         }
-        else if(this.state.filter == '' || this.state.filter == 'All Product'){
+        else if(this.state.filter == 'none' || this.state.filter == 'All Product'){
             var filtereddata = mergedProduct;
         }
         else {
@@ -94,7 +95,6 @@ class  ProductSearch extends React.Component{
                     }
                 );
         }
-
 
         if(allproducts == false){
             return(
