@@ -147,7 +147,6 @@ class  Profile extends React.Component{
             tags:tags,
             email:email,
         });
-
     }
 
     render(){
@@ -227,12 +226,10 @@ class  Profile extends React.Component{
                      Email: {email}
                     <br/><br/>
                     <RaisedButton label="Change Email" style={{margin: 12}} onTouchTap={this.Dropboxopen4.bind(this)} />
-                    <br/>
-                    {Emailresult}
                     <RaisedButton label="Change Password" style={{margin: 12}} onTouchTap={this.Dropboxopen1.bind(this)} />
-                    <br/>
                     <RaisedButton label="Delete Account" style={{margin: 12}} onTouchTap={this.deleteAccount.bind(this)} />
                     <br/>
+                    {Emailresult}
                     {result}
 
                     <Dialog
@@ -268,8 +265,6 @@ class  Profile extends React.Component{
                 <Card style={{marginRight: "2%", marginLeft: "2%", marginTop: 9}}>
 
                    <CardText>
-                    <br/>
-                       <strong><p> Profile Details </p></strong>
 
                     <Dialog
                         actions={actions1}
@@ -289,7 +284,7 @@ class  Profile extends React.Component{
                        <MaterialTagsInput
                            value = {this.state.tags}
                            onChange = {this.onTagsChange.bind(this)}
-                           label = "Your Expertise Knowledge"
+                           label = "Your Expertise"
                        />
                        </div>
 

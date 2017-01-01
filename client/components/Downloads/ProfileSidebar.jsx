@@ -3,7 +3,6 @@ import {Card, CardText} from 'material-ui/Card';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import * as firebase from 'firebase';
 import Chip from 'material-ui/Chip';
-
 import config from '../../config';
 
 class ProfileSidebar extends React.Component {
@@ -19,7 +18,6 @@ class ProfileSidebar extends React.Component {
         tags:[],
     };
   }
-
 
     componentDidMount(){
       var user = firebase.auth().currentUser;
@@ -63,7 +61,6 @@ class ProfileSidebar extends React.Component {
                     </a> : null
                 */}
                   <hr/>
-
                   {this.state.Description}<br/><br/>
                   <hr/>
                   <div style={{ display: 'flex', flexWrap: 'wrap' }}>
@@ -71,7 +68,6 @@ class ProfileSidebar extends React.Component {
                               <Chip key={index} style={{ float: "left", margin: 4 }}>{item}</Chip>
                       )}
                   </div>
-
               </CardText>
             </Card>
           </Tab>
@@ -88,6 +84,3 @@ ProfileSidebar.contextTypes = {
   currentUser: PropTypes.object
 };
 export default ProfileSidebar ;
-
-
-

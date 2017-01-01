@@ -178,31 +178,28 @@ export default class AuthModal extends React.Component {
 
                  <div className={cx('buttons-container')}>
                   <RaisedButton
-                   backgroundColor="#6cc644"
                     label="GitHub"
                     primary
                     onClick={this.gitLogin('gitLogin')}
-                    style={{margin: 3, padding: 0}}
+                    style={{margin: 8, marginBottom: 0, padding: 0}}
                   />
                 </div>
 
                 <div className={cx('buttons-container')}>
                   <RaisedButton
-                    backgroundColor="#3b5998"
                     secondary
                     label="Facebook"
                     onClick={this.facebookLogin('facebook')}
-                    style={{margin: 3, padding: 0}}
+                    style={{margin: 8, marginBottom: 0, padding: 0}}
                   />
                 </div>
-
+               
                  <div className={cx('buttons-container')}>
                   <RaisedButton
-                    backgroundColor="#ea4335"
                     label="Google"
                     primary
                     onClick={this.googleLogin('google')}                    
-                    style={{margin: 3, padding: 0}}
+                    style={{margin: 8, marginBottom: 0, padding: 0}}
                   />
                 </div>
 
@@ -237,15 +234,10 @@ export default class AuthModal extends React.Component {
                     fullWidth
                   />
                   </div>
-
                 
-                  
-                <div className="text-center">
-                  No account yet?
-                </div>
                 <div className={cx('buttons-container')}>
                   <RaisedButton
-                    label="Sign Up"
+                    label="Create Account"
                     onClick={this.toggleSignUpMenu}
                     secondary
                     fullWidth

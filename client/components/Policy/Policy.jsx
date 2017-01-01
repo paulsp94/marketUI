@@ -17,12 +17,12 @@ var Policy = React.createClass({
     render(){
      
         return (
-              <div className="container-search" style={{paddingTop:'1px'}}>
+              <div className="container-search">
                   <Card>
-                   <h2 style={{textAlign:'center',margin:10, padding: 10}}> Terms of Service & Privacy Policies </h2>
+                        <h2 style={{textAlign:'center',marginBottom:3, marginTop: 2, padding: 10}}> Terms of Service & Privacy Policies </h2>
                    </Card> 
-                   <div style={{paddingTop: 3}}>
-                  <Card className="policyCard">
+                <div>
+                <Card className="policyCard">
 
 <p>
 1. Hello and welcome! Glad to have you on board. When we say ‘<strong>we</strong>’, ‘<strong>us</strong>’, ‘<strong>R script Market</strong>’ or ‘    <strong>Vaionex</strong>’, it’s because that’s who we are and we own and run the <strong>RScript Market</strong> site.

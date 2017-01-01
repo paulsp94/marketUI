@@ -10,7 +10,6 @@ import { browserHistory } from 'react-router'
 export default class Content extends React.Component{
 
     constructor(props) {
-
         super(props);
         this.state= {
             filldetails:'',
@@ -28,20 +27,15 @@ export default class Content extends React.Component{
     }
 
     render(){
-
-        var Style = {};
-
         return (
                 <Card style={{ marginRight: "2%", marginLeft: "2%", marginTop: 9}} onClick={this.updateItem.bind(this)}>
                     <div className="Product" >
                         <CardText>
-                                <img className="productimage" src={this.props.item.Subimage} style = {Style}/>
+                            <img className="productimage" src={this.props.item.Subimage}/>
                             <div className="text-part">
-
                                 <h4> <strong> {this.props.item.Title} </strong> </h4>
                                 <RaisedButton onClick={this.EditDetails.bind(this)} label="Edit Details" style={{ margin: 12}} />
                             </div>
-
                         </CardText>
                     </div>
                 </Card>

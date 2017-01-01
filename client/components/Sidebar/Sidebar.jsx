@@ -208,20 +208,24 @@ class Sidebar extends React.Component {
 
     Support () {
         var curr_icon = <div>
-          <hr/>
           <div className="sidebar-bottom">
 
             <img className="Userimage"/>
 
               <CardText>
+                  <br />
                   <div className="userdescribation">
-                      <strong>Contact Email- </strong>{this.state.email}
+                      <strong>Contact Email: </strong>{this.state.email}
                   </div>
+                  <hr/>
+
                   <br/>
                   <div className="userdescribation">
                       {this.state.Description}
                   </div>
                   <br/>
+                  <hr/>
+
 
               <div style={{ display: 'flex', flexWrap: 'wrap' }}>
                   {this.state.tags.map((item, index) =>

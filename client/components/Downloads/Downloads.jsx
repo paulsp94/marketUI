@@ -343,26 +343,19 @@ class  Downloads extends React.Component{
                                        <Profile/>
                                     </div>
                                 </Tab>
-                                <Tab label="Downloads" onActive={this.Download.bind(this)}>
+                               {/* <Tab label="Downloads" onActive={this.Download.bind(this)}>
                                     <div className="TextCard">
-
-                                        <p>
-                                            <strong>Placeholder:</strong> Robin Put Some text Here
-                                        </p>
-
-
-
                                         {
-                                            /*data.map((detail)=> {*/
-                                                /*return <DataContainer item={detail} ViewItem = {this.productData.bind(this)}/>*/
-                                            /*})*/
+                                            data.map((detail) => {
+                                                return <DataContainer item={detail} ViewItem = {this.productData.bind(this)}/>
+                                            })
                                         }
                                     </div>
                                 </Tab>
+                                */}
 
                                 <Tab label="Content" onActive={this.Content.bind(this)}>
                                     <Card style={{ marginRight: "2%", marginLeft: "2%", marginTop: 9}}>
-
                                     </Card>
                                     {Contentdata}
                                 </Tab>

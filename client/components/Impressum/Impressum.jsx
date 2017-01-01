@@ -10,28 +10,20 @@ import TextField from 'material-ui/TextField';
 import Divider from 'material-ui/Divider/Divider';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 
-
-<meta name="viewport" content="width=device-width" />
-
 var Impressum = React.createClass({ 
     render(){
-        var style = { 
-                      margin: 'auto',
-                      width: '60%',
-                      paddingLeft: '2px',
-                  };
         return (
               <div className="container-search" style={{paddingTop:'1px'}}>
-                  <Card style={style}>
-                   <h2 style={{textAlign:'center', margin:10, padding:10}}> Impressum </h2>
+                  <Card className="pageStyle">
+                     <h2 style={{textAlign:'center'}}> Impressum </h2>
                    </Card> 
-                  <Card style={style}>
+              <Card className="pageStyle">
                 <p> Company: Vaionex Corporation </p>
                 <p> Email: contact@rscript.market </p>
                 <p> Adress: 122 Stuart Dr, 19901-5825 Dover </p>
                 <p> State: Delaware, USA </p>
                 <p> CEO: Robin Kohze </p>
-                </Card>                   
+              </Card>                   
               </div>
         )
     }
