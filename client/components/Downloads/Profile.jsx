@@ -7,6 +7,7 @@ import FlatButton from 'material-ui/FlatButton';
 var firebase = require('firebase');
 import firebase_details from '../../Firebase/Firebase';
 import TextField from 'material-ui/TextField';
+import { browserHistory } from 'react-router'
 import MaterialTagsInput from '../_common/MaterialTagsInput';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -96,6 +97,19 @@ class  Profile extends React.Component{
         this.props.changeemaildetails(newemail);
     }
 
+    deleteAccount(){
+        var user = firebase.auth().currentUser;
+
+        user.delete().then(function() {
+            console.log("userDeleted");
+            browserHistory.push('/')
+            // User deleted.
+        }, function(error) {
+            // An error happened.
+        });
+
+    }
+
     changepassword(){
 
         var password1= this.password.value;
@@ -137,7 +151,6 @@ class  Profile extends React.Component{
     }
 
     render(){
-
 
         if(this.props.userdetails.password != false){
             var passwordchangedresult = this.props.userdetails.password;
@@ -213,11 +226,13 @@ class  Profile extends React.Component{
                     <br/><br/>
                      Email: {email}
                     <br/><br/>
-                    <RaisedButton label="Change Email" style={{ margin: 12}} onTouchTap={this.Dropboxopen4.bind(this)} />
-                    <br />
-                    {Emailresult}<br/>
-                   <RaisedButton label="Change Password" style={{ margin: 12}} onTouchTap={this.Dropboxopen1.bind(this)} />
-                    <br/><br/>
+                    <RaisedButton label="Change Email" style={{margin: 12}} onTouchTap={this.Dropboxopen4.bind(this)} />
+                    <br/>
+                    {Emailresult}
+                    <RaisedButton label="Change Password" style={{margin: 12}} onTouchTap={this.Dropboxopen1.bind(this)} />
+                    <br/>
+                    <RaisedButton label="Delete Account" style={{margin: 12}} onTouchTap={this.deleteAccount.bind(this)} />
+                    <br/>
                     {result}
 
                     <Dialog
@@ -231,20 +246,16 @@ class  Profile extends React.Component{
                         Enter Password: <br/> <input className="inputfield-signup1" type="password" name="password" ref={(fgf) => this.password = fgf} /> <br/><br/>
                         Enter Again-Password: <br/><input className="inputfield-signup1" type="password" name="password1" ref={(fg) => this.password1 = fg}/><br/><br/>
                         <RaisedButton label="Submit" onClick={this.changepassword.bind(this)} style={{ margin: 12}} />
-
                     </Dialog>
-
-                     <Dialog
+                    <Dialog
                         actions={actions3}
                         modal={false}
                         open={this.state.open3}
                         onRequestClose={this.Dropboxcloase4.bind(this)}>
-                         <input className="inputfield-signup1" type="email" placeholder="Enter New Email" name="newemail" ref={(g) => this.newemail = g}/>
+                         <input className="inputfield-signup1" type="email" placeholder="Enter Email" name="newemail" ref={(g) => this.newemail = g}/>
 
                          <RaisedButton label="Submit" onClick={this.changeemail.bind(this)} style={{ margin: 12}} />
-
-                     </Dialog>
-
+                    </Dialog>
                     <Dialog
                         actions={actions1}
                         modal={false}
@@ -257,7 +268,6 @@ class  Profile extends React.Component{
                 <Card style={{marginRight: "2%", marginLeft: "2%", marginTop: 9}}>
 
                    <CardText>
-
                     <br/>
                        <strong><p> Profile Details </p></strong>
 
@@ -275,7 +285,7 @@ class  Profile extends React.Component{
                         onRequestClose={this.Dropboxcloase3.bind(this)}>
                     </Dialog>
 
-                        <div className="knowledgetags">
+                     <div className="knowledgetags">
                        <MaterialTagsInput
                            value = {this.state.tags}
                            onChange = {this.onTagsChange.bind(this)}
@@ -285,9 +295,7 @@ class  Profile extends React.Component{
 
                        <textarea value={this.state.Desxription} onChange={this.TextFieldValue.bind(this)} name="textarea" ref={(d) => this.textarea = d} className="textarea1" placeholder="Describe yourself"/> <br/> <br/>
 
-                       
                        <RaisedButton onClick={this.SubmitUserDetails.bind(this)} label="Save Changes"  secondary={true} style={{ margin: 12}} />
-
 
                 </CardText>
                 </Card>

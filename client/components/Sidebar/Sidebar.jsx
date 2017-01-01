@@ -51,7 +51,6 @@ class Sidebar extends React.Component {
             Description:'',
             tags:[],
             email:'',
-
         };
 
         this._submitHandler = this._submitHandler.bind(this);
@@ -104,7 +103,7 @@ class Sidebar extends React.Component {
                     </div>
 
                     <Card>
-                      <h4 style={{ float: "left", marginLeft: 3 }}><strong> Tags: </strong></h4>
+                      <h4 style={{ float: "left", marginLeft: 3}}><strong> Tags: </strong></h4>
                       <div style={{ display: 'flex', flexWrap: 'wrap' }}>
 
                         {
@@ -214,9 +213,7 @@ class Sidebar extends React.Component {
 
             <img className="Userimage"/>
 
-
               <CardText>
-
                   <div className="userdescribation">
                       <strong>Contact Email- </strong>{this.state.email}
                   </div>
@@ -227,7 +224,6 @@ class Sidebar extends React.Component {
                   <br/>
 
               <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-
                   {this.state.tags.map((item, index) =>
                       <Chip key={index} style={{ float: "left", margin: 4 }}>{item}</Chip>
                   )}
@@ -354,7 +350,6 @@ class Sidebar extends React.Component {
                   </Tab>
                   <Tab label="Supports" onActive={this.Support.bind(this)}> </Tab>
                 </Tabs>
-
                   {subheader}
                   {this.state.Currenticon}
               </Card>

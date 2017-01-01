@@ -33,6 +33,19 @@ export default class AuthModal extends React.Component {
     }
   }
 
+  pwReset = (type) =>{
+    return () => {
+      const email = this.refs.email.input.value;
+      var auth = firebase.auth();
+      auth.sendPasswordResetEmail(email).then(function() {
+        // Email sent.
+        console.log('email send out')
+      }, function(error) {
+        // An error happened.
+      });
+    }
+  }
+
   handleSubmit = (type) => {
     return () => {
       const email = this.refs.email.input.value;
@@ -63,7 +76,16 @@ export default class AuthModal extends React.Component {
   render () {
     const { error, signUp } = this.state
     const { open } = this.props
-    const errors = error ? <p className="text-danger"> {error} </p> : '';
+    const errors = error ? <div> <p className="text-danger"> {error} </p> 
+                <div className={cx('buttons-container')}>
+                  <RaisedButton
+                    label="reset password"
+                    onClick={this.pwReset('password')}
+                    primary
+                    fullWidth
+                  />
+                  </div>
+    </div> : '';
     return (
       <Dialog
         onRequestClose={this.closeModal}
@@ -101,7 +123,10 @@ export default class AuthModal extends React.Component {
                     primary
                     fullWidth
                   />
-                </div>
+                  </div>
+
+                
+                  
                 <div className="text-center">
                   No account yet?
                 </div>
@@ -151,10 +176,8 @@ export default class AuthModal extends React.Component {
                     fullWidth
                   />
                 </div>
-                <div className="text-center">
                   Already got an account?&nbsp;
                   <a onClick={this.toggleSignUpMenu} className="cursor-pointer">Sign in here</a>
-                </div>
               </form>
             </div>
           </div>

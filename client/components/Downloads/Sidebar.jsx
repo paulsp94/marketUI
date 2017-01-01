@@ -160,7 +160,7 @@ class Sidebar extends React.Component {
               </div>
           </Card>
 
-          <div style={{ flexWrap: 'wrap', margin: 9 }}>
+          <div style={{flexWrap: 'wrap', margin: 9}}>
             <h4><strong>Complexity:</strong></h4>
             <p> {this.props.complexity} </p>
             <h4><strong>Integration Time: </strong></h4>
@@ -168,17 +168,17 @@ class Sidebar extends React.Component {
           </div>
 
           <Card>
-            <h4 style={{ float: "left", marginLeft: 3 }}><strong> Compatibilty: </strong> <br/></h4>
-            <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-              <Chip style={{ float: "left", margin: 4 }}> {this.props.compatibility} </Chip>
+            <h4 style={{float: "left", marginLeft: 3}}><strong> Compatibilty: </strong> <br/></h4>
+            <div style={{display: 'flex', flexWrap: 'wrap'}}>
+              <Chip style={{float: "left", margin: 4}}> {this.props.compatibility} </Chip>
             </div>
           </Card>
 
           <Card>
-            <h4 style={{ float: "left", marginLeft: 3 }}><strong> Tags: </strong></h4>
+            <h4 style={{float: "left", marginLeft: 3}}><strong> Tags: </strong></h4>
             <div style={{ display: 'flex', flexWrap: 'wrap' }}>
                 {this.props.tags.map((item, index) =>
-                    <Chip key={index} style={{ float: "left", margin: 4 }}>{item}</Chip>
+                    <Chip key={index} style={{float: "left", margin: 4}}>{item}</Chip>
                 )}
             </div>
           </Card>
