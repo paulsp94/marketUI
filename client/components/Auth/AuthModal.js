@@ -6,6 +6,9 @@ import classNames from 'classnames/bind'
 import * as firebase from 'firebase';
 import TextField from 'material-ui/TextField';
 import {Link} from "react-router";
+import FontIcon from 'material-ui/FontIcon';
+import Flexbox from 'flexbox-react';
+
 
 const cx = classNames.bind(styles)
 
@@ -43,6 +46,81 @@ export default class AuthModal extends React.Component {
       }, function(error) {
         // An error happened.
       });
+    }
+  }
+
+   gitLogin = (type) =>{
+    return () => {
+      var provider = new firebase.auth.GithubAuthProvider();
+
+      firebase.auth().signInWithPopup(provider).then(function(result) {
+      // This gives you a GitHub Access Token. You can use it to access the GitHub API.
+      var token = result.credential.accessToken;
+      // The signed-in user info.
+      var user = result.user
+
+      // ...
+    }).catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      // The email of the user's account used.
+      var email = error.email;
+      // The firebase.auth.AuthCredential type that was used.
+      var credential = error.credential;
+      // ...
+    }).then(() => {
+          this.closeModal();
+    });
+    }
+  }
+
+    facebookLogin = (type) =>{
+    return () => {
+      var provider = new firebase.auth.FacebookAuthProvider();
+      firebase.auth().signInWithPopup(provider).then(function(result) {
+        // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+        var token = result.credential.accessToken;
+        // The signed-in user info.
+        var user = result.user;
+        // ...
+      }).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // The email of the user's account used.
+        var email = error.email;
+        // The firebase.auth.AuthCredential type that was used.
+        var credential = error.credential;
+        // ...
+      }).then(() => {
+          this.closeModal();
+      });
+    }
+  }
+
+    googleLogin = (type) =>{
+    return () => {
+      var provider = new firebase.auth.GoogleAuthProvider();
+
+      firebase.auth().signInWithPopup(provider).then(function(result) {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        var token = result.credential.accessToken;
+        // The signed-in user info.
+        var user = result.user;
+        // ...
+      }).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // The email of the user's account used.
+        var email = error.email;
+        // The firebase.auth.AuthCredential type that was used.
+        var credential = error.credential;
+        // ...
+      }).then(() => {
+          this.closeModal();
+        });
     }
   }
 
@@ -95,6 +173,41 @@ export default class AuthModal extends React.Component {
         {!signUp ? <div>
           <div className="rowAuth">
             <div className="col-sm-6 col-sm-offset-3">
+
+              <Flexbox flexDirection="row" style={{textAlign:'center'}}>
+
+                 <div className={cx('buttons-container')}>
+                  <RaisedButton
+                   backgroundColor="#6cc644"
+                    label="GitHub"
+                    primary
+                    onClick={this.gitLogin('gitLogin')}
+                    style={{margin: 3, padding: 0}}
+                  />
+                </div>
+
+                <div className={cx('buttons-container')}>
+                  <RaisedButton
+                    backgroundColor="#3b5998"
+                    secondary
+                    label="Facebook"
+                    onClick={this.facebookLogin('facebook')}
+                    style={{margin: 3, padding: 0}}
+                  />
+                </div>
+
+                 <div className={cx('buttons-container')}>
+                  <RaisedButton
+                    backgroundColor="#ea4335"
+                    label="Google"
+                    primary
+                    onClick={this.googleLogin('google')}                    
+                    style={{margin: 3, padding: 0}}
+                  />
+                </div>
+
+              </Flexbox>
+
               <form>
                 <div className="form-group">
                   <TextField
@@ -176,6 +289,7 @@ export default class AuthModal extends React.Component {
                     fullWidth
                   />
                 </div>
+
                   Already got an account?&nbsp;
                   <a onClick={this.toggleSignUpMenu} className="cursor-pointer">Sign in here</a>
               </form>
