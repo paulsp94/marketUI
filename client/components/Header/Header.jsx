@@ -107,17 +107,7 @@ export default class Header extends React.Component {
               <MenuItem primaryText="Sign out" onClick={this.logout}/>
             </IconMenu>
        </li>
-         {contentLoggedIn}
-
-       {
-            isAdmin ?
-            <li>
-              <Link to="/admin" className="">
-                Admin
-              </Link>
-            </li> : null
-        }
-    
+         {contentLoggedIn} 
         <li>
           <Link to="/market" className="">
             Explore

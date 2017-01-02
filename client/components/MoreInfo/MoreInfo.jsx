@@ -17,7 +17,7 @@ var Contact = React.createClass({
     render(){
         var style = { 
                       margin: 'auto',
-                      marginBottom: '5px',
+                      marginBottom: '2px',
                       paddingTop: '7px',
                       paddingBottom: '1px',
                       width: '60%',
@@ -26,7 +26,7 @@ var Contact = React.createClass({
                   };
         return (
               <div className="container-search" style={{paddingTop:'1px'}}>
-                  <Card style={style}>
+                  <Card className="pageStyle">
                    <h2 style={{textAlign:'center'}}> Beta Test Awards </h2>
                    </Card> 
                   <Card style={style}>

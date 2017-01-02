@@ -13,7 +13,7 @@ var FileInput = require('react-file-input');
 import FileUploader from 'react-firebase-file-uploader';
 import Flexbox from 'flexbox-react';
 import { currentuserid, submitProductGeneralDetails, productCoreDetails } from '../../action/action.jsx';
-
+import StarRatingComponent from 'react-star-rating-component';
 
 function mapStateToProps(store) {
     return { userdetails: store.userdetails};
@@ -75,8 +75,8 @@ class  GeneralProfile extends React.Component{
                 this.setState({
                     title :Title,
                     subtitle:SubTitle,
-                    describtion:category,
-                    price:Price,
+                    describtion:Description,
+                    price:FREE,
                     category:category,
                     avatarURL:Mainimage,
                     avatarURL1:Subimage,
@@ -88,7 +88,7 @@ class  GeneralProfile extends React.Component{
             var title = '';
             var subtitle= '';
             var describtion= '';
-            var price= '';
+            var price= 'FREE';
             var category= '';
             var avatarURL = '';
             var avatarURL1 = '';
@@ -97,7 +97,7 @@ class  GeneralProfile extends React.Component{
             this.setState({
                 title :title,
                 subtitle:subtitle,
-                describtion:category,
+                describtion:describtion,
                 price:price,
                 category:category,
                 avatarURL:avatarURL,
@@ -205,7 +205,7 @@ class  GeneralProfile extends React.Component{
 
 
                         this.setState({
-                            submitstatus: "Submitted Safely"
+                            submitstatus: "Successfully Saved!"
                         })
 
                     }
@@ -314,13 +314,8 @@ class  GeneralProfile extends React.Component{
                     <div className="left-panel">
 
                           <Card style={{ margin: '10px auto', width: 550 }}>
-                                <div className="warning" style={{margin:'20 0 0 100'}} >
-                                    {this.state.Error}
-                                </div>
-                                 <CardTitle
-                                   title="General"
-                                   subtitle=""
-                                 />
+
+                                 
                                  <CardText>
                                      <input className="inputfield-signup1" value={this.state.title} ref={(d) => this.title = d}  name="title" type="text" placeholder="Title" onChange={this.TiTle.bind(this)} />
                                      <input className="inputfield-signup1" value={this.state.subtitle} ref={(de) => this.subTitle = de}  name="subtitle" type="text"  placeholder="sub-title" onChange={this.SubTitle.bind(this)}/>
@@ -338,7 +333,7 @@ class  GeneralProfile extends React.Component{
                                           onProgress={this.handleProgress}  />
                                     </FlatButton> */}
 
-                                    <br/><br/><br/>
+                                    <br/><br/>
                                      <FileUploader
                                             accept="image/*"
                                             name="avatar"
@@ -377,10 +372,16 @@ class  GeneralProfile extends React.Component{
                                         <textarea value={this.state.describtion} name="textarea" ref={(d) => this.textarea = d} className="textarea1" placeholder="Description about Product"
                                                     onChange={this.DescriPtion.bind(this)}/> <br/> <br/>
 
-                                        <input className="inputfield-signup1" value={this.state.price} ref={(d) => this.Price = d} name="Price" type="text" placeholder="Price in $" onChange={this.PriCe.bind(this)} />
+                                        {/* <input className="inputfield-signup1" value={this.state.price} ref={(d) => this.Price = d} name="Price" type="text" placeholder="Price in $" onChange={this.PriCe.bind(this)} />
+                                        */}
+                                        <input style={{display: 'none'}} className="inputfield-signup1" value="FREE" ref={(d) => this.Price = d} name="Price" type="text" placeholder="Price in $" onChange={this.PriCe.bind(this)} />
+                                        
                                         <div className="product-header">
                                           <RaisedButton onClick={this.SubMit.bind(this)} label=" Save" primary={true} style={{ margin: 12}}/>
                                             <br/>
+                                        <div className="warning" style={{margin:'20 0 0 100'}} >
+                                             {this.state.Error}
+                                        </div>
                                             {this.state.submitstatus}
                                         </div>
                                     </CardText>
@@ -399,19 +400,28 @@ class  GeneralProfile extends React.Component{
                                 <Card>
                                   <Card className="product-search" style={{padding: 0}}>
                                       <img className="product_image" src={this.state.avatarURL1}/>
-                                      <h5>{this.state.title}</h5>
-                                      <h5 style={{height: '35px'}}> {this.state.describtion}</h5>
+                                      
                                       <Flexbox flexDirection="row">
                                           <Flexbox flexGrow={1}>
-                                              <RaisedButton label="rating" style={{ margin: 1, width: "100%"}} />
-                                          </Flexbox>
-                                          <Flexbox flexGrow={1}>
+                                              <RaisedButton label="FREE" style={{ margin: 1, width: "100%"}} />
+                                          {/*
                                               <RaisedButton label={`${this.state.price || 0}`} style={{ margin: 1, width: "100%"}} />
+                                          */}
+                                        </Flexbox>
+                                         <Flexbox flexGrow={1} style={{marginLeft: 10, marginTop: 12}}>
+                                            <StarRatingComponent
+                                            name="rating"
+                                            value={5} /* number of selected icon (`0` - none, `1` - first) */
+                                            editing={false}
+                                             />
+                                            
                                           </Flexbox>
                                           <Flexbox flexGrow={1}>
-                                              <RaisedButton label="nr sold" style={{ margin: 1, width: "100%"}} />
+                                              <RaisedButton label="0" style={{ margin: 1, width: "100%"}} />
                                           </Flexbox>
                                       </Flexbox>
+                                      <h5>{this.state.title}</h5>
+                                      <p style={{height: '48px'}}> {this.state.describtion}</p>
                                 </Card>
                                 </Card>
                                 <br/><br/>

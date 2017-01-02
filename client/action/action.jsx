@@ -169,7 +169,6 @@ export function  Description(productid) {
     return function (dispatch) {
         var Description = [];
         firebase.database().ref('Description').orderByChild('ProductId').equalTo(productid).on("value", (snapshot) => {
-
             snapshot.forEach((data123) => {
                 Description.push({
                     Description: data123.val().textfieldvalue1,
@@ -190,7 +189,6 @@ export function  ProductSidebar(productid) {
     return function (dispatch) {
         var ProductSidebar = [];
         firebase.database().ref('ProductSidebar').orderByChild('Productid').equalTo(productid).on("value", (snapshot) => {
-
             snapshot.forEach((data123) => {
                 ProductSidebar.push({
                     IntegrationTime: data123.val().IntegrationTime,
@@ -217,8 +215,6 @@ export function  ProductContent(productid) {
 
         var Content = [];
         firebase.database().ref('Content').orderByChild('Productid').equalTo(productid).on("value", (snapshot) => {
-
-
             snapshot.forEach((data123) => {
                 Content.push({
                     Content: data123.val().textfieldvalue1,
@@ -257,7 +253,6 @@ export function  UserCreatedProduct() {
                 var currentproductid = groupid[i].productid;
 
                 firebase.database().ref('ProductCoreDetails').orderByChild('ProductId').equalTo(currentproductid).on("value", (snapshot) => {
-
                     snapshot.forEach((data123) => {
                         productallid.push({
                             productid: data123.val().ProductId,
@@ -399,7 +394,7 @@ export function  submitPublishedproducts(ProductId, UserId) {
                                         dispatch({
                                             type: "SUBMITPUBLISHEDPRODUCTS",
                                             payload: {
-                                                submitDetails: "Every detail Exist, Your Product is published Now"
+                                                submitDetails: "Your product is now pre-published! We will review it soon."
                                             }
                                         })
                                     }
@@ -407,7 +402,7 @@ export function  submitPublishedproducts(ProductId, UserId) {
                                         dispatch({
                                             type: "SUBMITPUBLISHEDPRODUCTS",
                                             payload: {
-                                                submitDetails: "Error: Product Sidebar doesnt exist"
+                                                submitDetails: "Error: Sidebar TAB not saved/complete"
                                             }
                                         })
                                     }
@@ -417,7 +412,7 @@ export function  submitPublishedproducts(ProductId, UserId) {
                                 dispatch({
                                     type: "SUBMITPUBLISHEDPRODUCTS",
                                     payload: {
-                                        submitDetails: "Error: Product Content doesnt exist"
+                                        submitDetails: "Error: Content TAB not saved/complete"
                                     }
                                 })
 
@@ -428,7 +423,7 @@ export function  submitPublishedproducts(ProductId, UserId) {
                         dispatch({
                             type: "SUBMITPUBLISHEDPRODUCTS",
                             payload: {
-                                submitDetails: "Error: Product Description doesnt exist"
+                                submitDetails: "Error: Description TAB not saved/complete"
                             }
                         })
                     }
@@ -438,14 +433,12 @@ export function  submitPublishedproducts(ProductId, UserId) {
                 dispatch({
                     type: "SUBMITPUBLISHEDPRODUCTS",
                     payload: {
-                        submitDetails: "Error: Product General doesnt exist"
+                        submitDetails: "Error: General TAB not saved/complete"
                     }
                 })
             }
         });
-
     }
-
 }
 
 export function  FetchAllCurrentUserproduct() {
@@ -486,15 +479,12 @@ export function  productEditValidationDetails(productid) {
 
         var user = firebase.auth().currentUser;
         var currentUserid = user.uid;
-
         var query = firebase.database().ref('Product_creation');
 
         query.once("value", (snapshot) => {
-
             if(snapshot.exists()){
 
                 var myObj = snapshot.val();
-
                 var arr =[];
                 for( var i in myObj ) {
                     if (myObj.hasOwnProperty(i)){
@@ -503,9 +493,7 @@ export function  productEditValidationDetails(productid) {
                 }
 
                 for(var i = 0; i< arr.length+1; i++){
-
                     var currentvaluearray = arr[i];
-
                     if(i == arr.length){
                             dispatch({
                                 type: "EDITVALIDATION",
@@ -513,17 +501,13 @@ export function  productEditValidationDetails(productid) {
                                     producteditvalidation : "WRONGVALIDATION"
                                 }
                             })
-                    }
-
-                    else{
+                    } else {
 
                         var tableproductid = currentvaluearray.ProductId;
                         var tableuserid = currentvaluearray.userid;
 
                         if(tableproductid == productid){
-
                             if(tableuserid == currentUserid){
-
                                 dispatch({
                                     type: "EDITVALIDATION",
                                     payload: {
@@ -558,7 +542,6 @@ export function  productSellerandstripeid(productid) {
 
             firebase.database().ref(`Users`).once('value').then((response) => {
               let sellers = response.val();
-
               Object.keys(sellers).forEach(function (key) {
                 let seller = sellers[key];
                 if (seller.UserId === sellerId) {

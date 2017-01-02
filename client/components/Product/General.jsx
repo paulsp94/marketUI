@@ -38,9 +38,7 @@ function mapDispatchToProps(dispatch) {
 @connect(mapStateToProps, mapDispatchToProps)
 
 class  General extends React.Component{
-
     constructor(props) {
-
         super(props);
         this.state= {
             ProductID:'',
@@ -49,10 +47,7 @@ class  General extends React.Component{
         };
     }
 
-
     checkvalidation(productid){
-
-
         firebase.database().ref('admin').once('value')
             .then((snapshot) => {
                 let data = snapshot.val();
@@ -72,11 +67,8 @@ class  General extends React.Component{
         var query = firebase.database().ref('Product_creation');
 
         query.once("value", (snapshot) => {
-
             if(snapshot.exists()){
-
                 var myObj = snapshot.val();
-
                 var arr =[];
                 for( var i in myObj ) {
                     if (myObj.hasOwnProperty(i)){
@@ -85,15 +77,11 @@ class  General extends React.Component{
                 }
 
                 for(var i = 0; i< arr.length+1; i++){
-
                     var currentvaluearray = arr[i];
-
                     if(i == arr.length){
-
                         this.setState({
                             producteditvalidation:"WRONGVALIDATION"
                         })
-
                     }
 
                     else{
@@ -119,10 +107,7 @@ class  General extends React.Component{
                     producteditvalidation:"WRONGVALIDATION"
                 })
             }
-
         });
-
-
     }
 
     componentWillMount(){
@@ -142,12 +127,10 @@ class  General extends React.Component{
             this.setState({
                 ProductID: ProductId
             });
-
         }
     }
 
     render(){
-
         if(this.state.producteditvalidation == false ){
             return (
             <div className="background">
@@ -156,10 +139,7 @@ class  General extends React.Component{
                 </div>
             </div>
             )
-        }
-
-        else {
-
+        }  else {
                 return (
                     <div className="">
                         <div className="" style={{backgroundColor: "#efeadd", paddingBottom: "0.5%"}}>
@@ -182,7 +162,6 @@ class  General extends React.Component{
                                 <Tab label="Sidebar">
                                     <Sidebar ProductId={this.state.ProductID} validation = {this.state.producteditvalidation}/>
                                 </Tab>
-
                             </Tabs>
                         </div>
                     </div>

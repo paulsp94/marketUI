@@ -117,9 +117,7 @@ class ProductSidebar extends React.Component {
     var integrationTime = this.state.integrationTime;
     var compatibility = this.state.compatibility;
     var tags = this.state.tags;
-
     var ProductId = this.props.ProductId;
-
 
     if(packages == '' || compatibility == '' || tags == ''){
         this.setState({
@@ -155,16 +153,11 @@ class ProductSidebar extends React.Component {
     return (
 
       <div className="product-tab">
-
         <div className="left-panel">
 
-            <div className="warning">
-                {this.state.error}
-            </div>
+            
           <Card style={{ margin: '10px auto', width: 550 }}>
-            <div className="warning">
-              {message}
-            </div>
+        
             <CardTitle
               title="Sidebar"
               subtitle="Here you can specify product details"
@@ -231,7 +224,12 @@ class ProductSidebar extends React.Component {
 
             <RaisedButton onClick={this.subMit.bind(this)} primary={true} label=" Save" style={{ margin: 12 }}/>
             <RaisedButton onClick={this.Publish.bind(this)} primary={true} label="Publish" style={{ margin: 12 }}/>
-
+            <div className="warning">
+                {this.state.error}
+            </div>
+            <div className="warning">
+              {message}
+            </div>
           </Card>
         </div>
 

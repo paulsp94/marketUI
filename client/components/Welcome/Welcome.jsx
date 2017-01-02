@@ -36,7 +36,7 @@ var Welcome = React.createClass({
                         </div>
                         <div style={{textAlign:"center"}} className="welcome-info-header">
                         <Link to="/MoreInfo" className="">
-                            <RaisedButton label="More Info" style={{marginBottom: 5}} />
+                            <RaisedButton label="More Info" style={{marginBottom: 1}} />
                         </Link>
                         </div>
                     </div>

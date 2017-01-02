@@ -55,7 +55,7 @@ class Product extends React.Component{
                             {/*<RaisedButton label={this.props.item.Price} style={{ margin: 1, width: "100%"}} />*/}
                             <RaisedButton label="free" style={{ margin: 1, width: "100%"}} />
                         </Flexbox>
-                        <Flexbox flexGrow={1} marginTop={'10px'} marginLeft={'12px'}>
+                        <Flexbox flexGrow={1} marginTop={'10px'} marginLeft={'13px'}>
                             <StarRatingComponent
                                 name="rating" /* name of the radio input, it is required */
                                 value={this.props.item.rating || 0} /* number of selected icon (`0` - none, `1` - first) */
