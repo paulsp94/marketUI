@@ -18,7 +18,7 @@ var ContentInfo = React.createClass({
         var style = { 
                       margin: 'auto',
                       marginBottom: '2px',
-                      paddingTop: '7px',
+                      paddingTop: '13px',
                       paddingBottom: '1px',
                       width: '60%',
                       paddingLeft: '10px',
@@ -38,14 +38,15 @@ var ContentInfo = React.createClass({
                       marginBottom: '2px',
                       width: '60%',
                       }}>
-                   <iframe src="https://player.vimeo.com/video/197837851?title=0&byline=0" width="100%" height="425" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                   <iframe src="https://player.vimeo.com/video/197839131?title=0&byline=0" width="100%" height="425" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                    </Card>
                   <Card style={style}>
                     <p> All actions must be in compliance with our <Link to="/Policy"> terms & policy </Link> </p>
                     <p> If you have open questions please <Link to="/Support"> let us know </Link> </p>
-                    <RaisedButton label="content Creation" primary={true} style={{marginTop: 10, marginBottom: 20}} />
+                    <Link to="/ContentCreation">
+                    <RaisedButton label="Creation Page" primary={true} style={{marginTop: 10, marginBottom: 20}} />
+                    </Link>
                     <p> <b> This is a BETA - make sure to save everything offline! </b>  </p>  
-
                  </Card>       
                            
               </div>

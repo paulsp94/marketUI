@@ -38,7 +38,7 @@ class  GeneralProfile extends React.Component{
             title:"",
             subtitle:"",
             describtion:"",
-            price:"",
+            price:"FREE",
             category:'',
             Error:"",
             username: '',
@@ -375,7 +375,7 @@ class  GeneralProfile extends React.Component{
 
                                         {/* <input className="inputfield-signup1" value={this.state.price} ref={(d) => this.Price = d} name="Price" type="text" placeholder="Price in $" onChange={this.PriCe.bind(this)} />
                                         */}
-                                        <input style={{}} className="inputfield-signup1" value="FREE" ref={(d) => this.Price = d} name="Price" type="text" placeholder="Price in $" onChange={this.PriCe.bind(this)} />
+                                        <input style={{}} className="inputfield-signup1" value="FREE" ref={(d) => this.Price = 'FREE'} name="Price" type="text" placeholder="Price in $" onChange={this.PriCe.bind(this)} />
                                         
                                         <div className="product-header">
                                           <RaisedButton onClick={this.SubMit.bind(this)} label=" Save" primary={true} style={{ margin: 12}}/>
