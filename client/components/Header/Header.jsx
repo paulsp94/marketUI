@@ -108,6 +108,11 @@ export default class Header extends React.Component {
             </IconMenu>
        </li>
          {contentLoggedIn} 
+         <li>
+          <Link to="/Create" className="">
+            Create
+          </Link>
+        </li>
         <li>
           <Link to="/market" className="">
             Explore
@@ -127,6 +132,7 @@ export default class Header extends React.Component {
           <div className="">
               <Link to="/" className="navbar-brand" style={{color:'#37474F'}}>
                 <h3> R.Codes </h3>
+                <h3 style={{color:"#B71C1C"}}> [BETA] </h3>
               </Link>
             {content}
           </div>

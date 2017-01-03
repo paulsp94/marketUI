@@ -35,7 +35,7 @@ export default class Itemview extends React.Component {
             <CardMedia
               overlay={
                 <CardTitle title={this.props.productcoredetails.Title} subtitle={this.props.productcoredetails.SubTitle}/>}>
-                <img src={this.props.productcoredetails.Mainimage}/>
+                <img className="itemLargeImage" src={this.props.productcoredetails.Mainimage}/>
             </CardMedia>
             <Card className="itemPreviewMargins">
               <CardText >

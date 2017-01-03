@@ -175,6 +175,7 @@ class ProductSidebar extends React.Component {
               {/* complexity */}
               <SelectField
                 floatingLabelText="Complexity"
+                floatingLabelFixed={true}
                 value={complexity}
                 onChange={this.onComplexityChange.bind(this)}
                 autoWidth={false}
@@ -193,6 +194,7 @@ class ProductSidebar extends React.Component {
 
               <SelectField
                 floatingLabelText="Integration Time"
+                floatingLabelFixed={true}
                 value={integrationTime}
                 onChange={this.onIntegrationTimeChange.bind(this)}
                 autoWidth={false}

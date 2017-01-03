@@ -76,7 +76,7 @@ class  GeneralProfile extends React.Component{
                     title :Title,
                     subtitle:SubTitle,
                     describtion:Description,
-                    price:FREE,
+                    price:'FREE',
                     category:category,
                     avatarURL:Mainimage,
                     avatarURL1:Subimage,
@@ -171,7 +171,7 @@ class  GeneralProfile extends React.Component{
 
         if(title == '' || subtitle == '' || describtion == '' || price == '' || category == ''|| url == ''|| url1 == ''|| title == undefined || subtitle == undefined || describtion == undefined || price == undefined || category == undefined || url == undefined|| url1 == undefined){
             this.setState({
-                Error: "Please fill Every Detail",
+                Error: "You probably forgot one item",
             });
         }
         else {
@@ -231,7 +231,7 @@ class  GeneralProfile extends React.Component{
 
 
                         this.setState({
-                            submitstatus: "Submitted Safely"
+                            submitstatus: "Saved!"
                         })
 
                     }
@@ -259,7 +259,7 @@ class  GeneralProfile extends React.Component{
 
 
                     this.setState({
-                        submitstatus: "Submitted Safely"
+                        submitstatus: "Saved!"
                     })
 
                 }
@@ -359,6 +359,7 @@ class  GeneralProfile extends React.Component{
                                         <SelectField
                                           floatingLabelText = "Category"
                                           value = {this.state.category}
+                                          floatingLabelFixed={true}
                                           onChange = {this.ProdctCategory.bind(this)}>
                                             <MenuItem value="Choose the Category" primaryText="Choose the Category" />
                                           <MenuItem value="Machine-Learning" primaryText="Machine-Learning" />
@@ -374,7 +375,7 @@ class  GeneralProfile extends React.Component{
 
                                         {/* <input className="inputfield-signup1" value={this.state.price} ref={(d) => this.Price = d} name="Price" type="text" placeholder="Price in $" onChange={this.PriCe.bind(this)} />
                                         */}
-                                        <input style={{display: 'none'}} className="inputfield-signup1" value="FREE" ref={(d) => this.Price = d} name="Price" type="text" placeholder="Price in $" onChange={this.PriCe.bind(this)} />
+                                        <input style={{}} className="inputfield-signup1" value="FREE" ref={(d) => this.Price = d} name="Price" type="text" placeholder="Price in $" onChange={this.PriCe.bind(this)} />
                                         
                                         <div className="product-header">
                                           <RaisedButton onClick={this.SubMit.bind(this)} label=" Save" primary={true} style={{ margin: 12}}/>
@@ -392,7 +393,7 @@ class  GeneralProfile extends React.Component{
                           <div className="container2">
                                   <CardMedia
                                       overlay={<CardTitle title={this.state.title} subtitle={this.state.subtitle}/>}>
-                                        <img style ={{height: 400}} src={this.state.avatarURL} />
+                                        <img style = {{height: 393}} src={this.state.avatarURL} />
                                   </CardMedia>
                                   </div>
 

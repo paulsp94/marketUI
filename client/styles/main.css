@@ -766,6 +766,7 @@ h1 {
 
 .productimage {
     width: 50%;
+    height: 200px;
 }
 
 .productimage1 {
@@ -776,6 +777,19 @@ h1 {
 .image-part {
     width: 50%;
     border: 10px solid red;
+}
+
+.itemLargeImage { 
+    height: 393px;
+    width: 100%;
+
+-moz-transition: opacity 2s; /* Firefox 4 */
+
+-webkit-transition: opacity 2s; /* Safari and Chrome */
+
+-o-transition: opacity 2s;
+
+transition: opacity 2s;
 }
 
 .text-part {
