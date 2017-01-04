@@ -2,16 +2,8 @@ import React, { Component } from 'react';
 import {Link} from "react-router";
 import {withRouter} from 'react-router';
 import { hashHistory } from 'react-router';
-import Subheader from '../Subheader/Subheader.jsx';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import RaisedButton from 'material-ui/RaisedButton';
-import Flexbox from 'flexbox-react';
-import TextField from 'material-ui/TextField';
-import Divider from 'material-ui/Divider/Divider';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
-
-
-<meta name="viewport" content="width=device-width" />
+import {Card} from 'material-ui/Card';
 
 var Contact = React.createClass({ 
     render(){
@@ -49,11 +41,9 @@ var Contact = React.createClass({
                 <p> All actions must be in compliance with our <Link to="/Policy"> terms & policy </Link>  </p> 
                 <p> For remaining questions please send a mail to support@r.codes </p>
                 </Card>       
-                           
               </div>
         )
     }
-
 });
 
 module.exports = Contact;

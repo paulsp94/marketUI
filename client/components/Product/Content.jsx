@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
-import RaisedButton from 'material-ui/RaisedButton';
-import FlatButton from 'material-ui/FlatButton';
+import {Card} from 'material-ui/Card';
 var firebase = require('firebase');
 import firebase_details from '../../Firebase/Firebase';
 import ReactMarkdown from 'react-markdown';
@@ -22,7 +20,6 @@ function mapDispatchToProps(dispatch) {
 
 
 class Content extends React.Component{
-
     constructor(props) {
         super(props);
         this.state= {

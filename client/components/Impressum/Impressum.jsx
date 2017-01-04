@@ -2,13 +2,7 @@ import React, { Component } from 'react';
 import {Link} from "react-router";
 import {withRouter} from 'react-router';
 import { hashHistory } from 'react-router';
-import Subheader from '../Subheader/Subheader.jsx';
-import injectTapEventPlugin from 'react-tap-event-plugin';
-import RaisedButton from 'material-ui/RaisedButton';
-import Flexbox from 'flexbox-react';
-import TextField from 'material-ui/TextField';
-import Divider from 'material-ui/Divider/Divider';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import {Card} from 'material-ui/Card';
 
 var Impressum = React.createClass({ 
     render(){

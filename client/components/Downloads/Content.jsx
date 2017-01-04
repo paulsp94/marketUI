@@ -3,7 +3,6 @@ import {Link} from "react-router";
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import RaisedButton from 'material-ui/RaisedButton';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
-import Paper from 'material-ui/Paper';
 import {withRouter} from 'react-router';
 import { browserHistory } from 'react-router'
 
@@ -12,7 +11,6 @@ export default class Content extends React.Component{
     constructor(props) {
         super(props);
         this.state= {
-            filldetails:'',
         };
     }
 
@@ -34,7 +32,7 @@ export default class Content extends React.Component{
                             <img className="productimage" src={this.props.item.Subimage}/>
                             <div className="text-part">
                                 <h4> <strong> {this.props.item.Title} </strong> </h4>
-                                <RaisedButton onClick={this.EditDetails.bind(this)} label="Edit Details" style={{ margin: 12}} />
+                                <RaisedButton onTouchTap={this.EditDetails.bind(this)} label="Edit Details" style={{ margin: 12}} />
                             </div>
                         </CardText>
                     </div>

@@ -9,7 +9,6 @@ import FlatButton from 'material-ui/FlatButton';
 import MenuItem from 'material-ui/MenuItem';
 var firebase = require('firebase');
 import firebase_details from '../../Firebase/Firebase';
-var FileInput = require('react-file-input');
 import FileUploader from 'react-firebase-file-uploader';
 import Flexbox from 'flexbox-react';
 import { currentuserid, submitProductGeneralDetails, productCoreDetails } from '../../action/action.jsx';
@@ -379,8 +378,7 @@ class  GeneralProfile extends React.Component{
                                         
                                         <div className="product-header">
                                           <RaisedButton onClick={this.SubMit.bind(this)} label=" Save" primary={true} style={{ margin: 12}}/>
-                                            <br/>
-                                        <div className="warning" style={{margin:'20 0 0 100'}} >
+                                        <div >
                                              {this.state.Error}
                                         </div>
                                             {this.state.submitstatus}

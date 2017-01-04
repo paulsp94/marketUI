@@ -2,14 +2,7 @@ import React, { Component } from 'react';
 import {Link} from "react-router";
 import {withRouter} from 'react-router';
 import { hashHistory } from 'react-router';
-import Subheader from '../Subheader/Subheader.jsx';
-import injectTapEventPlugin from 'react-tap-event-plugin';
-import RaisedButton from 'material-ui/RaisedButton';
-import Flexbox from 'flexbox-react';
-import TextField from 'material-ui/TextField';
-import Divider from 'material-ui/Divider/Divider';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
-
+import {Card} from 'material-ui/Card';
 
 <meta name="viewport" content="width=device-width" />
 
@@ -23,7 +16,6 @@ var Policy = React.createClass({
                    </Card> 
                 <div>
                 <Card className="policyCard">
-
 <p>
 1. Hello and welcome! Glad to have you on board. When we say ‘<strong>we</strong>’, ‘<strong>us</strong>’, ‘<strong>R script Market</strong>’ or ‘    <strong>Vaionex</strong>’, it’s because that’s who we are and we own and run the <strong>RScript Market</strong> site.
 </p>
@@ -1034,120 +1026,120 @@ For more information about how we use cookies, web beacons and similar technolog
 <table border="0" cellspacing="0" cellpadding="0">
     <tbody>
         <tr>
-            <td width="246" valign="bottom">
-                <p align="center">
+            <td>
+                <p>
                     <strong>What's included</strong>
                 </p>
             </td>
-            <td width="246" valign="bottom">
-                <p align="center">
+            <td>
+                <p>
                     <strong>Supported item - 6 months support from purchase with options to extend</strong>
                 </p>
             </td>
-            <td width="246" valign="bottom">
-                <p align="center">
+            <td>
+                <p>
                     <strong>All items</strong>
                 </p>
             </td>
         </tr>
         <tr>
-            <td width="246">
+            <td>
                 <p>
                     <strong>Updates to ensure the item works as described and is protected against major security concerns</strong>
                 </p>
             </td>
-            <td width="246">
-                <p align="center">
+            <td>
+                <p>
                     Yes
                 </p>
             </td>
-            <td width="246">
-                <p align="center">
+            <td>
+                <p>
                     Yes
                 </p>
             </td>
         </tr>
         <tr>
-            <td width="246">
+            <td>
                 <p>
                     <strong>Discretionary version updates</strong>
                 </p>
             </td>
-            <td width="246">
-                <p align="center">
+            <td>
+                <p>
                     Yes
                 </p>
             </td>
-            <td width="246">
-                <p align="center">
+            <td>
+                <p>
                     Yes
                 </p>
             </td>
         </tr>
         <tr>
-            <td width="246">
+            <td>
                 <p>
                     <strong>Availability of the author of the item to provide item support</strong>
                 </p>
             </td>
-            <td width="246">
-                <p align="center">
+            <td>
+                <p>
                     Yes
                 </p>
             </td>
-            <td width="246">
-                <p align="center">
+            <td>
+                <p>
                     No
                 </p>
             </td>
         </tr>
         <tr>
-            <td width="246">
+            <td>
                 <p>
                     <strong>Technical questions about the item's built-in features, functionality and third party plugins</strong>
                 </p>
             </td>
-            <td width="246">
-                <p align="center">
+            <td>
+                <p>
                     Yes
                 </p>
             </td>
-            <td width="246">
-                <p align="center">
+            <td>
+                <p>
                     No
                 </p>
             </td>
         </tr>
         <tr>
-            <td width="246">
+            <td>
                 <p>
                     <strong>Assistance with reported bugs and issues</strong>
                 </p>
             </td>
-            <td width="246">
-                <p align="center">
+            <td>
+                <p>
                     Yes
                 </p>
             </td>
-            <td width="246">
-                <p align="center">
+            <td>
+                <p>
                     No
                 </p>
             </td>
         </tr>
         <tr>
-            <td width="246">
+            <td>
                 <p>
                     <strong>Help with included third party assets (e.g. image sliders, contact forms)</strong>
                 </p>
             </td>
-            <td width="246">
-                <p align="center">
+            <td>
+                <p>
                     Yes
                 </p>
             </td>
-            <td width="246">
-                <p align="center">
+            <td>
+                <p>
                     No
                 </p>
             </td>

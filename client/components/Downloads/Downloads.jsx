@@ -14,8 +14,6 @@ var firebase = require('firebase');
 import firebase_details from '../../Firebase/Firebase';
 import { currentuserid, UserCreatedProduct, FetchAllCurrentUserproduct, UserDownloadedProduct } from '../../action/action.jsx';
 
-
-
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({
         currentuserid,

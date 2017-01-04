@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
-import RaisedButton from 'material-ui/RaisedButton';
-import FlatButton from 'material-ui/FlatButton';
+import {Card} from 'material-ui/Card';
 import ReactMarkdown from 'react-markdown';
 var firebase = require('firebase');
 import firebase_details from '../../Firebase/Firebase';

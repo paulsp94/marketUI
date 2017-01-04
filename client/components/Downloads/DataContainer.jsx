@@ -3,22 +3,17 @@ import {Link} from "react-router";
 import {withRouter} from 'react-router';
 import { browserHistory } from 'react-router';
 import { hashHistory } from 'react-router';
-import Header from '../Header/Header.jsx';
-import Subheader from '../Subheader/Subheader.jsx';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import RaisedButton from 'material-ui/RaisedButton';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
-import Paper from 'material-ui/Paper';
+import {Card, CardText} from 'material-ui/Card';
 
 class  DataContainer extends React.Component{
 
     constructor(props) {
-
         super(props);
         this.state= {
             filldetails:'',
         };
-
     }
 
     updateItem(event){
@@ -34,18 +29,18 @@ class  DataContainer extends React.Component{
     render(){
 
         return (
-            <Card   style={{ marginRight: "2%", marginLeft: "2%", marginTop: 9}} 
-                    onClick={this.updateItem.bind(this)}
+            <Card style={{ marginRight: "2%", marginLeft: "2%", marginTop: 9}} 
+                    onTouchTap={this.updateItem.bind(this)}
             >
-            <div className="Product" >
-                <CardText>
-                    <img className="productimage" src={this.props.item.Subimage}/>
-                <div className="text-part">
-                <h4> <strong> {this.props.item.Title} </strong> </h4>
-                    <RaisedButton onClick={this.ProductContentDownload.bind(this)} label="Download" style={{ margin: 12}} />
+                <div className="Product" >
+                    <CardText>
+                        <img className="productimage" src={this.props.item.Subimage}/>
+                    <div className="text-part">
+                    <h4> <strong> {this.props.item.Title} </strong> </h4>
+                        <RaisedButton onTouchTap={this.ProductContentDownload.bind(this)} label="Download" style={{ margin: 12}} />
+                    </div>
+                    </CardText>
                 </div>
-                </CardText>
-            </div>
             </Card>
         )
     }

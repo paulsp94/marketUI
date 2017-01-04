@@ -1,16 +1,4 @@
 import React, { Component } from 'react';
-import {Link} from "react-router";
-import {withRouter} from 'react-router';
-import { hashHistory } from 'react-router';
-import Header from '../Header/Header.jsx';
-import Subheader from '../Subheader/Subheader.jsx';
-import RaisedButton from 'material-ui/RaisedButton';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
-import {Tabs, Tab} from 'material-ui/Tabs';
-import Slider from 'material-ui/Slider';
-import ReactMarkdown from 'react-markdown';
-var firebase = require('firebase');
-import firebase_details from '../../Firebase/Firebase';
 import Flexbox from 'flexbox-react';
 import TextField from 'material-ui/TextField';
 import SelectField from 'material-ui/SelectField';

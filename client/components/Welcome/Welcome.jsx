@@ -2,10 +2,8 @@ import React, { Component } from 'react';
 import {Link} from "react-router";
 import {withRouter} from 'react-router';
 import { hashHistory } from 'react-router';
-import Subheader from '../Subheader/Subheader.jsx';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import RaisedButton from 'material-ui/RaisedButton';
-<meta name="viewport" content="width=device-width" />
 
 var Welcome = React.createClass({ 
 

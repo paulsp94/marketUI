@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import {Link} from "react-router";
 import {withRouter} from 'react-router';
 import { hashHistory } from 'react-router';
-import Subheader from '../Subheader/Subheader.jsx';
 import Sidebar from '../Sidebar/Sidebar.jsx';
-
 
 class  App extends React.Component{
 

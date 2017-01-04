@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
-import {orange500, blue500} from 'material-ui/styles/colors';
-import Divider from 'material-ui/Divider/Divider';
-import Flexbox from 'flexbox-react';
 import {Input, TextArea, GenericInput} from 'react-text-input';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import {Card} from 'material-ui/Card';
 
 
 
@@ -25,7 +22,7 @@ var Contact = React.createClass({
                              <textarea name="message" className="message-textarea" placeholder="Your message"></textarea>    
                              <br />
                              <br />
-                          <RaisedButton type="submit" primary={true} label="Contact"  onClick=""/>
+                          <RaisedButton type="submit" primary={true} label="Contact"/>
                           </form>
                       </Card>
                       <Card className="pageStyle">
