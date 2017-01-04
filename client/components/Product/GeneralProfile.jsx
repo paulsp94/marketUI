@@ -336,6 +336,8 @@ class  GeneralProfile extends React.Component{
                                      <FileUploader
                                             accept="image/*"
                                             name="avatar"
+                                            maxHeight={393}
+                                            maxWidth={850}
                                             randomizeFilename
                                             storageRef={firebase.storage().ref('images')}
                                             onUploadStart={this.handleUploadStart}
@@ -347,6 +349,8 @@ class  GeneralProfile extends React.Component{
                                         <FileUploader
                                             accept="image/*"
                                             name="avatar"
+                                            maxHeight={180}
+                                            maxWidth={300}
                                             randomizeFilename
                                             storageRef={firebase.storage().ref('images')}
                                             onUploadStart={this.handleUploadStart1}

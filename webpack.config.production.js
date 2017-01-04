@@ -19,6 +19,8 @@ config.output = {
 config.plugins = config.plugins.concat([
   new webpack.optimize.OccurenceOrderPlugin(true),
   new webpack.optimize.DedupePlugin(),
+  new webpack.optimize.LimitChunkCountPlugin({maxChunks: 15}), 
+  new webpack.optimize.AggressiveMergingPlugin(),
   new webpack.optimize.UglifyJsPlugin({
     output: {
       comments: false
