@@ -319,6 +319,13 @@ class Sidebar extends React.Component {
 
                       <CardText>
                         <div className="usercommentname">
+                          <TextField
+                            hintText="Ask Questions about the product"
+                            floatingLabelText="Ask Questions about the product"
+                            floatingLabelStyle={{fontWeight: 'normal'}}
+                            fullWidth
+                          />
+
                           <input name="comment" ref={(g) => this.comment = g} onKeyDown={this.keyPress.bind(this)}
                                  className="inputfield-signup1" type="text"
                                  placeholder="Ask Questions about the product"/>
