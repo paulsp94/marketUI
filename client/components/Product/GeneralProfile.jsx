@@ -12,7 +12,8 @@ import RaisedButton from 'material-ui/RaisedButton';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import TextField from 'material-ui/TextField';
-import CircularProgress from 'material-ui/CircularProgress';
+// TODO: Ad CircularProgress while images are loading
+// import CircularProgress from 'material-ui/CircularProgress';
 // External
 var FileInput = require('react-file-input');
 

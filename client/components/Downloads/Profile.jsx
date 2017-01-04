@@ -5,7 +5,6 @@ import { fetchuserdetails, changepassword, changeemaildetails } from '../../acti
 import { browserHistory } from 'react-router'
 var user = require('../../action/action.jsx');
 // Firebase
-
 var firebase = require('firebase');
 import firebase_details from '../../Firebase/Firebase';
 // Material-UI
@@ -190,13 +189,18 @@ class Profile extends React.Component{
       var Emailresult = "";
     }
 
-    const actions = [
+    const changePasswordDialogActions = [
       <FlatButton
-        label="Ok"
+        label="Cancel"
         primary={true}
         keyboardFocused={true}
         onTouchTap={this.DropboxClose1.bind(this)}
       />,
+      <FlatButton
+        label="Submit"
+        primary={true}
+        onTouchTap={this.submitChangePassword}
+      />
     ];
 
     const actions1 = [
@@ -214,17 +218,23 @@ class Profile extends React.Component{
         primary={true}
         keyboardFocused={true}
         onTouchTap={this.DropboxClose3.bind(this)}
-      />,
+      />
     ];
 
-    const actions3 = [
+    const changeEmailDialogActions = [
       <FlatButton
-        label="Ok"
+        label="Cancel"
         primary={true}
         keyboardFocused={true}
         onTouchTap={this.DropboxClose4.bind(this)}
       />,
+      <FlatButton
+        label="Submit"
+        primary={true}
+        onTouchTap={this.submitEmailChange}
+      />
     ];
+
 
     var user = firebase.auth().currentUser;
     var email;
@@ -251,7 +261,7 @@ class Profile extends React.Component{
 
             {/* change password dialog */}
             <Dialog
-              actions={actions}
+              actions={changePasswordDialogActions}
               modal={false}
               open={this.state.open}
               onRequestClose={this.DropboxClose1.bind(this)}>
@@ -275,13 +285,11 @@ class Profile extends React.Component{
                 fullWidth
                 onChange={this.onNewPasswordConfirmationChange}
               />
-
-              <RaisedButton label="Submit" onClick={this.submitChangePassword} />
             </Dialog>
 
             {/* change email dialog */}
             <Dialog
-              actions={actions3}
+              actions={changeEmailDialogActions}
               modal={false}
               open={this.state.open3}
               onRequestClose={this.DropboxClose4.bind(this)}>
@@ -294,8 +302,6 @@ class Profile extends React.Component{
                 fullWidth
                 onChange={this.onEmailChange}
               />
-
-              <RaisedButton label="Submit" onClick={this.submitEmailChange} />
             </Dialog>
 
             <Dialog

@@ -49,6 +49,7 @@ class Sidebar extends React.Component {
             Description:'',
             tags:[],
             email:'',
+            newComment: ''
         };
 
         this._submitHandler = this._submitHandler.bind(this);
@@ -174,22 +175,16 @@ class Sidebar extends React.Component {
 
     }
 
-    keyPress (event) {
-
+    onNewCommentKeyPress = (event) => {
         if (event.keyCode == 13) {
-
-            var coment = this.comment.value;
-            var ProductId = this.props.ProductId;
-
-            var user = firebase.auth().currentUser;
-            var Useremail = user.email;
-            this.props.EnternewComment(coment, ProductId, Useremail);
-
-            this.comment.value = '';
+            const { newComment } = this.state;
+            const { ProductId } = this.props;
+            const user = firebase.auth().currentUser;
+            this.props.EnternewComment(newComment, ProductId, user.email);
+            this.setState({newComment: ''});
             this.props.ProductComments(ProductId);
-
         }
-    }
+    };
 
     Comments () {
 
@@ -262,6 +257,12 @@ class Sidebar extends React.Component {
         browserHistory.push('ProductContent/'+ productid);
     }
 
+    onNewCommentChange = (event, value) => {
+      this.setState({
+        newComment: value
+      });
+    };
+
     render () {
 
         var currentstate = this.state.Currentstate;
@@ -309,6 +310,8 @@ class Sidebar extends React.Component {
 
         var allcomment = this.props.Comments;
 
+        const { newComment } = this.state;
+
         return (
             <div className="sidebar">
               <Card style={{backgroundColor: "#fdfdfb"}} expanded={this.state.expanded} onExpandChange={this.handleExpandChange}>
@@ -322,14 +325,13 @@ class Sidebar extends React.Component {
                         <div className="usercommentname">
                           <TextField
                             hintText="Ask Questions about the product"
-                            floatingLabelText="Ask Questions about the product"
+                            floatingLabelText="Ask Question"
                             floatingLabelStyle={{fontWeight: 'normal'}}
                             fullWidth
+                            value={newComment}
+                            onChange={this.onNewCommentChange}
+                            onKeyDown={this.onNewCommentKeyPress}
                           />
-
-                          <input name="comment" ref={(g) => this.comment = g} onKeyDown={this.keyPress.bind(this)}
-                                 className="inputfield-signup1" type="text"
-                                 placeholder="Ask Questions about the product"/>
                           <br/>
                         </div>
                       </CardText>
