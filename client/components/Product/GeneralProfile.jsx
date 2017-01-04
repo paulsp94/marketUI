@@ -1,437 +1,458 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
-import RaisedButton from 'material-ui/RaisedButton';
-import TextField from 'material-ui/TextField';
-import SelectField from 'material-ui/SelectField';
-import FlatButton from 'material-ui/FlatButton';
-import MenuItem from 'material-ui/MenuItem';
-var firebase = require('firebase');
-import firebase_details from '../../Firebase/Firebase';
-var FileInput = require('react-file-input');
-import FileUploader from 'react-firebase-file-uploader';
-import Flexbox from 'flexbox-react';
 import { currentuserid, submitProductGeneralDetails, productCoreDetails } from '../../action/action.jsx';
+// Firebase
+var firebase = require('firebase');
+import FileUploader from 'react-firebase-file-uploader'
+import firebase_details from '../../Firebase/Firebase';
+// Material-UI
+import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card';
+import RaisedButton from 'material-ui/RaisedButton';
+import SelectField from 'material-ui/SelectField';
+import MenuItem from 'material-ui/MenuItem';
+import TextField from 'material-ui/TextField';
+import CircularProgress from 'material-ui/CircularProgress';
+// External
+var FileInput = require('react-file-input');
+import Flexbox from 'flexbox-react';
 import StarRatingComponent from 'react-star-rating-component';
 
 function mapStateToProps(store) {
-    return { userdetails: store.userdetails};
+  return {
+    userdetails: store.userdetails
+  };
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({
-        currentuserid,
-        submitProductGeneralDetails,
-        productCoreDetails
-    }, dispatch);
+  return bindActionCreators({
+    currentuserid,
+    submitProductGeneralDetails,
+    productCoreDetails
+  }, dispatch);
 }
 
 @connect(mapStateToProps, mapDispatchToProps)
 
-class  GeneralProfile extends React.Component{
+class GeneralProfile extends React.Component {
 
-    constructor(props) {
+  constructor(props) {
+    super(props);
+    this.state = {
+      title: "",
+      subtitle: "",
+      description: "",
+      price: "",
+      category: '',
+      username: '',
+      avatar: '',
+      isUploading: false,
+      progress: 0,
+      avatarURL: '',
+      avatar1: '',
+      isUploading1: false,
+      progress1: 0,
+      avatarURL1: '',
+      submitError: "",
+      submitStatus: '',
+    };
+  }
 
-        super(props);
-        this.state= {
-            title:"",
-            subtitle:"",
-            describtion:"",
-            price:"",
-            category:'',
-            Error:"",
-            username: '',
-            avatar: '',
-            isUploading: false,
-            progress: 0,
-            avatarURL: '',
-            avatar1: '',
-            isUploading1: false,
-            progress1: 0,
-            avatarURL1: '',
-            submitstatus:'',
-        };
+  componentWillMount() {
+    const { ProductId } = this.props;
 
+    if (this.props.validation == "RIGHTVALIDATION") {
+      firebase.database()
+        .ref('ProductCoreDetails')
+        .orderByChild('ProductId')
+        .equalTo(ProductId)
+        .on("child_added", (snapshot) => {
+          this.setState({
+            title: snapshot.val().Title,
+            subtitle: snapshot.val().Subtitle,
+            description: snapshot.val().Description,
+            price: 'FREE',
+            category: snapshot.val().category,
+            avatarURL: snapshot.val().mainImage,
+            avatarURL1: snapshot.val().subImage
+          });
+      });
+    } else {
+      this.setState({
+        title: '',
+        subtitle: '',
+        description: '',
+        price: 0,
+        category: '',
+        avatarURL: '',
+        avatarURL1: '',
+      });
+    }
+  }
+
+  onTitleChange = (event, value) => {
+    this.setState({
+      title: value
+    })
+  };
+
+  onSubtitleChange = (event, value) => {
+    this.setState({
+      subtitle: value
+    })
+  };
+
+  onCategoryChange = (event, index, value) => {
+    this.setState({
+      category: value
+    });
+  };
+
+  onDescriptionChange = (event, value) => {
+    this.setState({
+      description: value
+    });
+  };
+
+  onPriceChange = (event, value) => {
+    this.setState({
+      price: value
+    });
+  };
+
+  onSubmit = () => {
+    var title = this.state.title;
+    var subtitle = this.state.subtitle;
+    var description = this.state.description;
+    var price = this.state.price;
+    var category = this.state.category;
+    var url = this.state.avatarURL;
+    var url1 = this.state.avatarURL1;
+    var UserIdobject = this.props.userdetails.userid;
+    var UserId = Object.keys(UserIdobject).map(key => UserIdobject[key]);
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; // January is 0!
+    var yyyy = today.getFullYear();
+
+    if(dd<10) {
+      dd='0'+dd
+    }
+    if(mm<10) {
+      mm='0'+mm
     }
 
-    componentWillMount(){
+    var today = mm+'/'+dd+'/'+yyyy;
 
-        var ProductId = this.props.ProductId;
+    if(title == '' || subtitle == '' || description == '' || price == '' || category == ''|| url == ''|| url1 == ''|| title == undefined || subtitle == undefined || description == undefined || price == undefined || category == undefined || url == undefined|| url1 == undefined){
+      this.setState({
+        submitError: "You probably forgot one item",
+      });
+    }
+    else {
+      const { ProductId } = this.props;
+      // this.props.submitProductGeneralDetails(ProductId,title,subtitle,description,price,category,url,url1,UserId);
 
-        if(this.props.validation == "RIGHTVALIDATION") {
+      firebase.database()
+        .ref('ProductCoreDetails')
+        .child(ProductId)
+        .once("value", (snapshot) => {
 
-            firebase.database().ref('ProductCoreDetails').orderByChild('ProductId').equalTo(ProductId).on("child_added", (snapshot) => {
+        if(snapshot.exists()) {
+          const product = snapshot.val();
 
-                var productid= snapshot.val().ProductId;
-                var Price= snapshot.val().Price;
-                var Description= snapshot.val().Description;
-                var Mainimage= snapshot.val().mainImage;
-                var Title= snapshot.val().Title;
-                var Subimage= snapshot.val().subImage;
-                var SubTitle= snapshot.val().Subtitle;
-                var category= snapshot.val().category;
+          if (product.status === 'published') {
+            firebase.database()
+              .ref('ProductCoreDetails/' + ProductId)
+              .set({
+                ProductId: ProductId,
+                Title: title,
+                Subtitle: subtitle,
+                Description: description,
+                Price: price,
+                mainImage: url,
+                subImage: url1,
+                category: category,
+                status: 'published',
+                date:today,
+              });
 
-                this.setState({
-                    title :Title,
-                    subtitle:SubTitle,
-                    describtion:Description,
-                    price:'FREE',
-                    category:category,
-                    avatarURL:Mainimage,
-                    avatarURL1:Subimage,
-                });
-            });
-        }
-
-        else{
-            var title = '';
-            var subtitle= '';
-            var describtion= '';
-            var price= 'FREE';
-            var category= '';
-            var avatarURL = '';
-            var avatarURL1 = '';
-
+            firebase.database()
+              .ref("Product_creation/" + ProductId)
+              .set({
+                ProductId: ProductId,
+                userid: UserId[0],
+              });
 
             this.setState({
-                title :title,
-                subtitle:subtitle,
-                describtion:describtion,
-                price:price,
-                category:category,
-                avatarURL:avatarURL,
-                avatarURL1:avatarURL1,
-            });
+              submitStatus: "Successfully Saved!"
+            })
+          } else {
+            firebase.database()
+              .ref('ProductCoreDetails/' + ProductId)
+              .set({
+                ProductId: ProductId,
+                Title: title,
+                Subtitle: subtitle,
+                Description: description,
+                Price: price,
+                mainImage: url,
+                subImage: url1,
+                category: category,
+                status: 'submitted',
+                date:today,
+              });
 
-        }
+            firebase.database()
+              .ref("Product_creation/" + ProductId)
+              .set({
+                ProductId: ProductId,
+                userid: UserId[0],
+              });
 
-    }
-
-    TiTle(){
-        var title = this.title.value;
-        this.setState({
-            title: title
-        });
-    }
-
-    SubTitle(){
-        var subtitle = this.subTitle.value;
-        this.setState({
-            subtitle :subtitle
-        });
-    }
-
-    DescriPtion(){
-
-        var describtion = this.textarea.value;
-        this.setState({
-            describtion :describtion
-        });
-    }
-
-    PriCe(){
-        var price =  this.Price.value;
-        this.setState({
-            price : price
-        });
-    }
-
-    ProdctCategory = (event, index, value) => {
-        //var category = this.Category.value;
-        this.setState({category : value});
-    }
-
-    SubMit(){
-
-        var title = this.state.title;
-        var subtitle = this.state.subtitle;
-        var describtion = this.state.describtion;
-        var price = this.state.price;
-        var category = this.state.category;
-        var url= this.state.avatarURL;
-        var url1= this.state.avatarURL1;
-        var UserIdobject = this.props.userdetails.userid;
-        var UserId = Object.keys(UserIdobject).map(key => UserIdobject[key]);
-        var today = new Date();
-        var dd = today.getDate();
-        var mm = today.getMonth()+1; //January is 0!
-        var yyyy = today.getFullYear();
-
-        if(dd<10) {
-            dd='0'+dd
-        }
-
-        if(mm<10) {
-            mm='0'+mm
-        }
-
-        var today = mm+'/'+dd+'/'+yyyy;
-
-
-        if(title == '' || subtitle == '' || describtion == '' || price == '' || category == ''|| url == ''|| url1 == ''|| title == undefined || subtitle == undefined || describtion == undefined || price == undefined || category == undefined || url == undefined|| url1 == undefined){
             this.setState({
-                Error: "You probably forgot one item",
-            });
-        }
-        else {
+              submitStatus: "Saved!"
+            })
+          }
 
-            var ProductId = this.props.ProductId;
-            // this.props.submitProductGeneralDetails(ProductId,title,subtitle,describtion,price,category,url,url1,UserId);
-
-            firebase.database().ref('ProductCoreDetails').child(ProductId).once("value", (snapshot) => {
-
-                if(snapshot.exists()) {
-                    var product = snapshot.val();
-                    if (product.status === 'published') {
-
-                        firebase.database().ref('ProductCoreDetails/' + ProductId).set({
-                            ProductId: ProductId,
-                            Title: title,
-                            Subtitle: subtitle,
-                            Description: describtion,
-                            Price: price,
-                            mainImage: url,
-                            subImage: url1,
-                            category: category,
-                            status: 'published',
-                            date:today,
-                        });
-
-                        firebase.database().ref("Product_creation/" + ProductId).set({
-                            ProductId: ProductId,
-                            userid: UserId[0],
-                        });
-
-
-                        this.setState({
-                            submitstatus: "Successfully Saved!"
-                        })
-
-                    }
-                    else {
-
-                        firebase.database().ref('ProductCoreDetails/' + ProductId).set({
-                            ProductId: ProductId,
-                            Title: title,
-                            Subtitle: subtitle,
-                            Description: describtion,
-                            Price: price,
-                            mainImage: url,
-                            subImage: url1,
-                            category: category,
-                            status: 'submitted',
-                            date:today,
-                        });
-
-                        firebase.database().ref("Product_creation/" + ProductId).set({
-                            ProductId: ProductId,
-                            userid: UserId[0],
-                        });
-
-
-                        this.setState({
-                            submitstatus: "Saved!"
-                        })
-
-                    }
-                }
-
-                else {
-
-                    firebase.database().ref('ProductCoreDetails/' + ProductId).set({
-                        ProductId: ProductId,
-                        Title: title,
-                        Subtitle: subtitle,
-                        Description: describtion,
-                        Price: price,
-                        mainImage: url,
-                        subImage: url1,
-                        category: category,
-                        status: 'submitted',
-                        date:today,
-                    });
-
-                    firebase.database().ref("Product_creation/" + ProductId).set({
-                        ProductId: ProductId,
-                        userid: UserId[0],
-                    });
-
-
-                    this.setState({
-                        submitstatus: "Saved!"
-                    })
-
-                }
-
+        } else {
+          firebase.database()
+            .ref('ProductCoreDetails/' + ProductId)
+            .set({
+              ProductId: ProductId,
+              Title: title,
+              Subtitle: subtitle,
+              Description: description,
+              Price: price,
+              mainImage: url,
+              subImage: url1,
+              category: category,
+              status: 'submitted',
+              date:today,
             });
 
+          firebase.database()
+            .ref("Product_creation/" + ProductId)
+            .set({
+              ProductId: ProductId,
+              userid: UserId[0],
+            });
+
+          this.setState({
+            submitStatus: "Saved!"
+          })
         }
-
+      });
     }
+  };
 
-    handleUploadStart = () => this.setState({isUploading: true, progress: 0});
-    handleProgress = (progress) => this.setState({progress});
-    handleUploadError = (error) => {
-      this.setState({isUploading: false});
-      console.error(error);
-    };
-    handleUploadSuccess = (filename) => {
-      this.setState({avatar: filename, progress: 100, isUploading: false});
-      firebase.storage().ref('images').child(filename).getDownloadURL().then(url => this.setState({avatarURL: url}));
-    };
+  handleUploadStart = () => this.setState({isUploading: true, progress: 0});
+  handleProgress = (progress) => this.setState({progress});
+  handleUploadError = (error) => {
+    this.setState({isUploading: false});
+    console.error(error);
+  };
+  handleUploadSuccess = (filename) => {
+    this.setState({avatar: filename, progress: 100, isUploading: false});
+    firebase.storage()
+      .ref('images')
+      .child(filename)
+      .getDownloadURL()
+      .then(url => this.setState({avatarURL: url}));
+  };
 
-    handleUploadStart1 = () => this.setState({isUploading1: true, progress1: 0});
-    handleProgress1 = (progress1) => this.setState({progress1});
-    handleUploadError1 = (error) => {
-      this.setState({isUploading1: false});
-      console.error(error);
-    };
-    handleUploadSuccess1 = (filename) => {
-      this.setState({avatar1: filename, progress1: 100, isUploading1: false});
-      firebase.storage().ref('images').child(filename).getDownloadURL().then(url => this.setState({avatarURL1: url}));
-    };
+  handleUploadStart1 = () => this.setState({isUploading1: true, progress1: 0});
+  handleProgress1 = (progress1) => this.setState({progress1});
+  handleUploadError1 = (error) => {
+    this.setState({isUploading1: false});
+    console.error(error);
+  };
+  handleUploadSuccess1 = (filename) => {
+    this.setState({avatar1: filename, progress1: 100, isUploading1: false});
+    firebase.storage()
+      .ref('images')
+      .child(filename)
+      .getDownloadURL()
+      .then(url => this.setState({avatarURL1: url}));
+  };
 
-    render(){
+  render(){
+    const { title, subtitle, category, description, price, avatar, avatar1 } = this.state;
 
-        var style = {
-            height : "300px",
-            imageInput: {
-              cursor: 'pointer',
-              position: 'absolute',
-              top: 0,
-              bottom: 0,
-              right: 0,
-              left: 0,
-              width: '100%',
-              opacity: 0,
-            },
-        };
+    return (
+      <div className="product-tab" >
+        <div className="left-panel">
 
-        return (
-               /*<p>This is the creation page! here you can interactivly create your content. Don't forget to save & publish your work </p>*/
-                <div className="product-tab" >
-                    <div className="left-panel">
+          <Card style={{ margin: '10px auto', width: 550 }}>
+            <CardText>
 
-                          <Card style={{ margin: '10px auto', width: 550 }}>
+              {/* title */}
+              <TextField
+                hintText="Title"
+                floatingLabelText="Title"
+                defaultValue={title}
+                fullWidth
+                onChange={this.onTitleChange}
+              />
 
-                                 
-                                 <CardText>
-                                     <input className="inputfield-signup1" value={this.state.title} ref={(d) => this.title = d}  name="title" type="text" placeholder="Title" onChange={this.TiTle.bind(this)} />
-                                     <input className="inputfield-signup1" value={this.state.subtitle} ref={(de) => this.subTitle = de}  name="subtitle" type="text"  placeholder="sub-title" onChange={this.SubTitle.bind(this)}/>
+              {/* subtitle */}
+              <TextField
+                hintText="Sub-Title"
+                floatingLabelText="Sub-Title"
+                defaultValue={subtitle}
+                fullWidth
+                onChange={this.onSubtitleChange}
+              />
+              <br/>
+              <br/>
 
-                                    {/*
-                                     <FlatButton label="Choose Image" labelPosition="before" primary={true}>
-                                      <input type="file" style={style.imageInput}
-                                          accept="image/*"
-                                          name="avatar"
-                                          randomizeFilename
-                                          storageRef={firebase.storage().ref('images')}
-                                          onUploadStart={this.handleUploadStart}
-                                          onUploadError={this.handleUploadError}
-                                          onUploadSuccess={this.handleUploadSuccess}
-                                          onProgress={this.handleProgress}  />
-                                    </FlatButton> */}
+              {/* avatar */}
+              <RaisedButton
+                label={!avatar ? 'Choose Image' : 'Change Image'}
+                labelPosition="before"
+                labelStyle={{'font-size': '13px'}}
+                containerElement="label"
+                primary={!!avatar}
+                secondary={!avatar}
+              >
+                <div className="file-input-wrapper">
+                  <FileUploader
+                    className="inner-file-input"
+                    accept="image/*"
+                    name="avatar"
+                    randomizeFilename
+                    storageRef={firebase.storage().ref('images')}
+                    onUploadStart={this.handleUploadStart}
+                    onUploadError={this.handleUploadError}
+                    onUploadSuccess={this.handleUploadSuccess}
+                    onProgress={this.handleProgress}
+                  />
+                </div>
+              </RaisedButton>
+              <br/>
+              <br/>
 
-                                    <br/><br/>
-                                     <FileUploader
-                                            accept="image/*"
-                                            name="avatar"
-                                            randomizeFilename
-                                            storageRef={firebase.storage().ref('images')}
-                                            onUploadStart={this.handleUploadStart}
-                                            onUploadError={this.handleUploadError}
-                                            onUploadSuccess={this.handleUploadSuccess}
-                                            onProgress={this.handleProgress} 
-                                            />
-                                        <br/>
-                                        <FileUploader
-                                            accept="image/*"
-                                            name="avatar"
-                                            randomizeFilename
-                                            storageRef={firebase.storage().ref('images')}
-                                            onUploadStart={this.handleUploadStart1}
-                                            onUploadError={this.handleUploadError1}
-                                            onUploadSuccess={this.handleUploadSuccess1}
-                                            onProgress={this.handleProgress1}
-                                             />
+              {/* avatar1 */}
+              <RaisedButton
+                label={!avatar1 ? 'Choose Image' : 'Change Image'}
+                labelPosition="before"
+                labelStyle={{'font-size': '13px'}}
+                buttonStyle={{overflow: 'hidden', position: 'relative'}}
+                containerElement="label"
+                primary={!!avatar1}
+                secondary={!avatar1}
+              >
+                <div className="file-input-wrapper">
+                  <FileUploader
+                    className="inner-file-input"
+                    accept="image/*"
+                    name="avatar1"
+                    randomizeFilename
+                    storageRef={firebase.storage().ref('images')}
+                    onUploadStart={this.handleUploadStart1}
+                    onUploadError={this.handleUploadError1}
+                    onUploadSuccess={this.handleUploadSuccess1}
+                    onProgress={this.handleProgress1}
+                  />
+                </div>
+              </RaisedButton>
+              <br/>
+              <br/>
 
-                                        <SelectField
-                                          floatingLabelText = "Category"
-                                          value = {this.state.category}
-                                          floatingLabelFixed={true}
-                                          onChange = {this.ProdctCategory.bind(this)}>
-                                            <MenuItem value="Choose the Category" primaryText="Choose the Category" />
-                                          <MenuItem value="Machine-Learning" primaryText="Machine-Learning" />
-                                          <MenuItem value="Big-Data" primaryText="Big-Data" />
-                                          <MenuItem value="Algorithms" primaryText="Algorithms" />
-                                          <MenuItem value="Graphics" primaryText="Graphics" />
-                                          <MenuItem value="Other" primaryText="Other" />
-                                          <MenuItem value="Web or Shiny" primaryText="Web or Shiny" />
-                                        </SelectField>
+              {/* category */}
+              <SelectField
+                floatingLabelFixed
+                floatingLabelText="Category"
+                value={category}
+                onChange={this.onCategoryChange}
+              >
+                <MenuItem value="" primaryText="Choose the Category" />
+                <MenuItem value="Machine-Learning" primaryText="Machine-Learning" />
+                <MenuItem value="Big-Data" primaryText="Big-Data" />
+                <MenuItem value="Algorithms" primaryText="Algorithms" />
+                <MenuItem value="Graphics" primaryText="Graphics" />
+                <MenuItem value="Other" primaryText="Other" />
+                <MenuItem value="Web or Shiny" primaryText="Web or Shiny" />
+              </SelectField>
 
-                                        <textarea value={this.state.describtion} name="textarea" ref={(d) => this.textarea = d} className="textarea1" placeholder="Description about Product"
-                                                    onChange={this.DescriPtion.bind(this)}/> <br/> <br/>
+              {/* description */}
+              <TextField
+                hintText="Product Description"
+                floatingLabelText="Description"
+                defaultValue={description}
+                fullWidth
+                multiLine
+                rows={2}
+                rowsMax={5}
+                onChange={this.onDescriptionChange}
+              />
 
-                                        {/* <input className="inputfield-signup1" value={this.state.price} ref={(d) => this.Price = d} name="Price" type="text" placeholder="Price in $" onChange={this.PriCe.bind(this)} />
-                                        */}
-                                        <input style={{}} className="inputfield-signup1" value="FREE" ref={(d) => this.Price = d} name="Price" type="text" placeholder="Price in $" onChange={this.PriCe.bind(this)} />
-                                        
-                                        <div className="product-header">
-                                          <RaisedButton onClick={this.SubMit.bind(this)} label=" Save" primary={true} style={{ margin: 12}}/>
-                                            <br/>
-                                        <div className="warning" style={{margin:'20 0 0 100'}} >
-                                             {this.state.Error}
-                                        </div>
-                                            {this.state.submitstatus}
-                                        </div>
-                                    </CardText>
-                            </Card>
-                      </div>
+              {/* price */}
+              <TextField
+                type="number"
+                step="0.05"
+                min="0"
+                hintText="Price in $"
+                floatingLabelText="Price"
+                defaultValue={price}
+                fullWidth
+                onChange={this.onPriceChange}
+              />
 
-                      <div className="right-panel">
-                          <div className="container2">
-                                  <CardMedia
-                                      overlay={<CardTitle title={this.state.title} subtitle={this.state.subtitle}/>}>
-                                        <img style = {{height: 393}} src={this.state.avatarURL} />
-                                  </CardMedia>
-                                  </div>
+              <div className="product-header">
+                <RaisedButton onClick={this.onSubmit} label=" Save" primary={true} style={{ margin: 12}}/>
+                <br/>
+                <div className="warning" style={{margin:'20 0 0 100'}} >
+                  {this.state.submitError}
+                </div>
+                {this.state.submitStatus}
+              </div>
+            </CardText>
+          </Card>
+        </div>
 
-                              <div className="itemCard">
-                                <Card>
-                                  <Card className="product-search" style={{padding: 0}}>
-                                      <img className="product_image" src={this.state.avatarURL1}/>
-                                      
-                                      <Flexbox flexDirection="row">
-                                          <Flexbox flexGrow={1}>
-                                              <RaisedButton label="FREE" style={{ margin: 1, width: "100%"}} />
-                                          {/*
-                                              <RaisedButton label={`${this.state.price || 0}`} style={{ margin: 1, width: "100%"}} />
-                                          */}
-                                        </Flexbox>
-                                         <Flexbox flexGrow={1} style={{marginLeft: 10, marginTop: 12}}>
-                                            <StarRatingComponent
-                                            name="rating"
-                                            value={5} /* number of selected icon (`0` - none, `1` - first) */
-                                            editing={false}
-                                             />
-                                            
-                                          </Flexbox>
-                                          <Flexbox flexGrow={1}>
-                                              <RaisedButton label="0" style={{ margin: 1, width: "100%"}} />
-                                          </Flexbox>
-                                      </Flexbox>
-                                      <h5>{this.state.title}</h5>
-                                      <p style={{height: '48px'}}> {this.state.describtion}</p>
-                                </Card>
-                                </Card>
-                                <br/><br/>
-                              </div>
-                          </div>
-                    </div>
+        <div className="right-panel">
+          <div className="container2">
+            <CardMedia
+              overlay={
+                <CardTitle title={title} subtitle={subtitle}/>
+              }>
+              <img style={{height: 393}} src={this.state.avatarURL} />
+            </CardMedia>
+          </div>
 
-        )
-    }
+          <div className="itemCard">
+            <Card>
+              <Card className="product-search" style={{padding: 0}}>
+                <img className="product_image" src={this.state.avatarURL1}/>
+
+                <Flexbox flexDirection="row">
+                  <Flexbox flexGrow={1}>
+                    <RaisedButton label={!!parseFloat(price) ? '$' + price : 'FREE'} style={{ margin: 1, width: "100%"}} />
+                  </Flexbox>
+                  <Flexbox flexGrow={1} style={{marginLeft: 10, marginTop: 12}}>
+                    <StarRatingComponent
+                      name="rating"
+                      value={5} /* number of selected icon (`0` - none, `1` - first) */
+                      editing={false}
+                    />
+
+                  </Flexbox>
+                  <Flexbox flexGrow={1}>
+                    <RaisedButton label="0" style={{margin: 1, width: "100%"}} />
+                  </Flexbox>
+                </Flexbox>
+                <h5>{title}</h5>
+                <p style={{height: '48px'}}> {description}</p>
+              </Card>
+            </Card>
+            <br/><br/>
+          </div>
+        </div>
+      </div>
+
+    )
+  }
 }
 
 export default GeneralProfile;

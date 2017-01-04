@@ -33,6 +33,7 @@
   pointer-events: none;
   color: rgba(0, 0, 0, 0.298039);
   user-select: none;
+  font-weight: normal;
 }
 
 .react-tagsinput label.dirty {

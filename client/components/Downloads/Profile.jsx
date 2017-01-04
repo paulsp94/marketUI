@@ -1,302 +1,359 @@
 import React, { Component } from 'react';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
-import { Tab as MuiTab } from 'material-ui/Tabs';
-import RaisedButton from 'material-ui/RaisedButton';
-import Dialog from 'material-ui/Dialog';
-import FlatButton from 'material-ui/FlatButton';
-var firebase = require('firebase');
-import firebase_details from '../../Firebase/Firebase';
-import TextField from 'material-ui/TextField';
-import { browserHistory } from 'react-router'
-import MaterialTagsInput from '../_common/MaterialTagsInput';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-var user = require('../../action/action.jsx');
-
 import { fetchuserdetails, changepassword, changeemaildetails } from '../../action/action.jsx'
-
+import { browserHistory } from 'react-router'
+var user = require('../../action/action.jsx');
+// Firebase
+var firebase = require('firebase');
+import firebase_details from '../../Firebase/Firebase';
+// Material-UI
+import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card';
+import Dialog from 'material-ui/Dialog';
+import TextField from 'material-ui/TextField';
+import RaisedButton from 'material-ui/RaisedButton';
+import FlatButton from 'material-ui/FlatButton';
+// External
+import MaterialTagsInput from '../_common/MaterialTagsInput';
 
 function mapStateToProps(store) {
-    return { userdetails: store.userdetails};
+  return {
+    userdetails: store.userdetails
+  };
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({
-        fetchuserdetails,
-        changepassword,
-        changeemaildetails,
-    }, dispatch);
+  return bindActionCreators({
+    fetchuserdetails,
+    changepassword,
+    changeemaildetails,
+  }, dispatch);
 }
 
 @connect(mapStateToProps, mapDispatchToProps)
 
-class  Profile extends React.Component{
+class Profile extends React.Component{
 
-    constructor(props) {
-
-        super(props);
-        this.state= {
-            open:false,
-            open1:false,
-            open2:false,
-            open3:false,
-            tags:[],
-            Desxription:'',
-        };
-    }
-
-    componentWillMount(){
-        this.props.fetchuserdetails();
-    }
-
-    componentDidMount(){
-        var user = firebase.auth().currentUser;
-        var Userid = user.uid;
-        firebase.database().ref('ProductOwnerDetails/'+ Userid ).once("value", (snapshot) => {
-
-            var Description = snapshot.val().Description;
-            var tags = snapshot.val().tags;
-
-            this.setState({
-                Desxription:Description,
-                tags:tags,
-            })
-        });
-    }
-
-    Dropboxopen4(){
-        this.setState({open3: true});
-    }
-
-    Dropboxcloase4(){
-        this.setState({open3: false});
-    }
-
-    Dropboxcloase3(){
-        this.setState({open2: false});
-    }
-
-    Dropboxcloase2(){
-        this.setState({open1: false});
-    }
-
-    Dropboxopen1(){
-        this.setState({open: true});
-    }
-
-    Dropboxcloase1(){
-        this.setState({open: false});
-    }
-
-    userdetails(){
-
-    }
-
-    changeemail(){
-        var newemail = this.newemail.value;
-        this.props.changeemaildetails(newemail);
-    }
-
-    deleteAccount(){
-        var user = firebase.auth().currentUser;
-
-        user.delete().then(function() {
-            console.log("userDeleted");
-            browserHistory.push('/')
-            // User deleted.
-        }, function(error) {
-            // An error happened.
-        });
-
-    }
-
-    changepassword(){
-
-        var password1= this.password.value;
-        var password2= this.password1.value;
-
-        if(password1 == password2){
-            this.props.changepassword(password1);
-            this.setState({open: false});
-        }
-        else{
-            console.log('didnt match');
-        }
-    }
-
-    onTagsChange = (tags) => {
-        this.setState({ tags })
+  constructor(props) {
+    super(props);
+    this.state = {
+      open: false,
+      open1: false,
+      open2: false,
+      open3: false,
+      tags: [],
+      description: '',
+      newEmail: '',
+      newPassword: '',
+      newPasswordConfirmation: ''
     };
+  }
 
-    TextFieldValue(){
+  componentWillMount(){
+    this.props.fetchuserdetails();
+  }
+
+  componentDidMount(){
+    var user = firebase.auth().currentUser;
+    var Userid = user.uid;
+    firebase.database()
+      .ref('ProductOwnerDetails/'+ Userid )
+      .once("value", (snapshot) => {
+        var Description = snapshot.val().Description;
+        var tags = snapshot.val().tags;
         this.setState({
-            Desxription:this.textarea.value
+          description:Description,
+          tags:tags,
         })
+      });
+  }
+
+  Dropboxopen4(){
+    this.setState({open3: true});
+  }
+
+  DropboxClose4(){
+    this.setState({open3: false});
+  }
+
+  DropboxClose3(){
+    this.setState({open2: false});
+  }
+
+  DropboxClose2(){
+    this.setState({open1: false});
+  }
+
+  Dropboxopen1(){
+    this.setState({open: true});
+  }
+
+  DropboxClose1(){
+    this.setState({open: false});
+  }
+
+  userdetails(){
+
+  }
+
+  onEmailChange = (event, value) => {
+    this.setState({
+      newEmail: value
+    })
+  };
+
+  onNewPasswordChange = (event, value) => {
+    this.setState({
+      newPassword: value
+    })
+  };
+
+  onNewPasswordConfirmationChange = (event, value) => {
+    this.setState({
+      newPasswordConfirmation: value
+    })
+  };
+
+  submitEmailChange = () => {
+    const { newEmail } = this.state;
+    this.props.changeemaildetails(newEmail);
+  };
+
+  submitChangePassword = () => {
+    const { newPassword, newPasswordConfirmation } = this.state;
+    if (newPassword && (newPassword === newPasswordConfirmation)) {
+      this.props.changepassword(newPassword);
+      this.setState({open: false});
+    } else {
+      alert("Passwords don't match!");
+    }
+  };
+
+  deleteAccount(){
+    var user = firebase.auth().currentUser;
+
+    user.delete().then(function() {
+      console.log("userDeleted");
+      browserHistory.push('/');
+      // User deleted.
+    }, function(error) {
+      // An error happened.
+    });
+
+  }
+
+  onTagsChange = (tags) => {
+    this.setState({ tags })
+  };
+
+  onDescriptionChange = (event, value) => {
+    this.setState({
+      description: value
+    })
+  };
+
+  SubmitUserDetails(){
+    var description = this.state.description;
+    var tags = this.state.tags;
+    var user = firebase.auth().currentUser;
+    var Userid = user.uid;
+    var email = user.email;
+
+    firebase.database().ref('ProductOwnerDetails/' + Userid).set({
+      Description: description,
+      tags: tags,
+      email: email,
+    });
+  }
+
+  render(){
+    if(this.props.userdetails.password != false){
+      var passwordchangedresult = this.props.userdetails.password;
+      var result = Object.keys(passwordchangedresult).map(key => passwordchangedresult[key]);
+      if(result != "Changed Successfully"){
+        result = "Error:"+result[0].message;
+      }
+    }
+    else {
+      var result = "";
     }
 
-    SubmitUserDetails(){
-
-        var description = this.state.Desxription;
-        var tags = this.state.tags;
-        var user = firebase.auth().currentUser;
-        var Userid = user.uid;
-        var email = user.email;
-
-        firebase.database().ref('ProductOwnerDetails/' + Userid).set({
-            Description:description,
-            tags:tags,
-            email:email,
-        });
+    if(this.props.userdetails.Email != false){
+      var passwordchangedresult1 = this.props.userdetails.Email;
+      var Emailresult = Object.keys(passwordchangedresult1).map(key => passwordchangedresult1[key]);
+      if(Emailresult != "Changed Successfully"){
+        Emailresult = "Error:"+ Emailresult[0].message;
+      }
+    }
+    else {
+      var Emailresult = "";
     }
 
-    render(){
+    const actions = [
+      <FlatButton
+        label="Ok"
+        primary={true}
+        keyboardFocused={true}
+        onTouchTap={this.DropboxClose1.bind(this)}
+      />,
+    ];
 
-        if(this.props.userdetails.password != false){
-            var passwordchangedresult = this.props.userdetails.password;
-            var result = Object.keys(passwordchangedresult).map(key => passwordchangedresult[key]);
-            if(result != "Changed Successfully"){
-                result = "Error:"+result[0].message;
-            }
-        }
-        else {
-            var result = "";
-        }
+    const actions1 = [
+      <FlatButton
+        label="Ok"
+        primary={true}
+        keyboardFocused={true}
+        onTouchTap={this.DropboxClose2.bind(this)}
+      />,
+    ];
 
-        if(this.props.userdetails.Email != false){
-            var passwordchangedresult1 = this.props.userdetails.Email;
-            var Emailresult = Object.keys(passwordchangedresult1).map(key => passwordchangedresult1[key]);
-            if(Emailresult != "Changed Successfully"){
-                Emailresult = "Error:"+ Emailresult[0].message;
-            }
-        }
-        else {
-            var Emailresult = "";
-        }
+    const actions2 = [
+      <FlatButton
+        label="Ok"
+        primary={true}
+        keyboardFocused={true}
+        onTouchTap={this.DropboxClose3.bind(this)}
+      />,
+    ];
 
-        const actions = [
-            <FlatButton
-                label="Ok"
-                primary={true}
-                keyboardFocused={true}
-                onTouchTap={this.Dropboxcloase1.bind(this)}
-            />,
-        ];
+    const actions3 = [
+      <FlatButton
+        label="Ok"
+        primary={true}
+        keyboardFocused={true}
+        onTouchTap={this.DropboxClose4.bind(this)}
+      />,
+    ];
 
-        const actions1 = [
-            <FlatButton
-                label="Ok"
-                primary={true}
-                keyboardFocused={true}
-                onTouchTap={this.Dropboxcloase2.bind(this)}
-            />,
-        ];
-
-        const actions2 = [
-            <FlatButton
-                label="Ok"
-                primary={true}
-                keyboardFocused={true}
-                onTouchTap={this.Dropboxcloase3.bind(this)}
-            />,
-        ];
-
-        const actions3 = [
-            <FlatButton
-                label="Ok"
-                primary={true}
-                keyboardFocused={true}
-                onTouchTap={this.Dropboxcloase4.bind(this)}
-            />,
-        ];
-
-        var user = firebase.auth().currentUser;
-        var email;
-        if (user != null) {
-            email = user.email;
-        } else {
-            email = "not logged in"
-        }
+    var user = firebase.auth().currentUser;
+    var email;
+    if (user != null) {
+      email = user.email;
+    } else {
+      email = "not logged in"
+    }
 
 
-        return (
-            <div className="Profiledata">
-            <Card style={{marginRight: "2%", marginLeft: "2%", marginTop: 9}}>
-                <CardText>
-                    <br/><br/>
-                     Email: {email}
-                    <br/><br/>
-                    <RaisedButton label="Change Email" style={{margin: 12}} onTouchTap={this.Dropboxopen4.bind(this)} />
-                    <RaisedButton label="Change Password" style={{margin: 12}} onTouchTap={this.Dropboxopen1.bind(this)} />
-                    <RaisedButton label="Delete Account" style={{margin: 12}} onTouchTap={this.deleteAccount.bind(this)} />
-                    <br/>
-                    {Emailresult}
-                    {result}
+    return (
+      <div className="Profiledata" id="profile-page">
+        <Card style={{marginRight: "2%", marginLeft: "2%", marginTop: 9}}>
+          <CardText>
+            <br/><br/>
+            Email: {email}
+            <br/><br/>
+            <RaisedButton label="Change Email" style={{margin: 12}} onTouchTap={this.Dropboxopen4.bind(this)} />
+            <RaisedButton label="Change Password" style={{margin: 12}} onTouchTap={this.Dropboxopen1.bind(this)} />
+            <RaisedButton label="Delete Account" style={{margin: 12}} onTouchTap={this.deleteAccount.bind(this)} />
+            <br/>
+            {Emailresult}
+            {result}
 
-                    <Dialog
-                        actions={actions}
-                        modal={false}
-                        open={this.state.open}
-                        onRequestClose={this.Dropboxcloase1.bind(this)}>
+            {/* change password dialog */}
+            <Dialog
+              actions={actions}
+              modal={false}
+              open={this.state.open}
+              onRequestClose={this.DropboxClose1.bind(this)}>
 
-                       <h3> Change Password </h3> <br/><br/>
+              <h3> Change Password </h3> <br/><br/>
 
-                        Enter Password: <br/> <input className="inputfield-signup1" type="password" name="password" ref={(fgf) => this.password = fgf} /> <br/><br/>
-                        Enter Again-Password: <br/><input className="inputfield-signup1" type="password" name="password1" ref={(fg) => this.password1 = fg}/><br/><br/>
-                        <RaisedButton label="Submit" onClick={this.changepassword.bind(this)} style={{ margin: 12}} />
-                    </Dialog>
-                    <Dialog
-                        actions={actions3}
-                        modal={false}
-                        open={this.state.open3}
-                        onRequestClose={this.Dropboxcloase4.bind(this)}>
-                         <input className="inputfield-signup1" type="email" placeholder="Enter Email" name="newemail" ref={(g) => this.newemail = g}/>
+              <TextField
+                type="password"
+                hintText="Enter Password"
+                floatingLabelText="New Password"
+                floatingLabelStyle={{fontWeight: 'normal'}}
+                fullWidth
+                onChange={this.onNewPasswordChange}
+              />
 
-                         <RaisedButton label="Submit" onClick={this.changeemail.bind(this)} style={{ margin: 12}} />
-                    </Dialog>
-                    <Dialog
-                        actions={actions1}
-                        modal={false}
-                        open={this.state.open1}
-                        onRequestClose={this.Dropboxcloase2.bind(this)}>
-                    </Dialog>
+              <TextField
+                type="password"
+                hintText="Retype Password"
+                floatingLabelText="Password Confirmation"
+                floatingLabelStyle={{fontWeight: 'normal'}}
+                fullWidth
+                onChange={this.onNewPasswordConfirmationChange}
+              />
 
-                </CardText>
-                </Card>
-                <Card style={{marginRight: "2%", marginLeft: "2%", marginTop: 9}}>
+              <RaisedButton label="Submit" onClick={this.submitChangePassword} />
+            </Dialog>
 
-                   <CardText>
+            {/* change email dialog */}
+            <Dialog
+              actions={actions3}
+              modal={false}
+              open={this.state.open3}
+              onRequestClose={this.DropboxClose4.bind(this)}>
 
-                    <Dialog
-                        actions={actions1}
-                        modal={false}
-                        open={this.state.open1}
-                        onRequestClose={this.Dropboxcloase2.bind(this)}>
-                    </Dialog>
+              <TextField
+                type="email"
+                hintText="Enter Email"
+                floatingLabelText="New Email"
+                floatingLabelStyle={{fontWeight: 'normal'}}
+                fullWidth
+                onChange={this.onEmailChange}
+              />
 
-                    <Dialog
-                        actions={actions2}
-                        modal={false}
-                        open={this.state.open2}
-                        onRequestClose={this.Dropboxcloase3.bind(this)}>
-                    </Dialog>
+              <RaisedButton label="Submit" onClick={this.submitEmailChange} />
+            </Dialog>
 
-                     <div className="knowledgetags">
-                       <MaterialTagsInput
-                           value = {this.state.tags}
-                           onChange = {this.onTagsChange.bind(this)}
-                           label = "Your Expertise"
-                       />
-                       </div>
+            <Dialog
+              actions={actions1}
+              modal={false}
+              open={this.state.open1}
+              onRequestClose={this.DropboxClose2.bind(this)}>
+            </Dialog>
 
-                       <textarea value={this.state.Desxription} onChange={this.TextFieldValue.bind(this)} name="textarea" ref={(d) => this.textarea = d} className="textarea1" placeholder="Describe yourself"/> <br/> <br/>
+          </CardText>
+        </Card>
+        <Card style={{marginRight: "2%", marginLeft: "2%", marginTop: 9}}>
 
-                       <RaisedButton onClick={this.SubmitUserDetails.bind(this)} label="Save Changes"  secondary={true} style={{ margin: 12}} />
+          <CardText>
 
-                </CardText>
-                </Card>
+            <Dialog
+              actions={actions1}
+              modal={false}
+              open={this.state.open1}
+              onRequestClose={this.DropboxClose2.bind(this)}>
+            </Dialog>
+
+            <Dialog
+              actions={actions2}
+              modal={false}
+              open={this.state.open2}
+              onRequestClose={this.DropboxClose3.bind(this)}>
+            </Dialog>
+
+            <div className="knowledgetags">
+              <MaterialTagsInput
+                value = {this.state.tags}
+                onChange = {this.onTagsChange.bind(this)}
+                label = "Your Expertise"
+              />
+
+              {/* description */}
+              <TextField
+                hintText="Describe yourself"
+                floatingLabelText="Describe yourself"
+                floatingLabelStyle={{fontWeight: 'normal'}}
+                defaultValue={this.state.description}
+                fullWidth
+                multiLine
+                rows={2}
+                rowsMax={5}
+                onChange={this.onDescriptionChange}
+              />
+
+              <br/>
+              <br/>
             </div>
-        )
-    }
+
+            <RaisedButton onClick={this.SubmitUserDetails.bind(this)} label="Save Changes"  secondary={true} style={{ margin: 12}} />
+          </CardText>
+        </Card>
+      </div>
+    )
+  }
 }
 
 export default Profile;
