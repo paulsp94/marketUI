@@ -3,11 +3,9 @@ var Loading = require('react-loading');
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 var firebase = require('firebase');
-import firebase_details from '../../Firebase/Firebase';
 import {Link} from "react-router";
 import {withRouter} from 'react-router';
 import { hashHistory } from 'react-router';
-import Subheader from '../Subheader/Subheader.jsx';
 import Sidebar from '../Sidebar/Sidebar.jsx';
 import Itemview from './Itemview.jsx';
 import { fetchuserdetails, productCoreDetails, Description, ProductSidebar, currentproductstore, ProductComments, productSellerandstripeid} from '../../action/action.jsx'

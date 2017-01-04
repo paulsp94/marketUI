@@ -4,13 +4,11 @@ import {Link} from "react-router";
 import {withRouter} from 'react-router';
 import { browserHistory } from 'react-router';
 import { bindActionCreators } from 'redux';
-import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card';
+import { Card, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card';
 import { Tabs, Tab } from 'material-ui/Tabs';
 import {
     Table,
     TableBody,
-    TableHeader,
-    TableHeaderColumn,
     TableRow,
     TableRowColumn
 } from 'material-ui/Table';
@@ -19,7 +17,6 @@ import Divider from 'material-ui/Divider';
 import Chip from 'material-ui/Chip';
 import { EnternewComment, ProductComments } from '../../action/action.jsx';
 import firebase from 'firebase';
-import firebase_details from '../../Firebase/Firebase';
 import StripeCheckout from '../stripe/checkout';
 import {productSellerandstripeid} from '../../action/action';
 import StarRatingComponent from 'react-star-rating-component';
@@ -212,30 +209,24 @@ class Sidebar extends React.Component {
     Support () {
         var curr_icon = <div>
           <div className="sidebar-bottom">
-
             <img className="Userimage"/>
-
               <CardText>
                   <br />
                   <div className="userdescribation">
                       <strong>Contact Email: </strong>{this.state.email}
                   </div>
                   <hr/>
-
                   <br/>
                   <div className="userdescribation">
                       {this.state.Description}
                   </div>
                   <br/>
                   <hr/>
-
-
               <div style={{ display: 'flex', flexWrap: 'wrap' }}>
                   {this.state.tags.map((item, index) =>
                       <Chip key={index} style={{ float: "left", margin: 4 }}>{item}</Chip>
                   )}
               </div>
-
             </CardText>
           </div>
         </div>;
@@ -282,7 +273,6 @@ class Sidebar extends React.Component {
                   <TableBody displayRowCheckbox={this.state.showCheckboxes} adjustForCheckbox={this.state.showCheckboxes}>
                     <TableRow  >
                       
-                      {/*<TableRowColumn style={{ textAlign: 'center' }}> ${productcoredetails.Price} </TableRowColumn>*/}
                       <TableRowColumn style={{ textAlign: 'center' }}> FREE </TableRowColumn>
                       <TableRowColumn style={{ textAlign: 'center' }}>
                         <StarRatingComponent
@@ -299,7 +289,7 @@ class Sidebar extends React.Component {
                 </Table>
 
 
-                  <RaisedButton label="Download" onClick={this.ProductContentDownload.bind(this)} secondary={true} style={{ margin: 12}}/>
+                  <RaisedButton label="Download" onTouchTap={this.ProductContentDownload.bind(this)} secondary={true} style={{ margin: 12}}/>
                   {/*// TODO feed me real data, amount in cents */}
                   {
                       /*sellerStripeAccountId ?*/

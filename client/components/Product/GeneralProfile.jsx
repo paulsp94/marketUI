@@ -15,6 +15,7 @@ import TextField from 'material-ui/TextField';
 import CircularProgress from 'material-ui/CircularProgress';
 // External
 var FileInput = require('react-file-input');
+
 import Flexbox from 'flexbox-react';
 import StarRatingComponent from 'react-star-rating-component';
 
@@ -87,6 +88,7 @@ class GeneralProfile extends React.Component {
         avatarURL: '',
         avatarURL1: '',
       });
+
     }
   }
 
@@ -243,6 +245,7 @@ class GeneralProfile extends React.Component {
           })
         }
       });
+
     }
   };
 

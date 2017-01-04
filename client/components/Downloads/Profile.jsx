@@ -5,6 +5,7 @@ import { fetchuserdetails, changepassword, changeemaildetails } from '../../acti
 import { browserHistory } from 'react-router'
 var user = require('../../action/action.jsx');
 // Firebase
+
 var firebase = require('firebase');
 import firebase_details from '../../Firebase/Firebase';
 // Material-UI

@@ -3,7 +3,6 @@ import { browserHistory } from 'react-router';
 import LazyLoad from 'react-lazyload';
 import {Card} from 'material-ui/Card';
 import Toggle from 'material-ui/Toggle';
-import {Snackbar} from 'material-ui/Snackbar';
 import Flexbox from 'flexbox-react';
 import RaisedButton from 'material-ui/RaisedButton';
 import firebase from 'firebase';

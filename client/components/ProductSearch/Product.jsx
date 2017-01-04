@@ -4,11 +4,9 @@ import { bindActionCreators } from 'redux';
 import {Link} from "react-router";
 import {withRouter} from 'react-router';
 import { browserHistory } from 'react-router';
-import Subheader from '../Subheader/Subheader.jsx';
 import RaisedButton from 'material-ui/RaisedButton';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import {Card} from 'material-ui/Card';
 import {Tabs, Tab} from 'material-ui/Tabs';
-import Slider from 'material-ui/Slider';
 import Flexbox from 'flexbox-react';
 import { productCoreDetails, currentproductstore, } from '../../action/action.jsx'
 import LazyLoad from 'react-lazyload';
