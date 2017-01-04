@@ -323,6 +323,8 @@ class GeneralProfile extends React.Component {
                     className="inner-file-input"
                     accept="image/*"
                     name="avatar"
+                    maxHeight={393}
+                    maxWidth={850}
                     randomizeFilename
                     storageRef={firebase.storage().ref('images')}
                     onUploadStart={this.handleUploadStart}
@@ -334,7 +336,6 @@ class GeneralProfile extends React.Component {
               </RaisedButton>
               <br/>
               <br/>
-
               {/* avatar1 */}
               <RaisedButton
                 label={!avatar1 ? 'Choose Image' : 'Change Image'}
@@ -350,6 +351,8 @@ class GeneralProfile extends React.Component {
                     className="inner-file-input"
                     accept="image/*"
                     name="avatar1"
+                    maxHeight={180}
+                    maxWidth={300}
                     randomizeFilename
                     storageRef={firebase.storage().ref('images')}
                     onUploadStart={this.handleUploadStart1}
