@@ -31,7 +31,7 @@ function mapDispatchToProps (dispatch) {
 
 class ProductSidebar extends React.Component {
 
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
         packages: [],
@@ -43,7 +43,7 @@ class ProductSidebar extends React.Component {
     };
   }
 
-  componentWillMount () {
+  componentWillMount() {
     this.props.currentuserid();
 
       var ProductId = this.props.ProductId;

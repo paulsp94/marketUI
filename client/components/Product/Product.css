@@ -1,24 +1,40 @@
+.left-panel {
+    padding-top: 5px;
+    flex: 1;
+    color: black;
+}
 
-	.left-panel {
-	    padding-top: 5px;
-	    flex: 1;
-      color: black;
-	}
+.right-panel {
+  padding-top: 5px;
+  flex: 1;
+  background-color: #CFD8DC;
+}
 
-	.right-panel {
-	  padding-top: 5px;
-	  flex: 1;
-	  background-color: #CFD8DC;
-	}
+.left-panel label {
+  font-weight: normal;
+}
 
-	.left-panel label {
-	  font-weight: normal;
-	}
+.product-header{
+  text-align: right;
+}
 
-	.product-header{
-		text-align: right;
-	}
+.warning {
+  color: red;
+}
 
-    .warning{
-        color: red;
-    }
+.inner-file-input {
+  display: block;
+  width: 100%;
+  height: 200%;
+  cursor: pointer;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  opacity: 0;
+}
+
+.file-input-wrapper {
+  position: relative;
+  overflow: hidden;
+}
