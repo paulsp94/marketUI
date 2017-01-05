@@ -247,30 +247,45 @@ export function  UserCreatedProduct() {
                 });
             });
 
-            var productallid = [];
-            for(var i= 0; i < groupid.length;i++) {
 
-                var currentproductid = groupid[i].productid;
+            if(groupid == ''){
 
-                firebase.database().ref('ProductCoreDetails').orderByChild('ProductId').equalTo(currentproductid).on("value", (snapshot) => {
-                    snapshot.forEach((data123) => {
-                        productallid.push({
-                            productid: data123.val().ProductId,
-                            Price: data123.val().Price,
-                            Description: data123.val().Description,
-                            Mainimage: data123.val().mainImage,
-                            Title: data123.val().Title,
-                            Subimage: data123.val().subImage,
-                        });
-                    });
-
-                    dispatch({
-                        type: "USERCREATEPRODUCTS",
-                        payload: {
-                            productallid
-                        }
-                    })
+                dispatch({
+                    type: "USERCREATEPRODUCTS",
+                    payload: {
+                        productallid: "No User Created Product"
+                    }
                 });
+
+            }
+            else {
+
+                var productallid = [];
+                for (var i = 0; i < groupid.length; i++) {
+
+                    var currentproductid = groupid[i].productid;
+
+                    firebase.database().ref('ProductCoreDetails').orderByChild('ProductId').equalTo(currentproductid).on("value", (snapshot) => {
+                        snapshot.forEach((data123) => {
+                            productallid.push({
+                                productid: data123.val().ProductId,
+                                Price: data123.val().Price,
+                                Description: data123.val().Description,
+                                Mainimage: data123.val().mainImage,
+                                Title: data123.val().Title,
+                                Subimage: data123.val().subImage,
+                            });
+                        });
+
+                        dispatch({
+                            type: "USERCREATEPRODUCTS",
+                            payload: {
+                                productallid
+                            }
+                        })
+                    });
+                }
+
             }
 
         });

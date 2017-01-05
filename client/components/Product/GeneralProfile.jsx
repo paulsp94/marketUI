@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { currentuserid, submitProductGeneralDetails, productCoreDetails } from '../../action/action.jsx';
 // Firebase
 var firebase = require('firebase');
-import FileUploader from 'react-firebase-file-uploader'
+import FileUploader from 'react-firebase-file-uploader';
 import firebase_details from '../../Firebase/Firebase';
 // Material-UI
 import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card';
