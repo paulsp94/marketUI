@@ -209,18 +209,14 @@ export default class AuthModal extends React.Component {
                 <div className="form-group">
                   <TextField
                     ref="email"
-                    hintText="Email"
                     floatingLabelText="Email"
-                    floatingLabelFixed
                     fullWidth
                   />
                 </div>
                 <div className="form-group">
                   <TextField
                     ref="pw"
-                    hintText="Password"
                     floatingLabelText="Password"
-                    floatingLabelFixed
                     type="password"
                     fullWidth
                   />
@@ -253,18 +249,14 @@ export default class AuthModal extends React.Component {
                 <div className="form-group">
                   <TextField
                     ref="email"
-                    hintText="Email"
                     floatingLabelText="Email"
-                    floatingLabelFixed
                     fullWidth
                   />
                 </div>
                 <div className="form-group">
                   <TextField
                     ref="pw"
-                    hintText="Password"
                     floatingLabelText="Password"
-                    floatingLabelFixed
                     type="password"
                     fullWidth
                   />

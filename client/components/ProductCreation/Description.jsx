@@ -20,8 +20,6 @@ function mapDispatchToProps(dispatch) {
 
 @connect(mapStateToProps, mapDispatchToProps)
 
-
-
 class  Descriptiondetails extends React.Component{
 
     constructor(props) {
@@ -47,9 +45,7 @@ class  Descriptiondetails extends React.Component{
                 this.setState({
                     textfieldvalue1 :Description
                 });
-
             });
-
         }
 
         else{
@@ -58,9 +54,7 @@ class  Descriptiondetails extends React.Component{
             this.setState({
                 textfieldvalue1 :Description
             });
-
         }
-
     }
 
     handleClick(event){
@@ -78,7 +72,6 @@ class  Descriptiondetails extends React.Component{
     }
 
     subMit(){
-
         var textfieldvalue1 = this.state.textfieldvalue1;
         if(textfieldvalue1 == ''){
             this.setState({
@@ -91,10 +84,8 @@ class  Descriptiondetails extends React.Component{
                 ProductId :ProductId,
                 textfieldvalue1 : textfieldvalue1,
             });
-
         }
     }
-
 
     render(){
         var thisIsMyCopy1 = this.state.showSyntax ?  this.state.markdownSyntax : this.state.textfieldvalue1;
@@ -158,7 +149,7 @@ class  Descriptiondetails extends React.Component{
                     {this.state.Error}
                 </div>
                 <Card style={{ marginRight: "1%", marginLeft: "1%", marginTop: 9}}>
-                <CommandBar farItems={ commands } items = {leftCommands}/>
+                <CommandBar farItems={ commands } items = {leftCommands} />
                     <div className="product-tab2">
                         <div className="markdowncode" >
                             <textarea value={this.state.textfieldvalue1} className="textarea" placeholder="Add here your markdown or html code" ref={(eg) => this.textbox1 = eg}  name="textbox1" onChange={this.textBox1.bind(this)}>
@@ -168,7 +159,6 @@ class  Descriptiondetails extends React.Component{
                         <div className="markdowntext">
                             <ReactMarkdown source={thisIsMyCopy1} escapeHtml={false} />
                         </div>
-
                     </div>
                 </Card>
             </div>

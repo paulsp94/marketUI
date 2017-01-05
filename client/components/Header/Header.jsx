@@ -73,7 +73,7 @@ export default class Header extends React.Component {
 
     const contentLoggedIn = loggedIn ? 
                             <li>
-                              <Link to="/profile" className="">
+                              <Link to="/Profile" className="">
                                 Profile
                               </Link>
                             </li> :  
@@ -114,7 +114,7 @@ export default class Header extends React.Component {
           </Link>
         </li>
         <li>
-          <Link to="/market" className="">
+          <Link to="/Market" className="">
             Explore
           </Link>
         </li>
