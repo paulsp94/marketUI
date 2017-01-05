@@ -6,7 +6,7 @@ var firebase = require('firebase');
 import {Link} from "react-router";
 import {withRouter} from 'react-router';
 import { hashHistory } from 'react-router';
-import Sidebar from '../Sidebar/Sidebar.jsx';
+import Sidebar from '../ProductPreview/Sidebar.jsx';
 import Itemview from './Itemview.jsx';
 import { fetchuserdetails, productCoreDetails, Description, ProductSidebar, currentproductstore, ProductComments, productSellerandstripeid} from '../../action/action.jsx'
 
