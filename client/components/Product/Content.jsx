@@ -131,6 +131,12 @@ class Content extends React.Component {
     ];
     const commands = [
       {
+        key: 'upload',
+        name: 'Media Upload',
+        icon: 'Upload',
+        onClick: this.onUpload.bind(this)
+      },
+      {
         key: 'share',
         name: 'Markdown Guide',
         icon: 'Share',
@@ -141,13 +147,8 @@ class Content extends React.Component {
         name: 'Save',
         icon: 'Share',
         onClick: this.subMit.bind(this)
-      },
-      {
-        key: 'upload',
-        name: 'Media Upload',
-        icon: 'Upload',
-        onClick: this.onUpload.bind(this)
       }
+      
     ];
     return (
       <div>

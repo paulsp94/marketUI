@@ -270,7 +270,6 @@ class Profile extends React.Component{
 
               <TextField
                 type="password"
-                hintText="Enter Password"
                 floatingLabelText="New Password"
                 floatingLabelStyle={{fontWeight: 'normal'}}
                 fullWidth
@@ -279,7 +278,6 @@ class Profile extends React.Component{
 
               <TextField
                 type="password"
-                hintText="Retype Password"
                 floatingLabelText="Password Confirmation"
                 floatingLabelStyle={{fontWeight: 'normal'}}
                 fullWidth
@@ -296,7 +294,6 @@ class Profile extends React.Component{
 
               <TextField
                 type="email"
-                hintText="Enter Email"
                 floatingLabelText="New Email"
                 floatingLabelStyle={{fontWeight: 'normal'}}
                 fullWidth
@@ -340,13 +337,12 @@ class Profile extends React.Component{
 
               {/* description */}
               <TextField
-                hintText="Describe yourself"
                 floatingLabelText="Describe yourself"
                 floatingLabelStyle={{fontWeight: 'normal'}}
                 defaultValue={this.state.description}
                 fullWidth
                 multiLine
-                rows={2}
+                rows={1}
                 rowsMax={5}
                 onChange={this.onDescriptionChange}
               />

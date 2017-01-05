@@ -26,7 +26,7 @@ class ContentSidebar extends React.Component{
                             <Card expanded={this.state.expanded}>
                                 <div className="createproduct">
                                    <Link to="/ContentCreation" className="">
-                                       <RaisedButton label="Create Product" secondary={true} style={{ margin: 12}} />
+                                       <RaisedButton label="Create Content" secondary={true} style={{ margin: 12}} />
                                     </Link>
                                 </div>
                             </Card>

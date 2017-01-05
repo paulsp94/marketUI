@@ -12,10 +12,12 @@ import RaisedButton from 'material-ui/RaisedButton';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import TextField from 'material-ui/TextField';
+import IconButton from 'material-ui/IconButton';
 // TODO: Ad CircularProgress while images are loading
 // import CircularProgress from 'material-ui/CircularProgress';
 // External
 var FileInput = require('react-file-input');
+
 
 import Flexbox from 'flexbox-react';
 import StarRatingComponent from 'react-star-rating-component';
@@ -292,7 +294,6 @@ class GeneralProfile extends React.Component {
 
               {/* title */}
               <TextField
-                hintText="Title"
                 floatingLabelText="Title"
                 defaultValue={title}
                 fullWidth
@@ -301,7 +302,6 @@ class GeneralProfile extends React.Component {
 
               {/* subtitle */}
               <TextField
-                hintText="Sub-Title"
                 floatingLabelText="Sub-Title"
                 defaultValue={subtitle}
                 fullWidth
@@ -309,15 +309,15 @@ class GeneralProfile extends React.Component {
               />
               <br/>
               <br/>
-
               {/* avatar */}
               <RaisedButton
-                label={!avatar ? 'Choose Image' : 'Change Image'}
+                label={!avatar ? 'Choose Large Image' : 'Change Large Image'}
                 labelPosition="before"
                 labelStyle={{'font-size': '13px'}}
                 containerElement="label"
                 primary={!!avatar}
                 secondary={!avatar}
+                style={{marginRight: 10}}
               >
                 <div className="file-input-wrapper">
                   <FileUploader
@@ -335,11 +335,10 @@ class GeneralProfile extends React.Component {
                   />
                 </div>
               </RaisedButton>
-              <br/>
-              <br/>
+
               {/* avatar1 */}
               <RaisedButton
-                label={!avatar1 ? 'Choose Image' : 'Change Image'}
+                label={!avatar1 ? 'Choose Small Image' : 'Change Small Image'}
                 labelPosition="before"
                 labelStyle={{'font-size': '13px'}}
                 buttonStyle={{overflow: 'hidden', position: 'relative'}}
@@ -363,7 +362,8 @@ class GeneralProfile extends React.Component {
                   />
                 </div>
               </RaisedButton>
-              <br/>
+
+
               <br/>
 
               {/* category */}
@@ -384,12 +384,11 @@ class GeneralProfile extends React.Component {
 
               {/* description */}
               <TextField
-                hintText="Product Description"
                 floatingLabelText="Description"
                 defaultValue={description}
                 fullWidth
                 multiLine
-                rows={2}
+                rows={1}
                 rowsMax={5}
                 onChange={this.onDescriptionChange}
               />
@@ -397,10 +396,9 @@ class GeneralProfile extends React.Component {
               {/* price */}
               <TextField
                 type="number"
-                step="0.05"
+                step="1"
                 min="0"
-                hintText="Price in $"
-                floatingLabelText="Price"
+                floatingLabelText="Price in $ (BETA: everything is free)"
                 defaultValue={price}
                 fullWidth
                 onChange={this.onPriceChange}

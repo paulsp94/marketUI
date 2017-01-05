@@ -271,7 +271,7 @@ class Sidebar extends React.Component {
         if (currentstate == '0') {
             var subheader = <div>
               <div className="rating">
-                <Table >
+                <Table selectable={false}>
                   <TableBody displayRowCheckbox={this.state.showCheckboxes} adjustForCheckbox={this.state.showCheckboxes}>
                     <TableRow  >
                       
@@ -324,8 +324,7 @@ class Sidebar extends React.Component {
                       <CardText>
                         <div className="usercommentname">
                           <TextField
-                            hintText="Ask Questions about the product"
-                            floatingLabelText="Ask Question"
+                            floatingLabelText="Leave a comment about the product"
                             floatingLabelStyle={{fontWeight: 'normal'}}
                             fullWidth
                             value={newComment}

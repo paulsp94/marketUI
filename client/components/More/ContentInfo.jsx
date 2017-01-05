@@ -39,7 +39,7 @@ var ContentInfo = React.createClass({
                     <p> All actions must be in compliance with our <Link to="/Policy"> terms & policy </Link> </p>
                     <p> If you have open questions please <Link to="/Support"> let us know </Link> </p>
                     <Link to="/ContentCreation">
-                    <RaisedButton label="Creation Page" primary={true} style={{marginTop: 10, marginBottom: 20}} />
+                    <RaisedButton label="Create Content" primary={true} style={{marginTop: 10, marginBottom: 20}} />
                     </Link>
                     <p> <b> This is a BETA - make sure to save everything offline! </b>  </p>  
                  </Card>       
