@@ -14,15 +14,7 @@ export default class Itemview extends React.Component {
   }
 
   render () {
-
-    var buttonvalue = 'dssf';
-
-    if (buttonvalue == '') {
-      var button = '';
-    }
-    else {
-      var button = <RaisedButton label="Preview" style={{ marginLeft: "44%", marginRight: "44%" }}/>
-    }
+    var button = <RaisedButton label="Preview" style={{ marginLeft: "44%", marginRight: "44%" }}/>  
 
     var thisIsMyCopy = this.props.Description ? this.props.Description.Description : null;
 
@@ -39,7 +31,7 @@ export default class Itemview extends React.Component {
             </CardMedia>
             <Card className="itemPreviewMargins">
               <CardText >
-                <div className="code">
+                <div className="code" style={{ "overflow-x": "scroll" }}>
                   {
                     thisIsMyCopy ? <ReactMarkdown source={thisIsMyCopy}/> : null
                   }
