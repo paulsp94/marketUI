@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import ReactMarkdown from 'react-markdown';
+import { Card, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card';
+import Chip from 'material-ui/Chip';
 import { productEditValidationDetails } from '../../action/action.jsx';
 import MenuItem from 'material-ui/MenuItem';
 import RemoveRedEye from 'material-ui/svg-icons/image/remove-red-eye';
@@ -46,14 +48,16 @@ class ProductContent extends React.Component {
         comments: "",
         allcomments:'',
         Content:'',
+        ProductId:'',
+        Description:'',
+        tags:[],
+        email:'',
     };
   }
 
   componentWillMount () {
 
-
       var ProductId = this.props.params.productid;
-
 
       firebase.database().ref('Content').orderByChild('ProductId').equalTo(ProductId).on("child_added", (snapshot) => {
 
@@ -87,7 +91,6 @@ class ProductContent extends React.Component {
 
   }
 
-
   componentDidMount(){
 
       var ProductId = this.props.params.productid;
@@ -111,6 +114,29 @@ class ProductContent extends React.Component {
           ProductId: ProductId,
           allcomments:allcomments,
       });
+
+      firebase.database().ref('Product_creation/'+ ProductId).once("value", (snapshot) => {
+
+          var Userid = snapshot.val().userid;
+
+          firebase.database().ref('ProductOwnerDetails/' + Userid).on("value", (snapshot) => {
+
+              var Description = snapshot.val().Description;
+              var tags = snapshot.val().tags;
+              var email = snapshot.val().email;
+
+              this.setState({
+                  Description: Description,
+                  tags: tags,
+                  email:email,
+              })
+          });
+
+      });
+
+
+
+
 
   }
 
@@ -158,7 +184,32 @@ class ProductContent extends React.Component {
           {contentData && <ReactMarkdown source={this.state.Content} escapeHtml={false}/>}
           {authorProfile &&
           <div>
-            <h1>Author Profile</h1>
+
+              <div>
+                  <div className="sidebar-bottom">
+                      <img className="Userimage"/>
+                      <CardText>
+                          <br />
+                          <div className="userdescribation">
+                              <strong>Contact Email: </strong>{this.state.email}
+                          </div>
+                          <hr/>
+                          <br/>
+                          <div className="userdescribation">
+                              {this.state.Description}
+                          </div>
+                          <br/>
+                          <hr/>
+                          <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+                              {this.state.tags.map((item, index) =>
+                                  <Chip key={index} style={{ float: "left", margin: 4 }}>{item}</Chip>
+                              )}
+                          </div>
+                      </CardText>
+                  </div>
+              </div>
+
+
           </div>}
           {comments && 
           <div>
