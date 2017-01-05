@@ -19,10 +19,8 @@ export default class Itemview extends React.Component {
     var thisIsMyCopy = this.props.Description ? this.props.Description.Description : null;
 
     return (
-      <div>
-
+      <div className="item-view">
         <div className="container">
-
           <Card style={{ backgroundColor: "#efeadd" }}>
             <CardMedia
               overlay={
@@ -31,7 +29,7 @@ export default class Itemview extends React.Component {
             </CardMedia>
             <Card className="itemPreviewMargins">
               <CardText >
-                <div className="code" style={{ "overflow-x": "scroll" }}>
+                <div className="code">
                   {
                     thisIsMyCopy ? <ReactMarkdown source={thisIsMyCopy}/> : null
                   }
