@@ -4,10 +4,11 @@ import { bindActionCreators } from 'redux';
 import ReactMarkdown from 'react-markdown';
 import { Card, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card';
 import Chip from 'material-ui/Chip';
-import { productEditValidationDetails } from '../../action/action.jsx';
+import { productEditValidationDetails, EnternewComment } from '../../action/action.jsx';
 import MenuItem from 'material-ui/MenuItem';
 import RemoveRedEye from 'material-ui/svg-icons/image/remove-red-eye';
 import PersonAdd from 'material-ui/svg-icons/social/person-add';
+import TextField from 'material-ui/TextField';
 import Download from 'material-ui/svg-icons/file/file-download';
 import Cheerio from 'cheerio';
 import Loading from 'react-loading';
@@ -29,7 +30,8 @@ function mapStateToProps (store) {
 
 function mapDispatchToProps (dispatch) {
   return bindActionCreators({
-    productEditValidationDetails
+    productEditValidationDetails,
+      EnternewComment,
   }, dispatch);
 }
 
@@ -52,6 +54,7 @@ class ProductContent extends React.Component {
         Description:'',
         tags:[],
         email:'',
+        newComment: ''
     };
   }
 
@@ -140,6 +143,22 @@ class ProductContent extends React.Component {
 
   }
 
+    onNewCommentChange = (event, value) => {
+        this.setState({
+            newComment: value
+        });
+    };
+
+    onNewCommentKeyPress = (event) => {
+        if (event.keyCode == 13) {
+            const { newComment } = this.state;
+            var ProductId = this.props.params.productid;
+            const user = firebase.auth().currentUser;
+            this.props.EnternewComment(newComment, ProductId, user.email);
+            this.setState({newComment: ''});
+        }
+    };
+
   render () {
 
     let { preparingData, htmlData, authorProfile, comments, contentData } = this.state;
@@ -213,6 +232,21 @@ class ProductContent extends React.Component {
           </div>}
           {comments && 
           <div>
+
+              <CardText>
+                  <div className="usercommentname">
+                      <TextField
+                          floatingLabelText="Leave a comment about the product"
+                          floatingLabelStyle={{fontWeight: 'normal'}}
+                          fullWidth
+                          value={this.state.newComment}
+                          onChange={this.onNewCommentChange}
+                          onKeyDown={this.onNewCommentKeyPress}
+                      />
+                      <br/>
+                  </div>
+              </CardText>
+
               {this.state.allcomments.map((item, index) =>
                   <div>
                       <div className="usercommentname">
