@@ -363,7 +363,6 @@ class GeneralProfile extends React.Component {
                 </div>
               </RaisedButton>
 
-
               <br/>
 
               {/* category */}

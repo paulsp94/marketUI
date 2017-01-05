@@ -19,7 +19,6 @@ import Policy from 'components/Policy/Policy.jsx';
 import About from 'components/About/About.jsx';
 import Impressum from 'components/Impressum/Impressum.jsx';
 import ContentInfo from 'components/More/ContentInfo.jsx'
-
 import AdminContainer from './containers/Admin';
 
 render(<Provider store={store}>
@@ -40,6 +39,7 @@ render(<Provider store={store}>
         <Route path="ProductContent/:productid" component={ProductContent}/>
         <Route path="Create" component={ContentInfo}/>
         <Route path="core" component={AdminContainer}/>
+        <Route path="*" status={404} component={Welcome}/>
       </Route>
     </Router>
   </Provider>,
