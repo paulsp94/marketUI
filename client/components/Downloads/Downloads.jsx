@@ -307,6 +307,8 @@ class  Downloads extends React.Component{
 
         var Usercreatedproductobject = this.props.userdetails.UserCreatedProduct;
 
+        console.log(Usercreatedproductobject , ' user created object is');
+
         if(Usercreatedproductobject == false) {
             var Contentdata = <div>
                 <div className="loader">
@@ -315,11 +317,23 @@ class  Downloads extends React.Component{
             </div>
         }
 
+        else if(Usercreatedproductobject.productallid == "No User Created Product"){
+
+            var Contentdata =
+            <div>
+                <Card>
+                <p> Some placeholder will be Here</p>
+                </Card>
+            </div>
+
+        }
+
         else {
             var Usercreatedproductarray = Object.keys(Usercreatedproductobject).map(key => Usercreatedproductobject[key]);
 
             var Usercreatedproduct = [].concat.apply([], Usercreatedproductarray);
 
+            console.log(Usercreatedproduct,'CHECK VALUE');
 
             var Contentdata =
                 <div>
