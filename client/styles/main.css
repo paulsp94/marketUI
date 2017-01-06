@@ -935,7 +935,7 @@ h1
     color: black;
 }
 
-.item-view .code img {
+.code img, .contentMarkdown img {
     max-width:100%;
     max-height:100%;
 }
