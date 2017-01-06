@@ -26,7 +26,7 @@ class  Descriptiondetails extends React.Component{
         super(props);
         this.state= {
             textfieldvalue1:'',
-            markdownSyntax:'<iframe width="100%" height="100%"src="https://guides.github.com/features/mastering-markdown/"></iframe>',
+            markdownSyntax:'<iframe width="100%" style="height: 83vh; overflow:hidden; border: none;" src="https://guides.github.com/features/mastering-markdown/"></iframe>',
             isOpened: false,
             showSyntax: false,
             Error:'',
