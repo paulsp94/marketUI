@@ -564,16 +564,10 @@ h1
 
 .sidebar
 {
-    float: left;
-
     width: 100%;
     height: auto;
     margin-top: 0;
-    padding-right: 5px;
-    padding-left: 5px;
-
     color: black;
-    background-color: none;
 }
 
 .productpage-top
@@ -788,6 +782,7 @@ h1
     width: 100%;
     margin-right: 0;
     padding-right: 0;
+    padding-left: 0;
 }
 
 @media (min-width: 1200px)
@@ -795,10 +790,8 @@ h1
     .container
     {
         float: left;
-
         height: auto;
         margin-left: 14%;
-        padding: 0;
     }
 }
 
@@ -1205,17 +1198,6 @@ h1
         border: 0 solid white;
         background-size: cover;
     }
-
-    .sidebar
-    {
-        float: right;
-
-        width: 100%;
-        height: auto;
-        margin-top: 10px;
-        padding-right: 0;
-        padding-left: 0;
-    }
 }
 
 @media (min-width: 1200px) and (max-width: 1279px)
@@ -1248,7 +1230,10 @@ h1
     .sidebar
     {
         width: 430px;
+        height: auto;
         min-height: 900px;
+        padding-right: 5;
+        padding-left: 5;
     }
 }
 
