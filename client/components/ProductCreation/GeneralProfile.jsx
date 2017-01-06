@@ -414,14 +414,14 @@ class GeneralProfile extends React.Component {
               overlay={
                 <CardTitle title={title} subtitle={subtitle}/>
               }>
-              <img style={{height: 393, width: 850}} src={this.state.avatarURL} />
+              <img className="fadeIn" style={{height: 393, width: 850}} src={this.state.avatarURL} />
             </CardMedia>
           </div>
 
           <div className="itemCard">
             <Card>
               <Card className="product-search" style={{padding: 0}}>
-                <img className="product_image" src={this.state.avatarURL1}/>
+                <img className="product_image fadeIn" src={this.state.avatarURL1}/>
 
                 <Flexbox flexDirection="row">
                   <Flexbox flexGrow={1}>

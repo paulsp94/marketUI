@@ -882,7 +882,7 @@ h1
     background-color: white;
 }
 
-@keyframes dropHeader {
+@keyframes fadeIn {
   0% {
     opacity:  0;
   }
@@ -891,23 +891,17 @@ h1
   }
 }
 
-.product_image
-{
-    /*border: 2px solid black;*/
-    animation-name: dropHeader;
-    animation-iteration-count: 1;
-    animation-timing-function: ease-in-out;
-    animation-duration: 0.2s;
-    width: 100%;
-    height: 180px;
+.fadeIn {
+  animation-name: fadeIn;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
+  animation-duration: 1s;
 }
 
-.videoFadeIn
+.product_image
 {
-    animation-name: dropHeader;
-    animation-iteration-count: 1;
-    animation-timing-function: ease-in-out;
-    animation-duration: 1s;
+    width: 100%;
+    height: 180px;
 }
 
 .description
@@ -1043,10 +1037,6 @@ h1
 
 .itemLargeImage
 {
-    animation-name: dropHeader;
-    animation-iteration-count: 1;
-    animation-timing-function: ease-in-out;
-    animation-duration: 1s;
     width: 100%;
     height: 393px;
 }

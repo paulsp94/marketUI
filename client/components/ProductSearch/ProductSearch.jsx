@@ -109,8 +109,8 @@ class  ProductSearch extends React.Component{
                         <div className="row" >
                             <Tags onUpdateFilter={this.SearchFilter.bind(this)} cateGoryFilter={this.cateGoryFilter.bind(this)}/>
                             {
-                                filtereddata.map((detail, index)=> {
-                                    return <Product item={detail} key={index} />
+                                filtereddata.map((detail)=> {
+                                    return <Product item={detail} key={detail.productid} />
                                 })
                             }
                         </div>
