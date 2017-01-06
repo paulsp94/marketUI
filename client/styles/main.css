@@ -570,6 +570,8 @@ h1
     margin-top: 0;
     color: black;
     background-color: none;
+    padding-right: 5px;
+    padding-left: 5px;
 }
 
 .productpage-top
@@ -785,6 +787,15 @@ h1
     margin-right: 0;
     padding-right: 0;
     padding-left: 0;
+}
+
+@media (max-width: 1199px)
+{
+    .sidebar
+    {
+        padding-right: 0;
+        padding-left: 0;
+    }
 }
 
 @media (min-width: 1200px)
