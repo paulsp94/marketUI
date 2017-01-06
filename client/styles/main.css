@@ -805,8 +805,6 @@ h1
         float: left;
         height: auto;
         margin-left: 14%;
-        padding-right: 5px;
-        padding-left: 5px;
     }
 }
 
@@ -1245,10 +1243,7 @@ h1
     .sidebar
     {
         width: 430px;
-        height: auto;
         min-height: 900px;
-        padding-right: 5;
-        padding-left: 5;
     }
 }
 
