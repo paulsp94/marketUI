@@ -285,6 +285,8 @@ class GeneralProfile extends React.Component {
   render(){
     const { title, subtitle, category, description, price, avatar, avatar1 } = this.state;
 
+    console.log(title, 'value of title is');
+
     return (
       <div className="product-tab" >
         <div className="left-panel">
@@ -295,15 +297,15 @@ class GeneralProfile extends React.Component {
               {/* title */}
               <TextField
                 floatingLabelText="Title"
-                defaultValue={title}
                 fullWidth
+                value={this.state.title}
                 onChange={this.onTitleChange}
               />
 
               {/* subtitle */}
               <TextField
                 floatingLabelText="Sub-Title"
-                defaultValue={subtitle}
+                value={subtitle}
                 fullWidth
                 onChange={this.onSubtitleChange}
               />
@@ -384,7 +386,7 @@ class GeneralProfile extends React.Component {
               {/* description */}
               <TextField
                 floatingLabelText="Description"
-                defaultValue={description}
+                value={description}
                 fullWidth
                 multiLine
                 rows={1}
@@ -398,7 +400,7 @@ class GeneralProfile extends React.Component {
                 step="1"
                 min="0"
                 floatingLabelText="Price in $ (BETA: everything is free)"
-                defaultValue={price}
+                value={price}
                 fullWidth
                 onChange={this.onPriceChange}
               />
