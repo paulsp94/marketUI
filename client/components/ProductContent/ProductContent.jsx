@@ -2,10 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import ReactMarkdown from 'react-markdown';
-import { productEditValidationDetails } from '../../action/action.jsx';
+import { Card, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card';
+import Chip from 'material-ui/Chip';
+import { productEditValidationDetails, EnternewComment } from '../../action/action.jsx';
 import MenuItem from 'material-ui/MenuItem';
 import RemoveRedEye from 'material-ui/svg-icons/image/remove-red-eye';
 import PersonAdd from 'material-ui/svg-icons/social/person-add';
+import TextField from 'material-ui/TextField';
 import Download from 'material-ui/svg-icons/file/file-download';
 import Cheerio from 'cheerio';
 import Loading from 'react-loading';
@@ -27,7 +30,8 @@ function mapStateToProps (store) {
 
 function mapDispatchToProps (dispatch) {
   return bindActionCreators({
-    productEditValidationDetails
+    productEditValidationDetails,
+      EnternewComment,
   }, dispatch);
 }
 
@@ -46,14 +50,17 @@ class ProductContent extends React.Component {
         comments: "",
         allcomments:'',
         Content:'',
+        ProductId:'',
+        Description:'',
+        tags:[],
+        email:'',
+        newComment: ''
     };
   }
 
   componentWillMount () {
 
-
       var ProductId = this.props.params.productid;
-
 
       firebase.database().ref('Content').orderByChild('ProductId').equalTo(ProductId).on("child_added", (snapshot) => {
 
@@ -87,7 +94,6 @@ class ProductContent extends React.Component {
 
   }
 
-
   componentDidMount(){
 
       var ProductId = this.props.params.productid;
@@ -112,7 +118,46 @@ class ProductContent extends React.Component {
           allcomments:allcomments,
       });
 
+      firebase.database().ref('Product_creation/'+ ProductId).once("value", (snapshot) => {
+
+          var Userid = snapshot.val().userid;
+
+          firebase.database().ref('ProductOwnerDetails/' + Userid).on("value", (snapshot) => {
+
+              var Description = snapshot.val().Description;
+              var tags = snapshot.val().tags;
+              var email = snapshot.val().email;
+
+              this.setState({
+                  Description: Description,
+                  tags: tags,
+                  email:email,
+              })
+          });
+
+      });
+
+
+
+
+
   }
+
+    onNewCommentChange = (event, value) => {
+        this.setState({
+            newComment: value
+        });
+    };
+
+    onNewCommentKeyPress = (event) => {
+        if (event.keyCode == 13) {
+            const { newComment } = this.state;
+            var ProductId = this.props.params.productid;
+            const user = firebase.auth().currentUser;
+            this.props.EnternewComment(newComment, ProductId, user.email);
+            this.setState({newComment: ''});
+        }
+    };
 
   render () {
 
@@ -158,10 +203,50 @@ class ProductContent extends React.Component {
           {contentData && <ReactMarkdown source={this.state.Content} escapeHtml={false}/>}
           {authorProfile &&
           <div>
-            <h1>Author Profile</h1>
+
+              <div>
+                  <div className="sidebar-bottom">
+                      <img className="Userimage"/>
+                      <CardText>
+                          <br />
+                          <div className="userdescribation">
+                              <strong>Contact Email: </strong>{this.state.email}
+                          </div>
+                          <hr/>
+                          <br/>
+                          <div className="userdescribation">
+                              {this.state.Description}
+                          </div>
+                          <br/>
+                          <hr/>
+                          <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+                              {this.state.tags.map((item, index) =>
+                                  <Chip key={index} style={{ float: "left", margin: 4 }}>{item}</Chip>
+                              )}
+                          </div>
+                      </CardText>
+                  </div>
+              </div>
+
+
           </div>}
           {comments && 
           <div>
+
+              <CardText>
+                  <div className="usercommentname">
+                      <TextField
+                          floatingLabelText="Leave a comment about the product"
+                          floatingLabelStyle={{fontWeight: 'normal'}}
+                          fullWidth
+                          value={this.state.newComment}
+                          onChange={this.onNewCommentChange}
+                          onKeyDown={this.onNewCommentKeyPress}
+                      />
+                      <br/>
+                  </div>
+              </CardText>
+
               {this.state.allcomments.map((item, index) =>
                   <div>
                       <div className="usercommentname">

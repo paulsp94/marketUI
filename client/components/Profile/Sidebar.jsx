@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+ import React, { Component } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card';
 import { Tabs, Tab } from 'material-ui/Tabs';
@@ -53,7 +53,6 @@ class Sidebar extends React.Component {
   }
 
   Comments () {
-
 
     var curr_icon = <div>
       <div className="sidebar-bottom">
