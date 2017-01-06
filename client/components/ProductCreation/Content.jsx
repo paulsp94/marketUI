@@ -71,7 +71,14 @@ class Content extends React.Component {
 
   handleClick(event) {
     this.setState({
-      showSyntax: !this.state.showSyntax,
+      showSyntax: true,
+      showMediaUploader: false
+    });
+  }
+
+    preview(event) {
+    this.setState({
+      showSyntax: false,
       showMediaUploader: false
     });
   }
@@ -130,6 +137,12 @@ class Content extends React.Component {
       {}
     ];
     const commands = [
+       {
+        key: 'preview',
+        name: 'Code Preview',
+        icon: 'preview',
+        onClick: this.preview.bind(this)
+      },
       {
         key: 'upload',
         name: 'Media Upload',

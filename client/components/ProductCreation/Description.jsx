@@ -57,10 +57,16 @@ class  Descriptiondetails extends React.Component{
         }
     }
 
-    handleClick(event){
-        var newShowSyntax =  this.state.showSyntax ? false : true;
+    preview(event) {
         this.setState({
-            showSyntax: newShowSyntax
+          showSyntax: false,
+          showMediaUploader: false
+        });
+    }
+
+    handleClick(event){
+        this.setState({
+            showSyntax: true
         });
     }
 
@@ -130,6 +136,12 @@ class  Descriptiondetails extends React.Component{
                       }, */}
         ];
         const commands = [
+                      {
+                        key: 'preview',
+                        name: 'Code Preview',
+                        icon: 'preview',
+                        onClick: this.preview.bind(this)
+                      },
                       {
                         key: 'share',
                         name: 'Markdown Guide',
