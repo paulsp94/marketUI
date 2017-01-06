@@ -26,7 +26,7 @@ var Contact = React.createClass({
                           </form>
                       </Card>
                       <Card className="pageStyle">
-                         <p> If you have any questions, suggestions or found a bug, just leave us a message behind. We and we will get in touch with you.</p>
+                         <p> If you have any questions, suggestions or found a bug, just leave us a message behind. We and we will get in touch with you. You can also write a mail to contact@r.codes . </p>
                       </Card> 
                     </div>
         )
