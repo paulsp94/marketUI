@@ -8,6 +8,7 @@
   background-color: transparent;
   font-family: Roboto, sans-serif;
   transition: height 200ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+  border-bottom: 1px solid rgb(180, 180, 180);
 }
 
 .react-tagsinput-input {
@@ -20,6 +21,7 @@
   width: auto!important;
   max-width: inherit;
   font-size: 14px;
+
 }
 
 .react-tagsinput label {
@@ -34,6 +36,7 @@
   color: rgba(0, 0, 0, 0.298039);
   user-select: none;
   font-weight: normal;
+
 }
 
 .react-tagsinput label.dirty {
@@ -43,7 +46,7 @@
 .react-tagsinput .underline{
   border-top: none rgb(0, 188, 212);
   border-right: none rgb(0, 188, 212);
-  border-bottom: 2px solid rgb(0, 188, 212);
+  border-bottom: 2px solid rgb(0, 0, 0);
   border-left: none rgb(0, 188, 212);
   border-image: initial;
   box-sizing: content-box;
@@ -58,5 +61,5 @@
 }
 
 .react-tagsinput--focused label {
-  color: rgb(0, 188, 212);
+  color: rgb(188, 188, 212);
 }
