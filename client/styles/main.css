@@ -276,7 +276,7 @@ html
 
 .product-tab
 {
-    min-height: 95vh;
+    height: 87vh;
     display: flex;
     background-color: #f5f5f5;
     /* Firefox */
@@ -290,7 +290,7 @@ html
 .product-tab2
 {
     display: flex;
-    min-height: 70vh;
+    height: 84vh;
     background-color: #f5f5f5;
     /* Firefox */
     /* Chrome, Safari */
@@ -833,7 +833,7 @@ h1
 
 .fullHeight
 {
-    height:  88vh;
+    height:  86vh;
 }
 
 .itemCard
