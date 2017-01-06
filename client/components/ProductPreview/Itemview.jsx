@@ -14,23 +14,13 @@ export default class Itemview extends React.Component {
   }
 
   render () {
-
-    var buttonvalue = 'dssf';
-
-    if (buttonvalue == '') {
-      var button = '';
-    }
-    else {
-      var button = <RaisedButton label="Preview" style={{ marginLeft: "44%", marginRight: "44%" }}/>
-    }
+    var button = <RaisedButton label="Preview" style={{ marginLeft: "44%", marginRight: "44%" }}/>  
 
     var thisIsMyCopy = this.props.Description ? this.props.Description.Description : null;
 
     return (
-      <div>
-
+      <div className="item-view">
         <div className="container">
-
           <Card style={{ backgroundColor: "#efeadd" }}>
             <CardMedia
               overlay={
