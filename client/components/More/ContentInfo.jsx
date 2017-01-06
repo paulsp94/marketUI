@@ -33,7 +33,7 @@ var ContentInfo = React.createClass({
                       marginBottom: '2px',
                       width: '60%',
                       }}>
-                   <iframe src="https://player.vimeo.com/video/197839131?title=0&byline=0" width="100%" height="425" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                   <iframe src="https://player.vimeo.com/video/197839131?title=0&byline=0" width="100%" height="425" frameBorder="0" allowFullScreen></iframe>
                    </Card>
                   <Card style={style}>
                     <p> All actions must be in compliance with our <Link to="/Policy"> terms & policy </Link> </p>

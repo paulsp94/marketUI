@@ -285,8 +285,6 @@ class GeneralProfile extends React.Component {
   render(){
     const { title, subtitle, category, description, price, avatar, avatar1 } = this.state;
 
-    console.log(title, 'value of title is');
-
     return (
       <div className="product-tab" >
         <div className="left-panel">
@@ -315,7 +313,7 @@ class GeneralProfile extends React.Component {
               <RaisedButton
                 label={!avatar ? 'Choose Large Image' : 'Change Large Image'}
                 labelPosition="before"
-                labelStyle={{'font-size': '13px'}}
+                labelStyle={{'fontSize': '13px'}}
                 containerElement="label"
                 primary={!!avatar}
                 secondary={!avatar}
@@ -342,8 +340,7 @@ class GeneralProfile extends React.Component {
               <RaisedButton
                 label={!avatar1 ? 'Choose Small Image' : 'Change Small Image'}
                 labelPosition="before"
-                labelStyle={{'font-size': '13px'}}
-                buttonStyle={{overflow: 'hidden', position: 'relative'}}
+                labelStyle={{'fontSize': '13px'}}
                 containerElement="label"
                 primary={!!avatar1}
                 secondary={!avatar1}

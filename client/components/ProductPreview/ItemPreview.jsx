@@ -8,7 +8,9 @@ import {withRouter} from 'react-router';
 import { hashHistory } from 'react-router';
 import Sidebar from '../ProductPreview/Sidebar.jsx';
 import Itemview from './Itemview.jsx';
-import { fetchuserdetails, productCoreDetails, Description, ProductSidebar, currentproductstore, ProductComments, productSellerandstripeid} from '../../action/action.jsx'
+import { fetchuserdetails, productCoreDetails, Description, ProductSidebar, currentproductstore, ProductComments,
+//     productSellerandstripeid
+} from '../../action/action.jsx';
 
    function mapDispatchToProps(dispatch) {
         return bindActionCreators({
@@ -18,7 +20,7 @@ import { fetchuserdetails, productCoreDetails, Description, ProductSidebar, curr
                 ProductSidebar,
                 currentproductstore,
                 ProductComments,
-                productSellerandstripeid
+                // productSellerandstripeid
             }, dispatch);
     }
 
@@ -54,7 +56,7 @@ class  ItemPreview extends Component{
         this.props.Description(ProductId);
         this.props.productCoreDetails(ProductId);
         this.props.ProductComments(ProductId);
-        this.props.productSellerandstripeid(ProductId);
+        // this.props.productSellerandstripeid(ProductId);
 
     }
 
@@ -85,12 +87,10 @@ class  ItemPreview extends Component{
     render(){
 
         var productdetails = this.props.userdetails.Productcoredetails;
-        var productobject = Object.keys(productdetails).map(key => productdetails[key]);
-        var productcoredetails = [].concat.apply([], productobject);
+
 
         var prductdescription = this.props.userdetails.Description;
-        var descriptionobject = Object.keys(prductdescription).map(key => prductdescription[key]);
-        var descriptiondetails = [].concat.apply([], descriptionobject);
+
 
         // var Productsidebarobject = this.props.userdetails.Productsidebar;
         // var sidebarobject = Object.keys(Productsidebarobject).map(key => Productsidebarobject[key]);
@@ -109,6 +109,12 @@ class  ItemPreview extends Component{
             )
         }
         else {
+            var productobject = Object.keys(productdetails).map(key => productdetails[key]);
+            var productcoredetails = [].concat.apply([], productobject);
+
+            var descriptionobject = Object.keys(prductdescription).map(key => prductdescription[key]);
+            var descriptiondetails = [].concat.apply([], descriptionobject);
+
             var productcorealldetails = productcoredetails[0];
             var productdesdetail = descriptiondetails[0];
             var prodsidebardet = Productsidebarobject[0];
