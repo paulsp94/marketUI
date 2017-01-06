@@ -143,7 +143,7 @@ class Content extends React.Component {
         icon: 'preview',
         onClick: this.preview.bind(this)
       },
-      {
+       {
         key: 'upload',
         name: 'Media Upload',
         icon: 'Upload',
