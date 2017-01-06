@@ -165,8 +165,6 @@ class  Downloads extends React.Component{
         var productcomment = [];
         var productalldeatils = [];
 
-
-
         firebase.database().ref('ProductSidebar').orderByChild('Productid').equalTo(productname).once("child_added", (snapshot) => {
 
 
@@ -307,8 +305,6 @@ class  Downloads extends React.Component{
 
         var Usercreatedproductobject = this.props.userdetails.UserCreatedProduct;
 
-        console.log(Usercreatedproductobject , ' user created object is');
-
         if(Usercreatedproductobject == false) {
             var Contentdata = <div>
                 <div className="loader">
@@ -332,8 +328,6 @@ class  Downloads extends React.Component{
             var Usercreatedproductarray = Object.keys(Usercreatedproductobject).map(key => Usercreatedproductobject[key]);
 
             var Usercreatedproduct = [].concat.apply([], Usercreatedproductarray);
-
-            console.log(Usercreatedproduct,'CHECK VALUE');
 
             var Contentdata =
                 <div>
