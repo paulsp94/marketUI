@@ -6,7 +6,6 @@ import {withRouter} from 'react-router';
 import { browserHistory } from 'react-router';
 import RaisedButton from 'material-ui/RaisedButton';
 import {Card} from 'material-ui/Card';
-import {Tabs, Tab} from 'material-ui/Tabs';
 import Flexbox from 'flexbox-react';
 import { productCoreDetails, currentproductstore, } from '../../action/action.jsx'
 import LazyLoad from 'react-lazyload';

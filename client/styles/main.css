@@ -565,13 +565,11 @@ h1
 .sidebar
 {
     float: left;
-
     width: 100%;
     height: auto;
     margin-top: 0;
     padding-right: 5px;
     padding-left: 5px;
-
     color: black;
     background-color: none;
 }
@@ -788,6 +786,16 @@ h1
     width: 100%;
     margin-right: 0;
     padding-right: 0;
+    padding-left: 0;
+}
+
+@media (max-width: 1199px)
+{
+    .sidebar
+    {
+        padding-right: 0;
+        padding-left: 0;
+    }
 }
 
 @media (min-width: 1200px)
@@ -795,10 +803,8 @@ h1
     .container
     {
         float: left;
-
         height: auto;
         margin-left: 14%;
-        padding: 0;
     }
 }
 
@@ -856,9 +862,22 @@ h1
     background-color: white;
 }
 
+@keyframes dropHeader {
+  0% {
+    opacity:  0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .product_image
 {
     /*border: 2px solid black;*/
+    animation-name: dropHeader;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-out;
+    animation-duration: 0.6s;
     width: 100%;
     height: 180px;
 }
@@ -886,6 +905,11 @@ h1
     padding-left: 5px;
 
     color: black;
+}
+
+.item-view .code img {
+    max-width:100%;
+    max-height:100%;
 }
 
 .productdetails
@@ -993,6 +1017,10 @@ h1
 
 .itemLargeImage
 {
+    animation-name: dropHeader;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+    animation-duration: 2.5s;
     width: 100%;
     height: 393px;
 }
@@ -1204,17 +1232,6 @@ h1
 
         border: 0 solid white;
         background-size: cover;
-    }
-
-    .sidebar
-    {
-        float: right;
-
-        width: 100%;
-        height: auto;
-        margin-top: 10px;
-        padding-right: 0;
-        padding-left: 0;
     }
 }
 
@@ -1605,6 +1622,11 @@ only screen and (min-device-pixel-ratio: 1.5)
 
 .backgroundImage
 {
+    animation-name: dropHeader;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-out;
+    animation-duration: 3s;
+
     position: absolute;
     top: 0;
 
