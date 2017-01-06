@@ -168,7 +168,7 @@ class Content extends React.Component {
         <div className="warning">
           {this.state.Error}
         </div>
-        <Card style={{marginRight: "1%", marginLeft: "1%", marginTop: 9}}>
+        <Card className="fullHeight" style={{marginRight: "1%", marginLeft: "1%", marginTop: 9}}>
           <CommandBar farItems={ commands } items={leftCommands}/>
           <div className="product-tab2">
             <div className="markdowncode">

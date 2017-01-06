@@ -153,7 +153,6 @@ class ProductSidebar extends React.Component {
       <div className="product-tab">
         <div className="left-panel">
 
-            
           <Card style={{ margin: '10px auto', width: 550 }}>
         
             <CardTitle
