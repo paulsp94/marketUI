@@ -28,7 +28,7 @@ class Content extends React.Component {
     super(props);
     this.state = {
       textfieldvalue: '',
-      markdownSyntax: '<iframe width="100%" height="100%"src="https://guides.github.com/features/mastering-markdown/"></iframe>',
+      markdownSyntax: '<iframe width="100%" style="height: 83vh; overflow:hidden; border: none;" src="https://guides.github.com/features/mastering-markdown/"></iframe>',
       isOpened: false,
       showSyntax: false,
       uploader: 'upload',
@@ -71,7 +71,14 @@ class Content extends React.Component {
 
   handleClick(event) {
     this.setState({
-      showSyntax: !this.state.showSyntax,
+      showSyntax: true,
+      showMediaUploader: false
+    });
+  }
+
+    preview(event) {
+    this.setState({
+      showSyntax: false,
       showMediaUploader: false
     });
   }
@@ -130,7 +137,13 @@ class Content extends React.Component {
       {}
     ];
     const commands = [
-      {
+       {
+        key: 'preview',
+        name: 'Code Preview',
+        icon: 'preview',
+        onClick: this.preview.bind(this)
+      },
+       {
         key: 'upload',
         name: 'Media Upload',
         icon: 'Upload',
@@ -155,7 +168,7 @@ class Content extends React.Component {
         <div className="warning">
           {this.state.Error}
         </div>
-        <Card style={{marginRight: "1%", marginLeft: "1%", marginTop: 9}}>
+        <Card className="fullHeight" style={{marginRight: "1%", marginLeft: "1%", marginTop: 9}}>
           <CommandBar farItems={ commands } items={leftCommands}/>
           <div className="product-tab2">
             <div className="markdowncode">

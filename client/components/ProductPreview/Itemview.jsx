@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactMarkdown from 'react-markdown';
 import RaisedButton from 'material-ui/RaisedButton';
 import { Card, CardMedia, CardTitle, CardText } from 'material-ui/Card';
+import cn from 'classnames';
 
 export default class Itemview extends React.Component {
 
@@ -13,10 +14,17 @@ export default class Itemview extends React.Component {
     };
   }
 
+  isImageCached = (src) => {
+    var image = new Image();
+    image.src = src;
+    return image.complete;
+  };
+
   render () {
+    const { productcoredetails: { Title, SubTitle, Mainimage }, Description } = this.props;
     var button = <RaisedButton label="Preview" style={{ marginLeft: "44%", marginRight: "44%" }}/>  
 
-    var thisIsMyCopy = this.props.Description ? this.props.Description.Description : null;
+    var thisIsMyCopy = Description ? Description.Description : null;
 
     return (
       <div className="item-view">
@@ -24,8 +32,12 @@ export default class Itemview extends React.Component {
           <Card style={{ backgroundColor: "#efeadd" }}>
             <CardMedia
               overlay={
-                <CardTitle title={this.props.productcoredetails.Title} subtitle={this.props.productcoredetails.SubTitle}/>}>
-                <img className="itemLargeImage" src={this.props.productcoredetails.Mainimage}/>
+                <CardTitle title={Title} subtitle={SubTitle}/>}>
+                <img src={Mainimage}
+                  className={cn('itemLargeImage', {
+                   'fadeIn': !this.isImageCached(Mainimage)
+                  })}
+                />
             </CardMedia>
             <Card className="itemPreviewMargins">
               <CardText >

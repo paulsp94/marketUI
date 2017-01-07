@@ -26,7 +26,7 @@ class  Descriptiondetails extends React.Component{
         super(props);
         this.state= {
             textfieldvalue1:'',
-            markdownSyntax:'<iframe width="100%" height="100%"src="https://guides.github.com/features/mastering-markdown/"></iframe>',
+            markdownSyntax:'<iframe width="100%" style="height: 83vh; overflow:hidden; border: none;" src="https://guides.github.com/features/mastering-markdown/"></iframe>',
             isOpened: false,
             showSyntax: false,
             Error:'',
@@ -57,10 +57,16 @@ class  Descriptiondetails extends React.Component{
         }
     }
 
-    handleClick(event){
-        var newShowSyntax =  this.state.showSyntax ? false : true;
+    preview(event) {
         this.setState({
-            showSyntax: newShowSyntax
+          showSyntax: false,
+          showMediaUploader: false
+        });
+    }
+
+    handleClick(event){
+        this.setState({
+            showSyntax: true
         });
     }
 
@@ -131,6 +137,12 @@ class  Descriptiondetails extends React.Component{
         ];
         const commands = [
                       {
+                        key: 'preview',
+                        name: 'Code Preview',
+                        icon: 'preview',
+                        onClick: this.preview.bind(this)
+                      },
+                      {
                         key: 'share',
                         name: 'Markdown Guide',
                         icon: 'Share',
@@ -148,7 +160,7 @@ class  Descriptiondetails extends React.Component{
                 <div className="warning">
                     {this.state.Error}
                 </div>
-                <Card style={{ marginRight: "1%", marginLeft: "1%", marginTop: 9}}>
+                <Card className="fullHeight" style={{ marginRight: "1%", marginLeft: "1%", marginTop: 9}}>
                 <CommandBar farItems={ commands } items = {leftCommands} />
                     <div className="product-tab2">
                         <div className="markdowncode" >

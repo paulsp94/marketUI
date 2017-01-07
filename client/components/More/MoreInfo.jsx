@@ -26,7 +26,9 @@ var Contact = React.createClass({
                       marginBottom: '2px',
                       width: '60%',
                       }}>
+                    <div className="fadeIn">
                    <iframe src="https://player.vimeo.com/video/197839131?title=0&byline=0" width="100%" height="425"  webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                    </div>
                    </Card>
                   <Card style={style}>
                 <p> To award the active participation in the R.Codes Beta, we will give away 150$ for the 3 best items   created until the end of the Beta. These are the rules and guidelines: </p>

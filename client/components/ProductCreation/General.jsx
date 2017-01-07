@@ -36,7 +36,6 @@ function mapDispatchToProps(dispatch) {
 }
 
 @connect(mapStateToProps, mapDispatchToProps)
-
 class  General extends React.Component{
     constructor(props) {
         super(props);
@@ -82,10 +81,7 @@ class  General extends React.Component{
                         this.setState({
                             producteditvalidation:"WRONGVALIDATION"
                         })
-                    }
-
-                    else{
-
+                    } else {
                         var tableproductid = currentvaluearray.ProductId;
                         var tableuserid = currentvaluearray.userid;
                         if(tableproductid == productid && user){
@@ -141,16 +137,12 @@ class  General extends React.Component{
             )
         }  else {
                 return (
-                    <div className="">
-                        <div className="" style={{backgroundColor: "#efeadd", paddingBottom: "0.5%"}}>
+                    <div>
+                        <div style={{backgroundColor: "#efeadd", paddingBottom: "0.5%"}}>
                             <Tabs>
-
                                 <Tab label="General">
-                                    <div>
                                         <GeneralProfile ProductId={this.state.ProductID} validation = {this.state.producteditvalidation} />
-                                    </div>
                                 </Tab>
-
                                 <Tab label="Descriptions">
                                     <Descriptionpage ProductId={this.state.ProductID} validation = {this.state.producteditvalidation}/>
                                 </Tab>
