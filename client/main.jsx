@@ -18,7 +18,7 @@ import About from 'components/More/About.jsx';
 import Impressum from 'components/More/Impressum.jsx';
 import ContentInfo from 'components/More/ContentInfo.jsx'
 import AdminContainer from './containers/Admin';
-var ReactGA = require('react-ga');
+import ReactGA from 'react-ga';
 ReactGA.initialize('UA-82192877-3');
 
 function logPageView() {
@@ -27,23 +27,23 @@ function logPageView() {
 }
 
 render(<Provider store={store}>
-    <Router history={browserHistory}>
+    <Router onUpdate={logPageView} history={browserHistory}>
       <Route path="/" component={Root}>
         <IndexRoute component={Welcome} onUpdate={logPageView}/>
         <Route path="ItemPreview/:productid" component={ItemPreview} onUpdate={logPageView}/>
         <Route path="ContentCreation" component={General} onUpdate={logPageView}/>
         <Route path="Market" component={ProductSearch} onUpdate={logPageView}/>
-        <Route path="Profile" component={Downloads}/>
-        <Route path="Support" component={Contact}/>
-        <Route path="MoreInfo" component={MoreInfo}/>
-        <Route path="Policy" component={Policy}/>
-        <Route path="About" component={About}/>
-        <Route path="Impressum" component={Impressum}/>
-        <Route path="EditProduct/:productid" component={General}/>
-        <Route path="ProductContent/:productid" component={ProductContent}/>
-        <Route path="Create" component={ContentInfo}/>
-        <Route path="Core" component={AdminContainer}/>
-        <Route path="*" status={404} component={Welcome}/>
+        <Route path="Profile" component={Downloads} onUpdate={logPageView}/>
+        <Route path="Support" component={Contact} onUpdate={logPageView}/>
+        <Route path="MoreInfo" component={MoreInfo} onUpdate={logPageView}/>
+        <Route path="Policy" component={Policy} onUpdate={logPageView}/>
+        <Route path="About" component={About} onUpdate={logPageView}/>
+        <Route path="Impressum" component={Impressum} onUpdate={logPageView}/>
+        <Route path="EditProduct/:productid" component={General} onUpdate={logPageView}/>
+        <Route path="ProductContent/:productid" component={ProductContent} onUpdate={logPageView}/>
+        <Route path="Create" component={ContentInfo} onUpdate={logPageView}/>
+        <Route path="Core" component={AdminContainer} onUpdate={logPageView}/>
+        <Route path="*" status={404} component={Welcome} onUpdate={logPageView}/>
       </Route>
     </Router>
   </Provider>,
