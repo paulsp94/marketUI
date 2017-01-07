@@ -99,7 +99,7 @@ class ProductContent extends React.Component {
       var ProductId = this.props.params.productid;
 
       var allcomments = [];
-      firebase.database().ref('Products_User_Comments').orderByChild('ProductId').equalTo(ProductId).on("child_added", (snapshot) => {
+      firebase.database().ref('Products_User_Comments/'+ProductId).on("child_added", (snapshot) => {
 
           allcomments.push({
               productid: snapshot.val().ProductId,
@@ -138,10 +138,6 @@ class ProductContent extends React.Component {
           });
 
       });
-
-
-
-
 
   }
 
