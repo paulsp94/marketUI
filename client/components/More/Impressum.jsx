@@ -13,7 +13,7 @@ var Impressum = React.createClass({
                    </Card> 
               <Card className="pageStyle">
                 <p> Company: Vaionex Corporation </p>
-                <p> Email: contact@rscript.market </p>
+                <p> Email: contact@R.Codes </p>
                 <p> Adress: 122 Stuart Dr, 19901-5825 Dover </p>
                 <p> State: Delaware, USA </p>
                 <p> CEO: Robin Kohze </p>

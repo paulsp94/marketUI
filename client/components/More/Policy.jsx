@@ -117,7 +117,7 @@ var Policy = React.createClass({
     intellectual property on R.codes. We own all the trademarks, logos, service
     marks and trade names on R.codes (unless otherwise stated and excluding
     these things owned by others). You will not copy, distribute, modify or
-    make derivative works of any of our RScript Content or use any of our
+    make derivative works of any of our content or use any of our
     intellectual property in any way not expressly stated in these terms.
 </p>
 <p>

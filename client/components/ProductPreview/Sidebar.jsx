@@ -78,7 +78,7 @@ class Sidebar extends React.Component {
                     <div style={{display: "inline-block"}}>
                     <div style={{  margin: 9, float: "left", marginTop: 0, marginBottom: 0 }}>
                       <h4><strong>Complexity:</strong></h4>
-                      <p>  {this.props.Sidebar.complexity} </p>
+                      <p style={{marginLeft: 3}}>  {this.props.Sidebar.complexity}/10 </p>
                     </div>
                     <div style={{  margin: 9, float: "right", marginTop: 0, marginBottom: 0}}>
                       <h4><strong>Integration Time: </strong></h4>

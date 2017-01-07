@@ -26,7 +26,7 @@ const renderInput = (props) => {
       onChange={onChange}
       value={value}
       {...other}
-      placeholder='add one...'
+      placeholder='add new tag...'
     />
   )
 };
