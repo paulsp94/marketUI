@@ -371,7 +371,6 @@ class Sidebar extends React.Component {
                                             {detail.Comment}
                                         </p>
                                       </div>
-                                      <hr/>
                                     </CardText>
                                 )
                             })

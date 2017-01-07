@@ -320,7 +320,7 @@ export function EnternewComment(Comment,ProductId,name){
         datenumber:datenumber,
     }
 
-    firebase.database().ref("Products_User_Comments").push(newData);
+    firebase.database().ref("Products_User_Comments/"+ProductId).push(newData);
 
     return {
         type:"WRITECOMMENT",
@@ -334,7 +334,7 @@ export function  ProductComments(Productid) {
 
     return function (dispatch) {
         var productcomment = [];
-        firebase.database().ref('Products_User_Comments').orderByChild('ProductId').equalTo(Productid).on("value", (snapshot) => {
+        firebase.database().ref('Products_User_Comments/'+Productid).on("value", (snapshot) => {
 
             snapshot.forEach((data12) => {
                 productcomment.push({
