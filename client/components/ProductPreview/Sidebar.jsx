@@ -377,13 +377,11 @@ class Sidebar extends React.Component {
                 {
                   sortedcomment.map((detail, index) => {
                     return (
-
-                      <CardText key={index}>
+                      <div key={index} className="commentContainer">
                         <div className="productcomments">
-                          <div className="usercommentname">
-                            <h4><strong> <span
-                              className="dateincomment">  {detail.Username} &nbsp;&nbsp; {detail.date} </span> <br/>
-                            </strong></h4>
+                          <div className="usercommentname dateincomment">
+                            <strong> <span className="">  {detail.Username} | {detail.date} </span> <br/>
+                            </strong>
                           </div>
                           <div className="usercomments">
                             <p>
@@ -391,8 +389,7 @@ class Sidebar extends React.Component {
                             </p>
                           </div>
                         </div>
-                      </CardText>
-
+                      </div>
                     )
                   })
                 }
