@@ -33,7 +33,10 @@ class AdminComponent extends React.Component {
         let products = [];
 
         for (let productKey of Object.keys(response)) {
-          products.push(response[productKey]);
+          let product = response[productKey];
+          if(product.status != 'saved') {
+            products.push(response[productKey]);
+          }
         }
         this.setState({products: products});
       });
