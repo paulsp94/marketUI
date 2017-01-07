@@ -205,18 +205,14 @@ class Sidebar extends React.Component {
     Support () {
         var curr_icon = <div>
           <div className="sidebar-bottom">
-            <img className="Userimage"/>
               <CardText>
-                  <br />
                   <div className="userdescribation">
                       <strong>Contact Email: </strong>{this.state.email}
                   </div>
                   <hr/>
-                  <br/>
                   <div className="userdescribation">
                       {this.state.Description}
                   </div>
-                  <br/>
                   <hr/>
               <div style={{ display: 'flex', flexWrap: 'wrap' }}>
                   {this.state.tags.map((item, index) =>
@@ -344,7 +340,6 @@ class Sidebar extends React.Component {
                   <Tab label="Item" onActive={this.Item.bind(this)}> </Tab>
                   <Tab label="Comments" onActive={this.Comments.bind(this)}>
                     <div className="sidebar-bottom">
-
                       <CardText>
                         <div className="usercommentname">
                           <TextField
@@ -358,11 +353,12 @@ class Sidebar extends React.Component {
                           <br/>
                         </div>
                       </CardText>
-
                         {
                             sortedcomment.map((detail, index)=> {
                                 return (
+
                                     <CardText key={index}>
+                                        <div className="productcomments">
                                       <div className="usercommentname">
                                           <h4><strong> <span className="dateincomment">  {detail.Username} &nbsp;&nbsp; {detail.date} </span> <br/> </strong> </h4>
                                       </div>
@@ -371,7 +367,9 @@ class Sidebar extends React.Component {
                                             {detail.Comment}
                                         </p>
                                       </div>
+                                        </div>
                                     </CardText>
+
                                 )
                             })
                         }

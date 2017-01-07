@@ -794,8 +794,10 @@ h1
 .sidebar-bottom
 {
     height: auto;
-
     color: black;
+    padding-left: 10px;
+    padding-right: 10px;
+    /*border: 2px solid red;*/
 }
 
 .container
@@ -951,31 +953,34 @@ h1
 .Userimage
 {
     float: none;
-
     width: 100%;
     padding: 0 20%;
-
     border: 0 solid white;
 }
 
 .usercommentname
 {
-    margin-left: 5%;
-
+    padding-left: 0%;
     text-align: left;
+    /*border: 2px solid red;*/
 }
 
 .usercomments
 {
-    padding-left: 5%;
     text-align: left;
+}
+
+.productcomments{
+    /*border: 2px solid red;*/
+    background: rgba(211,211,211, .5);
+    padding-top: 3px;
+    padding-bottom: 3px;
 }
 
 .Product1
 {
     width: 100%;
     min-height: 350px;
-
     cursor: pointer;
     vertical-align: middle;
     /*border: 10px solid red;*/
