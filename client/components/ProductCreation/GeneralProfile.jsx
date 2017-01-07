@@ -201,7 +201,7 @@ class GeneralProfile extends React.Component {
                 mainImage: url,
                 subImage: url1,
                 category: category,
-                status: 'saved',
+                status: product.status,
                 date:today,
                   datenumber:datenumber,
               });
