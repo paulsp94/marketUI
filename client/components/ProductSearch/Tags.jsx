@@ -74,7 +74,7 @@ class Tags extends React.Component{
                         <MenuItem primaryText="Sort Product" />
                         <MenuItem value={'Newest'} primaryText="Newest" />
                         <MenuItem value={'Rating'} primaryText="Rating" />
-                        {/*<MenuItem value={'Popularity'} primaryText="Popularity" />*/}
+                        <MenuItem value={'Popularity'} primaryText="Popularity" />
                         {/*<MenuItem value={'Price'} primaryText="Price" />*/}
                       </SelectField>
                        <TextField hintText={'Search...'} hintStyle={{color:'white'}} onChange={this.searchFilter.bind(this)} className={'search'} style={{marginLeft:'5px',marginRight:'5px',color:'white',fontWeight:'400',width:'150px'}} inputStyle={{color:'white'}}/>

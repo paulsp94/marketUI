@@ -135,6 +135,28 @@ class  ProductSearch extends React.Component{
             }
         }
 
+        else if(this.state.filter == 'Popularity'){
+            var filtereddata = [];
+            var alldatenumber = [];
+
+            for (var i = 0; i < mergedProduct.length; i++) {
+                alldatenumber.push(mergedProduct[i].downloadCount);
+            }
+
+            alldatenumber = alldatenumber.sort(function(a, b){return b-a});
+
+            for(var j =0; j< alldatenumber.length; j++){
+
+                for(var k =0; k< mergedProduct.length; k++) {
+
+                    if(alldatenumber[j] == mergedProduct[k].downloadCount){
+                        filtereddata.push(mergedProduct[k]);
+                    }
+                }
+            }
+        }
+
+
         else {
                 var filtereddata = mergedProduct.filter(
                     (detail) => {

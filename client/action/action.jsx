@@ -102,6 +102,7 @@ export function  FetchAllPublishedproduct() {
                   category: product.category,
                   category: product.category,
                     datenumber:product.datenumber,
+                    downloadCount:product.downloadCount,
                 });
 
                 dispatch({
