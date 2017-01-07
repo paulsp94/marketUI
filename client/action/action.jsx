@@ -310,7 +310,7 @@ export function EnternewComment(Comment,ProductId,name){
         mm='0'+mm
     }
 
-    var today = Hours+':'+minutes+'   '+ mm+'/'+dd+'/'+yyyy ;
+    var today = mm+'/'+dd+'/'+yyyy+'    '+ Hours+':'+minutes ;
 
     var newData = {
         ProductId :ProductId,
