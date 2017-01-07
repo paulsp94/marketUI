@@ -423,6 +423,17 @@ export function  submitPublishedproducts(ProductId, UserId) {
                                 firebase.database().ref('ProductSidebar').child(ProductId).once("value", function (snapshot) {
                                     if (snapshot.exists()) {
 
+                                      firebase
+                                        .database().ref(`ProductCoreDetails/${ProductId}`)
+                                        .once('value')
+                                        .then((snapshot) => {
+                                          let details = snapshot.val();
+                                          details.status = 'submitted';
+                                          firebase.database()
+                                            .ref(`ProductCoreDetails/${ProductId}`)
+                                            .set(details)
+                                        });
+
                                         firebase.database().ref("Publishedproduct/" + ProductId).set({
                                             Productid: ProductId,
                                             UserId: UserId,
