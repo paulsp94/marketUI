@@ -10,9 +10,7 @@ var stripe = require("stripe")(config['config']['stripe']['clientSecretKey']);
 var bodyParser = require('body-parser');
 var app = express();
 
-app.set('layout');
 app.set('view engine', 'ejs');
-app.set('view options', {layout: 'layout'});
 app.set('views', path.join(process.cwd(), '/server/views'));
 
 app.use(bodyParser.json()); // support json encoded bodies

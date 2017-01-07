@@ -309,6 +309,30 @@ class Sidebar extends React.Component {
         }
 
         var allcomment = this.props.Comments;
+        var alldatenumber = [];
+        var sortedcomment = [];
+
+        if(allcomment.length == 1 || allcomment.length == 0) {
+            sortedcomment = allcomment
+        }
+        else {
+            for (var i = 0; i < allcomment.length; i++) {
+                alldatenumber.push(allcomment[i].datenumber);
+            }
+
+            alldatenumber = alldatenumber.sort(function(a, b){return b-a});
+
+            for(var j =0; j< alldatenumber.length; j++){
+
+                for(var k =0; k< allcomment.length; k++) {
+
+                    if(alldatenumber[j] == allcomment[k].datenumber){
+                        sortedcomment.push(allcomment[k]);
+                    }
+                }
+            }
+        }
+
 
         const { newComment } = this.state;
 
@@ -336,11 +360,11 @@ class Sidebar extends React.Component {
                       </CardText>
 
                         {
-                            allcomment.map((detail, index)=> {
+                            sortedcomment.map((detail, index)=> {
                                 return (
                                     <CardText key={index}>
                                       <div className="usercommentname">
-                                        <h4><strong> {detail.Username} </strong> <br/></h4>
+                                          <h4><strong> {detail.Username} <span className="dateincomment"> {detail.date} </span> <br/> </strong> </h4>
                                       </div>
                                       <div className="usercomments">
                                         <p>

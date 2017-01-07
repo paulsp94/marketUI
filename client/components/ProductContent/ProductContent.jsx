@@ -104,7 +104,9 @@ class ProductContent extends React.Component {
           allcomments.push({
               productid: snapshot.val().ProductId,
               Comment: snapshot.val().Comment,
-              Username: snapshot .val().Username,
+              Username: snapshot.val().Username,
+              date: snapshot.val().date,
+              datenumber: snapshot.val().datenumber,
           });
 
           this.setState({
@@ -162,6 +164,32 @@ class ProductContent extends React.Component {
   render () {
 
     let { preparingData, htmlData, authorProfile, comments, contentData } = this.state;
+
+
+      var allcomment = this.state.allcomments;
+      var alldatenumber = [];
+      var sortedcomment = [];
+
+      if(allcomment.length == 1 || allcomment.length == 0) {
+          sortedcomment = allcomment;
+      }
+      else {
+          for (var i = 0; i < allcomment.length; i++) {
+              alldatenumber.push(allcomment[i].datenumber);
+          }
+
+          alldatenumber = alldatenumber.sort(function(a, b){return b-a});
+
+          for(var j =0; j< alldatenumber.length; j++){
+
+              for(var k =0; k< allcomment.length; k++) {
+
+                  if(alldatenumber[j] == allcomment[k].datenumber){
+                      sortedcomment.push(allcomment[k]);
+                  }
+              }
+          }
+      }
 
     let renderContent =
         // preparingData ? <Loading type='spin' color='#000000'/> :
@@ -247,10 +275,10 @@ class ProductContent extends React.Component {
                   </div>
               </CardText>
 
-              {this.state.allcomments.map((item, index) =>
+              {sortedcomment.map((item, index) =>
                   <div>
                       <div className="usercommentname">
-                          <h4><strong> {item.Username} </strong> <br/></h4>
+                          <h4><strong> {item.Username} <span className="dateincomment"> {item.date} </span></strong> <br/></h4>
                       </div>
                       <div className="usercomments">
                           <p>
