@@ -364,7 +364,7 @@ class Sidebar extends React.Component {
                                 return (
                                     <CardText key={index}>
                                       <div className="usercommentname">
-                                          <h4><strong> {detail.Username} <span className="dateincomment"> {detail.date} </span> <br/> </strong> </h4>
+                                          <h4><strong> <span className="dateincomment">  {detail.Username} &nbsp;&nbsp; {detail.date} </span> <br/> </strong> </h4>
                                       </div>
                                       <div className="usercomments">
                                         <p>
