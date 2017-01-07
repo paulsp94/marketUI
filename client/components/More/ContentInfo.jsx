@@ -33,8 +33,8 @@ var ContentInfo = React.createClass({
                       marginBottom: '2px',
                       width: '60%',
                       }}>
-                      <div className="fadeIn">
-                   <iframe src="https://player.vimeo.com/video/197839131?title=0&byline=0" width="100%" height="425" frameBorder="0" allowFullScreen></iframe>
+                   <div className="fadeIn">
+                   <iframe src="https://player.vimeo.com/video/198436016?title=0&byline=0" width="100%" height="425" frameBorder="0" allowFullScreen></iframe>
                    </div>
                    </Card>
                   <Card style={style}>

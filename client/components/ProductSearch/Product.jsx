@@ -72,7 +72,7 @@ class Product extends React.Component{
                         </Flexbox>
                     </Flexbox>
                     <h5><b>{item.Title}</b></h5>
-                    <h5 style={{height: '40px', paddingBottom: '3px'}}> {item.Description} </h5>
+                    <h5 style={{height: '40px', paddingBottom: '3px',  paddingLeft: '2px', paddingRight: '2px'}}> {item.Description} </h5>
                     
                 </Card>
             </div>

@@ -222,7 +222,7 @@ class ProductSidebar extends React.Component {
             </CardText>
 
             <RaisedButton onClick={this.subMit.bind(this)} primary={true} label=" Save" style={{ margin: 12 }}/>
-            <RaisedButton onClick={this.Publish.bind(this)} primary={true} label="Publish" style={{ margin: 12 }}/>
+            <RaisedButton onClick={this.Publish.bind(this)} primary={true} label="Submit" style={{ margin: 12 }}/>
             <div className="warning">
                 {this.state.error}
             </div>
