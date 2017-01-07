@@ -402,7 +402,6 @@ class GeneralProfile extends React.Component {
 
               <div className="product-header">
                 <RaisedButton onClick={this.onSubmit} label=" Save" primary={true} style={{ margin: 12}}/>
-                <br/>
                 <div className="warning" style={{margin:'20 0 0 100'}} >
                   {this.state.submitError}
                 </div>
@@ -426,7 +425,6 @@ class GeneralProfile extends React.Component {
             <Card>
               <Card className="product-search" style={{padding: 0}}>
                 <img className="product_image fadeIn" src={this.state.avatarURL1}/>
-
                 <Flexbox flexDirection="row">
                   <Flexbox flexGrow={1}>
                     <RaisedButton label={!!parseFloat(price) ? '$' + price : 'FREE'} style={{ margin: 1, width: "100%"}} />
@@ -444,7 +442,7 @@ class GeneralProfile extends React.Component {
                   </Flexbox>
                 </Flexbox>
                 <h5>{title}</h5>
-                <p style={{height: '48px'}}> {description}</p>
+                <p style={{height: '48px', paddingLeft: '2px', paddingRight: '2px'}}> {description}</p>
               </Card>
             </Card>
           </div>

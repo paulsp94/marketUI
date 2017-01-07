@@ -442,7 +442,7 @@ export function  submitPublishedproducts(ProductId, UserId) {
                                         dispatch({
                                             type: "SUBMITPUBLISHEDPRODUCTS",
                                             payload: {
-                                                submitDetails: "Your product is now pre-published! We will review it soon."
+                                                submitDetails: "Your product was submitted! We will review it now."
                                             }
                                         })
                                     }

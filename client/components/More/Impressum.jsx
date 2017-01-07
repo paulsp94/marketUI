@@ -11,9 +11,9 @@ var Impressum = React.createClass({
                   <Card className="pageStyle">
                      <h2 style={{textAlign:'center'}}> Impressum </h2>
                    </Card> 
-              <Card className="pageStyle">
+              <Card className="pageStyle" style={{marginBottom: 20}}>
                 <p> Company: Vaionex Corporation </p>
-                <p> Email: contact@rscript.market </p>
+                <p> Email: contact@R.Codes </p>
                 <p> Adress: 122 Stuart Dr, 19901-5825 Dover </p>
                 <p> State: Delaware, USA </p>
                 <p> CEO: Robin Kohze </p>
