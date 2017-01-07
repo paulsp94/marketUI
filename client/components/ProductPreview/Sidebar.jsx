@@ -49,10 +49,7 @@ class Sidebar extends React.Component {
       Description: '',
       tags: [],
       email: '',
-      newComment: ''
-    };
-
-    this.state = {
+      newComment: '',
       canRate: true
     };
 
