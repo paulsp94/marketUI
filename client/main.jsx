@@ -18,14 +18,21 @@ import About from 'components/More/About.jsx';
 import Impressum from 'components/More/Impressum.jsx';
 import ContentInfo from 'components/More/ContentInfo.jsx'
 import AdminContainer from './containers/Admin';
+var ReactGA = require('react-ga');
+ReactGA.initialize('UA-82192877-3');
+
+function logPageView() {
+  ReactGA.set({ page: window.location.pathname });
+  ReactGA.pageview(window.location.pathname);
+}
 
 render(<Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={Root}>
-        <IndexRoute component={Welcome}/>
-        <Route path="ItemPreview/:productid" component={ItemPreview}/>
-        <Route path="ContentCreation" component={General}/>
-        <Route path="Market" component={ProductSearch}/>
+        <IndexRoute component={Welcome} onUpdate={logPageView}/>
+        <Route path="ItemPreview/:productid" component={ItemPreview} onUpdate={logPageView}/>
+        <Route path="ContentCreation" component={General} onUpdate={logPageView}/>
+        <Route path="Market" component={ProductSearch} onUpdate={logPageView}/>
         <Route path="Profile" component={Downloads}/>
         <Route path="Support" component={Contact}/>
         <Route path="MoreInfo" component={MoreInfo}/>
