@@ -25,7 +25,7 @@ var Contact = React.createClass({
                           <RaisedButton type="submit" primary={true} label="Contact"/>
                           </form>
                       </Card>
-                      <Card className="pageStyle">
+                      <Card className="pageStyle" style={{marginBottom: 20}}>
                          <p> If you have any questions, suggestions or found a bug, just leave us a message behind. We and we will get in touch with you. You can also write a mail to contact@r.codes . </p>
                       </Card> 
                     </div>
