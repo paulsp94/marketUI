@@ -295,10 +295,29 @@ export function  UserCreatedProduct() {
 
 export function EnternewComment(Comment,ProductId,name){
 
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; // January is 0!
+    var yyyy = today.getFullYear();
+    var datenumber = today.getTime();
+    var minutes = today.getMinutes();
+    var Hours= today.getHours();
+
+    if(dd<10) {
+        dd='0'+dd
+    }
+    if(mm<10) {
+        mm='0'+mm
+    }
+
+    var today = Hours+':'+minutes+'   '+ mm+'/'+dd+'/'+yyyy ;
+
     var newData = {
         ProductId :ProductId,
         Username: name,
         Comment: Comment,
+        date:today,
+        datenumber:datenumber,
     }
 
     firebase.database().ref("Products_User_Comments").push(newData);
@@ -322,6 +341,8 @@ export function  ProductComments(Productid) {
                     productid: data12.val().ProductId,
                     Comment: data12.val().Comment,
                     Username:data12.val().Username,
+                    date:data12.val().date,
+                    datenumber:data12.val().datenumber,
                 });
             });
 
