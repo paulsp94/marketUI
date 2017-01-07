@@ -59,12 +59,12 @@ class GeneralProfile extends React.Component {
       avatarURL1: '',
       submitError: "",
       submitStatus: '',
+        isAdmin:'',
     };
   }
 
   componentWillMount() {
     const { ProductId } = this.props;
-
     if (this.props.validation == "RIGHTVALIDATION") {
       firebase.database()
         .ref('ProductCoreDetails')
@@ -94,6 +94,36 @@ class GeneralProfile extends React.Component {
 
     }
   }
+
+  componentDidMount(){
+
+      firebase
+          .database()
+          .ref('admin')
+          .once('value')
+          .then((snapshot) => {
+              let response = snapshot.val();
+              let adminIds = [];
+
+              for (let adminKey of Object.keys(response)) {
+                  adminIds.push(response[adminKey]['userId']);
+              }
+
+              let currentUserId = firebase.auth().currentUser.uid;
+              if (adminIds.includes(currentUserId)) {
+                  this.setState({
+                      isAdmin: true
+                  });
+              } else {
+                  this.setState({
+                      isAdmin: false
+                  });
+              }
+          });
+
+  }
+
+
 
   onTitleChange = (event, value) => {
     this.setState({
@@ -150,7 +180,7 @@ class GeneralProfile extends React.Component {
 
     var today = mm+'/'+dd+'/'+yyyy;
 
- {
+    {
       const { ProductId } = this.props;
       // this.props.submitProductGeneralDetails(ProductId,title,subtitle,description,price,category,url,url1,UserId);
 
@@ -179,12 +209,14 @@ class GeneralProfile extends React.Component {
                   datenumber:datenumber,
               });
 
-            firebase.database()
-              .ref("Product_creation/" + ProductId)
-              .set({
-                ProductId: ProductId,
-                userid: UserId[0],
-              });
+            if(this.state.isAdmin == false) {
+                firebase.database()
+                    .ref("Product_creation/" + ProductId)
+                    .set({
+                        ProductId: ProductId,
+                        userid: UserId[0],
+                    });
+            }
 
             this.setState({
               submitStatus: "Successfully Saved!"
@@ -206,12 +238,14 @@ class GeneralProfile extends React.Component {
                   datenumber:datenumber,
               });
 
-            firebase.database()
-              .ref("Product_creation/" + ProductId)
-              .set({
-                ProductId: ProductId,
-                userid: UserId[0],
-              });
+              if(this.state.isAdmin == false) {
+                  firebase.database()
+                      .ref("Product_creation/" + ProductId)
+                      .set({
+                          ProductId: ProductId,
+                          userid: UserId[0],
+                      });
+              }
 
             this.setState({
               submitStatus: "Saved!"
@@ -281,6 +315,8 @@ class GeneralProfile extends React.Component {
   };
 
   render(){
+
+      console.log(this.state.isAdmin);
     const { title, subtitle, category, description, price, avatar, avatar1 } = this.state;
 
     return (

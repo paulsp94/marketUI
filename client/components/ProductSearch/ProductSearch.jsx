@@ -62,7 +62,6 @@ class  ProductSearch extends React.Component{
 
     render(){
 
-        console.log(this.state.filter);
         var allproducts = this.props.userdetails.Productalldetails;
         var UserId = Object.keys(allproducts).map(key => allproducts[key]);
         var mergedProduct = [].concat.apply([], UserId);

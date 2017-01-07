@@ -81,7 +81,8 @@ class  General extends React.Component{
                         this.setState({
                             producteditvalidation:"WRONGVALIDATION"
                         })
-                    } else {
+                    }
+                    else {
                         var tableproductid = currentvaluearray.ProductId;
                         var tableuserid = currentvaluearray.userid;
                         if(tableproductid == productid && user){
