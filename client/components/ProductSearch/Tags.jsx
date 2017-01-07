@@ -24,7 +24,13 @@ class Tags extends React.Component{
     selectfield_value: 'New',
     };
 
-    handleChange = (event, index, selectfield_value) => this.setState({selectfield_value});
+    handleChange = (event, index, selectfield_value) =>
+    {
+        this.props.sortUpdateFilter(selectfield_value);
+        this.setState({
+            selectfield_value
+        });
+    };
 
     cateGoryFilter(value){
         this.props.cateGoryFilter(value);
@@ -62,13 +68,14 @@ class Tags extends React.Component{
                     <SelectField className={''} 
                         value={this.state.selectfield_value}
                         onChange={this.handleChange.bind(this)}
-                        style={{width:'170px', color:'white', marginLeft: '30px'}}
+                        style={{width:'170px', color:'white', marginLeft: '30px',}}
                         labelStyle={{color:'white'}}
                      >
+                        <MenuItem primaryText="Sort Product" />
                         <MenuItem value={'Newest'} primaryText="Newest" />
                         <MenuItem value={'Rating'} primaryText="Rating" />
-                        <MenuItem value={'Popularity'} primaryText="Popularity" />
-                        <MenuItem value={'Price'} primaryText="Price" />
+                        {/*<MenuItem value={'Popularity'} primaryText="Popularity" />*/}
+                        {/*<MenuItem value={'Price'} primaryText="Price" />*/}
                       </SelectField>
                        <TextField hintText={'Search...'} hintStyle={{color:'white'}} onChange={this.searchFilter.bind(this)} className={'search'} style={{marginLeft:'5px',marginRight:'5px',color:'white',fontWeight:'400',width:'150px'}} inputStyle={{color:'white'}}/>
                    </Flexbox>

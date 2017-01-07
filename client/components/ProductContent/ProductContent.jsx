@@ -191,6 +191,15 @@ class ProductContent extends React.Component {
         // preparingData ? <Loading type='spin' color='#000000'/> :
       <div className="contentDownload">
         <div className="contentSidebar contentSidebarColor">
+            <MenuItem
+                onClick={() => this.setState({
+                    authorProfile: false,
+                    comments: false,
+                    contentData: true
+                })}
+                primaryText="Content"
+                className="contentSidebarColor" leftIcon={<PersonAdd />}
+            />
           <MenuItem
             onClick={() => this.setState({
               authorProfile: true,
@@ -210,6 +219,7 @@ class ProductContent extends React.Component {
             primaryText="Ask Question"
             className="contentSidebarColor" leftIcon={<PersonAdd />}
           />
+
           {/* <MenuItem primaryText="Download" leftIcon={<Download />}/> */}
           <Divider />
             {htmlData}
@@ -217,31 +227,20 @@ class ProductContent extends React.Component {
         </div>
 
         <div className="contentMarkdown" style={{ backgroundColor: "#fff" }}>
-          {!contentData && <div className={cx('backlink-container')}>
-            <RaisedButton
-              label="Back To Content"
-              primary
-              onClick={() => this.setState({ contentData: true, authorProfile: false, comments: false })}
-            />
-          </div>}
+
           {contentData && <ReactMarkdown source={this.state.Content} escapeHtml={false}/>}
           {authorProfile &&
           <div>
-
               <div>
                   <div className="sidebar-bottom">
-                      <img className="Userimage"/>
                       <CardText>
                           <br />
                           <div className="userdescribation">
                               <strong>Contact Email: </strong>{this.state.email}
                           </div>
-                          <hr/>
-                          <br/>
                           <div className="userdescribation">
                               {this.state.Description}
                           </div>
-                          <br/>
                           <hr/>
                           <div style={{ display: 'flex', flexWrap: 'wrap' }}>
                               {this.state.tags.map((item, index) =>
@@ -257,6 +256,7 @@ class ProductContent extends React.Component {
           {comments && 
           <div>
 
+              <div className="sidebar-bottom">
               <CardText>
                   <div className="usercommentname">
                       <TextField
@@ -272,19 +272,17 @@ class ProductContent extends React.Component {
               </CardText>
 
               {sortedcomment.map((item, index) =>
-                  <div>
+                  <div className="productcomments">
                       <div className="usercommentname">
                           <h4><strong> <span className="dateincomment"> {item.Username}  {item.date} </span></strong> <br/></h4>
                       </div>
                       <div className="usercomments">
-                          <p>
-                              {item.Comment}
-                          </p>
+                          <p> {item.Comment} </p>
                       </div>
-                      <hr/>
                   </div>
               )}
 
+              </div>
           </div>}
         </div>
       </div>

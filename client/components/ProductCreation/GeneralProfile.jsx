@@ -139,6 +139,7 @@ class GeneralProfile extends React.Component {
     var dd = today.getDate();
     var mm = today.getMonth()+1; // January is 0!
     var yyyy = today.getFullYear();
+    var datenumber = today.getTime();
 
     if(dd<10) {
       dd='0'+dd
@@ -175,6 +176,7 @@ class GeneralProfile extends React.Component {
                 category: category,
                 status: 'published',
                 date:today,
+                  datenumber:datenumber,
               });
 
             firebase.database()
@@ -201,6 +203,7 @@ class GeneralProfile extends React.Component {
                 category: category,
                 status: 'submitted',
                 date:today,
+                  datenumber:datenumber,
               });
 
             firebase.database()
@@ -229,6 +232,7 @@ class GeneralProfile extends React.Component {
               category: category,
               status: 'submitted',
               date:today,
+                datenumber:datenumber,
             });
 
           firebase.database()

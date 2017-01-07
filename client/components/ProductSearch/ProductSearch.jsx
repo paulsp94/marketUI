@@ -51,11 +51,18 @@ class  ProductSearch extends React.Component{
     cateGoryFilter(filtervalue){
         this.setState({
             filter:filtervalue
-        })
+        });
+    }
+
+    Sortfilter(Sortvalue){
+        this.setState({
+            filter:Sortvalue
+        });
     }
 
     render(){
 
+        console.log(this.state.filter);
         var allproducts = this.props.userdetails.Productalldetails;
         var UserId = Object.keys(allproducts).map(key => allproducts[key]);
         var mergedProduct = [].concat.apply([], UserId);
@@ -86,6 +93,49 @@ class  ProductSearch extends React.Component{
         else if(this.state.filter == 'none' || this.state.filter == 'All Product'){
             var filtereddata = mergedProduct;
         }
+
+        else if(this.state.filter == 'Newest'){
+            var filtereddata = [];
+            var alldatenumber = [];
+
+            for (var i = 0; i < mergedProduct.length; i++) {
+                alldatenumber.push(mergedProduct[i].datenumber);
+            }
+
+            alldatenumber = alldatenumber.sort(function(a, b){return b-a});
+
+            for(var j =0; j< alldatenumber.length; j++){
+
+                for(var k =0; k< mergedProduct.length; k++) {
+
+                    if(alldatenumber[j] == mergedProduct[k].datenumber){
+                        filtereddata.push(mergedProduct[k]);
+                    }
+                }
+            }
+        }
+
+        else if(this.state.filter == 'Rating'){
+            var filtereddata = [];
+            var alldatenumber = [];
+
+            for (var i = 0; i < mergedProduct.length; i++) {
+                alldatenumber.push(mergedProduct[i].rating);
+            }
+
+            alldatenumber = alldatenumber.sort(function(a, b){return b-a});
+
+            for(var j =0; j< alldatenumber.length; j++){
+
+                for(var k =0; k< mergedProduct.length; k++) {
+
+                    if(alldatenumber[j] == mergedProduct[k].rating){
+                        filtereddata.push(mergedProduct[k]);
+                    }
+                }
+            }
+        }
+
         else {
                 var filtereddata = mergedProduct.filter(
                     (detail) => {
@@ -107,7 +157,7 @@ class  ProductSearch extends React.Component{
             return (
                     <div  className="container-search-flex">
                         <div className="row" >
-                            <Tags onUpdateFilter={this.SearchFilter.bind(this)} cateGoryFilter={this.cateGoryFilter.bind(this)}/>
+                            <Tags onUpdateFilter={this.SearchFilter.bind(this)} sortUpdateFilter = {this.Sortfilter.bind(this)} cateGoryFilter={this.cateGoryFilter.bind(this)}/>
                             {
                                 filtereddata.map((detail)=> {
                                     return <Product item={detail} key={detail.productid} />
