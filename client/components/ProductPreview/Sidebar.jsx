@@ -52,6 +52,10 @@ class Sidebar extends React.Component {
       newComment: ''
     };
 
+    this.state = {
+      canRate: true
+    };
+
     this._submitHandler = this._submitHandler.bind(this);
   }
 
@@ -235,17 +239,25 @@ class Sidebar extends React.Component {
 
   _submitHandler(nextValue, prevValue, name) {
     let {productcoredetails} = this.props;
+    let {canRate} = this.state;
 
-    firebase
-      .database().ref(`ProductCoreDetails/${productcoredetails.productid}`)
-      .once('value')
-      .then((snapshot) => {
-        let details = snapshot.val();
-        details.ratedCount = details.ratedCount ? details.ratedCount + 1 : 1;
-        let oldAverage = prevValue ? prevValue : 0;
-        details.rating = ((oldAverage * (details.ratedCount - 1)) + nextValue) / details.ratedCount;
-        firebase.database().ref(`ProductCoreDetails/${productcoredetails.productid}`).set(details);
-      });
+    if (canRate) {
+      firebase
+        .database().ref(`ProductCoreDetails/${productcoredetails.productid}`)
+        .once('value')
+        .then((snapshot) => {
+          let details = snapshot.val();
+          details.ratedCount = details.ratedCount ? details.ratedCount + 1 : 1;
+          let oldAverage = details.rating ? details.rating : 0;
+          details.rating = (((oldAverage * (details.ratedCount - 1)) + nextValue) / details.ratedCount).toFixed(2);
+          firebase.database().ref(`ProductCoreDetails/${productcoredetails.productid}`).set(details);
+        });
+
+      this.setState({canRate: false});
+      setTimeout(() => {
+        this.setState({canRate: true});
+      }, 1000);
+    }
   }
 
   ProductContentDownload() {
