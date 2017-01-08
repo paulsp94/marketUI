@@ -90,7 +90,8 @@ class  Descriptiondetails extends React.Component{
             .once("value", (snapshot) => {
 
                 if (snapshot.exists()) {
-                    firebase.database().ref("Description/" + ProductId).set({
+                    firebase.database().ref("Description").child(ProductId)
+                        .update({
                         Productid: ProductId,
                         textfieldvalue1: textfieldvalue1,
                     });

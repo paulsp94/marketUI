@@ -42,6 +42,7 @@ class ProductSidebar extends React.Component {
         compatibility: [],
         tags: [],
         error:'',
+        submitDetails:'',
     };
   }
 
@@ -52,7 +53,7 @@ class ProductSidebar extends React.Component {
 
       if(this.props.validation == "RIGHTVALIDATION") {
 
-          firebase.database().ref('ProductSidebar').orderByChild('Productid').equalTo(ProductId).once("child_added", (snapshot) => {
+          firebase.database().ref('ProductSidebar').orderByChild('Productid').equalTo(ProductId).on("child_added", (snapshot) => {
 
               var IntegrationTime = snapshot.val().IntegrationTime;
               var Packages = snapshot.val().Packages;
@@ -68,6 +69,8 @@ class ProductSidebar extends React.Component {
                   tags: tags,
               })
           });
+
+          console.log('time is',IntegrationTime);
       }
 
       else {
@@ -85,10 +88,7 @@ class ProductSidebar extends React.Component {
               compatibility: compatibility,
               tags: tags,
           })
-
       }
-
-
   }
 
   onPackagesChange = (packages) => {
@@ -118,13 +118,39 @@ class ProductSidebar extends React.Component {
     var compatibility = this.state.compatibility;
     var tags = this.state.tags;
     var ProductId = this.props.ProductId;
+    var user = firebase.auth().currentUser;
+    var Userid = user.uid;
 
-      firebase.database().ref('ProductSidebar').child(ProductId).once("value", function (snapshot) {
+      firebase.database().ref('ProductSidebar').child(ProductId).on("value", function (snapshot) {
           if (snapshot.exists()) {
-              this.props.submiteditProductsidebarDetails(packages, complexity, integrationTime, compatibility, tags, ProductId);
+              firebase.database().ref("ProductSidebar").child(ProductId).update({
+                  Packages: packages,
+                  complexity: complexity,
+                  IntegrationTime: integrationTime,
+                  compatibility: compatibility,
+                  tags: tags,
+                  Productid: ProductId,
+              });
+
+              this.setState({
+                  submitDetails:"Details are Updated"
+              })
           }
+
           else {
-              this.props.submitProductsidebarDetails(packages, complexity, integrationTime, compatibility, tags, ProductId);
+              firebase.database().ref("ProductSidebar/" + ProductId).set({
+                  Packages: packages,
+                  complexity: complexity,
+                  IntegrationTime: integrationTime,
+                  compatibility: compatibility,
+                  tags: tags,
+                  Productid: ProductId,
+                  Userid:Userid
+              });
+
+              this.setState({
+                  submitDetails:"Details are Submitted"
+              })
           }
       });
 
@@ -133,9 +159,6 @@ class ProductSidebar extends React.Component {
   Publish () {
 
     var ProductId = this.props.ProductId;
-    // var UserIdobject = this.props.userdetails.userid;
-    // var UserId = Object.keys(UserIdobject).map(key => UserIdobject[key]);
-    // UserId = UserId[0];
       var user = firebase.auth().currentUser;
       var Userid = user.uid;
     this.props.submitPublishedproducts(ProductId, Userid);
@@ -143,12 +166,12 @@ class ProductSidebar extends React.Component {
 
   render () {
 
-    if (this.props.userdetails.publishedproduct == false) {
-      var message = '';
-    }
-    else {
-      var message = this.props.userdetails.publishedproduct.submitDetails;
-    }
+    // if (this.props.userdetails.publishedproduct == false) {
+    //   var message = '';
+    // }
+    // else {
+    //   var message = this.props.userdetails.publishedproduct.submitDetails;
+    // }
 
     const { packages, complexity, integrationTime, compatibility, tags } = this.state;
 
@@ -231,7 +254,7 @@ class ProductSidebar extends React.Component {
                 {this.state.error}
             </div>
             <div className="warning">
-              {message}
+              {this.state.submitDetails}
             </div>
           </Card>
         </div>

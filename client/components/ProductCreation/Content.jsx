@@ -97,7 +97,7 @@ class Content extends React.Component {
 
       firebase.database().ref('Content').child(ProductId).once("value", function (snapshot) {
           if (snapshot.exists()) {
-              firebase.database().ref("Content/" + ProductId).set({
+              firebase.database().ref("Content").child(ProductId).update({
                   Productid: ProductId,
                   textfieldvalue1: textfieldvalue1
               });
