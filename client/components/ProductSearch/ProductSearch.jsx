@@ -168,7 +168,7 @@ class  ProductSearch extends React.Component{
         if(allproducts == false){
             return(
             <div className="background">
-                <div className="loader">
+                <div className="searchLoader">
                     <Loading type='spin' color='#ffffff' />
                 </div>
             </div>

@@ -136,11 +136,11 @@ class Sidebar extends React.Component {
 
   componentDidMount() {
 
-    let {ProductId} = this.props;
+    let { Productid} = this.props;
 
-    productSellerandstripeid(ProductId);
+    productSellerandstripeid( Productid);
 
-    firebase.database().ref('Product_creation/' + ProductId).once("value", (snapshot) => {
+    firebase.database().ref('Product_creation/' +  Productid).once("value", (snapshot) => {
 
       var Userid = snapshot.val().userid;
 
@@ -179,11 +179,11 @@ class Sidebar extends React.Component {
   onNewCommentKeyPress = (event) => {
     if (event.keyCode == 13) {
       const {newComment} = this.state;
-      const {ProductId} = this.props;
+      const { Productid} = this.props;
       const user = firebase.auth().currentUser;
-      this.props.EnternewComment(newComment, ProductId, user.email);
+      this.props.EnternewComment(newComment,  Productid, user.email);
       this.setState({newComment: ''});
-      this.props.ProductComments(ProductId);
+      this.props.ProductComments( Productid);
     }
   };
 
@@ -258,7 +258,7 @@ class Sidebar extends React.Component {
   }
 
   ProductContentDownload() {
-    let productid = this.props.ProductId;
+    let productid = this.props. Productid;
     firebase
       .database().ref(`ProductCoreDetails/${productid}`)
       .once('value')
@@ -360,11 +360,11 @@ class Sidebar extends React.Component {
           <Tabs>
             <Tab label="Item" onActive={this.Item.bind(this)}> </Tab>
             <Tab label="Comments" onActive={this.Comments.bind(this)}>
-              <div className="sidebar-bottom">
+              <div className="sidebar-bottom-comments">
                 <CardText>
                   <div className="usercommentname">
                     <TextField
-                      floatingLabelText="Leave a comment about the product"
+                      floatingLabelText="Leave a comment (Login required)"
                       floatingLabelStyle={{fontWeight: 'normal'}}
                       fullWidth
                       value={newComment}
@@ -372,7 +372,7 @@ class Sidebar extends React.Component {
                       onKeyDown={this.onNewCommentKeyPress}
                     />
                     <br/>
-                  </div>
+                   </div>
                 </CardText>
                 {
                   sortedcomment.map((detail, index) => {
