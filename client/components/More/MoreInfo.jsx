@@ -29,7 +29,7 @@ var Contact = React.createClass({
                       width: '60%',
                       }}>
                     <div className="fadeIn">
-                      <iframe src="https://player.vimeo.com/video/197839131?title=0&byline=0" width="100%" height="425"  webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                      <iframe src="https://player.vimeo.com/video/197839131?title=0&byline=0" width="100%" height="425" ></iframe>
                     </div>
                    </Card>
                   <Card style={style}>

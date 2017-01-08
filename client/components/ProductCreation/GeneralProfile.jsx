@@ -322,7 +322,12 @@ class GeneralProfile extends React.Component {
 
   render(){
 
-      console.log(this.state.isAdmin);
+    var user = firebase.auth().currentUser;
+
+    var saveButton = user ? 
+            <RaisedButton onClick={this.onSubmit} label=" Save" primary={true} style={{ margin: 12}}/> : 
+            <RaisedButton onClick={this.onSubmit} label="relogg please!" primary={true} style={{ margin: 12}}/>; 
+    console.log(this.state.isAdmin);
     const { title, subtitle, category, description, price, avatar, avatar1 } = this.state;
 
     return (
@@ -443,7 +448,7 @@ class GeneralProfile extends React.Component {
               />
 
               <div className="product-header">
-                <RaisedButton onClick={this.onSubmit} label=" Save" primary={true} style={{ margin: 12}}/>
+                {saveButton}
                 <div className="warning" style={{margin:'20 0 0 100'}} >
                   {this.state.submitError}
                 </div>

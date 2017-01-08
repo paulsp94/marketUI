@@ -83,10 +83,7 @@ class ProductSidebar extends React.Component {
               compatibility: compatibility,
               tags: tags,
           })
-
       }
-
-
   }
 
   onPackagesChange = (packages) => {
@@ -117,10 +114,7 @@ class ProductSidebar extends React.Component {
     var tags = this.state.tags;
     var ProductId = this.props.ProductId;
 
-
-      this.props.submitProductsidebarDetails(packages, complexity, integrationTime, compatibility, tags, ProductId);
-
-
+    this.props.submitProductsidebarDetails(packages, complexity, integrationTime, compatibility, tags, ProductId);
   };
 
   Publish () {
@@ -221,7 +215,7 @@ class ProductSidebar extends React.Component {
             <div className="warning">
                 {this.state.error}
             </div>
-            <div className="warning">
+            <div className="">
               {message}
             </div>
           </Card>

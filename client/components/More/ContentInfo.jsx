@@ -24,14 +24,9 @@ var ContentInfo = React.createClass({
 
         var user = firebase.auth().currentUser;
 
-        if (user) {
-            var ContentButton = <Link to="/ContentCreation">
+        var ContentButton = user ? <Link to="/ContentCreation">
                                         <RaisedButton label="Create Content" primary={true} style={{marginTop: 10, marginBottom: 20}} /> 
-                                </Link>;
-        } else {
-            var ContentButton = <RaisedButton label="Log IN first" primary={true} disabled={true} style={{marginTop: 10, marginBottom: 20}} />; 
-        }
-
+                                </Link> : <RaisedButton label="Log IN first" primary={true} disabled={true} style={{marginTop: 10, marginBottom: 20}} />; 
   
         return (
               <div className="container-search" style={{paddingTop:'1px'}}>

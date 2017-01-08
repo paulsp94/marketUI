@@ -297,7 +297,7 @@ class Sidebar extends React.Component {
                   />
                 </TableRowColumn>
                 <TableRowColumn style={{textAlign: 'center'}}>
-                  Sells: {productcoredetails.downloadCount || "none"}
+                  Downloads: {productcoredetails.downloadCount || "none"}
                 </TableRowColumn>
               </TableRow>
             </TableBody>
@@ -352,6 +352,27 @@ class Sidebar extends React.Component {
 
     const {newComment} = this.state;
 
+    var user = firebase.auth().currentUser;
+
+    var commentsAuthToggle = user ? 
+            <TextField
+              floatingLabelText="Leave a comment"
+              floatingLabelStyle={{fontWeight: 'normal'}}
+              fullWidth
+              value={newComment}
+              onChange={this.onNewCommentChange}
+              onKeyDown={this.onNewCommentKeyPress}
+            /> : 
+            <TextField
+              floatingLabelText="Login to write comments"
+              floatingLabelStyle={{fontWeight: 'normal'}}
+              fullWidth
+              disabled={true}
+              value={newComment}
+              onChange={this.onNewCommentChange}
+              onKeyDown={this.onNewCommentKeyPress}
+            />; 
+
     return (
       <div className="sidebar">
         <Card style={{backgroundColor: "#fdfdfb"}} expanded={this.state.expanded}
@@ -363,14 +384,7 @@ class Sidebar extends React.Component {
               <div className="sidebar-bottom-comments">
                 <CardText>
                   <div className="usercommentname">
-                    <TextField
-                      floatingLabelText="Leave a comment (Login required)"
-                      floatingLabelStyle={{fontWeight: 'normal'}}
-                      fullWidth
-                      value={newComment}
-                      onChange={this.onNewCommentChange}
-                      onKeyDown={this.onNewCommentKeyPress}
-                    />
+                    {commentsAuthToggle}
                     <br/>
                    </div>
                 </CardText>

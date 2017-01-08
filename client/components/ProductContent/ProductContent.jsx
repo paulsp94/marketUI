@@ -50,7 +50,7 @@ class ProductContent extends React.Component {
         comments: "",
         allcomments:'',
         Content:'',
-        ProductId:'',
+         Productid:'',
         Description:'',
         tags:[],
         email:'',
@@ -60,13 +60,11 @@ class ProductContent extends React.Component {
 
   componentWillMount () {
 
-      var ProductId = this.props.params.productid;
+      var  Productid = this.props.params.productid;
 
-      firebase.database().ref('Content').orderByChild('ProductId').equalTo(ProductId).on("child_added", (snapshot) => {
-
+      firebase.database().ref('Content').orderByChild(' Productid').equalTo( Productid).on("child_added", (snapshot) => {
 
           var Content = snapshot.val().textfieldvalue1;
-
           let anchorTags = Cheerio.load(Content)('a');
           let list = [];
           for (let [index, anchorTag] of anchorTags.toArray().entries()) {
@@ -96,13 +94,13 @@ class ProductContent extends React.Component {
 
   componentDidMount(){
 
-      var ProductId = this.props.params.productid;
+      var  Productid = this.props.params.productid;
 
       var allcomments = [];
-      firebase.database().ref('Products_User_Comments/'+ProductId).on("child_added", (snapshot) => {
+      firebase.database().ref('Products_User_Comments/'+ Productid).on("child_added", (snapshot) => {
 
           allcomments.push({
-              productid: snapshot.val().ProductId,
+              productid: snapshot.val(). Productid,
               Comment: snapshot.val().Comment,
               Username: snapshot.val().Username,
               date: snapshot.val().date,
@@ -116,11 +114,11 @@ class ProductContent extends React.Component {
       });
 
       this.setState({
-          ProductId: ProductId,
+           Productid:  Productid,
           allcomments:allcomments,
       });
 
-      firebase.database().ref('Product_creation/'+ ProductId).once("value", (snapshot) => {
+      firebase.database().ref('Product_creation/'+  Productid).once("value", (snapshot) => {
 
           var Userid = snapshot.val().userid;
 
@@ -136,9 +134,7 @@ class ProductContent extends React.Component {
                   email:email,
               })
           });
-
       });
-
   }
 
     onNewCommentChange = (event, value) => {
@@ -150,14 +146,36 @@ class ProductContent extends React.Component {
     onNewCommentKeyPress = (event) => {
         if (event.keyCode == 13) {
             const { newComment } = this.state;
-            var ProductId = this.props.params.productid;
+            var  Productid = this.props.params.productid;
             const user = firebase.auth().currentUser;
-            this.props.EnternewComment(newComment, ProductId, user.email);
+            this.props.EnternewComment(newComment,  Productid, user.email);
             this.setState({newComment: ''});
         }
     };
 
   render () {
+
+        var user = firebase.auth().currentUser;
+
+        var commentsAuthToggle = user ? 
+            <TextField
+                floatingLabelText="Leave a comment"
+                floatingLabelStyle={{fontWeight: 'normal'}}
+                fullWidth
+                disabled={false}
+                value={this.state.newComment}
+                onChange={this.onNewCommentChange}
+                onKeyDown={this.onNewCommentKeyPress}
+            /> : 
+            <TextField
+                floatingLabelText="Login first"
+                floatingLabelStyle={{fontWeight: 'normal'}}
+                fullWidth
+                disabled={true}
+                value={this.state.newComment}
+                onChange={this.onNewCommentChange}
+                onKeyDown={this.onNewCommentKeyPress}
+            /> ; 
 
     let { preparingData, htmlData, authorProfile, comments, contentData } = this.state;
 
@@ -250,8 +268,6 @@ class ProductContent extends React.Component {
                       </CardText>
                   </div>
               </div>
-
-
           </div>}
           {comments && 
           <div>
@@ -259,14 +275,7 @@ class ProductContent extends React.Component {
               <div className="sidebar-bottom">
               <CardText>
                   <div className="usercommentname">
-                      <TextField
-                          floatingLabelText="Leave a comment about the product"
-                          floatingLabelStyle={{fontWeight: 'normal'}}
-                          fullWidth
-                          value={this.state.newComment}
-                          onChange={this.onNewCommentChange}
-                          onKeyDown={this.onNewCommentKeyPress}
-                      />
+                     {commentsAuthToggle}
                       <br/>
                   </div>
               </CardText>
