@@ -68,7 +68,7 @@ class GeneralProfile extends React.Component {
     if (this.props.validation == "RIGHTVALIDATION") {
       firebase.database()
         .ref('ProductCoreDetails')
-        .orderByChild('ProductId')
+        .orderByChild('Productid')
         .equalTo(ProductId)
         .on("child_added", (snapshot) => {
           this.setState({
@@ -123,8 +123,6 @@ class GeneralProfile extends React.Component {
 
   }
 
-
-
   onTitleChange = (event, value) => {
     this.setState({
       title: value
@@ -156,6 +154,8 @@ class GeneralProfile extends React.Component {
   };
 
   onSubmit = () => {
+      var user = firebase.auth().currentUser;
+      var Userid = user.uid;
     var title = this.state.title;
     var subtitle = this.state.subtitle;
     var description = this.state.description;
@@ -196,7 +196,7 @@ class GeneralProfile extends React.Component {
             firebase.database()
               .ref('ProductCoreDetails/' + ProductId)
               .set({
-                ProductId: ProductId,
+                Productid: ProductId,
                 Title: title,
                 Subtitle: subtitle,
                 Description: description,
@@ -225,7 +225,7 @@ class GeneralProfile extends React.Component {
             firebase.database()
               .ref('ProductCoreDetails/' + ProductId)
               .set({
-                ProductId: ProductId,
+                Productid: ProductId,
                 Title: title,
                 Subtitle: subtitle,
                 Description: description,
@@ -242,7 +242,7 @@ class GeneralProfile extends React.Component {
                   firebase.database()
                       .ref("Product_creation/" + ProductId)
                       .set({
-                          ProductId: ProductId,
+                          Productid: ProductId,
                           userid: UserId[0],
                       });
               }
@@ -256,7 +256,7 @@ class GeneralProfile extends React.Component {
           firebase.database()
             .ref('ProductCoreDetails/' + ProductId)
             .set({
-              ProductId: ProductId,
+              Productid: ProductId,
               Title: title,
               Subtitle: subtitle,
               Description: description,
@@ -267,12 +267,13 @@ class GeneralProfile extends React.Component {
               status: 'saved',
               date:today,
                 datenumber:datenumber,
+                Userid:Userid,
             });
 
           firebase.database()
             .ref("Product_creation/" + ProductId)
             .set({
-              ProductId: ProductId,
+              Productid: ProductId,
               userid: UserId[0],
             });
 
@@ -316,7 +317,6 @@ class GeneralProfile extends React.Component {
 
   render(){
 
-      console.log(this.state.isAdmin);
     const { title, subtitle, category, description, price, avatar, avatar1 } = this.state;
 
     return (

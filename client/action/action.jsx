@@ -391,6 +391,30 @@ export function  submitProductGeneralDetails(ProductId,title,subtitle,describtio
 
 export function  submitProductsidebarDetails(packages, complexity, integrationTime, compatibility, tags, ProductId) {
 
+    var user = firebase.auth().currentUser;
+    var Userid = user.uid;
+    return function (dispatch) {
+        firebase.database().ref("ProductSidebar/" + ProductId).set({
+            Packages: packages,
+            complexity: complexity,
+            IntegrationTime: integrationTime,
+            compatibility: compatibility,
+            tags: tags,
+            Productid: ProductId,
+            Userid:Userid
+        });
+
+        dispatch({
+            type: "SUBMITPRODUCTCONTENTDETAILS",
+            payload: {
+                submitDetails: "Details are submitted"
+            }
+        })
+    }
+}
+
+export function  submiteditProductsidebarDetails(packages, complexity, integrationTime, compatibility, tags, ProductId) {
+
     return function (dispatch) {
         firebase.database().ref("ProductSidebar/" + ProductId).set({
             Packages: packages,
@@ -415,6 +439,7 @@ export function  submitPublishedproducts(ProductId, UserId) {
     return function (dispatch) {
         firebase.database().ref('ProductCoreDetails').child(ProductId).once("value", function (snapshot) {
             if (snapshot.exists()) {
+
                 firebase.database().ref('Description').child(ProductId).once("value", function (snapshot) {
                     if (snapshot.exists()) {
 
