@@ -57,10 +57,11 @@ class Profile extends React.Component{
     var user = firebase.auth().currentUser;
     var Userid = user.uid;
     firebase.database()
-      .ref('ProductOwnerDetails/'+ Userid )
+      .ref('ProductOwnerDetails/'+Userid)
       .once("value", (snapshot) => {
 
           if(snapshot.exists()) {
+
               var Description = snapshot.val().Description;
               var tags = snapshot.val().tags;
 
@@ -69,7 +70,14 @@ class Profile extends React.Component{
                   tags: tags,
               })
           }
-      });
+
+          else {
+            console.log('value doesnt exist');
+          }
+
+      }).catch(function (error) {
+        console.log(error);
+    })
   }
 
   Dropboxopen4(){
