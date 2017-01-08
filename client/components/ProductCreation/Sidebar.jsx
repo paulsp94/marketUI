@@ -117,14 +117,9 @@ class ProductSidebar extends React.Component {
     var tags = this.state.tags;
     var ProductId = this.props.ProductId;
 
-    if(packages == '' || compatibility == '' || tags == ''){
-        this.setState({
-            error:"Please Fill Every Detail"
-        })
-    }
-    else {
-        this.props.submitProductsidebarDetails(packages, complexity, integrationTime, compatibility, tags, ProductId);
-    }
+
+      this.props.submitProductsidebarDetails(packages, complexity, integrationTime, compatibility, tags, ProductId);
+
 
   };
 

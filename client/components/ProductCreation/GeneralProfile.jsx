@@ -191,6 +191,7 @@ class GeneralProfile extends React.Component {
 
         if(snapshot.exists()) {
           const product = snapshot.val();
+            var Userid1 = product.Userid;
 
           if (product.status === 'published') {
             firebase.database()
@@ -207,6 +208,7 @@ class GeneralProfile extends React.Component {
                 status: 'published',
                 date:today,
                   datenumber:datenumber,
+                  Userid:Userid1,
               });
 
             if(this.state.isAdmin == false) {
@@ -236,6 +238,7 @@ class GeneralProfile extends React.Component {
                 status: product.status,
                 date:today,
                   datenumber:datenumber,
+                  Userid:Userid1,
               });
 
               if(this.state.isAdmin == false) {
@@ -253,6 +256,8 @@ class GeneralProfile extends React.Component {
           }
 
         } else {
+            var user = firebase.auth().currentUser;
+            var Userid = user.uid;
           firebase.database()
             .ref('ProductCoreDetails/' + ProductId)
             .set({
@@ -267,6 +272,7 @@ class GeneralProfile extends React.Component {
               status: 'saved',
               date:today,
                 datenumber:datenumber,
+                Userid:Userid,
             });
 
           firebase.database()
