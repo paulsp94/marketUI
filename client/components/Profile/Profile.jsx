@@ -59,12 +59,16 @@ class Profile extends React.Component{
     firebase.database()
       .ref('ProductOwnerDetails/'+ Userid )
       .once("value", (snapshot) => {
-        var Description = snapshot.val().Description;
-        var tags = snapshot.val().tags;
-        this.setState({
-          description:Description,
-          tags:tags,
-        })
+
+          if(snapshot.exists()) {
+              var Description = snapshot.val().Description;
+              var tags = snapshot.val().tags;
+
+              this.setState({
+                  description: Description,
+                  tags: tags,
+              })
+          }
       });
   }
 
@@ -339,7 +343,7 @@ class Profile extends React.Component{
               <TextField
                 floatingLabelText="Describe yourself"
                 floatingLabelStyle={{fontWeight: 'normal'}}
-                defaultValue={this.state.description}
+                value={this.state.description}
                 fullWidth
                 multiLine
                 rows={1}
