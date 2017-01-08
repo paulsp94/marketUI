@@ -27,6 +27,7 @@
 		        </div>
 		 </section>
 		        <div class="col-sd-12" style="margin-top: 10px; padding: 20px">
+		        		<p> On the Description and Content Tabs we included a Markdown compiler which also allows html/css inputs. Additionally we added strucuture 'tags' to automaticly generate a list of contents. While you are free to add any Markdown / HTML / CSS code these points represent the best practices.</p>
 		        		<span><b> Code </b> 
 		        		<p> To integrate R code you can either use markdown syntax or even copy over R Notebooks from Rstudio</p> </span>
 		        		<code >
@@ -54,6 +55,17 @@
 						<br>
 						<br>
 
+						<span><b> Create Table of Content </b> 
+		        		<p> Integrating a table of content for your viewer is easy. Just add the following tags in your code:</p> </span>
+		        		<code >
+		        		&lt;a name=&quot;Main Heading&quot; level=&quot;title&quot;/&gt; <br>
+		        		&lt;a name=&quot;Sub Heading&quot; level=&quot;subtitle&quot;/&gt;
+
+		        		
+						</code>
+						<br>
+						<br>
+
 
 						<span><b> Iframes </b> 
 		        		<p> To embedd examples such as shiny applications you can embedd pages via Iframes <br>
@@ -64,6 +76,35 @@
 						<br>
 						<br>
 
+						<b> text styles </b>
+						<b> emphasis </b>  <br> <br>
+
+						*This text will be italic* <br>
+						_This will also be italic_ <br>
+ 
+						**This text will be bold** <br>
+						__This will also be bold__ <br>
+
+						_You **can** combine them_ <br> <br>
+
+						<b> blockquotes </b>  <br> <br>
+						As Kanye West said: <br>
+
+						> We're living the future so <br>
+						> the present is our past. <br> <br>
+						
+						 <b> inline code </b>  <br> <br>
+
+						I think you should use an <br>
+						`<addr>` element here instead. <br> <br>
+
+						 <b> Lists </b>  <br> <br>
+
+						* Item 1 <br>
+						* Item 2 <br>
+
+						<br> <br>
+						 
 
 						<div style="background-color: rgb(245,245,245)">
 												
