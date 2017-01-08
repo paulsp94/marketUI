@@ -194,7 +194,7 @@ class Content extends React.Component {
                   this.state.showMediaUploader ?
                     <div className="file-uploader">
                       <br/>
-                      <input type="file" ref="uploadBtn" id="uploadBtn" onChange={this._handleFileUpload}/>
+                      File And Image Uploader is comming next week ! 
                     </div> :
                     <ReactMarkdown source={thisIsMyCopy} escapeHtml={false}/>
               }
