@@ -947,9 +947,11 @@ h1
 
 .loader
 {
-    padding-top: 20%;
-    padding-right: 45%;
-    padding-left: 45%;
+    position: absolute;
+    right: 50%;
+    bottom: 50%;
+    margin: auto; 
+    overflow: hidden;
 }
 
 .Userimage
