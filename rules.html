@@ -1,0 +1,100 @@
+{
+"rules":{
+  	".read" : "root.child('admin').hasChild(auth.uid) == true",
+    ".write" : "root.child('admin').hasChild(auth.uid) == true",
+      
+    "ProductCoreDetails":{
+      ".indexOn": ["Productid"],
+      "$ProductCoreDetails":{ 
+                              "Description":{ ".write" : "auth != null",
+                                              ".read" : "true"
+                                            },
+                              "Price":{ 			".write" : "auth != null",
+                                              ".read" : "true",
+                                            },
+                              "ProductId":{ 	".write" : "auth != null",
+                                              ".read" : "true",
+                                            },
+                              "Subtitle":{ 			".write" : "auth != null",
+                                              ".read" : "true",
+                                            },
+                              "Title":{ 		  ".write" : "auth != null",
+                                              ".read" : "true",
+                                            },
+                              "category":{ 		".write" : "auth != null",
+                                              ".read" : "true",
+                                            },
+                              "date":{ 			  ".write" : "auth != null",
+                                              ".read" : "true",
+                                            },
+                          		"datenumber":{ 	".write" : "auth != null",
+                                              ".read" : "true",
+                                            },
+                              "downloadCount":{".write" : "true",
+                                               ".read" : "true",
+                                            },
+                              "status":{ 			".write" : "auth != null",
+                                              ".read" : "true",
+                                            },
+                              "subImage":{ 		".write" : "auth != null",
+                                              ".read" : "true",
+                                            },
+                              "mainImage":{ 		".write" : "auth != null",
+                                              ".read" : "true",
+                                            },
+                              "ratedCount":{".write" : "auth != null",
+                                              ".read" : "true"
+                                            },
+                              "rating":{ 			".write" : "auth != null",
+                                              ".read" : "true"
+                                            },
+                              
+    }},
+      
+    "ProductOwnerDetails":{
+    	"$uid":{
+              	".write": "$uid === auth.uid",
+                ".read": "true",
+    }},
+      
+    "admin":{
+          ".write": "false",
+          ".read": "true"
+    },
+     "Description":{
+      ".read" : "true",
+      ".write" : "auth != null",
+      ".indexOn": ["Productid"]
+    },
+    "Products_User_Comments":{
+      ".read" : "true",
+      ".write" : "auth != null",
+      ".indexOn": ["datenumber"]
+    },
+    "Product_creation":{
+      ".read" : "true",
+      ".write" : "auth != null",
+      ".indexOn": ["userid"]
+    },
+    "Publishedproduct":{
+      ".read" : "true",
+      ".write" : "auth != null",
+      ".indexOn": ["Productid"]
+    },
+    "sales":{
+      ".read" : "true",
+      ".write" : "auth != null",
+      ".indexOn": ["buyerId"]
+    },
+    "Content":{
+      ".read" : "true",
+      ".write" : "auth != null",
+      ".indexOn": ["Productid"]
+    },
+    "ProductSidebar":{
+      ".read" : "true",
+      ".write" : "auth != null",
+      ".indexOn": ["Productid"]
+    }
+}
+}

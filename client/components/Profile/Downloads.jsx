@@ -10,7 +10,10 @@ import Profile from './Profile.jsx';
 import ProfileSidebar from './ProfileSidebar.jsx';
 import Content from './Content.jsx';
 import ContentSidebar from './ContentSidebar.jsx';
+import {Link} from "react-router";
 var firebase = require('firebase');
+import RaisedButton from 'material-ui/RaisedButton';
+
 import firebase_details from '../../Firebase/Firebase';
 import { currentuserid, UserCreatedProduct, FetchAllCurrentUserproduct, UserDownloadedProduct } from '../../action/action.jsx';
 
@@ -317,8 +320,11 @@ class  Downloads extends React.Component{
 
             var Contentdata =
             <div>
-                <Card>
-                <p> Some placeholder will be Here</p>
+                <Card style={{margin: 20, padding: 20}}>
+                <h4 style={{textAlign: "center"}}> Content Section</h4>
+                </Card>
+                <Card style={{margin: 20, padding: 20, textAlign: "center"}}>
+                <p> This is the section where all your projects will appear, but you dont have any project created yet. <br/> <Link to="/Create"> <RaisedButton style={{marginTop: 20}}label="Introduction Page" /> </Link> </p>
                 </Card>
             </div>
 
