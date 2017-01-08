@@ -78,19 +78,33 @@ class  Descriptiondetails extends React.Component{
     }
 
     subMit(){
+        var user = firebase.auth().currentUser;
+        var Userid = user.uid;
         var textfieldvalue1 = this.state.textfieldvalue1;
-        if(textfieldvalue1 == ''){
-            this.setState({
-                Error:"Please fill Every Detail",
-            });
-        }
-        else {
-            var ProductId = this.props.ProductId;
-            firebase.database().ref("Description/" + ProductId).set({
-                ProductId :ProductId,
-                textfieldvalue1 : textfieldvalue1,
-            });
-        }
+        var ProductId = this.props.ProductId;
+
+        firebase.database().ref("Description").child(ProductId).once("value", (snapshot) => {
+            if(snapshot.exists()) {
+                var ProductId = this.props.ProductId;
+                var Userid = snapshot.val().Userid;
+                firebase.database().ref("Description/"+ ProductId).set({
+                    ProductId: ProductId,
+                    textfieldvalue1: textfieldvalue1,
+                    Userid:Userid
+                });
+            }
+            else {
+                var ProductId = this.props.ProductId;
+                firebase.database().ref("Description/" + ProductId).set({
+                    ProductId: ProductId,
+                    textfieldvalue1: textfieldvalue1,
+                    Userid:Userid,
+                });
+
+            }
+
+        })
+
     }
 
     render(){

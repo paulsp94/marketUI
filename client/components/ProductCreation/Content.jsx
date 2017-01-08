@@ -92,19 +92,28 @@ class Content extends React.Component {
 
   subMit() {
     var textfieldvalue1 = this.state.textfieldvalue;
-    if (textfieldvalue1 == '') {
-      this.setState({
-        Error: "Please fill Every Detail",
-      });
-    }
-    else {
       var ProductId = this.props.ProductId;
-      firebase.database().ref("Content/" + ProductId).set({
-        ProductId: ProductId,
-        textfieldvalue1: textfieldvalue1
+      var user = firebase.auth().currentUser;
+      var Userid = user.uid;
+
+      firebase.database().ref("Content").child(ProductId).once("value", (snapshot) => {
+          if (snapshot.exists()) {
+              var Userid1 = snapshot.val().Userid;
+              firebase.database().ref("Content/" + ProductId).set({
+                  ProductId: ProductId,
+                  textfieldvalue1: textfieldvalue1,
+                  Userid:Userid1
+              });
+          }
+          else {
+              firebase.database().ref("Content/" + ProductId).set({
+                  ProductId: ProductId,
+                  textfieldvalue1: textfieldvalue1,
+                  Userid:Userid
+              });
+          }
       });
 
-    }
   }
 
   onUpload() {

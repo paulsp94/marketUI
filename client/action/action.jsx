@@ -392,19 +392,49 @@ export function  submitProductGeneralDetails(ProductId,title,subtitle,describtio
 export function  submitProductsidebarDetails(packages, complexity, integrationTime, compatibility, tags, ProductId) {
 
     return function (dispatch) {
-        firebase.database().ref("ProductSidebar/" + ProductId).set({
-            Packages: packages,
-            complexity: complexity,
-            IntegrationTime: integrationTime,
-            compatibility: compatibility,
-            tags: tags,
-            Productid: ProductId,
-        });
 
-        dispatch({
-            type: "SUBMITPRODUCTCONTENTDETAILS",
-            payload: {
-                submitDetails: "Details are submitted"
+
+
+        firebase.database().ref('ProductSidebar').child(ProductId).once("value", (snapshot) => {
+
+            if(snapshot.exists()) {
+
+                firebase.database().ref("ProductSidebar/" + ProductId).update({
+                    Packages: packages,
+                    complexity: complexity,
+                    IntegrationTime: integrationTime,
+                    compatibility: compatibility,
+                    tags: tags,
+                    Productid: ProductId,
+                });
+
+                dispatch({
+                    type: "SUBMITPRODUCTCONTENTDETAILS",
+                    payload: {
+                        submitDetails: "Details are submitted"
+                    }
+                })
+            }
+            else {
+                var user = firebase.auth().currentUser;
+                var Userid = user.uid;
+                firebase.database().ref("ProductSidebar/" + ProductId).set({
+                    Packages: packages,
+                    complexity: complexity,
+                    IntegrationTime: integrationTime,
+                    compatibility: compatibility,
+                    tags: tags,
+                    Productid: ProductId,
+                    Userid:Userid
+
+                });
+
+                dispatch({
+                    type: "SUBMITPRODUCTCONTENTDETAILS",
+                    payload: {
+                        submitDetails: "Details are submitted"
+                    }
+                })
             }
         })
     }
