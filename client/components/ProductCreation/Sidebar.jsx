@@ -12,7 +12,8 @@ import RaisedButton from 'material-ui/RaisedButton';
 import {
   currentuserid,
   submitProductsidebarDetails,
-  submitPublishedproducts
+  submitPublishedproducts,
+    submiteditProductsidebarDetails
 } from '../../action/action.jsx'
 
 function mapStateToProps (store) {
@@ -23,7 +24,8 @@ function mapDispatchToProps (dispatch) {
   return bindActionCreators({
     currentuserid,
     submitProductsidebarDetails,
-    submitPublishedproducts
+    submitPublishedproducts,
+      submiteditProductsidebarDetails
   }, dispatch);
 }
 
@@ -117,24 +119,26 @@ class ProductSidebar extends React.Component {
     var tags = this.state.tags;
     var ProductId = this.props.ProductId;
 
-    if(packages == '' || compatibility == '' || tags == ''){
-        this.setState({
-            error:"Please Fill Every Detail"
-        })
-    }
-    else {
-        this.props.submitProductsidebarDetails(packages, complexity, integrationTime, compatibility, tags, ProductId);
-    }
+      firebase.database().ref('ProductSidebar').child(ProductId).once("value", function (snapshot) {
+          if (snapshot.exists()) {
+              this.props.submiteditProductsidebarDetails(packages, complexity, integrationTime, compatibility, tags, ProductId);
+          }
+          else {
+              this.props.submitProductsidebarDetails(packages, complexity, integrationTime, compatibility, tags, ProductId);
+          }
+      });
 
   };
 
   Publish () {
 
     var ProductId = this.props.ProductId;
-    var UserIdobject = this.props.userdetails.userid;
-    var UserId = Object.keys(UserIdobject).map(key => UserIdobject[key]);
-    UserId = UserId[0];
-    this.props.submitPublishedproducts(ProductId, UserId);
+    // var UserIdobject = this.props.userdetails.userid;
+    // var UserId = Object.keys(UserIdobject).map(key => UserIdobject[key]);
+    // UserId = UserId[0];
+      var user = firebase.auth().currentUser;
+      var Userid = user.uid;
+    this.props.submitPublishedproducts(ProductId, Userid);
   };
 
   render () {

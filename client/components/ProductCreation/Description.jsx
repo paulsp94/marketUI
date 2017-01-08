@@ -38,7 +38,7 @@ class  Descriptiondetails extends React.Component{
 
         if(this.props.validation == "RIGHTVALIDATION") {
 
-            firebase.database().ref('Description').orderByChild('ProductId').equalTo(ProductId).once("child_added", (snapshot) => {
+            firebase.database().ref('Description').orderByChild('Productid').equalTo(ProductId).once("child_added", (snapshot) => {
 
                 var Description = snapshot.val().textfieldvalue1;
 
@@ -78,19 +78,32 @@ class  Descriptiondetails extends React.Component{
     }
 
     subMit(){
+
+        var user = firebase.auth().currentUser;
+        var Userid = user.uid;
         var textfieldvalue1 = this.state.textfieldvalue1;
-        if(textfieldvalue1 == ''){
-            this.setState({
-                Error:"Please fill Every Detail",
+        var ProductId = this.props.ProductId;
+
+        firebase.database()
+            .ref('Description')
+            .child(ProductId)
+            .once("value", (snapshot) => {
+
+                if (snapshot.exists()) {
+                    firebase.database().ref("Description/" + ProductId).set({
+                        Productid: ProductId,
+                        textfieldvalue1: textfieldvalue1,
+                    });
+                }
+                else {
+                    firebase.database().ref("Description/" + ProductId).set({
+                        Productid: ProductId,
+                        textfieldvalue1: textfieldvalue1,
+                        Userid: Userid
+                    });
+                }
+
             });
-        }
-        else {
-            var ProductId = this.props.ProductId;
-            firebase.database().ref("Description/" + ProductId).set({
-                ProductId :ProductId,
-                textfieldvalue1 : textfieldvalue1,
-            });
-        }
     }
 
     render(){
