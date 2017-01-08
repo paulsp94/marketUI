@@ -65,12 +65,13 @@ class GeneralProfile extends React.Component {
 
   componentWillMount() {
     const { ProductId } = this.props;
+
     if (this.props.validation == "RIGHTVALIDATION") {
       firebase.database()
         .ref('ProductCoreDetails')
-        .orderByChild('Productid')
-        .equalTo(ProductId)
-        .on("child_added", (snapshot) => {
+        .child(ProductId)
+        .on("value", (snapshot) => {
+
           this.setState({
             title: snapshot.val().Title,
             subtitle: snapshot.val().Subtitle,
@@ -190,12 +191,13 @@ class GeneralProfile extends React.Component {
         .once("value", (snapshot) => {
 
         if(snapshot.exists()) {
+
           const product = snapshot.val();
 
           if (product.status === 'published') {
             firebase.database()
-              .ref('ProductCoreDetails/' + ProductId)
-              .set({
+              .ref('ProductCoreDetails').child(ProductId)
+              .update({
                 Productid: ProductId,
                 Title: title,
                 Subtitle: subtitle,
@@ -223,8 +225,8 @@ class GeneralProfile extends React.Component {
             })
           } else {
             firebase.database()
-              .ref('ProductCoreDetails/' + ProductId)
-              .set({
+              .ref('ProductCoreDetails').child(ProductId)
+              .update({
                 Productid: ProductId,
                 Title: title,
                 Subtitle: subtitle,

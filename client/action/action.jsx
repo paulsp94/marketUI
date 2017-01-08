@@ -245,7 +245,7 @@ export function  UserCreatedProduct() {
 
             snapshot.forEach((data12) => {
                 groupid.push({
-                    productid: data12.val().ProductId
+                    productid: data12.val().Productid
                 });
             });
 
@@ -267,10 +267,10 @@ export function  UserCreatedProduct() {
 
                     var currentproductid = groupid[i].productid;
 
-                    firebase.database().ref('ProductCoreDetails').orderByChild('ProductId').equalTo(currentproductid).on("value", (snapshot) => {
+                    firebase.database().ref('ProductCoreDetails').orderByChild('Productid').equalTo(currentproductid).on("value", (snapshot) => {
                         snapshot.forEach((data123) => {
                             productallid.push({
-                                productid: data123.val().ProductId,
+                                productid: data123.val().Productid,
                                 Price: data123.val().Price,
                                 Description: data123.val().Description,
                                 Mainimage: data123.val().mainImage,
@@ -416,7 +416,7 @@ export function  submitProductsidebarDetails(packages, complexity, integrationTi
 export function  submiteditProductsidebarDetails(packages, complexity, integrationTime, compatibility, tags, ProductId) {
 
     return function (dispatch) {
-        firebase.database().ref("ProductSidebar/" + ProductId).set({
+        firebase.database().ref("ProductSidebar").child(ProductId).update({
             Packages: packages,
             complexity: complexity,
             IntegrationTime: integrationTime,
@@ -428,7 +428,7 @@ export function  submiteditProductsidebarDetails(packages, complexity, integrati
         dispatch({
             type: "SUBMITPRODUCTCONTENTDETAILS",
             payload: {
-                submitDetails: "Details are submitted"
+                submitDetails: "Details are Updated"
             }
         })
     }

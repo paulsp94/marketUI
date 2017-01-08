@@ -83,7 +83,7 @@ class  General extends React.Component{
                         })
                     }
                     else {
-                        var tableproductid = currentvaluearray.ProductId;
+                        var tableproductid = currentvaluearray.Productid;
                         var tableuserid = currentvaluearray.userid;
                         if(tableproductid == productid && user){
 

@@ -82,11 +82,11 @@ class  Downloads extends React.Component{
 
                 var productid = snapshot.val().productId;
 
-                firebase.database().ref('ProductCoreDetails').orderByChild('ProductId').equalTo(productid).on("child_added", (snapshot) => {
+                firebase.database().ref('ProductCoreDetails').orderByChild('Productid').equalTo(productid).on("child_added", (snapshot) => {
 
 
                     productalldeatils.push({
-                        productid: snapshot.val().ProductId,
+                        productid: snapshot.val().Productid,
                         Mainimage: snapshot.val().mainImage,
                         Title: snapshot.val().Title,
                         Subimage: snapshot.val().subImage,
