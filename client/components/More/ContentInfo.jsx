@@ -5,6 +5,7 @@ import {hashHistory} from 'react-router';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import RaisedButton from 'material-ui/RaisedButton';
 import Card from 'material-ui/Card';
+var firebase = require('firebase');
 
 <meta name="viewport" content="width=device-width" />
 
@@ -20,6 +21,18 @@ var ContentInfo = React.createClass({
                       paddingRight: '10px',
                       textAlign: 'center'
                   };
+
+        var user = firebase.auth().currentUser;
+
+        if (user) {
+            var ContentButton = <Link to="/ContentCreation">
+                                        <RaisedButton label="Create Content" primary={true} style={{marginTop: 10, marginBottom: 20}} /> 
+                                </Link>;
+        } else {
+            var ContentButton = <RaisedButton label="Log IN first" primary={true} disabled={true} style={{marginTop: 10, marginBottom: 20}} />; 
+        }
+
+  
         return (
               <div className="container-search" style={{paddingTop:'1px'}}>
                   <Card className="pageStyle">
@@ -34,15 +47,13 @@ var ContentInfo = React.createClass({
                       width: '60%',
                       }}>
                    <div className="fadeIn">
-                   <iframe src="https://player.vimeo.com/video/198436016?title=0&byline=0" width="100%" height="425" frameBorder="0" allowFullScreen></iframe>
+                   <iframe src="https://player.vimeo.com/video/198436016?title=0&byline=0" width="100%" height="425" ></iframe>
                    </div>
                    </Card>
                   <Card style={style}>
                     <p> All actions must be in compliance with our <Link to="/Policy"> terms & policy </Link> </p>
                     <p> If you have open questions please <Link to="/Support"> let us know </Link> </p>
-                    <Link to="/ContentCreation">
-                    <RaisedButton label="Create Content" primary={true} style={{marginTop: 10, marginBottom: 20}} />
-                    </Link>
+                    {ContentButton}
                     <p> <b> This is a BETA - make sure to save everything offline! </b>  </p>  
                  </Card>       
                            
