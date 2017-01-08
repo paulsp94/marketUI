@@ -802,6 +802,14 @@ h1
     /*border: 2px solid red;*/
 }
 
+.sidebar-bottom-comments
+{
+    height: auto;
+    color: black;
+    padding-bottom:  10px;
+}
+
+
 .container
 {
     width: 100%;
@@ -952,6 +960,15 @@ h1
     padding-left: 45%;
 }
 
+.searchLoader
+{
+     position: absolute;
+     right: 50%;
+     bottom: 50%;
+     margin: auto; 
+     overflow: hidden;
+}
+
 .Userimage
 {
     float: none;
@@ -968,7 +985,7 @@ h1
 
 .commentContainer
 {
-    margin-bottom: 2px;
+    margin-bottom: 10px;
     margin-left:  16px;
     margin-right:  16px;
 }
