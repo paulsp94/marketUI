@@ -14,10 +14,6 @@ export default class Content extends React.Component{
         };
     }
 
-    updateItem(event){
-        var productname = this.props.item.name;
-        this.props.ViewItemrateprice(productname);
-    }
 
     EditDetails(){
         var productid = this.props.item.productid;
@@ -26,7 +22,7 @@ export default class Content extends React.Component{
 
     render(){
         return (
-                <Card style={{ marginRight: "2%", marginLeft: "2%", marginTop: 9}} onClick={this.updateItem.bind(this)}>
+                <Card style={{ marginRight: "2%", marginLeft: "2%", marginTop: 9}} >
                     <div className="Product" >
                         <CardText>
                             <img className="productimage" src={this.props.item.Subimage}/>
