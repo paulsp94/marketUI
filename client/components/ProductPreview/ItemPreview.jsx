@@ -37,7 +37,7 @@ class  ItemPreview extends Component{
         super(props);
         this.state= {
             filldetails:'',
-            ProductId:'',
+             Productid:'',
             ProductSidebar:[],
         };
 
@@ -45,27 +45,27 @@ class  ItemPreview extends Component{
 
     componentWillMount(){
 
-        var ProductId = this.props.params.productid;
+        var  Productid = this.props.params.productid;
 
         this.setState({
-            ProductId: ProductId
+             Productid:  Productid
         });
 
-        this.props.currentproductstore(ProductId);
-        // this.props.ProductSidebar(ProductId);
-        this.props.Description(ProductId);
-        this.props.productCoreDetails(ProductId);
-        this.props.ProductComments(ProductId);
-        // this.props.productSellerandstripeid(ProductId);
+        this.props.currentproductstore( Productid);
+        // this.props.ProductSidebar( Productid);
+        this.props.Description( Productid);
+        this.props.productCoreDetails( Productid);
+        this.props.ProductComments( Productid);
+        // this.props.productSellerandstripeid( Productid);
 
     }
 
     componentDidMount() {
 
-        var ProductId = this.state.ProductId;
+        var  Productid = this.state. Productid;
 
         var ProductSidebar = [];
-        firebase.database().ref('ProductSidebar').orderByChild('Productid').equalTo(ProductId).on("child_added", (snapshot) => {
+        firebase.database().ref('ProductSidebar').orderByChild('Productid').equalTo( Productid).on("child_added", (snapshot) => {
 
                 ProductSidebar.push({
                     IntegrationTime: snapshot.val().IntegrationTime,
@@ -91,10 +91,11 @@ class  ItemPreview extends Component{
 
         var prductdescription = this.props.userdetails.Description;
 
-
-        // var Productsidebarobject = this.props.userdetails.Productsidebar;
-        // var sidebarobject = Object.keys(Productsidebarobject).map(key => Productsidebarobject[key]);
-        // var sidebardetails = [].concat.apply([], sidebarobject);
+        {/*
+        var Productsidebarobject = this.props.userdetails.Productsidebar;
+        var sidebarobject = Object.keys(Productsidebarobject).map(key => Productsidebarobject[key]);
+        var sidebardetails = [].concat.apply([], sidebarobject);
+        */}
 
         var Productsidebarobject = this.state.ProductSidebar;
 
@@ -126,7 +127,7 @@ class  ItemPreview extends Component{
                     <Sidebar productcoredetails={productcorealldetails}
                              Description={productdesdetail}
                              Sidebar={prodsidebardet}
-                             ProductId={this.state.ProductId}
+                              Productid={this.state. Productid}
                              Comments = {allcomment}
                              sellerStripeAccountId={this.props.userdetails.stripeuserid}
                     />
