@@ -7,6 +7,8 @@ var firebase = require('firebase');
 import firebase_details from '../../Firebase/Firebase';
 import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
 import { Description } from '../../action/action.jsx';
+import Snackbar from 'material-ui/Snackbar';
+
 
 function mapStateToProps(store) {
     return { userdetails: store.userdetails};
@@ -111,7 +113,7 @@ class  Descriptiondetails extends React.Component{
                   ProductId: ProductIdVar,
                   textfieldvalue1: textfieldvalueSave,
                   Userid:Userid
-              });
+              }).then(this.handleTouchTap.bind(this))
           }
       });
   }
@@ -190,11 +192,16 @@ class  Descriptiondetails extends React.Component{
                             <textarea value={this.state.textfieldvalue1} className="textarea" placeholder="Add here your markdown or html code" ref={(eg) => this.textbox1 = eg}  name="textbox1" onChange={this.textBox1.bind(this)}>
                             </textarea>
                         </div>
-
                         <div className="markdowntext">
                             <ReactMarkdown source={thisIsMyCopy1} escapeHtml={false} />
                         </div>
                     </div>
+                    <Snackbar
+                    open={this.state.snackOpen}
+                    message="Content Saved!"
+                    autoHideDuration={3000}
+                    onRequestClose={this.handleRequestClose}
+                    />
                 </Card>
             </div>
         )

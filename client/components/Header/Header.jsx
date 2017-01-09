@@ -29,33 +29,6 @@ export default class Header extends React.Component {
       this.setState({
         loggedIn: (null !== firebaseUser)
       });
-
-      if (firebaseUser) {
-        // TODO: remove this block of code when going live
-        // Placed here only for testing purposes.
-        // Makes the logged in user `ADMIN`
-        //  let newAdminKey = firebase.database().ref().child('admin').push().key;
-        //  let update = {};
-        //  update[`/admin/${newAdminKey}`] = {
-        //    userId: firebase.auth().currentUser.uid
-        //  };
-        //  firebase.database().ref().update(update);
-        // END OF BLOCK
-
-        // firebase.database().ref('admin').once('value')
-        //   .then((snapshot) => {
-        //     let data = snapshot.val();
-        //     let currentUser = firebase.auth().currentUser;
-        //     for(let adminKey of Object.keys(data)) {
-        //       let adminData = data[adminKey];
-        //       if(currentUser.uid === adminData.userId) {
-        //         this.setState({isAdmin: true});
-        //       }
-        //     }
-        //   })
-      } else {
-        console.log('Not logged in');
-      }
     });
   }
 
@@ -92,19 +65,11 @@ export default class Header extends React.Component {
       style={{marginRight: 27}}
     >
             
-            <Link to="/Support" style={{ textDecoration: 'none' }}>
-              <MenuItem primaryText="Support"/>
-            </Link>
-            <Link to="/About" style={{ textDecoration: 'none' }}>
-              <MenuItem primaryText="About" />
-            </Link>
-            <Link to="/Policy" style={{ textDecoration: 'none' }}>      
-              <MenuItem primaryText="Policy" />
-            </Link>
-            <Link to="/Impressum" style={{ textDecoration: 'none' }}>
-              <MenuItem primaryText="Impressum"/>
-            </Link> 
-              <MenuItem primaryText="Sign out" onClick={this.logout}/>
+            <MenuItem primaryText="Support" containerElement={<Link to='/Support' />}/>
+            <MenuItem primaryText="About" containerElement={<Link to='/About' />}/>
+            <MenuItem primaryText="Policy" containerElement={<Link to='/Policy' />}/>
+            <MenuItem primaryText="Impressum" containerElement={<Link to='/Impressum' />}/>
+            <MenuItem primaryText="Sign out" onClick={this.logout}/>
             </IconMenu>
        </li>
          {contentLoggedIn} 

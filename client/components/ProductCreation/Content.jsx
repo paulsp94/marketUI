@@ -117,7 +117,7 @@ class Content extends React.Component {
                   ProductId: ProductId,
                   textfieldvalue1: textfieldvalue1,
                   Userid:Userid
-              });
+              }).then(this.handleTouchTap.bind(this))
           }
       });
   }
@@ -199,7 +199,7 @@ class Content extends React.Component {
                   this.state.showMediaUploader ?
                     <div className="file-uploader">
                       <br/>
-                      File And Image Uploader is comming next week ! 
+                      File And Image Uploader comming next week ! 
                     </div> :
                     <ReactMarkdown source={thisIsMyCopy} escapeHtml={false}/>
               }

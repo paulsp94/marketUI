@@ -40,8 +40,11 @@ class ProductSidebar extends React.Component {
         compatibility: [],
         tags: [],
         error:'',
+        snackOpen: false
     };
   }
+
+
 
   componentWillMount() {
     this.props.currentuserid();
@@ -65,7 +68,7 @@ class ProductSidebar extends React.Component {
                   compatibility: compatibility,
                   tags: tags,
               })
-          });
+          })
       }
 
       else {
@@ -85,6 +88,8 @@ class ProductSidebar extends React.Component {
           })
       }
   }
+
+
 
   onPackagesChange = (packages) => {
     this.setState({ packages })
@@ -107,6 +112,7 @@ class ProductSidebar extends React.Component {
   };
 
   subMit () {
+  try {
     var packages = this.state.packages;
     var complexity = this.state.complexity;
     var integrationTime = this.state.integrationTime;
@@ -115,6 +121,10 @@ class ProductSidebar extends React.Component {
     var ProductId = this.props.ProductId;
 
     this.props.submitProductsidebarDetails(packages, complexity, integrationTime, compatibility, tags, ProductId);
+
+  } catch(err) {
+      console.log("error")
+  }
   };
 
   Publish () {
@@ -265,10 +275,11 @@ class ProductSidebar extends React.Component {
                 )}
               </div>
             </Card>
+           
           </Card>
 
         </div>
-
+         
       </div>
     )
   }
