@@ -145,7 +145,7 @@ class Sidebar extends React.Component {
       var Userid = snapshot.val().userid;
 
       firebase.database().ref('ProductOwnerDetails/' + Userid).on("value", (snapshot) => {
-
+        if(snapshot.exists()) {
         var Description = snapshot.val().Description;
         var tags = snapshot.val().tags;
         var email = snapshot.val().email;
@@ -155,6 +155,7 @@ class Sidebar extends React.Component {
           tags: tags,
           email: email,
         })
+        }
       });
 
     });
@@ -237,7 +238,6 @@ class Sidebar extends React.Component {
   _submitHandler(nextValue, prevValue, name) {
     let {productcoredetails} = this.props;
     let {canRate} = this.state;
-
     if (canRate) {
       firebase
         .database().ref(`ProductCoreDetails/${productcoredetails.productid}`)
@@ -292,7 +292,7 @@ class Sidebar extends React.Component {
                 <TableRowColumn style={{textAlign: 'center'}}>
                   <StarRatingComponent
                     name="rating" /* name of the radio input, it is required */
-                    value={productcoredetails.rating || 0} /* number of selected icon (`0` - none, `1` - first) */
+                    value={parseInt(productcoredetails.rating , 10) || 0} /* number of selected icon (`0` - none, `1` - first) */
                     onStarClick={this._submitHandler} /* on icon click handler */
                   />
                 </TableRowColumn>

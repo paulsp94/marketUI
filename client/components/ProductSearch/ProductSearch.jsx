@@ -155,8 +155,6 @@ class  ProductSearch extends React.Component{
                 }
             }
         }
-
-
         else {
                 var filtereddata = mergedProduct.filter(
                     (detail) => {

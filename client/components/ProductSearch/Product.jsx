@@ -9,6 +9,8 @@ import { productCoreDetails, currentproductstore, } from '../../action/action.js
 import LazyLoad from 'react-lazyload';
 import StarRatingComponent from 'react-star-rating-component';
 import cn from 'classnames';
+import DownloadIcon from 'material-ui/svg-icons/file/file-download';
+
 
 function mapStateToProps(store) {
     return { userdetails: store.userdetails};
@@ -62,13 +64,15 @@ class Product extends React.Component{
                         <Flexbox flexGrow={1} marginTop={'10px'} marginLeft={'13px'}>
                             <StarRatingComponent
                                 name="rating" /* name of the radio input, it is required */
-                                value={item.rating || 0} /* number of selected icon (`0` - none, `1` - first) */
+                                value={parseInt(item.rating, 10) || 0} /* number of selected icon (`0` - none, `1` - first) */
                                 editing={false}
                             />
                         </Flexbox>
                         <Flexbox flexGrow={1}>
                             <RaisedButton label={`${item.downloadCount || 0}`}
-                                          style={{ margin: 1, width: "100%"}} />
+                                          style={{ margin: 1, width: "100%"}}
+                                          labelPosition="before"
+                                          icon={<DownloadIcon color={"rgba(84,67,72,0.5)"} />} />
                         </Flexbox>
                     </Flexbox>
                     <h5><b>{item.Title}</b></h5>

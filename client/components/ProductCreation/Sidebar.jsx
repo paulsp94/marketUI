@@ -156,7 +156,7 @@ class ProductSidebar extends React.Component {
         
             <CardTitle
               title="Sidebar"
-              subtitle="Here you can specify product details"
+              subtitle="Here you can specify product details. Press enter after each tag"
             />
 
             <CardText>

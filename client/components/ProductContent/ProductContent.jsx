@@ -122,7 +122,7 @@ class ProductContent extends React.Component {
           var Userid = snapshot.val().userid;
 
           firebase.database().ref('ProductOwnerDetails/' + Userid).on("value", (snapshot) => {
-
+          if(snapshot.exists()) {
               var Description = snapshot.val().Description;
               var tags = snapshot.val().tags;
               var email = snapshot.val().email;
@@ -132,6 +132,7 @@ class ProductContent extends React.Component {
                   tags: tags,
                   email:email,
               })
+            }
           });
       });
   }
