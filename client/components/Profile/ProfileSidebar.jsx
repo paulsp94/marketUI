@@ -12,10 +12,9 @@ class ProfileSidebar extends React.Component {
     this.state = {
         Currenticon: '',
         Currentstate: '',
-        expanded: false,
         showCheckboxes: false,
         Description:'',
-        tags:[],
+        tags:[''],
     };
   }
 
@@ -23,15 +22,19 @@ class ProfileSidebar extends React.Component {
       var user = firebase.auth().currentUser;
       var Userid = user.uid;
       firebase.database().ref('ProductOwnerDetails/'+ Userid ).on("value", (snapshot) => {
-
+          if(snapshot.exists()) {
           var Description = snapshot.val().Description;
           var tags = snapshot.val().tags;
+          
 
           this.setState({
               Description:Description,
               tags:tags,
-          })
-      });
+         
+            });
+          };
+       });
+
    }
 
   _userId() {
@@ -52,7 +55,7 @@ class ProfileSidebar extends React.Component {
       <div className="sidebar">
         <Tabs>
           <Tab label="Your public information">
-            <Card expanded={this.state.expanded}>
+            <Card>
               <CardText>
                 {/*
                   this._userId() ?
@@ -61,13 +64,14 @@ class ProfileSidebar extends React.Component {
                     </a> : null
                 */}
                   <hr/>
-                  {this.state.Description}<br/><br/>
+                  <br/><br/>
+                  {this.state.Description}
                   <hr/>
                   <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-                      {this.state.tags.map((item, index) =>
-                              <Chip key={index} style={{ float: "left", margin: 4 }}>{item}</Chip>
-                      )}
-                  </div>
+                                {this.state.tags.map((item, index) =>
+                                        <Chip key={index} style={{ float: "left", margin: 4 }}>{item}</Chip>
+                                )}
+                    </div>;
               </CardText>
             </Card>
           </Tab>

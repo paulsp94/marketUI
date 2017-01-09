@@ -281,7 +281,7 @@ class ProductContent extends React.Component {
               </CardText>
 
               {sortedcomment.map((item, index) =>
-                  <div className="productcomments">
+                  <div key={index} className="productcomments">
                       <div className="usercommentname">
                           <h4><strong> <span className="dateincomment"> {item.Username}  {item.date} </span></strong> <br/></h4>
                       </div>

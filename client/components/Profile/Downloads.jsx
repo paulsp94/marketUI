@@ -341,7 +341,7 @@ class  Downloads extends React.Component{
                 <div>
                 {
                     Usercreatedproduct.map((detail)=> {
-                        return <Content item={detail} ViewItemrateprice = {this.productData.bind(this)}/>
+                        return <Content key={detail.id} item={detail} ViewItemrateprice = {this.productData.bind(this)}/>
                     })
                 }
                 </div>;
@@ -361,7 +361,7 @@ class  Downloads extends React.Component{
                                     <div className="TextCard">
                                         {
                                             data.map((detail) => {
-                                                return <DataContainer item={detail} ViewItem = {this.productData.bind(this)}/>
+                                                return <DataContainer key={detail.id} item={detail} ViewItem = {this.productData.bind(this)}/>
                                             })
                                         }
                                     </div>
