@@ -10,6 +10,7 @@ import firebase_details from '../../Firebase/Firebase';
 import ReactMarkdown from 'react-markdown';
 import {CommandBar} from 'office-ui-fabric-react/lib/CommandBar';
 import {submitProductContentDetails} from '../../action/action.jsx'
+import Snackbar from 'material-ui/Snackbar';
 
 function mapStateToProps(store) {
   return {userdetails: store.userdetails};
@@ -21,7 +22,6 @@ function mapDispatchToProps(dispatch) {
   }, dispatch);
 }
 
-
 class Content extends React.Component {
 
   constructor(props) {
@@ -32,7 +32,8 @@ class Content extends React.Component {
       isOpened: false,
       showSyntax: false,
       uploader: 'upload',
-      Error: ''
+      Error: '',
+      snackOpen: false
     };
     this.onUpload = this.onUpload.bind(this);
     this._handleFileUpload = this._handleFileUpload.bind(this);
@@ -43,30 +44,23 @@ class Content extends React.Component {
 
     if (this.props.validation == "RIGHTVALIDATION") {
 
-
       firebase.database().ref('Content').orderByChild('ProductId').equalTo(ProductId).once("child_added", (snapshot) => {
 
         var Description = snapshot.val().textfieldvalue1;
 
-
         this.setState({
           textfieldvalue: Description
         });
-
       });
-
     }
 
     else {
 
       var Description = '';
-
       this.setState({
         textfieldvalue: Description
       });
-
     }
-
   }
 
   handleClick(event) {
@@ -90,6 +84,19 @@ class Content extends React.Component {
     });
   }
 
+  handleTouchTap = () => {
+    this.setState({
+      snackOpen: true,
+    });
+  };
+
+  handleRequestClose = () => {
+    this.setState({
+      snackOpen: false,
+    });
+  };
+
+
   subMit() {
     var textfieldvalue1 = this.state.textfieldvalue;
       var ProductId = this.props.ProductId;
@@ -103,7 +110,7 @@ class Content extends React.Component {
                   ProductId: ProductId,
                   textfieldvalue1: textfieldvalue1,
                   Userid:Userid1
-              });
+              }).then(this.handleTouchTap.bind(this))
           }
           else {
               firebase.database().ref("Content/" + ProductId).set({
@@ -113,7 +120,6 @@ class Content extends React.Component {
               });
           }
       });
-
   }
 
   onUpload() {
@@ -170,7 +176,6 @@ class Content extends React.Component {
         icon: 'Share',
         onClick: this.subMit.bind(this)
       }
-      
     ];
     return (
       <div>
@@ -198,6 +203,12 @@ class Content extends React.Component {
                     </div> :
                     <ReactMarkdown source={thisIsMyCopy} escapeHtml={false}/>
               }
+              <Snackbar
+                open={this.state.snackOpen}
+                message="Content Saved!"
+                autoHideDuration={3000}
+                onRequestClose={this.handleRequestClose}
+              />
             </div>
           </div>
         </Card>

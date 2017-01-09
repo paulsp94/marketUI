@@ -30,6 +30,7 @@ class  Descriptiondetails extends React.Component{
             isOpened: false,
             showSyntax: false,
             Error:'',
+            snackOpen: false
         };
     }
 
@@ -57,6 +58,19 @@ class  Descriptiondetails extends React.Component{
         }
     }
 
+
+  handleTouchTap = () => {
+    this.setState({
+      snackOpen: true,
+    });
+  };
+
+  handleRequestClose = () => {
+    this.setState({
+      snackOpen: false,
+    });
+  };
+
     preview(event) {
         this.setState({
           showSyntax: false,
@@ -73,39 +87,34 @@ class  Descriptiondetails extends React.Component{
     textBox1(){
         var textfieldvalue = this.textbox1.value;
         this.setState({
-            textfieldvalue1 :textfieldvalue
+            textfieldvalue1 : textfieldvalue
         });
     }
 
-    subMit(){
-        var user = firebase.auth().currentUser;
-        var Userid = user.uid;
-        var textfieldvalue1 = this.state.textfieldvalue1;
-        var ProductId = this.props.ProductId;
+  subMit() {
+    var textfieldvalueSave = this.state.textfieldvalue1;
+      var ProductIdVar = this.props.ProductId;
+      var user = firebase.auth().currentUser;
+      var Userid = user.uid;
 
-        firebase.database().ref("Description").child(ProductId).once("value", (snapshot) => {
-            if(snapshot.exists()) {
-                var ProductId = this.props.ProductId;
-                var Userid = snapshot.val().Userid;
-                firebase.database().ref("Description/"+ ProductId).set({
-                    ProductId: ProductId,
-                    textfieldvalue1: textfieldvalue1,
-                    Userid:Userid
-                });
-            }
-            else {
-                var ProductId = this.props.ProductId;
-                firebase.database().ref("Description/" + ProductId).set({
-                    ProductId: ProductId,
-                    textfieldvalue1: textfieldvalue1,
-                    Userid:Userid,
-                });
-
-            }
-
-        })
-
-    }
+      firebase.database().ref("Description").child(ProductIdVar).once("value", (snapshot) => {
+          if (snapshot.exists()) {
+              var Userid1 = snapshot.val().Userid;
+              firebase.database().ref("Description/" + ProductIdVar).set({
+                  ProductId: ProductIdVar,
+                  textfieldvalue: textfieldvalueSave,
+                  Userid:Userid1
+              }).then(this.handleTouchTap.bind(this))
+          }
+          else {
+              firebase.database().ref("Description/" + ProductIdVar).set({
+                  ProductId: ProductIdVar,
+                  textfieldvalue1: textfieldvalueSave,
+                  Userid:Userid
+              });
+          }
+      });
+  }
 
     render(){
         var thisIsMyCopy1 = this.state.showSyntax ?  this.state.markdownSyntax : this.state.textfieldvalue1;
