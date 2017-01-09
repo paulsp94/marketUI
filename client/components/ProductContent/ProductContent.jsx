@@ -7,9 +7,10 @@ import Chip from 'material-ui/Chip';
 import { productEditValidationDetails, EnternewComment } from '../../action/action.jsx';
 import MenuItem from 'material-ui/MenuItem';
 import RemoveRedEye from 'material-ui/svg-icons/image/remove-red-eye';
-import PersonAdd from 'material-ui/svg-icons/social/person-add';
+import PersonAdd from 'material-ui/svg-icons/communication/contacts';
 import TextField from 'material-ui/TextField';
-import Download from 'material-ui/svg-icons/file/file-download';
+import Comments from 'material-ui/svg-icons/communication/comment';
+import ContentPaste from 'material-ui/svg-icons/content/content-paste';
 import Cheerio from 'cheerio';
 import Loading from 'react-loading';
 import styles from './ProductContent.scss'
@@ -19,9 +20,7 @@ var firebase = require('firebase');
 import firebase_details from '../../Firebase/Firebase';
 import Divider from 'material-ui/Divider';
 
-
 const cx = classNames.bind(styles)
-
 var data = "";
 
 function mapStateToProps (store) {
@@ -49,7 +48,7 @@ class ProductContent extends React.Component {
         contentData: true,
         comments: "",
         allcomments:'',
-        Content:'',
+        Content:'Placeholder',
          Productid:'',
         Description:'',
         tags:[],
@@ -62,7 +61,7 @@ class ProductContent extends React.Component {
 
       var  Productid = this.props.params.productid;
 
-      firebase.database().ref('Content').orderByChild(' Productid').equalTo( Productid).on("child_added", (snapshot) => {
+      firebase.database().ref("Content").child(Productid).once("value", (snapshot) => {
 
           var Content = snapshot.val().textfieldvalue1;
           let anchorTags = Cheerio.load(Content)('a');
@@ -216,7 +215,7 @@ class ProductContent extends React.Component {
                     contentData: true
                 })}
                 primaryText="Content"
-                className="contentSidebarColor" leftIcon={<PersonAdd />}
+                className="contentSidebarColor" leftIcon={<ContentPaste />}
             />
           <MenuItem
             onClick={() => this.setState({
@@ -226,7 +225,7 @@ class ProductContent extends React.Component {
             })}
             primaryText="Author Info"
             className="contentSidebarColor"
-            leftIcon={<RemoveRedEye />}
+            leftIcon={<PersonAdd />}
           />
           <MenuItem
             onClick={() => this.setState({
@@ -235,10 +234,10 @@ class ProductContent extends React.Component {
               contentData: false
             })}
             primaryText="Ask Question"
-            className="contentSidebarColor" leftIcon={<PersonAdd />}
+            className="contentSidebarColor" leftIcon={<Comments />}
           />
 
-          {/* <MenuItem primaryText="Download" leftIcon={<Download />}/> */}
+          {/* <MenuItem primaryText="Download" leftIcon={<Comments />}/> */}
           <Divider />
             {htmlData}
 
