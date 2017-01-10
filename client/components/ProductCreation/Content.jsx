@@ -11,6 +11,10 @@ import ReactMarkdown from 'react-markdown';
 import {CommandBar} from 'office-ui-fabric-react/lib/CommandBar';
 import {submitProductContentDetails} from '../../action/action.jsx'
 import Snackbar from 'material-ui/Snackbar';
+import FileUploader from 'react-firebase-file-uploader';
+import LinearProgress from 'material-ui/LinearProgress';
+
+
 
 function mapStateToProps(store) {
   return {userdetails: store.userdetails};
@@ -33,7 +37,12 @@ class Content extends React.Component {
       showSyntax: false,
       uploader: 'upload',
       Error: '',
-      snackOpen: false
+      snackOpen: false,
+      username: '',
+      avatar: '',
+      isUploading: false,
+      progress: 0,
+      avatarURL: ''
     };
     this.onUpload = this.onUpload.bind(this);
     this._handleFileUpload = this._handleFileUpload.bind(this);
@@ -62,6 +71,18 @@ class Content extends React.Component {
       });
     }
   }
+
+  handleChangeUsername = (event) => this.setState({username: event.target.value});
+  handleUploadStart = () => this.setState({isUploading: true, progress: 0});
+  handleProgress = (progress) => this.setState({progress});
+  handleUploadError = (error) => {
+      this.setState({isUploading: false});
+      console.error(error);
+  }
+  handleUploadSuccess = (filename) => {
+      this.setState({avatar: filename, progress: 100, isUploading: false});
+      firebase.storage().ref('HTMLstorage').child(filename).getDownloadURL().then(url => this.setState({avatarURL: url}));
+  };
 
   handleClick(event) {
     this.setState({
@@ -177,6 +198,7 @@ class Content extends React.Component {
         onClick: this.subMit.bind(this)
       }
     ];
+
     return (
       <div>
         <div className="warning">
@@ -187,7 +209,7 @@ class Content extends React.Component {
           <div className="product-tab2">
             <div className="markdowncode">
                         <textarea value={this.state.textfieldvalue} onChange={this.textBox1.bind(this)}
-                                  className="textarea" placeholder="Add here your markdown or html code"
+                                  className="textarea" placeholder="Add here your markdown or html code. This part is the part that the user later downloads."
                                   ref={(efg) => this.textbox = efg} name="textbox">
                         </textarea>
             </div>
@@ -198,8 +220,45 @@ class Content extends React.Component {
                   :
                   this.state.showMediaUploader ?
                     <div className="file-uploader">
-                      <br/>
-                      File And Image Uploader comming next week ! 
+                              <LinearProgress mode="determinate" value={this.state.progress} style={{height: 10}} />
+                              <RaisedButton
+                                label="upload file"
+                                labelPosition="before"
+                                labelStyle={{'fontSize': '13px'}}
+                                containerElement="label"
+                                secondary={true}
+                                fullWidth
+                                style={{marginBottom: 30}}
+                              >
+                              <div className="file-input-wrapper">
+                              <FileUploader
+                                accept="HTMLstorage/*"
+                                name="avatar"
+                                randomizeFilename
+                                storageRef={firebase.storage().ref('HTMLstorage')}
+                                onUploadStart={this.handleUploadStart}
+                                onUploadError={this.handleUploadError}
+                                onUploadSuccess={this.handleUploadSuccess}
+                                onProgress={this.handleProgress}
+                              />
+                              </div>
+                              </RaisedButton>
+                              <br/>
+                              <div>
+                              <h2> Embedd Rmarkdown html files </h2>
+                               {this.state.avatarURL &&
+                                <p>&lt;iframe width=&quot;100%&quot; height=&quot;100%&quot; src=&quot;{this.state.avatarURL}&quot;&gt;&lt;/iframe&gt; </p>
+                              }
+                              </div>
+                              <div>
+                              <h2>Embedd Images: </h2>
+                              {this.state.avatarURL &&
+                                <p>&lt;img src=&quot;{this.state.avatarURL}&quot; style=&quot;width:100%;&quot;&gt;</p>
+                              }
+                               </div>
+                              <div>
+                              </div>
+                      
                     </div> :
                     <ReactMarkdown source={thisIsMyCopy} escapeHtml={false}/>
               }

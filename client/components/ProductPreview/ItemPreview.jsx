@@ -127,7 +127,7 @@ class  ItemPreview extends Component{
                     <Sidebar productcoredetails={productcorealldetails}
                              Description={productdesdetail}
                              Sidebar={prodsidebardet}
-                              Productid={this.state. Productid}
+                             Productid={this.state.Productid}
                              Comments = {allcomment}
                              sellerStripeAccountId={this.props.userdetails.stripeuserid}
                     />

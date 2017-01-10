@@ -64,7 +64,7 @@ class ProfileSidebar extends React.Component {
                     </a> : null
                 */}
                   <hr/>
-                  <br/><br/>
+                  
                   {this.state.Description}
                   <hr/>
                   <div style={{ display: 'flex', flexWrap: 'wrap' }}>

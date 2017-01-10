@@ -48,7 +48,7 @@ class ProductContent extends React.Component {
         contentData: true,
         comments: "",
         allcomments:'',
-        Content:'Placeholder',
+        Content:'Loading...',
          Productid:'',
         Description:'',
         tags:[],
@@ -245,8 +245,9 @@ class ProductContent extends React.Component {
         </div>
 
         <div className="contentMarkdown" style={{ backgroundColor: "#fff" }}>
-
+          <div>
           {contentData && <ReactMarkdown source={this.state.Content} escapeHtml={false}/>}
+          </div>
           {authorProfile &&
           <div>
               <div>
