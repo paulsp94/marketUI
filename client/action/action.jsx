@@ -304,6 +304,8 @@ export function EnternewComment(Comment,ProductId,name){
     var datenumber = today.getTime();
     var minutes = today.getMinutes();
     var Hours= today.getHours();
+    var user = firebase.auth().currentUser;
+    var Userid = user.uid;
 
     if(dd<10) {
         dd='0'+dd
@@ -320,6 +322,7 @@ export function EnternewComment(Comment,ProductId,name){
         Comment: Comment,
         date:today,
         datenumber:datenumber,
+        Userid,
     }
 
     firebase.database().ref("Products_User_Comments/"+ProductId).push(newData);
