@@ -340,8 +340,8 @@ class  Downloads extends React.Component{
             var Contentdata =
                 <div>
                 {
-                    Usercreatedproduct.map((detail)=> {
-                        return <Content key={detail.productid} item={detail} ViewItemrateprice = {this.productData.bind(this)}/>
+                    Usercreatedproduct.map((detail, index)=> {
+                        return <Content key={index} item={detail} ViewItemrateprice = {this.productData.bind(this)}/>
                     })
                 }
                 </div>;
