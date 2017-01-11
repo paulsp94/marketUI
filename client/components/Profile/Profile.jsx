@@ -55,7 +55,14 @@ class Profile extends React.Component{
 
   componentDidMount(){
       var user = firebase.auth().currentUser;
-      var Userid = user.uid;
+
+      console.log(user.uid);
+      if (user.uid == null) {
+          browserHistory.push('Market');
+      }
+      else {
+          var Userid = user.uid;
+      }
 
       firebase.database()
           .ref('ProductOwnerDetails/'+Userid)
