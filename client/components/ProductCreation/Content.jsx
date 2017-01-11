@@ -14,8 +14,6 @@ import Snackbar from 'material-ui/Snackbar';
 import FileUploader from 'react-firebase-file-uploader';
 import LinearProgress from 'material-ui/LinearProgress';
 
-
-
 function mapStateToProps(store) {
   return {userdetails: store.userdetails};
 }
@@ -32,6 +30,7 @@ class Content extends React.Component {
     super(props);
     this.state = {
       textfieldvalue: '',
+      lastSaved: '',
       markdownSyntax: '<iframe width="100%" style="height: 83vh; overflow:hidden; border: none;" src="https://vaionex.com/Markdown.html"></iframe>',
       isOpened: false,
       showSyntax: false,
@@ -50,27 +49,43 @@ class Content extends React.Component {
 
   componentWillMount() {
     var ProductId = this.props.ProductId;
-
     if (this.props.validation == "RIGHTVALIDATION") {
-
-      firebase.database().ref('Content').orderByChild('ProductId').equalTo(ProductId).once("child_added", (snapshot) => {
-
-        var Description = snapshot.val().textfieldvalue1;
-
-        this.setState({
-          textfieldvalue: Description
+      firebase.database()
+        .ref('Content')
+        .orderByChild('ProductId')
+        .equalTo(ProductId)
+        .once("child_added", (snapshot) => {
+          var Description = snapshot.val().textfieldvalue1;
+          this.setState({
+            textfieldvalue: Description,
+            lastSaved: Description
+          });
         });
-      });
-    }
-
-    else {
-
-      var Description = '';
+    } else {
       this.setState({
-        textfieldvalue: Description
+        textfieldvalue: '',
+        lastSaved: ''
       });
     }
+
+    // init autoSave timer
+    const intervalId = setInterval(this.autoSave, 30000);
+    this.setState({intervalId: intervalId});
   }
+
+  componentWillUnmount() {
+    // clear autoSave timer
+    this.autoSave();
+    clearInterval(this.state.intervalId);
+  }
+
+  autoSave = () => {
+    const { textfieldvalue, lastSaved } = this.state;
+    if (textfieldvalue !== lastSaved) {
+      this.onSubmit();
+      this.setState({lastSaved: textfieldvalue});
+    }
+  };
 
   handleChangeUsername = (event) => this.setState({username: event.target.value});
   handleUploadStart = () => this.setState({isUploading: true, progress: 0});
@@ -78,7 +93,7 @@ class Content extends React.Component {
   handleUploadError = (error) => {
       this.setState({isUploading: false});
       console.error(error);
-  }
+  };
   handleUploadSuccess = (filename) => {
       this.setState({avatar: filename, progress: 100, isUploading: false});
       firebase.storage().ref('HTMLstorage').child(filename).getDownloadURL().then(url => this.setState({avatarURL: url}));
@@ -105,20 +120,20 @@ class Content extends React.Component {
     });
   }
 
-  handleTouchTap = () => {
+  showSnackbar = () => {
     this.setState({
       snackOpen: true,
     });
   };
 
-  handleRequestClose = () => {
+  closeSnackbar = () => {
     this.setState({
       snackOpen: false,
     });
   };
 
 
-  subMit() {
+  onSubmit = () => {
     var textfieldvalue1 = this.state.textfieldvalue;
       var ProductId = this.props.ProductId;
       var user = firebase.auth().currentUser;
@@ -131,17 +146,17 @@ class Content extends React.Component {
                   ProductId: ProductId,
                   textfieldvalue1: textfieldvalue1,
                   Userid:Userid1
-              }).then(this.handleTouchTap.bind(this))
+              }).then(this.showSnackbar)
           }
           else {
               firebase.database().ref("Content/" + ProductId).set({
                   ProductId: ProductId,
                   textfieldvalue1: textfieldvalue1,
                   Userid:Userid
-              }).then(this.handleTouchTap.bind(this))
+              }).then(this.showSnackbar)
           }
       });
-  }
+  };
 
   onUpload() {
     this.setState({
@@ -195,7 +210,7 @@ class Content extends React.Component {
         key: 'Save',
         name: 'Save',
         icon: 'Share',
-        onClick: this.subMit.bind(this)
+        onClick: this.onSubmit
       }
     ];
 
@@ -266,7 +281,7 @@ class Content extends React.Component {
                 open={this.state.snackOpen}
                 message="Content Saved!"
                 autoHideDuration={3000}
-                onRequestClose={this.handleRequestClose}
+                onRequestClose={this.closeSnackbar}
               />
             </div>
           </div>

@@ -142,7 +142,7 @@ class  General extends React.Component{
                         <div style={{backgroundColor: "#efeadd", paddingBottom: "0.5%"}}>
                             <Tabs>
                                 <Tab label="General">
-                                        <GeneralProfile ProductId={this.state.ProductID} validation = {this.state.producteditvalidation} />
+                                      <GeneralProfile ProductId={this.state.ProductID} validation = {this.state.producteditvalidation} />
                                 </Tab>
                                 <Tab label="Descriptions">
                                     <Descriptionpage ProductId={this.state.ProductID} validation = {this.state.producteditvalidation}/>
