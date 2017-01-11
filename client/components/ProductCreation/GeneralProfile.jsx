@@ -12,6 +12,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import TextField from 'material-ui/TextField';
+import Snackbar from 'material-ui/Snackbar';
 import IconButton from 'material-ui/IconButton';
 // TODO: Ad CircularProgress while images are loading
 // import CircularProgress from 'material-ui/CircularProgress';
@@ -58,8 +59,8 @@ class GeneralProfile extends React.Component {
       progress1: 0,
       avatarURL1: '',
       submitError: "",
-      submitStatus: '',
-        isAdmin:'',
+      isAdmin:'',
+      snackbar: ''
     };
   }
 
@@ -141,6 +142,7 @@ class GeneralProfile extends React.Component {
     this.setState({
       category: value
     });
+    this.onSubmit();
   };
 
   onDescriptionChange = (event, value) => {
@@ -211,18 +213,16 @@ class GeneralProfile extends React.Component {
                   Userid:Userid1,
               });
 
-            if(this.state.isAdmin == false) {
-                firebase.database()
-                    .ref("Product_creation/" + ProductId)
-                    .set({
-                        ProductId: ProductId,
-                        userid: UserId[0],
-                    });
+            if (this.state.isAdmin == false) {
+              firebase.database()
+                .ref("Product_creation/" + ProductId)
+                .set({
+                    ProductId: ProductId,
+                    userid: UserId[0],
+                })
+                .then(() => this.showSnackbar('Data saved...'));
             }
-
-            this.setState({
-              submitStatus: "Successfully Saved!"
-            })
+            this.showSnackbar('Data saved...');
           } else {
             firebase.database()
               .ref('ProductCoreDetails/' + ProductId)
@@ -241,18 +241,15 @@ class GeneralProfile extends React.Component {
                   Userid:Userid1,
               });
 
-              if(this.state.isAdmin == false) {
-                  firebase.database()
-                      .ref("Product_creation/" + ProductId)
-                      .set({
-                          ProductId: ProductId,
-                          userid: UserId[0],
-                      });
+              if (this.state.isAdmin == false) {
+                firebase.database()
+                  .ref("Product_creation/" + ProductId)
+                  .set({
+                      ProductId: ProductId,
+                      userid: UserId[0],
+                  })
+                  .then(() => this.showSnackbar('Data saved...'));
               }
-
-            this.setState({
-              submitStatus: "Saved!"
-            })
           }
 
         } else {
@@ -280,11 +277,8 @@ class GeneralProfile extends React.Component {
             .set({
               ProductId: ProductId,
               userid: UserId[0],
-            });
-
-          this.setState({
-            submitStatus: "Saved!"
-          })
+            })
+            .then(() => this.showSnackbar('Data saved...'));
         }
       });
     }
@@ -303,6 +297,7 @@ class GeneralProfile extends React.Component {
       .child(filename)
       .getDownloadURL()
       .then(url => this.setState({avatarURL: url}));
+    this.onSubmit();
   };
 
   handleUploadStart1 = () => this.setState({isUploading1: true, progress1: 0});
@@ -318,20 +313,25 @@ class GeneralProfile extends React.Component {
       .child(filename)
       .getDownloadURL()
       .then(url => this.setState({avatarURL1: url}));
+    this.onSubmit();
+  };
+
+  showSnackbar = (message) => {
+    this.setState({snackbar: message});
+  };
+
+  closeSnackbar = () => {
+    this.setState({snackbar: ''});
   };
 
   render(){
 
     var user = firebase.auth().currentUser;
 
-    var saveButton = user ? 
-            <RaisedButton onClick={this.onSubmit} label=" Save" primary={true} style={{ margin: 12}}/> : 
-            <RaisedButton onClick={this.onSubmit} label="relogg please!" primary={true} style={{ margin: 12}}/>; 
-    console.log(this.state.isAdmin);
     const { title, subtitle, category, description, price, avatar, avatar1 } = this.state;
 
     return (
-      <div className="product-tab" >
+      <div className="product-tab">
         <div className="left-panel">
 
           <Card className="generalTabCard" style={{ margin: '10px auto', width: 550 }}>
@@ -343,6 +343,7 @@ class GeneralProfile extends React.Component {
                 fullWidth
                 value={this.state.title}
                 onChange={this.onTitleChange}
+                onBlur={this.onSubmit}
               />
 
               {/* subtitle */}
@@ -351,6 +352,7 @@ class GeneralProfile extends React.Component {
                 value={subtitle}
                 fullWidth
                 onChange={this.onSubtitleChange}
+                onBlur={this.onSubmit}
               />
               <br/>
               <br/>
@@ -434,6 +436,7 @@ class GeneralProfile extends React.Component {
                 rows={1}
                 rowsMax={5}
                 onChange={this.onDescriptionChange}
+                onBlur={this.onSubmit}
               />
 
               {/* price */}
@@ -445,14 +448,18 @@ class GeneralProfile extends React.Component {
                 value={price}
                 fullWidth
                 onChange={this.onPriceChange}
+                onBlur={this.onSubmit}
               />
 
               <div className="product-header">
-                {saveButton}
+                <RaisedButton onClick={this.onSubmit}
+                              label={user ? "Save" : "relogg please!"}
+                              primary={true}
+                              style={{ margin: '12p'}}
+                />
                 <div className="warning" style={{margin:'20 0 0 100'}} >
                   {this.state.submitError}
                 </div>
-                {this.state.submitStatus}
               </div>
             </CardText>
           </Card>
@@ -494,6 +501,13 @@ class GeneralProfile extends React.Component {
             </Card>
           </div>
         </div>
+
+        <Snackbar
+          open={!!this.state.snackbar}
+          message={this.state.snackbar}
+          autoHideDuration={3000}
+          onRequestClose={this.closeSnackbar}
+        />
       </div>
     )
   }
