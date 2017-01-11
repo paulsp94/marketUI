@@ -37,7 +37,6 @@ class ContentSidebar extends React.Component{
     }
 }
 
-
 export default ContentSidebar ;
 
 
