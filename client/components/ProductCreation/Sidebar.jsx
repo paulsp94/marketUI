@@ -9,6 +9,7 @@ import MaterialTagsInput from '../_common/MaterialTagsInput';
 var firebase = require('firebase');
 import firebase_details from '../../Firebase/Firebase';
 import RaisedButton from 'material-ui/RaisedButton';
+import Snackbar from 'material-ui/Snackbar';
 import {
   currentuserid,
   submitProductsidebarDetails,
@@ -39,12 +40,10 @@ class ProductSidebar extends React.Component {
         integrationTime: "15 min",
         compatibility: [],
         tags: [],
-        error:'',
+        error: '',
         snackOpen: false
     };
   }
-
-
 
   componentWillMount() {
     this.props.currentuserid();
@@ -54,7 +53,6 @@ class ProductSidebar extends React.Component {
       if(this.props.validation == "RIGHTVALIDATION") {
 
           firebase.database().ref('ProductSidebar').orderByChild('Productid').equalTo(ProductId).once("child_added", (snapshot) => {
-
               var IntegrationTime = snapshot.val().IntegrationTime;
               var Packages = snapshot.val().Packages;
               var compatibility = snapshot.val().compatibility;
@@ -72,7 +70,6 @@ class ProductSidebar extends React.Component {
       }
 
       else {
-
           var IntegrationTime = '';
           var Packages = [];
           var compatibility = [];
@@ -89,59 +86,56 @@ class ProductSidebar extends React.Component {
       }
   }
 
-
-
   onPackagesChange = (packages) => {
-    this.setState({ packages })
+    this.setState({ packages });
+    this.onSubmit();
   };
 
   onComplexityChange = (event, index, value) => {
     this.setState({ complexity: value });
+    this.onSubmit();
   };
 
   onIntegrationTimeChange = (event, index, value) => {
     this.setState({ integrationTime: value });
+    this.onSubmit();
   };
 
   onCompatibilityChange = (compatibility) => {
-    this.setState({ compatibility })
+    this.setState({ compatibility });
+    this.onSubmit();
   };
 
   onTagsChange = (tags) => {
-    this.setState({ tags })
+    this.setState({ tags });
+    this.onSubmit();
   };
 
-  subMit () {
-  try {
-    var packages = this.state.packages;
-    var complexity = this.state.complexity;
-    var integrationTime = this.state.integrationTime;
-    var compatibility = this.state.compatibility;
-    var tags = this.state.tags;
-    var ProductId = this.props.ProductId;
-
-    this.props.submitProductsidebarDetails(packages, complexity, integrationTime, compatibility, tags, ProductId);
-
-  } catch(err) {
-      console.log("error")
-  }
+  showSnackbar = () => {
+    this.setState({
+      snackOpen: true,
+    });
   };
 
-  Publish () {
+  closeSnackbar = () => {
+    this.setState({
+      snackOpen: false,
+    });
+  };
 
+  onSubmit = () => {
     var ProductId = this.props.ProductId;
     var UserIdobject = this.props.userdetails.userid;
     var UserId = Object.keys(UserIdobject).map(key => UserIdobject[key]);
     UserId = UserId[0];
     this.props.submitPublishedproducts(ProductId, UserId);
+    this.showSnackbar();
   };
 
   render () {
-
     if (this.props.userdetails.publishedproduct == false) {
       var message = '';
-    }
-    else {
+    } else {
       var message = this.props.userdetails.publishedproduct.submitDetails;
     }
 
@@ -164,7 +158,7 @@ class ProductSidebar extends React.Component {
 
               <MaterialTagsInput
                 value={packages}
-                onChange={this.onPackagesChange.bind(this)}
+                onChange={this.onPackagesChange}
                 label="Packages"
               />
 
@@ -173,7 +167,7 @@ class ProductSidebar extends React.Component {
                 floatingLabelText="Complexity"
                 floatingLabelFixed={true}
                 value={complexity}
-                onChange={this.onComplexityChange.bind(this)}
+                onChange={this.onComplexityChange}
                 autoWidth={false}
               >
                 <MenuItem value={1} primaryText="1/10"/>
@@ -192,7 +186,7 @@ class ProductSidebar extends React.Component {
                 floatingLabelText="Integration Time"
                 floatingLabelFixed={true}
                 value={integrationTime}
-                onChange={this.onIntegrationTimeChange.bind(this)}
+                onChange={this.onIntegrationTimeChange}
                 autoWidth={false}
               >
                 <MenuItem value={"15 min"} primaryText="15 min"/>
@@ -204,30 +198,28 @@ class ProductSidebar extends React.Component {
                 <MenuItem value={"> 5 hours"} primaryText="> 5 hours"/>
               </SelectField>
 
-
               {/* compatibility */}
               <MaterialTagsInput
                 value={compatibility}
-                onChange={this.onCompatibilityChange.bind(this)}
+                onChange={this.onCompatibilityChange}
                 label="Compatibility"
               />
 
               {/* tags */}
               <MaterialTagsInput
                 value={tags}
-                onChange={this.onTagsChange.bind(this)}
+                onChange={this.onTagsChange}
                 label="Tags"/>
 
             </CardText>
 
-            <RaisedButton onClick={this.subMit.bind(this)} primary={true} label=" Save" style={{ margin: 12 }}/>
-            <RaisedButton onClick={this.Publish.bind(this)} primary={true} label="Submit" style={{ margin: 12 }}/>
-            <div className="warning">
-                {this.state.error}
+            <div className="text-right">
+              <RaisedButton onClick={this.onSubmit} primary={true} label="Submit" style={{ margin: '12px'}} />
             </div>
-            <div className="">
-              {message}
-            </div>
+
+            <div className="warning">{this.state.error}</div>
+            <div>{message}</div>
+
           </Card>
         </div>
 
@@ -275,11 +267,22 @@ class ProductSidebar extends React.Component {
                 )}
               </div>
             </Card>
-           
           </Card>
-
         </div>
-         
+
+        <Snackbar
+          open={this.state.snackOpen}
+          message="Sidebar Saved!"
+          autoHideDuration={3000}
+          onRequestClose={this.closeSnackbar}
+        />
+        <Snackbar
+          className="warning"
+          open={!!this.state.error}
+          message={this.state.error}
+          autoHideDuration={3000}
+          onRequestClose={() => this.setState({error: ''})}
+        />
       </div>
     )
   }

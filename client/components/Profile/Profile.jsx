@@ -54,6 +54,7 @@ class Profile extends React.Component{
   }
 
   componentDidMount(){
+
     var user = firebase.auth().currentUser;
     var Userid = user.uid;
     firebase.database()
