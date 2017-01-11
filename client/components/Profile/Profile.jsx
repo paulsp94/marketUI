@@ -54,32 +54,33 @@ class Profile extends React.Component{
   }
 
   componentDidMount(){
+      var user = firebase.auth().currentUser;
+      var Userid = user.uid;
 
-    var user = firebase.auth().currentUser;
-    var Userid = user.uid;
-    firebase.database()
-      .ref('ProductOwnerDetails/'+Userid)
-      .once("value", (snapshot) => {
+      firebase.database()
+          .ref('ProductOwnerDetails/'+Userid)
+          .once("value", (snapshot) => {
 
-          if(snapshot.exists()) {
+              if(snapshot.exists()) {
 
-              var Description = snapshot.val().Description;
-              var tags = snapshot.val().tags;
+                  var Description = snapshot.val().Description;
+                  var tags = snapshot.val().tags;
 
-              this.setState({
-                  description: Description,
-                  tags: tags,
-              })
-          }
+                  this.setState({
+                      description: Description,
+                      tags: tags,
+                  })
+              }
 
-          else {
-            console.log('value doesnt exist');
-          }
+              else {
+                  console.log('value doesnt exist');
+              }
 
-      }).catch(function (error) {
-        console.log(error);
-    })
+          }).catch(function (error) {
+          console.log(error);
+      })
   }
+
 
   Dropboxopen4(){
     this.setState({open3: true});
