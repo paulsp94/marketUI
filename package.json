@@ -68,6 +68,7 @@
     "react": "15.3.2",
     "react-addons-css-transition-group": "15.3.0",
     "react-boron": "0.1.4",
+    "react-clipboard.js": "1.0.1",
     "react-copy-to-clipboard": "4.2.2",
     "react-dom": "15.3.2",
     "react-file-input": "0.2.5",

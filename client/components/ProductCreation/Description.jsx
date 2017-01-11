@@ -13,6 +13,8 @@ import {submitProductContentDetails} from '../../action/action.jsx'
 import Snackbar from 'material-ui/Snackbar';
 import FileUploader from 'react-firebase-file-uploader';
 import LinearProgress from 'material-ui/LinearProgress';
+var ClipboardButton = require('react-clipboard.js');
+
 
 function mapStateToProps(store) {
   return {userdetails: store.userdetails};
@@ -79,7 +81,7 @@ class Descriptiondetails extends React.Component {
   }
   handleUploadSuccess = (filename) => {
       this.setState({avatar: filename, progress: 100, isUploading: false});
-      firebase.storage().ref('HTMLstorage').child(filename).getDownloadURL().then(url => this.setState({avatarURL: url}));
+      firebase.storage().ref('HTMLstorage').child(this.props.ProductId).child(filename).getDownloadURL().then(url => this.setState({avatarURL: url}));
   };
 
   handleClick(event) {
@@ -216,7 +218,7 @@ class Descriptiondetails extends React.Component {
                   <Loading type='spin' color='#00284c' />
                   :
                    this.state.showMediaUploader ?
-                    <div className="file-uploader">
+                    <div className="uploadPage">
                               <LinearProgress mode="determinate" value={this.state.progress} style={{height: 10}} />
                               <RaisedButton
                                 label="upload file"
@@ -232,7 +234,7 @@ class Descriptiondetails extends React.Component {
                                 accept="HTMLstorage/*"
                                 name="avatar"
                                 randomizeFilename
-                                storageRef={firebase.storage().ref('HTMLstorage')}
+                                storageRef={firebase.storage().ref('HTMLstorage/' + this.props.ProductId)}
                                 onUploadStart={this.handleUploadStart}
                                 onUploadError={this.handleUploadError}
                                 onUploadSuccess={this.handleUploadSuccess}
@@ -241,16 +243,47 @@ class Descriptiondetails extends React.Component {
                               </div>
                               </RaisedButton>
                               <br/>
+                              {this.state.avatarURL == '' ? 
+                               <div className="uploadImage">
+                                  <img src="https://firebasestorage.googleapis.com/v0/b/rscriptmarket-66f49.appspot.com/o/statics%2FDownload_section.png?alt=media&token=20d04a46-4fbf-4d57-958e-2a7252b8d081" alt="Download Info"/>
+                                  
+                               </div>
+                               : null
+                               }
+
                               <div>
-                              <h2> Embedd Rmarkdown html files </h2>
                                {this.state.avatarURL &&
-                                <p>&lt;iframe width=&quot;100%&quot; height=&quot;100%&quot; src=&quot;{this.state.avatarURL}&quot;&gt;&lt;/iframe&gt; </p>
+                               <div className="linkCopy">
+                                  <h4> Iframe for Markdown HTML </h4>
+                                   <div className="linkCopy">
+                                  <p>&lt;iframe width=&quot;100%&quot; style=&quot;height: 92vh;&quot; src=&quot;{this.state.avatarURL}&quot;&gt;&lt;/iframe&gt; </p>
+                                  <ClipboardButton data-clipboard-text={&lt;iframe width=&quot;100%&quot; style=&quot;height: 92vh;&quot; src=&quot;{this.state.avatarURL}&quot;&gt;&lt;/iframe&gt;}>
+                                      copy to clipboard
+                                   </ClipboardButton>
+                                  </div>
+                               </div>
                               }
                               </div>
                               <div>
-                              <h2>Embedd Images: </h2>
+                              
                               {this.state.avatarURL &&
-                                <p>&lt;img src=&quot;{this.state.avatarURL}&quot; style=&quot;width:100%;&quot;&gt;</p>
+                                <div className="linkCopy">
+                                  <h4>Embedd Images: </h4>
+                                   <div className="linkCopy">
+                                  <p>&lt;img src=&quot;{this.state.avatarURL}&quot; style=&quot;width:100%;&quot;&gt;</p>
+                                   </div>
+                                </div>
+                              }
+                               </div>
+                               <div>
+                              
+                              {this.state.avatarURL &&
+                                <div className="linkCopy">
+                                  <h4>File Link (for Dataset uploads): </h4>
+                                  <div className="linkCopy">
+                                  <p>{this.state.avatarURL}</p>
+                                  </div>
+                                </div>
                               }
                                </div>
                               <div>

@@ -81,7 +81,7 @@ class Content extends React.Component {
   }
   handleUploadSuccess = (filename) => {
       this.setState({avatar: filename, progress: 100, isUploading: false});
-      firebase.storage().ref('HTMLstorage').child(filename).getDownloadURL().then(url => this.setState({avatarURL: url}));
+      firebase.storage().ref('HTMLstorage').child(this.props.ProductId).child(filename).getDownloadURL().then(url => this.setState({avatarURL: url}));
   };
 
   handleClick(event) {
@@ -235,7 +235,7 @@ class Content extends React.Component {
                                 accept="HTMLstorage/*"
                                 name="avatar"
                                 randomizeFilename
-                                storageRef={firebase.storage().ref('HTMLstorage')}
+                                storageRef={firebase.storage().ref('HTMLstorage/' + this.props.ProductId)}
                                 onUploadStart={this.handleUploadStart}
                                 onUploadError={this.handleUploadError}
                                 onUploadSuccess={this.handleUploadSuccess}
@@ -245,15 +245,21 @@ class Content extends React.Component {
                               </RaisedButton>
                               <br/>
                               <div>
-                              <h2> Embedd Rmarkdown html files </h2>
-                               {this.state.avatarURL &&
-                                <p>&lt;iframe width=&quot;100%&quot; height=&quot;100%&quot; src=&quot;{this.state.avatarURL}&quot;&gt;&lt;/iframe&gt; </p>
+                              
+                              {this.state.avatarURL &&
+                               <div>
+                                <h2> Iframe for Markdown HTML </h2>
+                                <p>&lt;iframe width=&quot;100%&quot; style=&quot;height: 92vh;&quot; src=&quot;{this.state.avatarURL}&quot;&gt;&lt;/iframe&gt; </p>
+                                </div>
                               }
                               </div>
                               <div>
-                              <h2>Embedd Images: </h2>
+                              
                               {this.state.avatarURL &&
+                                <div>
+                                <h2>Embedd Images: </h2>
                                 <p>&lt;img src=&quot;{this.state.avatarURL}&quot; style=&quot;width:100%;&quot;&gt;</p>
+                                </div>
                               }
                                </div>
                               <div>

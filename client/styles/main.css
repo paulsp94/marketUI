@@ -480,6 +480,23 @@ h1
     padding-top: 0;
 }
 
+.uploadPage{
+}
+
+.uploadImage{
+    margin-top: 3%;
+    text-align:  center;
+}
+
+.linkCopy{
+    margin-left:  15px;
+    margin-right:  15px;
+    margin-top:  5px;
+    margin-bottom:  5px;
+    padding:  10px;
+    background: #80DEEA;
+}
+
 .contentSidebar
 {
     position: fixed;
