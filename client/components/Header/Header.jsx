@@ -88,6 +88,7 @@ export default class Header extends React.Component {
           onTitleTouchTap={(e) => this.context.router.push('/')}
           iconElementRight={appBarMenu}
           style={{backgroundColor: '#31708f'}}
+          showMenuIconButton={false}
         />
         <AuthModal open={openAuthModal} toggleAuthModal={this.toggleAuthModal} />
       </div>
