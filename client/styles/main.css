@@ -489,12 +489,12 @@ h1
 }
 
 .linkCopy{
-    margin-left:  15px;
-    margin-right:  15px;
+    padding-left:  15px;
+    padding-right:  15px;
     margin-top:  5px;
     margin-bottom:  5px;
     padding:  10px;
-    background: #80DEEA;
+    background: #B2EBF2;
 }
 
 .contentSidebar

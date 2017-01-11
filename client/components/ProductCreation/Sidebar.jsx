@@ -88,32 +88,32 @@ class ProductSidebar extends React.Component {
 
   onPackagesChange = (packages) => {
     this.setState({ packages });
-    this.onSubmit();
+    this.onSave();
   };
 
   onComplexityChange = (event, index, value) => {
     this.setState({ complexity: value });
-    this.onSubmit();
+    this.onSave();
   };
 
   onIntegrationTimeChange = (event, index, value) => {
     this.setState({ integrationTime: value });
-    this.onSubmit();
+    this.onSave();
   };
 
   onCompatibilityChange = (compatibility) => {
     this.setState({ compatibility });
-    this.onSubmit();
+    this.onSave();
   };
 
   onTagsChange = (tags) => {
     this.setState({ tags });
-    this.onSubmit();
+    this.onSave();
   };
 
   showSnackbar = () => {
     this.setState({
-      snackOpen: true,
+    snackOpen: true,
     });
   };
 
@@ -121,6 +121,22 @@ class ProductSidebar extends React.Component {
     this.setState({
       snackOpen: false,
     });
+  };
+
+  onSave = () => {
+  try {
+    var packages = this.state.packages;
+    var complexity = this.state.complexity;
+    var integrationTime = this.state.integrationTime;
+    var compatibility = this.state.compatibility;
+    var tags = this.state.tags;
+    var ProductId = this.props.ProductId;
+
+    this.props.submitProductsidebarDetails(packages, complexity, integrationTime, compatibility, tags, ProductId);
+
+  } catch(err) {
+      console.log("error")
+  }
   };
 
   onSubmit = () => {

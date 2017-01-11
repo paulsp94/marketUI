@@ -69,7 +69,7 @@ class Content extends React.Component {
     }
 
     // init autoSave timer
-    const intervalId = setInterval(this.autoSave, 30000);
+    const intervalId = setInterval(this.autoSave, 20000);
     this.setState({intervalId: intervalId});
   }
 
@@ -131,7 +131,6 @@ class Content extends React.Component {
       snackOpen: false,
     });
   };
-
 
   onSubmit = () => {
     var textfieldvalue1 = this.state.textfieldvalue;
@@ -232,9 +231,9 @@ class Content extends React.Component {
               {
                 this.state.uploadingMedia ?
                   <Loading type='spin' color='#00284c' />
-                  :
-                  this.state.showMediaUploader ?
-                    <div className="file-uploader">
+                 :
+                   this.state.showMediaUploader ?
+                    <div className="uploadPage">
                               <LinearProgress mode="determinate" value={this.state.progress} style={{height: 10}} />
                               <RaisedButton
                                 label="upload file"
@@ -259,27 +258,47 @@ class Content extends React.Component {
                               </div>
                               </RaisedButton>
                               <br/>
+                              {this.state.avatarURL == '' ? 
+                               <div className="uploadImage">
+                                  <img src="https://firebasestorage.googleapis.com/v0/b/rscriptmarket-66f49.appspot.com/o/statics%2FDownload_section.png?alt=media&token=20d04a46-4fbf-4d57-958e-2a7252b8d081" alt="Download Info"/>
+                               </div>
+                               : null
+                               }
+
                               <div>
-                              
-                              {this.state.avatarURL &&
-                               <div>
-                                <h2> Iframe for Markdown HTML </h2>
-                                <p>&lt;iframe width=&quot;100%&quot; style=&quot;height: 92vh;&quot; src=&quot;{this.state.avatarURL}&quot;&gt;&lt;/iframe&gt; </p>
-                                </div>
+                               {this.state.avatarURL &&
+                               <div className="linkCopy">
+                                  <h4> Iframe for Markdown HTML </h4>
+                                   <div className="linkCopy">
+                                  <p>&lt;iframe width=&quot;100%&quot; style=&quot;height: 92vh;&quot; src=&quot;{this.state.avatarURL}&quot;&gt;&lt;/iframe&gt; </p>
+                                  </div>
+                               </div>
                               }
                               </div>
                               <div>
                               
                               {this.state.avatarURL &&
-                                <div>
-                                <h2>Embedd Images: </h2>
-                                <p>&lt;img src=&quot;{this.state.avatarURL}&quot; style=&quot;width:100%;&quot;&gt;</p>
+                                <div className="linkCopy">
+                                  <h4>Embedd Images: </h4>
+                                   <div className="linkCopy">
+                                  <p>&lt;img src=&quot;{this.state.avatarURL}&quot; style=&quot;width:100%;&quot;&gt;</p>
+                                   </div>
+                                </div>
+                              }
+                               </div>
+                               <div>
+                              
+                              {this.state.avatarURL &&
+                                <div className="linkCopy">
+                                  <h4>File Link (for Dataset uploads): </h4>
+                                  <div className="linkCopy">
+                                  <p>{this.state.avatarURL}</p>
+                                  </div>
                                 </div>
                               }
                                </div>
                               <div>
                               </div>
-                      
                     </div> :
                     <ReactMarkdown source={thisIsMyCopy} escapeHtml={false}/>
               }

@@ -13,8 +13,6 @@ import {submitProductContentDetails} from '../../action/action.jsx'
 import Snackbar from 'material-ui/Snackbar';
 import FileUploader from 'react-firebase-file-uploader';
 import LinearProgress from 'material-ui/LinearProgress';
-var ClipboardButton = require('react-clipboard.js');
-
 
 function mapStateToProps(store) {
   return {userdetails: store.userdetails};
@@ -51,7 +49,6 @@ class Descriptiondetails extends React.Component {
 
   componentWillMount() {
     var ProductId = this.props.ProductId;
-
     if (this.props.validation == "RIGHTVALIDATION") {
       firebase.database()
         .ref('Description')
@@ -72,7 +69,7 @@ class Descriptiondetails extends React.Component {
     }
 
     // init autoSave timer
-    const intervalId = setInterval(this.autoSave, 30000);
+    const intervalId = setInterval(this.autoSave, 20000);
     this.setState({intervalId: intervalId});
   }
 
@@ -109,7 +106,7 @@ class Descriptiondetails extends React.Component {
     });
   }
 
-  preview(event) {
+    preview(event) {
     this.setState({
       showSyntax: false,
       showMediaUploader: false
@@ -160,6 +157,7 @@ class Descriptiondetails extends React.Component {
       });
   };
 
+
   onUpload() {
     this.setState({
       showMediaUploader: true
@@ -186,6 +184,7 @@ class Descriptiondetails extends React.Component {
 
   render() {
     var thisIsMyCopy = this.state.showSyntax ? this.state.markdownSyntax : this.state.textfieldvalue;
+
     const leftCommands = [
       {}
     ];
@@ -274,9 +273,6 @@ class Descriptiondetails extends React.Component {
                                   <h4> Iframe for Markdown HTML </h4>
                                    <div className="linkCopy">
                                   <p>&lt;iframe width=&quot;100%&quot; style=&quot;height: 92vh;&quot; src=&quot;{this.state.avatarURL}&quot;&gt;&lt;/iframe&gt; </p>
-                                  <ClipboardButton data-clipboard-text={&lt;iframe width=&quot;100%&quot; style=&quot;height: 92vh;&quot; src=&quot;{this.state.avatarURL}&quot;&gt;&lt;/iframe&gt;}>
-                                      copy to clipboard
-                                   </ClipboardButton>
                                   </div>
                                </div>
                               }
@@ -307,13 +303,7 @@ class Descriptiondetails extends React.Component {
                               </div>
                       
                     </div> :
-                    <ReactMarkdown
-                      source={thisIsMyCopy}
-                      escapeHtml={false}
-                      onChange={(e) => console.log('onChange', e.target)}
-                      onBlur={(e) => console.log('onBlur', e.target)}
-                      onFocus={(e) => console.log('onFocus', e.target)}
-                    />
+                    <ReactMarkdown source={thisIsMyCopy} escapeHtml={false}/>
               }
               <Snackbar
                 open={this.state.snackOpen}

@@ -452,11 +452,6 @@ class GeneralProfile extends React.Component {
               />
 
               <div className="product-header">
-                <RaisedButton onClick={this.onSubmit}
-                              label={user ? "Save" : "relogg please!"}
-                              primary={true}
-                              style={{ margin: '12p'}}
-                />
                 <div className="warning" style={{margin:'20 0 0 100'}} >
                   {this.state.submitError}
                 </div>
