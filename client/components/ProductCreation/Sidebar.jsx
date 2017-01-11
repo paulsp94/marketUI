@@ -87,56 +87,52 @@ class ProductSidebar extends React.Component {
   }
 
   onPackagesChange = (packages) => {
-    this.setState({ packages });
-    this.onSave();
+    this.setState({ packages }, this.onSave);
   };
 
   onComplexityChange = (event, index, value) => {
-    this.setState({ complexity: value });
-    this.onSave();
+    this.setState({ complexity: value }, this.onSave);
   };
 
   onIntegrationTimeChange = (event, index, value) => {
-    this.setState({ integrationTime: value });
-    this.onSave();
+    this.setState({ integrationTime: value }, this.onSave);
   };
 
   onCompatibilityChange = (compatibility) => {
-    this.setState({ compatibility });
-    this.onSave();
+    this.setState({ compatibility }, this.onSave);
   };
 
   onTagsChange = (tags) => {
-    this.setState({ tags });
-    this.onSave();
+    this.setState({ tags }, this.onSave);
   };
 
   showSnackbar = () => {
     this.setState({
-    snackOpen: true,
+      snackOpen: true
     });
   };
 
   closeSnackbar = () => {
     this.setState({
-      snackOpen: false,
+      snackOpen: false
     });
   };
 
   onSave = () => {
-  try {
-    var packages = this.state.packages;
-    var complexity = this.state.complexity;
-    var integrationTime = this.state.integrationTime;
-    var compatibility = this.state.compatibility;
-    var tags = this.state.tags;
-    var ProductId = this.props.ProductId;
+    try {
+      var packages = this.state.packages || [];
+      var complexity = this.state.complexity || '';
+      var integrationTime = this.state.integrationTime || '';
+      var compatibility = this.state.compatibility || [];
+      var tags = this.state.tags || [];
+      var ProductId = this.props.ProductId;
 
-    this.props.submitProductsidebarDetails(packages, complexity, integrationTime, compatibility, tags, ProductId);
-
-  } catch(err) {
-      console.log("error")
-  }
+      this.props.submitProductsidebarDetails(packages, complexity, integrationTime, compatibility, tags, ProductId);
+      this.showSnackbar();
+    } catch(err) {
+        console.log("error");
+        this.setState({error: 'Saving Error!'});
+    }
   };
 
   onSubmit = () => {
@@ -173,7 +169,7 @@ class ProductSidebar extends React.Component {
               {/* packages */}
 
               <MaterialTagsInput
-                value={packages}
+                value={packages || []}
                 onChange={this.onPackagesChange}
                 label="Packages"
               />
@@ -216,14 +212,14 @@ class ProductSidebar extends React.Component {
 
               {/* compatibility */}
               <MaterialTagsInput
-                value={compatibility}
+                value={compatibility || []}
                 onChange={this.onCompatibilityChange}
                 label="Compatibility"
               />
 
               {/* tags */}
               <MaterialTagsInput
-                value={tags}
+                value={tags || []}
                 onChange={this.onTagsChange}
                 label="Tags"/>
 
@@ -246,7 +242,7 @@ class ProductSidebar extends React.Component {
               {/* Packages */}
               <div style={{ display: 'flex', flexWrap: 'wrap' }}>
                 <h4><strong>Packages:</strong></h4>
-                {packages.map((item, index) =>
+                {packages && packages.map((item, index) =>
                   <Chip key={index} style={{ float: "left", margin: 4 }}>{item}</Chip>
                 )}
               </div>
@@ -263,7 +259,7 @@ class ProductSidebar extends React.Component {
             <Card>
               <div style={{ display: 'flex', flexWrap: 'wrap' }}>
                 <h4><strong>Compatibilty:</strong></h4>
-                {compatibility.map((compatibility, index) =>
+                {compatibility && compatibility.map((compatibility, index) =>
                   <Chip key={index} style={{ float: "left", margin: 4 }}>{compatibility}</Chip>
                 )}
               </div>
@@ -278,7 +274,7 @@ class ProductSidebar extends React.Component {
             <Card>
               <div style={{ display: 'flex', flexWrap: 'wrap' }}>
                 <h4><strong>Tags:</strong></h4>
-                {tags.map((tag, index) =>
+                {tags && tags.map((tag, index) =>
                   <Chip key={index} style={{ float: "left", margin: 4 }}>{tag}</Chip>
                 )}
               </div>
