@@ -72,9 +72,12 @@ class  Downloads extends React.Component{
 
     componentDidMount(){
 
-
-        var user = firebase.auth().currentUser;
-        var Userid = user.uid;
+        try {
+            var user = firebase.auth().currentUser;
+            var Userid = user.uid;
+        } catch (e) {
+            browserHistory.push('Market');
+        }
 
         var productalldeatils = [];
         var productcomment = [];

@@ -50,12 +50,19 @@ class Profile extends React.Component{
   }
 
   componentWillMount(){
-    this.props.fetchuserdetails();
+    // this.props.fetchuserdetails();
   }
 
   componentDidMount(){
-      var user = firebase.auth().currentUser;
-      var Userid = user.uid;
+
+
+      try {
+          var user = firebase.auth().currentUser;
+          var Userid = user.uid;
+      } catch (e) {
+          browserHistory.push('Market');
+      }
+
 
       firebase.database()
           .ref('ProductOwnerDetails/'+Userid)
