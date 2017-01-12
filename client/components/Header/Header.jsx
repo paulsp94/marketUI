@@ -93,6 +93,7 @@ export default class Header extends React.Component {
           iconElementRight={appBarMenu}
           style={{backgroundColor: '#31708f'}}
           showMenuIconButton={false}
+          zDepth={3}
         />
         <AuthModal open={openAuthModal} toggleAuthModal={this.toggleAuthModal} />
       </div>
