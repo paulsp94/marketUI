@@ -9,56 +9,55 @@
       ".read": "true",
       "$ProductCoreDetails":{ 
                               "Description":{ ".write" : "auth != null",
-                                              ".read" : "true",
+                                              ".read" : "true"
                                             },
                               "Price":{       ".write" : "auth != null",
-                                              ".read" : "true",
+                                              ".read" : "true"
                                             },
                               "Productid":{   ".write" : "auth != null",
-                                              ".read" : "true",
+                                              ".read" : "true"
                                             },
                               "Subtitle":{      ".write" : "auth != null",
-                                              ".read" : "true",
+                                              ".read" : "true"
                                             },
                               "Title":{       ".write" : "auth != null",
-                                              ".read" : "true",
+                                              ".read" : "true"
                                             },
                               "category":{    ".write" : "auth != null",
-                                              ".read" : "true",
+                                              ".read" : "true"
                                             },
                               "date":{        ".write" : "auth != null",
-                                              ".read" : "true",
+                                              ".read" : "true"
                                             },
                               "datenumber":{  ".write" : "auth != null",
-                                              ".read" : "true",
+                                              ".read" : "true"
                                             },
                               "downloadCount":{".write" : "true",
-                                               ".read" : "true",
+                                               ".read" : "true"
                                             },
                               "status":{      ".write" : "auth != null",
-                                              ".read" : "true",
+                                              ".read" : "true"
                                             },
                               "subImage":{    ".write" : "auth != null",
-                                              ".read" : "true",
+                                              ".read" : "true"
                                             },
                               "mainImage":{     ".write" : "auth != null",
-                                              ".read" : "true",
+                                              ".read" : "true"
                                             },
                               "ratedCount":{".write" : "auth != null",
-                                              ".read" : "true",
+                                              ".read" : "true"
                                             },
                               "rating":{      ".write" : "auth != null",
-                                              ".read" : "true",
-                                            },
+                                              ".read" : "true"
+                                            }
                               
     }},
       
     "ProductOwnerDetails":{
       "$uid":{
                 ".write": "$uid === auth.uid",
-                ".read": "true",
+                ".read": "true"
     }},
-      
     "admin":{
           ".write": "false",
           ".read": "true"

@@ -466,8 +466,7 @@ class GeneralProfile extends React.Component {
               overlay={
                 <CardTitle title={title} subtitle={subtitle}/>
               }>
-              <img className="fadeIn" src={this.state.avatarURL} />
-
+              <img className="fadeIn" style={{height: 393, width: 850}} src={this.state.avatarURL} />
             </CardMedia>
           </div>
 
