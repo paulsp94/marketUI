@@ -47,7 +47,6 @@ var ContentInfo = React.createClass({
                    </Card>
                   <Card style={style}>
                     <p> All actions must be in compliance with our <Link to="/Policy"> terms & policy </Link> </p>
-                    <p> If you have open questions please <Link to="/Support"> let us know </Link> </p>
                     {ContentButton}
                     <p> <b> This is a BETA - make sure to save everything offline! </b>  </p>  
                  </Card>       

@@ -43,7 +43,6 @@ var Contact = React.createClass({
                     </ul>
                     <br/>
                     <p> All actions must be in compliance with our <Link to="/Policy"> terms & policy </Link>  </p> 
-                    <p> For remaining questions please send a mail to support@r.codes </p>
                   </Card>
                   <Card style={style}>
                     <div style={{textAlign:'center', marginBottom: 10, marginTop: 4}}>

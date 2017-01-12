@@ -58,25 +58,29 @@ export default class Header extends React.Component {
 
     const appBarMenu = (
       <div>
+        <Link to="/Market"><FlatButton label="Explore" style={buttonStyle} /></Link>
+        <Link to="/Create"><FlatButton label="Create" style={buttonStyle} /></Link>
         { loggedIn
           ? <Link to="/Profile"><FlatButton label="Profile" style={buttonStyle} /></Link>
           : <FlatButton label="Login / Sign Up" style={buttonStyle} onClick={this.toggleAuthModal} />
         }
-        <Link to="/Create"><FlatButton label="Create" style={buttonStyle} /></Link>
-        <Link to="/Market"><FlatButton label="Explore" style={buttonStyle} /></Link>
-        <Link to="/"><FlatButton label="Home" style={buttonStyle} /></Link>
 
         <IconMenu
           iconButtonElement={<IconButton iconStyle={{color: 'white'}}><MoreVertIcon /></IconButton>}
-          anchorOrigin={{horizontal: 'right', vertical: 'top'}}
-          targetOrigin={{horizontal: 'right', vertical: 'top'}}
+            anchorOrigin={{horizontal: 'middle', vertical: 'top'}}
+            targetOrigin={{horizontal: 'middle', vertical: 'bottom'}}
+            style={{marginRight: 27}}
         >
           <MenuItem primaryText="Support" containerElement={<Link to='/Support' />}/>
           <MenuItem primaryText="About" containerElement={<Link to='/About' />}/>
           <MenuItem primaryText="Policy" containerElement={<Link to='/Policy' />}/>
           <MenuItem primaryText="Impressum" containerElement={<Link to='/Impressum' />}/>
+          { loggedIn ?
           <Divider />
+          : null }
+          { loggedIn ?
           <MenuItem primaryText="Sign out" onClick={this.logout}/>
+          : null }
         </IconMenu>
       </div>
     );

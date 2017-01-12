@@ -272,7 +272,7 @@ class Descriptiondetails extends React.Component {
                                <div className="linkCopy">
                                   <h4> Iframe for Markdown HTML </h4>
                                    <div className="linkCopy">
-                                  <p>&lt;iframe width=&quot;100%&quot; style=&quot;height: 92vh;&quot; src=&quot;{this.state.avatarURL}&quot;&gt;&lt;/iframe&gt; </p>
+                                  <p>&lt;iframe width=&quot;100%&quot; style=&quot;height: 90vh;&quot; src=&quot;{this.state.avatarURL}&quot;&gt;&lt;/iframe&gt; </p>
                                   </div>
                                </div>
                               }
@@ -292,7 +292,7 @@ class Descriptiondetails extends React.Component {
                               
                               {this.state.avatarURL &&
                                 <div className="linkCopy">
-                                  <h4>File Link (for Dataset uploads): </h4>
+                                  <h4>File Link (for download links & datasets): </h4>
                                   <div className="linkCopy">
                                   <p>{this.state.avatarURL}</p>
                                   </div>
