@@ -5,44 +5,12 @@
       
     "ProductCoreDetails":{
       ".indexOn": ["ProductId"],
-      ".write": "true",
-      ".read": "true",
+      ".write" : "true",
+      ".read" : "true",
       "$ProductCoreDetails":{ 
-                              "Description":{ ".write" : "auth != null",
-                                              ".read" : "true"
-                                            },
-                              "Price":{       ".write" : "auth != null",
-                                              ".read" : "true"
-                                            },
-                              "Productid":{   ".write" : "auth != null",
-                                              ".read" : "true"
-                                            },
-                              "Subtitle":{      ".write" : "auth != null",
-                                              ".read" : "true"
-                                            },
-                              "Title":{       ".write" : "auth != null",
-                                              ".read" : "true"
-                                            },
-                              "category":{    ".write" : "auth != null",
-                                              ".read" : "true"
-                                            },
-                              "date":{        ".write" : "auth != null",
-                                              ".read" : "true"
-                                            },
-                              "datenumber":{  ".write" : "auth != null",
-                                              ".read" : "true"
-                                            },
+                              ".write" : "auth != null && data.child('Userid').val() === auth.uid",
                               "downloadCount":{".write" : "true",
                                                ".read" : "true"
-                                            },
-                              "status":{      ".write" : "auth != null",
-                                              ".read" : "true"
-                                            },
-                              "subImage":{    ".write" : "auth != null",
-                                              ".read" : "true"
-                                            },
-                              "mainImage":{     ".write" : "auth != null",
-                                              ".read" : "true"
                                             },
                               "ratedCount":{".write" : "auth != null",
                                               ".read" : "true"
@@ -50,9 +18,7 @@
                               "rating":{      ".write" : "auth != null",
                                               ".read" : "true"
                                             }
-                              
     }},
-      
     "ProductOwnerDetails":{
       "$uid":{
                 ".write": "$uid === auth.uid",

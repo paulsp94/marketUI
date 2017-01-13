@@ -89,6 +89,9 @@ export function  FetchAllPublishedproduct() {
 
             firebase.database().ref('ProductCoreDetails').orderByChild('ProductId').equalTo(currentproductid).on("child_added", (snapshot) => {
               let product = snapshot.val();
+              let publicKey = snapshot.child('Public').val()
+              let privateKey = snapshot.child('Private').val()
+
               if(product.status === 'published') {
                 productallid.push({
                   productid: product.ProductId,
@@ -97,12 +100,10 @@ export function  FetchAllPublishedproduct() {
                   Mainimage: product.mainImage,
                   Title: product.Title,
                   Subimage: product.subImage,
-                  rating: product.rating,
-                  downloadCount: product.downloadCount,
+                  rating: privateKey.rating,
+                  downloadCount: publicKey.downloadCount,
                   category: product.category,
-                  category: product.category,
-                    datenumber:product.datenumber,
-                    downloadCount:product.downloadCount,
+                  datenumber:product.datenumber,
                 });
 
                 dispatch({
@@ -151,8 +152,8 @@ export function  productCoreDetails(productid) {
                     Subimage: data123.val().subImage,
                     SubTitle: data123.val().Subtitle,
                     category:data123.val().category,
-                    downloadCount:data123.val().downloadCount,
-                    rating: data123.val().rating,
+                    downloadCount:data123.child('Public').val().downloadCount,
+                    rating: data123.child('Private').val().rating,
                     date:data123.val().date
                 });
             });

@@ -260,7 +260,7 @@ class Descriptiondetails extends React.Component {
                               </RaisedButton>
                               <br/>
                               {this.state.avatarURL == '' ? 
-                               <div className="uploadImage">
+                               <div className="uploadImage fadeIn">
                                   <img src="https://firebasestorage.googleapis.com/v0/b/rscriptmarket-66f49.appspot.com/o/statics%2FDownload_section.png?alt=media&token=20d04a46-4fbf-4d57-958e-2a7252b8d081" alt="Download Info"/>
                                   
                                </div>

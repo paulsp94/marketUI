@@ -484,8 +484,24 @@ h1
 }
 
 .uploadImage{
-    margin-top: 3%;
+    margin-top: 2%;
     text-align:  center;
+}
+
+@media (min-width: 0px) and (max-width: 1400px)
+{
+    .largeImageCreation{
+        height: 196px;
+        width: 425px;
+    }
+}
+
+@media (min-width: 1400px)
+{
+    .largeImageCreation{
+        height: 393px;
+        width: 850px;
+    }
 }
 
 .linkCopy{

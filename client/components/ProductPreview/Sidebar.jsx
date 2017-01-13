@@ -136,15 +136,15 @@ class Sidebar extends React.Component {
 
   componentDidMount() {
 
-    let { Productid} = this.props;
+    let {Productid} = this.props;
 
-    productSellerandstripeid( Productid);
+    productSellerandstripeid(Productid);
 
     firebase.database().ref('Product_creation/' +  Productid).once("value", (snapshot) => {
 
       var Userid = snapshot.val().userid;
 
-      firebase.database().ref('ProductOwnerDetails/' + Userid).on("value", (snapshot) => {
+      firebase.database().ref('ProductOwnerDetails/' + Userid ).on("value", (snapshot) => {
         if(snapshot.exists()) {
         var Description = snapshot.val().Description;
         var tags = snapshot.val().tags;
@@ -240,14 +240,14 @@ class Sidebar extends React.Component {
     let {canRate} = this.state;
     if (canRate) {
       firebase
-        .database().ref(`ProductCoreDetails/${productcoredetails.productid}`)
+        .database().ref('ProductCoreDetails/' + productcoredetails.productid + '/Private')
         .once('value')
         .then((snapshot) => {
           let details = snapshot.val();
           details.ratedCount = details.ratedCount ? details.ratedCount + 1 : 1;
           let oldAverage = details.rating ? details.rating : 0;
           details.rating = (((oldAverage * (details.ratedCount - 1)) + nextValue) / details.ratedCount).toFixed(2);
-          firebase.database().ref(`ProductCoreDetails/${productcoredetails.productid}`).set(details);
+          firebase.database().ref('ProductCoreDetails/' + productcoredetails.productid + '/Private').set(details);
         });
 
       this.setState({canRate: false});
@@ -260,12 +260,12 @@ class Sidebar extends React.Component {
   ProductContentDownload() {
     let productid = this.props. Productid;
     firebase
-      .database().ref(`ProductCoreDetails/${productid}`)
+      .database().ref('ProductCoreDetails/' + productid + '/Public')
       .once('value')
       .then((snapshot) => {
         let details = snapshot.val();
         details.downloadCount = details.downloadCount ? (details.downloadCount + 1) : 1;
-        firebase.database().ref(`ProductCoreDetails/${productid}`).set(details);
+        firebase.database().ref('ProductCoreDetails/' + productid + '/Public').set(details);
       });
     browserHistory.push('ProductContent/' + productid);
   }

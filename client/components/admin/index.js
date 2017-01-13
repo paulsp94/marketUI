@@ -83,7 +83,7 @@ class AdminComponent extends React.Component {
                     <Flexbox flexGrow={1} marginTop={'10px'} marginLeft={'12px'}>
                       <StarRatingComponent
                         name="rating" /* name of the radio input, it is required */
-                        value={product.rating || 0} /* number of selected icon (`0` - none, `1` - first) */
+                        value={parseInt(product.rating) || 0} /* number of selected icon (`0` - none, `1` - first) */
                         editing={false}
                       />
                     </Flexbox>

@@ -118,6 +118,17 @@ class ProductSidebar extends React.Component {
     });
   };
 
+  ratingAndDownloads = () => {
+    var ProductId = this.props.ProductId;
+    firebase.database().ref('ProductCoreDetails/' + ProductId + '/Private').set({
+      ratingState: "active"
+    });
+
+    firebase.database().ref('ProductCoreDetails/' + ProductId + '/Public').set({
+      downloadCount: 0
+    });
+  }
+
   onSave = () => {
     try {
       var packages = this.state.packages || [];
@@ -142,6 +153,7 @@ class ProductSidebar extends React.Component {
     UserId = UserId[0];
     this.props.submitPublishedproducts(ProductId, UserId);
     this.showSnackbar();
+    this.ratingAndDownloads();
   };
 
   render () {
