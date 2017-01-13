@@ -53,11 +53,11 @@ class GeneralProfile extends React.Component {
       avatar: '',
       isUploading: false,
       progress: 0,
-      avatarURL: '',
+      avatarURL1: 'https://firebasestorage.googleapis.com/v0/b/rscriptmarket-66f49.appspot.com/o/statics%2Fimage_small.jpg?alt=media&token=ca406b08-eace-46c8-bc31-5bc8807eb065',
       avatar1: '',
       isUploading1: false,
       progress1: 0,
-      avatarURL1: '',
+      avatarURL:'https://firebasestorage.googleapis.com/v0/b/rscriptmarket-66f49.appspot.com/o/statics%2Fimage_large.jpg?alt=media&token=23476448-6594-476c-a87d-b83755da85fd',
       submitError: "",
       isAdmin:'',
       snackbar: ''
