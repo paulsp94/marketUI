@@ -540,11 +540,14 @@ h1
 .contentMarkdown
 {
     float: right;
+    padding-left:  4px;
+    padding-right:  4px;
     min-width: 80%;
     max-width: 80%;
     margin-top: 0;
     margin-right: auto;
     margin-left: auto;
+
     padding-top: 0;
 }
 

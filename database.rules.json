@@ -5,42 +5,37 @@
       
     "ProductCoreDetails":{
       ".indexOn": ["ProductId"],
-      ".write" : "true",
-      ".read" : "true",
+      ".read" : "true", 
       "$ProductCoreDetails":{ 
-                              ".write" : "auth != null && data.child('Userid').val() === auth.uid",
-                              "downloadCount":{".write" : "true",
-                                               ".read" : "true"
+                              ".write" : "auth != null && data.child('Userid').val() === auth.uid || !data.exists()",
+                              "Public":{".write" : "true"
                                             },
-                              "ratedCount":{".write" : "auth != null",
-                                              ".read" : "true"
-                                            },
-                              "rating":{      ".write" : "auth != null",
-                                              ".read" : "true"
+                              "Private":{".write" : "auth != null"
                                             }
     }},
     "ProductOwnerDetails":{
-      "$uid":{
-                ".write": "$uid === auth.uid",
-                ".read": "true"
-    }},
+           ".write": "auth != null && data.child('$Userid').val() == auth.uid || !data.exists()",
+           ".read": "true"
+    },
     "admin":{
           ".write": "false",
           ".read": "true"
     },
      "Description":{
       ".read" : "true",
-      ".write" : "auth != null",
-      ".indexOn": ["ProductId"]
+      ".indexOn": ["ProductId"],
+      "$Description": {
+          ".write" : "auth != null && data.child('Userid').val() === auth.uid || !data.exists()"
+      }
     },
     "Products_User_Comments":{
       ".read" : "true",
       ".write" : "auth != null",
-      ".indexOn": ["datenumber"]
+      ".indexOn" : ["datenumber"]
     },
     "sales":{
       ".read" : "true",
-      ".write" : "true",
+      ".write" : "auth != null",
       ".indexOn": ["buyerId"]
     },
     "Product_creation":{
@@ -55,13 +50,17 @@
     },
     "Content":{
       ".read" : "true",
-      ".write" : "auth != null",
-      ".indexOn": ["ProductId"]
+      ".indexOn": ["ProductId"],
+        "$Content": {
+            ".write" : "auth != null && data.child('Userid').val() === auth.uid || !data.exists()"
+        }
     },
     "ProductSidebar":{
       ".read" : "true",
-      ".write" : "auth != null",
-      ".indexOn": ["Productid"]
+      ".indexOn": ["Productid"],
+        "$ProductSidebar": {
+            ".write" : "auth != null && data.child('Userid').val() === auth.uid || !data.exists()"
+        }
     }
 }
 }

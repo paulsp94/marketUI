@@ -477,7 +477,7 @@ export function  submitPublishedproducts(ProductId, UserId) {
                                         dispatch({
                                             type: "SUBMITPUBLISHEDPRODUCTS",
                                             payload: {
-                                                submitDetails: "Your product was submitted! We will review it now."
+                                                submitDetails: "Your product was submitted! We will review it now. A product never needs to be re-submitted as changes are directly added to your project."
                                             }
                                         })
                                     }
