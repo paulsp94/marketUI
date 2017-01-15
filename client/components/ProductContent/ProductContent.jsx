@@ -257,6 +257,7 @@ class ProductContent extends React.Component {
                           <div className="userdescribation">
                               <strong>Contact Email: </strong>{this.state.email}
                           </div>
+                          <hr/>
                           <div className="userdescribation">
                               {this.state.Description}
                           </div>

@@ -82,15 +82,14 @@ export function  FetchAllPublishedproduct() {
     return function (dispatch) {
         var groupid = [];
         var productallid = [];
-        firebase.database().ref('Publishedproduct').orderByChild('ProductId').on("child_added", (snapshot) => {
+        firebase.database().ref('Publishedproduct').orderByChild('Productid').on("child_added", (snapshot) => {
 
-            var groupid = snapshot.val().Productid;
-            var currentproductid = groupid;
+            var currentproductid = snapshot.val().Productid;
 
             firebase.database().ref('ProductCoreDetails').orderByChild('ProductId').equalTo(currentproductid).on("child_added", (snapshot) => {
               let product = snapshot.val();
-              let publicKey = snapshot.child('Public').val()
-              let privateKey = snapshot.child('Private').val()
+              let publicKey = snapshot.child('Public').val();
+              let privateKey = snapshot.child('Private').val();
 
               if(product.status === 'published') {
                 productallid.push({
@@ -111,7 +110,7 @@ export function  FetchAllPublishedproduct() {
                   payload: {
                     products : productallid
                   }
-                })
+                });
               }
             });
         });

@@ -43,7 +43,7 @@ render(<Provider store={store}>
         <Route path="ProductContent/:productid" component={ProductContent} onUpdate={logPageView}/>
         <Route path="Create" component={ContentInfo} onUpdate={logPageView}/>
         <Route path="Core" component={AdminContainer} onUpdate={logPageView}/>
-        <Route path="*" status={404} component={Welcome} onUpdate={logPageView}/>
+        {/* <Route path="*" status={404} component={Welcome} onUpdate={logPageView}/> */}
       </Route>
     </Router>
   </Provider>,

@@ -15,7 +15,7 @@ var Contact = React.createClass({
                          <h2 style={{textAlign:'center'}}> Support </h2>
                       </Card> 
                      <Card className="pageStyle" style={{textAlign: 'center'}}>
-                          <form method="POST" action="http://formspree.io/contact@rscript.market">
+                          <form method="POST" action="https://formspree.io/contact@rscript.market">
                             <TextField type="email" name="email" hintText={'Email'} className={'contact_text'}/>
                              <br />    
                              <br />    
