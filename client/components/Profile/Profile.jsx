@@ -45,7 +45,7 @@ class Profile extends React.Component{
       description: '',
       newEmail: '',
       newPassword: '',
-      newPasswordConfirmation: ''
+      newPasswordConfirmation: '',
     };
   }
 
@@ -69,14 +69,18 @@ class Profile extends React.Component{
           .once("value", (snapshot) => {
 
               if(snapshot.exists()) {
+                  if(snapshot.hasChild('Description'))
+                    var Description = snapshot.val().Description;
+                    this.setState({
+                        description: Description,
+                    })
+                }
 
-                  var Description = snapshot.val().Description;
-                  var tags = snapshot.val().tags;
-
-                  this.setState({
-                      description: Description,
-                      tags: tags,
-                  })
+                  if(snapshot.hasChild('tags')) {
+                    var tags = snapshot.val().tags;
+                    this.setState({
+                        tags: tags,
+                    })
               }
 
               else {
@@ -174,8 +178,8 @@ class Profile extends React.Component{
   };
 
   SubmitUserDetails(){
-    var description = this.state.description;
-    var tags = this.state.tags;
+    var description = this.state.description != '' ? this.state.description : '-';
+    var tags = this.state.tags != '' ? this.state.tags : [''];
     var user = firebase.auth().currentUser;
     var Userid = user.uid;
     var email = user.email;
@@ -256,7 +260,6 @@ class Profile extends React.Component{
       />
     ];
 
-
     var user = firebase.auth().currentUser;
     var email;
     if (user != null) {
@@ -264,7 +267,6 @@ class Profile extends React.Component{
     } else {
       email = "not logged in"
     }
-
 
     return (
       <div className="Profiledata" id="profile-page">
@@ -332,9 +334,7 @@ class Profile extends React.Component{
           </CardText>
         </Card>
         <Card style={{marginRight: "2%", marginLeft: "2%", marginTop: 9}}>
-
           <CardText>
-
             <Dialog
               actions={actions1}
               modal={false}
@@ -381,6 +381,3 @@ class Profile extends React.Component{
 }
 
 export default Profile;
-
-
-

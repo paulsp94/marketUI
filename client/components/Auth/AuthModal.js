@@ -172,7 +172,7 @@ export default class AuthModal extends React.Component {
       >
         {!signUp ? <div>
           <div className="rowAuth">
-            <div className="col-sm-6 col-sm-offset-3">
+            <div className="loginContainer">
 
               <Flexbox flexDirection="row" style={{textAlign:'center'}}>
 
@@ -246,7 +246,7 @@ export default class AuthModal extends React.Component {
           </div>
         </div> : <div>
           <div className="rowAuth">
-            <div className="col-sm-6 col-sm-offset-3">
+            <div className="loginContainer">
               <form>
                 <div className="form-group">
                   <TextField

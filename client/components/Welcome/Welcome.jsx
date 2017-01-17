@@ -5,10 +5,9 @@ import { hashHistory } from 'react-router';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import RaisedButton from 'material-ui/RaisedButton';
 
-var Welcome = React.createClass({ 
+var Welcome = React.createClass({
 
     render(){
-
         return (
             <div>
                 <div className="backgroundImage">
@@ -25,7 +24,7 @@ var Welcome = React.createClass({
                     </div>
                     <div className="welcomeBoard">
                         <div className="welcome-info-header" style={{padding: 2}}>
-                            <h1> Beta Test Awards </h1>
+                            <h4> Beta Test Awards </h4>
                         </div>
                         <div className='welcome-info'>
                             <p> To make the beta launch a bit more exciting, we are giving away 150$ for the 3 best items created until 30th of january 2017. More information below.</p>
@@ -44,5 +43,3 @@ var Welcome = React.createClass({
 });
 
 module.exports = Welcome;
-
-

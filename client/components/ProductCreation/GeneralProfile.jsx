@@ -18,8 +18,6 @@ import IconButton from 'material-ui/IconButton';
 // import CircularProgress from 'material-ui/CircularProgress';
 // External
 var FileInput = require('react-file-input');
-
-
 import Flexbox from 'flexbox-react';
 import StarRatingComponent from 'react-star-rating-component';
 
@@ -92,7 +90,6 @@ class GeneralProfile extends React.Component {
         avatarURL: '',
         avatarURL1: '',
       });
-
     }
   }
 
@@ -121,10 +118,7 @@ class GeneralProfile extends React.Component {
                   });
               }
           });
-
   }
-
-
 
   onTitleChange = (event, value) => {
     this.setState({

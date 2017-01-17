@@ -190,6 +190,3 @@ class  ProductSearch extends React.Component{
 }
 
 export default ProductSearch;
-
-
-

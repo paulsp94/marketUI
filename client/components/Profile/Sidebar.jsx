@@ -36,9 +36,7 @@ class Sidebar extends React.Component {
 
   }
 
-
   Item () {
-
     var curr_icon = "";
     this.setState({
       Currenticon: curr_icon
@@ -52,7 +50,6 @@ class Sidebar extends React.Component {
   }
 
   Comments () {
-
     var curr_icon = <div>
       <div className="sidebar-bottom">
         <CardText>
@@ -85,7 +82,6 @@ class Sidebar extends React.Component {
   }
 
   Support () {
-
     var curr_icon = <div>
       <hr/>
       <div className="sidebar-bottom">
@@ -120,9 +116,7 @@ class Sidebar extends React.Component {
   }
 
   render () {
-
     var currentstate = this.state.Currentstate;
-
 
     if (currentstate == '0') {
       var subheader = <div>

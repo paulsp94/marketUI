@@ -44,7 +44,6 @@ class Tags extends React.Component{
                 <Flexbox flexGrow={1}>
                     <FlatButton onClick={this.cateGoryFilter.bind(this,"All Product")} label="All" className="searchTags" style={{margin: 3, width: "100%",height:'45px', color:'white'}}  />
                 </Flexbox>
-
                 <Flexbox flexGrow={1} className="searchTags" >
                             <FlatButton onClick={this.cateGoryFilter.bind(this , "Shiny & Web")} label="Shiny&Web" className="searchTags" style={{margin: 3,width: "100%",height:'100%', color:"white"}}/>
               </Flexbox>
@@ -65,7 +64,7 @@ class Tags extends React.Component{
               </Flexbox>
 
                   <Flexbox flexGrow={1}>
-                    <SelectField className={''} 
+                    <SelectField className={''}
                         value={this.state.selectfield_value}
                         onChange={this.handleChange.bind(this)}
                         style={{width:'170px', color:'white', marginLeft: '30px',}}
@@ -117,7 +116,7 @@ class Tags extends React.Component{
               <MediaQuery minDeviceWidth={1265}>
                      <div>{desktopTags}</div>;
               </MediaQuery>
-           
+
         </div>
         )
     }

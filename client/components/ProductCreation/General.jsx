@@ -92,7 +92,6 @@ class  General extends React.Component{
                                 this.setState({
                                     producteditvalidation : "RIGHTVALIDATION"
                                 })
-
                                 break;
                             }
                         }

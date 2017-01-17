@@ -15,6 +15,7 @@ class ProfileSidebar extends React.Component {
         showCheckboxes: false,
         Description:'',
         tags:[''],
+        mail:'',
     };
   }
 
@@ -23,18 +24,19 @@ class ProfileSidebar extends React.Component {
       var Userid = user.uid;
       firebase.database().ref('ProductOwnerDetails/'+ Userid ).on("value", (snapshot) => {
           if(snapshot.exists()) {
-          var Description = snapshot.val().Description;
-          var tags = snapshot.val().tags;
-          
+          var ownerData = snapshot.val()
+          var Description = ownerData.Description;
+          var tags = ownerData.tags;
+          var mail = ownerData.email;
 
           this.setState({
               Description:Description,
               tags:tags,
-         
+              mail:mail,
+
             });
           };
        });
-
    }
 
   _userId() {
@@ -63,15 +65,16 @@ class ProfileSidebar extends React.Component {
                       <span>Connect with Stripe</span>
                     </a> : null
                 */}
+                  {this.state.mail}
                   <hr/>
-                  
+
                   {this.state.Description}
                   <hr/>
                   <div style={{ display: 'flex', flexWrap: 'wrap' }}>
                                 {this.state.tags.map((item, index) =>
                                         <Chip key={index} style={{ float: "left", margin: 4 }}>{item}</Chip>
                                 )}
-                    </div>;
+                    </div>
               </CardText>
             </Card>
           </Tab>

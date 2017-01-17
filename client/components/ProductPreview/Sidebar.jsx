@@ -303,8 +303,9 @@ class Sidebar extends React.Component {
             </TableBody>
           </Table>
 
-
-          <RaisedButton label="Download" onTouchTap={this.ProductContentDownload.bind(this)} secondary={true}
+          <RaisedButton label="View Code" onTouchTap={this.ProductContentDownload.bind(this)} secondary={true}
+                        style={{margin: 12}} disable={true} />
+          <RaisedButton label="Download" disabled={true} onTouchTap={this.ProductContentDownload.bind(this)} secondary={true}
                         style={{margin: 12}}/>
           {/*// TODO feed me real data, amount in cents */}
           {
@@ -354,7 +355,7 @@ class Sidebar extends React.Component {
 
     var user = firebase.auth().currentUser;
 
-    var commentsAuthToggle = user ? 
+    var commentsAuthToggle = user ?
             <TextField
               floatingLabelText="Leave a comment"
               floatingLabelStyle={{fontWeight: 'normal'}}
@@ -362,7 +363,7 @@ class Sidebar extends React.Component {
               value={newComment}
               onChange={this.onNewCommentChange}
               onKeyDown={this.onNewCommentKeyPress}
-            /> : 
+            /> :
             <TextField
               floatingLabelText="Login to write comments"
               floatingLabelStyle={{fontWeight: 'normal'}}
@@ -371,7 +372,7 @@ class Sidebar extends React.Component {
               value={newComment}
               onChange={this.onNewCommentChange}
               onKeyDown={this.onNewCommentKeyPress}
-            />; 
+            />;
 
     return (
       <div className="sidebar">
