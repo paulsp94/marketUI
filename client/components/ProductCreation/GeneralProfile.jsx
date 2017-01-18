@@ -133,10 +133,7 @@ class GeneralProfile extends React.Component {
   };
 
   onCategoryChange = (event, index, value) => {
-    this.setState({
-      category: value
-    });
-    this.onSubmit();
+    this.setState({category: value}, this.onSubmit);
   };
 
   onDescriptionChange = (event, value) => {
@@ -290,8 +287,7 @@ class GeneralProfile extends React.Component {
       .ref('images')
       .child(filename)
       .getDownloadURL()
-      .then(url => this.setState({avatarURL: url}));
-    this.onSubmit();
+      .then(url => this.setState({avatarURL: url}, this.onSubmit));
   };
 
   handleUploadStart1 = () => this.setState({isUploading1: true, progress1: 0});
@@ -306,8 +302,7 @@ class GeneralProfile extends React.Component {
       .ref('images')
       .child(filename)
       .getDownloadURL()
-      .then(url => this.setState({avatarURL1: url}));
-    this.onSubmit();
+      .then(url => this.setState({avatarURL1: url}, this.onSubmit));
   };
 
   showSnackbar = (message) => {
