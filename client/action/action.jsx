@@ -80,11 +80,10 @@ export function currentuserid (){
 
 export function  FetchAllPublishedproduct() {
     return function (dispatch) {
-        var groupid = [];
-        var productallid = [];
+      var productallid = [];
         firebase.database().ref('Publishedproduct').orderByChild('Productid').on("child_added", (snapshot) => {
-
             var currentproductid = snapshot.val().Productid;
+
 
             firebase.database().ref('ProductCoreDetails').orderByChild('ProductId').equalTo(currentproductid).on("child_added", (snapshot) => {
               let product = snapshot.val();
@@ -110,6 +109,7 @@ export function  FetchAllPublishedproduct() {
                   payload: {
                     products : productallid
                   }
+                 
                 });
               }
             });

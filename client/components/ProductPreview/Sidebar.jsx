@@ -7,12 +7,7 @@ import {bindActionCreators} from 'redux';
 import {Card, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import TextField from 'material-ui/TextField';
 import {Tabs, Tab} from 'material-ui/Tabs';
-import {
-  Table,
-  TableBody,
-  TableRow,
-  TableRowColumn
-} from 'material-ui/Table';
+import {Table, TableBody, TableRow, TableRowColumn} from 'material-ui/Table';
 import RaisedButton from 'material-ui/RaisedButton';
 import Divider from 'material-ui/Divider';
 import Chip from 'material-ui/Chip';
@@ -36,7 +31,6 @@ function mapStateToProps(store) {
 @connect(mapStateToProps, mapDispatchToProps)
 
 class Sidebar extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -52,12 +46,10 @@ class Sidebar extends React.Component {
       newComment: '',
       canRate: true
     };
-
     this._submitHandler = this._submitHandler.bind(this);
   }
 
   productDetails() {
-
     return (
       <div className="sidebar-bottom">
         {/* <h4><strong> {this.props.productcoredetails.Title} </strong> <br/></h4> */}
@@ -121,7 +113,6 @@ class Sidebar extends React.Component {
         }
       </div>
     )
-
   }
 
   componentWillMount() {
@@ -135,9 +126,7 @@ class Sidebar extends React.Component {
   }
 
   componentDidMount() {
-
     let {Productid} = this.props;
-
     productSellerandstripeid(Productid);
 
     firebase.database().ref('Product_creation/' +  Productid).once("value", (snapshot) => {
@@ -157,13 +146,10 @@ class Sidebar extends React.Component {
         })
         }
       });
-
     });
-
   }
 
   Item() {
-
     var curr_icon = this.productDetails();
 
     this.setState({
@@ -174,7 +160,6 @@ class Sidebar extends React.Component {
     this.setState({
       Currentstate: statevalue
     });
-
   }
 
   onNewCommentKeyPress = (event) => {
@@ -189,10 +174,7 @@ class Sidebar extends React.Component {
   };
 
   Comments() {
-
-    var curr_icon = <div>
-
-    </div>;
+    var curr_icon = <div></div>;
 
     this.setState({
       Currenticon: curr_icon
@@ -277,7 +259,6 @@ class Sidebar extends React.Component {
   };
 
   render() {
-
     var currentstate = this.state.Currentstate;
     let {productcoredetails, sellerStripeAccountId} = this.props;
 
@@ -304,7 +285,7 @@ class Sidebar extends React.Component {
           </Table>
 
           <RaisedButton label="View Code" onTouchTap={this.ProductContentDownload.bind(this)} secondary={true}
-                        style={{margin: 12}} disable={true} />
+                        style={{margin: 12}} disabled={false} />
           <RaisedButton label="Download" disabled={true} onTouchTap={this.ProductContentDownload.bind(this)} secondary={true}
                         style={{margin: 12}}/>
           {/*// TODO feed me real data, amount in cents */}
@@ -340,9 +321,7 @@ class Sidebar extends React.Component {
       });
 
       for (var j = 0; j < alldatenumber.length; j++) {
-
         for (var k = 0; k < allcomment.length; k++) {
-
           if (alldatenumber[j] == allcomment[k].datenumber) {
             sortedcomment.push(allcomment[k]);
           }
@@ -350,11 +329,8 @@ class Sidebar extends React.Component {
       }
     }
 
-
     const {newComment} = this.state;
-
     var user = firebase.auth().currentUser;
-
     var commentsAuthToggle = user ?
             <TextField
               floatingLabelText="Leave a comment"
@@ -416,7 +392,6 @@ class Sidebar extends React.Component {
           {this.state.Currenticon}
         </Card>
       </div>
-
     )
   }
 }

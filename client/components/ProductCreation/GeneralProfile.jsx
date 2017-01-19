@@ -200,8 +200,8 @@ class GeneralProfile extends React.Component {
                 category: category,
                 status: 'published',
                 date:today,
-                  datenumber:datenumber,
-                  Userid:Userid1,
+                datenumber:datenumber,
+                Userid:Userid1,
               });
 
             if (this.state.isAdmin == false) {
@@ -228,8 +228,8 @@ class GeneralProfile extends React.Component {
                 category: category,
                 status: product.status,
                 date:today,
-                  datenumber:datenumber,
-                  Userid:Userid1,
+                datenumber:datenumber,
+                Userid:Userid1,
               });
 
               if (this.state.isAdmin == false) {
@@ -259,8 +259,8 @@ class GeneralProfile extends React.Component {
               category: category,
               status: 'saved',
               date:today,
-                datenumber:datenumber,
-                Userid:Userid,
+              datenumber:datenumber,
+              Userid:Userid,
             });
 
           firebase.database()
