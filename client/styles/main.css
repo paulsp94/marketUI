@@ -799,7 +799,6 @@ kbd kbd {
   animation-iteration-count: 1;
   animation-timing-function: ease-in;
   animation-duration: 1s;
-  height: 47%;
   width: 100%;
 }
 
