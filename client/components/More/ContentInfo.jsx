@@ -6,7 +6,6 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import RaisedButton from 'material-ui/RaisedButton';
 import Card from 'material-ui/Card';
 var firebase = require('firebase');
-
 <meta name="viewport" content="width=device-width" />
 
 var ContentInfo = React.createClass({
@@ -50,7 +49,6 @@ var ContentInfo = React.createClass({
                     {ContentButton}
                     <p> <b> This is a BETA - make sure to save everything offline! </b>  </p>
                  </Card>
-
               </div>
         )
     }

@@ -82,6 +82,7 @@
     "react-redux": "4.4.5",
     "react-responsive": "1.2.5",
     "react-router": "2.6.1",
+    "react-router-sitemap": "1.0.8",
     "react-safe-promise": "0.1.1",
     "react-spinkit": "1.1.11",
     "react-star-rating-component": "1.2.2",
