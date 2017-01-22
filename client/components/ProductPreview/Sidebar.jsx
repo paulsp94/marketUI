@@ -386,7 +386,7 @@ class Sidebar extends React.Component {
                 }
               </div>
             </Tab>
-            <Tab label="Supports" onActive={this.Support.bind(this)}> </Tab>
+            <Tab label="Support" onActive={this.Support.bind(this)}> </Tab>
           </Tabs>
           {subheader}
           {this.state.Currenticon}
