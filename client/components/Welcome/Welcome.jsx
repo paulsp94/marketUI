@@ -24,10 +24,10 @@ var Welcome = React.createClass({
                     </div>
                     <div className="welcomeBoard">
                         <div className="welcome-info-header" style={{padding: 2}}>
-                            <h4> Beta Test Awards </h4>
+                            <h4> Announcement </h4>
                         </div>
                         <div className='welcome-info'>
-                            <p> To make the beta launch a bit more exciting, we are giving away 150$ for the 3 best items created until 30th of january 2017. More information below.</p>
+                            <p> To make the beta launch a bit more exciting, R.Codes is giving away 150$ for the 3 best R tutorials created until 30th of january 2017. The terms & specific information below.</p>
                         </div>
                         <div style={{textAlign:"center"}} className="welcome-info-header">
                         <Link to="/MoreInfo" className="">

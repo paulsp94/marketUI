@@ -6,14 +6,14 @@ import {Card} from 'material-ui/Card';
 
 <meta name="viewport" content="width=device-width" />
 
-var Policy = React.createClass({ 
+var Policy = React.createClass({
     render(){
-     
+
         return (
               <div className="container-search">
                   <Card>
                         <h2 style={{textAlign:'center',marginBottom:3, marginTop: 2, padding: 10}}> Terms of Service & Privacy Policies </h2>
-                   </Card> 
+                   </Card>
                 <div>
                 <Card className="policyCard">
                     <p>
@@ -119,6 +119,13 @@ var Policy = React.createClass({
     these things owned by others). You will not copy, distribute, modify or
     make derivative works of any of our content or use any of our
     intellectual property in any way not expressly stated in these terms.
+</p>
+
+<p> Trademark usage of other companies: <br/><br/>
+    We respect and protect Trademark of third party companies named on this page.
+    Shiny&reg; & Rstudio&reg; are registered Trademarks and R.Codes is not related to Rstudio or their products.
+    We thank Rstudio for the allowance (silent agreement terms) to use those names.
+    The first notation of any 3rd party Trademark names shall be noted in each tutorial with a &reg; .
 </p>
 <p>
     <strong>Accounts</strong>
@@ -704,7 +711,7 @@ In addition to our own cookies, we may also use various third parties    <em></e
 <p>
     cookies to report usage statistics of the Service, deliver advertisements
     on and through the Service.
-</p>    
+</p>
                 </Card>
 
                 </div>
