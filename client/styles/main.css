@@ -521,6 +521,7 @@ kbd kbd {
 .welcome-info {
   padding-left: 3%;
   color: black;
+  padding:  10px;
 }
 
 .welcome-info-header {

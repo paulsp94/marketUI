@@ -27,12 +27,7 @@ var Welcome = React.createClass({
                             <h4> Announcement </h4>
                         </div>
                         <div className='welcome-info'>
-                            <p> To make the beta launch a bit more exciting, R.Codes is giving away 150$ for the 3 best R tutorials created until 30th of january 2017. The terms & specific information below.</p>
-                        </div>
-                        <div style={{textAlign:"center"}} className="welcome-info-header">
-                        <Link to="/MoreInfo" className="">
-                            <RaisedButton label="More Info" style={{marginBottom: 1}} />
-                        </Link>
+                            <p > This is the last week of the R.Codes BETA. Next week we will launch several new features for the official launch. In the mean time you can join the "R Codes" facebook group. </p>
                         </div>
                     </div>
                 </div>
