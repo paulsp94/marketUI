@@ -157,7 +157,7 @@ class ProductContent extends React.Component {
 
         var user = firebase.auth().currentUser;
 
-        var commentsAuthToggle = user ? 
+        var commentsAuthToggle = user ?
             <TextField
                 floatingLabelText="Leave a comment"
                 floatingLabelStyle={{fontWeight: 'normal'}}
@@ -166,7 +166,7 @@ class ProductContent extends React.Component {
                 value={this.state.newComment}
                 onChange={this.onNewCommentChange}
                 onKeyDown={this.onNewCommentKeyPress}
-            /> : 
+            /> :
             <TextField
                 floatingLabelText="Login first"
                 floatingLabelStyle={{fontWeight: 'normal'}}
@@ -175,7 +175,7 @@ class ProductContent extends React.Component {
                 value={this.state.newComment}
                 onChange={this.onNewCommentChange}
                 onKeyDown={this.onNewCommentKeyPress}
-            /> ; 
+            /> ;
 
     let { preparingData, htmlData, authorProfile, comments, contentData } = this.state;
 
@@ -271,7 +271,7 @@ class ProductContent extends React.Component {
                   </div>
               </div>
           </div>}
-          {comments && 
+          {comments &&
           <div>
 
               <div className="sidebar-bottom">
