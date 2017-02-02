@@ -27,7 +27,7 @@ var Welcome = React.createClass({
                             <h4> Announcement </h4>
                         </div>
                         <div className='welcome-info'>
-                            <p > This is the last week of the R.Codes BETA. Next week we will launch several new features for the official launch. In the mean time you can join the "R Codes" facebook group. </p>
+                            <p > This is the last week of the R.Codes beta. Next week we will launch several new features for the official launch. In the mean time you can join the "R Codes" facebook group. </p>
                         </div>
                     </div>
                 </div>
