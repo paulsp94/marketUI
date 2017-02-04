@@ -72,6 +72,7 @@ export default class Header extends React.Component {
             style={{marginRight: 27}}
         >
           <MenuItem primaryText="Support" containerElement={<Link to='/Support' />}/>
+          <MenuItem primaryText="Blog" href="http://blog.r.codes" />
           <MenuItem primaryText="About" containerElement={<Link to='/About' />}/>
           <MenuItem primaryText="Policy" containerElement={<Link to='/Policy' />}/>
           <MenuItem primaryText="Impressum" containerElement={<Link to='/Impressum' />}/>
