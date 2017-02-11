@@ -18,8 +18,23 @@ import About from 'components/More/About.jsx';
 import Impressum from 'components/More/Impressum.jsx';
 import ContentInfo from 'components/More/ContentInfo.jsx'
 import AdminContainer from './containers/Admin';
+
+import Docs from 'components/Docs/Docs.jsx';
+import DocDescription from 'components/Docs/Description.jsx';
+import DocContent from 'components/Docs/Content.jsx';
+import DocMarkdown from 'components/Docs/Markdown.jsx';
+import DocPrice from 'components/Docs/Price.jsx';
+import DocSelling from 'components/Docs/SellingItems.jsx';
+import DocSidebar from 'components/Docs/Sidebar.jsx';
+import DocAuthorProfile from 'components/Docs/AuthorProfile.jsx';
+import DocGeneral from 'components/Docs/General.jsx';
+import DocMediaUpload from 'components/Docs/MediaUpload.jsx';
+
+
 import ReactGA from 'react-ga';
 ReactGA.initialize('UA-82192877-3');
+
+
 
 function logPageView() {
   ReactGA.set({ page: window.location.pathname });
@@ -38,6 +53,18 @@ render(<Provider store={store}>
         <Route path="MoreInfo" component={MoreInfo} onUpdate={logPageView}/>
         <Route path="Policy" component={Policy} onUpdate={logPageView}/>
         <Route path="About" component={About} onUpdate={logPageView}/>
+
+        <Route path="Reference/Introduction" component={Docs} onUpdate={logPageView}/>
+        <Route path="Reference/Description" component={DocDescription} onUpdate={logPageView}/>
+        <Route path="Reference/Content" component={DocContent} onUpdate={logPageView}/>
+        <Route path="Reference/Markdown" component={DocMarkdown} onUpdate={logPageView}/>
+        <Route path="Reference/Pricing" component={DocPrice} onUpdate={logPageView}/>
+        <Route path="Reference/Selling" component={DocSelling} onUpdate={logPageView}/>
+        <Route path="Reference/Sidebar" component={DocSidebar} onUpdate={logPageView}/>
+        <Route path="Reference/AuthorProfile" component={DocAuthorProfile} onUpdate={logPageView}/>
+        <Route path="Reference/General" component={DocGeneral} onUpdate={logPageView}/>
+        <Route path="Reference/MediaUpload" component={DocMediaUpload} onUpdate={logPageView}/>
+
         <Route path="Impressum" component={Impressum} onUpdate={logPageView}/>
         <Route path="EditProduct/:productid" component={General} onUpdate={logPageView}/>
         <Route path="ProductContent/:productid" component={ProductContent} onUpdate={logPageView}/>

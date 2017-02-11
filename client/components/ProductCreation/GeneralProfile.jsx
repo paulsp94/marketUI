@@ -410,7 +410,7 @@ class GeneralProfile extends React.Component {
                 <MenuItem value="" primaryText="Choose the Category" />
                 <MenuItem value="Machine-Learning" primaryText="Machine-Learning" />
                 <MenuItem value="Big-Data" primaryText="Big-Data" />
-                <MenuItem value="Algorithms" primaryText="Algorithms" />
+                <MenuItem value="Analytics" primaryText="Analytics" />
                 <MenuItem value="Graphics" primaryText="Graphics" />
                 <MenuItem value="Other" primaryText="Other" />
                 <MenuItem value="Web or Shiny" primaryText="Web or Shiny" />

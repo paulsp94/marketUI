@@ -54,7 +54,7 @@ class Tags extends React.Component{
                              <FlatButton onClick={this.cateGoryFilter.bind(this,"Big Data")} label="Big&nbsp;Data" className="searchTags" style={{margin: 3, width: "100%",height:'45px', color:'white'}}  />
               </Flexbox>
               <Flexbox flexGrow={1}>
-                            <FlatButton onClick={this.cateGoryFilter.bind(this,"Algorithms")} label="Algorithms" className="searchTags" style={{margin: 3, width: "100%",height:'45px', color:'white'}}  />
+                            <FlatButton onClick={this.cateGoryFilter.bind(this,"Analytics")} label="Analytics" className="searchTags" style={{margin: 3, width: "100%",height:'45px', color:'white'}}  />
               </Flexbox>
               <Flexbox flexGrow={1}>
                             <FlatButton onClick={this.cateGoryFilter.bind(this,"Graphics")} label="Graphics" className="searchTags" style={{margin: 3, width: "100%",height:'45px', color:'white'}}  />

@@ -71,6 +71,7 @@ export default class Header extends React.Component {
             targetOrigin={{horizontal: 'middle', vertical: 'bottom'}}
             style={{marginRight: 27}}
         >
+          <MenuItem primaryText="Documentation" containerElement={<Link to='/Reference/Introduction' />}/>
           <MenuItem primaryText="Support" containerElement={<Link to='/Support' />}/>
           <MenuItem primaryText="Blog" href="http://blog.r.codes" />
           <MenuItem primaryText="About" containerElement={<Link to='/About' />}/>
