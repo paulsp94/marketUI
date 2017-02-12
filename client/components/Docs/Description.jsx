@@ -14,19 +14,20 @@ var Description = React.createClass({
     render(){
 
     var Introduction = <div className="container-search" style={{paddingTop:'1px'}}>
-                  <Card className="pageStyle">
-                   <h2 style={{textAlign:'center'}}> Description Tab </h2>
-                   </Card>
-                  <Card className="pageStyle" style={{marginBottom: 20}}>
-                  <p> In the description tag you can with the help of markdown add a few lines what the item is about, and what the end result will be (by adding a end result plot/image) </p>
-                </Card>
-              </div>
+                          <Card className="pageStyle">
+                           <h2 style={{textAlign:'center'}}> Description Tab </h2>
+                           </Card>
+                          <Card className="pageStyle" style={{marginBottom: 20}}>
+                          <p> Add to the description a outline of what the reader can expect from your tutorial. It is best practice to add a graph of gif of your end product and to summarize the content. </p> 
 
+                          <img src="https://firebasestorage.googleapis.com/v0/b/rscriptmarket-66f49.appspot.com/o/statics%2FDescription.png?alt=media&token=aefb7946-f1fb-4ec4-8654-4ba14262ad86" style={{width:'100%'}} />
+                          </Card>
+                       </div>
 
         return (
         	<div style={{marginLeft: '260px'}}>
               {Introduction}
-              <Drawer zDepth='5'>
+              <Drawer zDepth={5}>
                   <h2 style={{textAlign: 'center', marginBottom: '12px'}}> Documentation </h2>
                   <Divider />
                     <MenuItem containerElement={<Link to='/Reference/Introduction'/>}>Introduction</MenuItem>

@@ -18,7 +18,17 @@ var General = React.createClass({
                    <h2 style={{textAlign:'center'}}> General Tab </h2>
                    </Card>
                   <Card className="pageStyle" style={{marginBottom: 20}}>
-                  <p> Welcome to the R.Codes documentation. </p>
+                  <p> In the general tab you can set the descriptions/images and titles of your items. For every input there is a live preview on the right, displaying how it will look like in the finished item.</p> 
+                  <img src="https://firebasestorage.googleapis.com/v0/b/rscriptmarket-66f49.appspot.com/o/statics%2FGeneral.png?alt=media&token=abece355-5ca5-4809-8662-8c30ab1248a7" style={{width:'100%'}} />
+
+                  <br/>
+                  <br/>
+                  <p> The title and description should include the specific techniques & packages you use. Remember that the tutorial is ultimativly to allow users to reproduce the technique, but not specificly to the same application you did. Therefore in the title and description the technique itself has priority. </p>
+
+                  <img src="https://firebasestorage.googleapis.com/v0/b/rscriptmarket-66f49.appspot.com/o/statics%2Fgeneral_card.png?alt=media&token=1337d8ba-1a0f-4db2-941a-b13eada0c939" style={{width:'100%'}} />
+                  <br/>
+                  <br/>
+                  <p>Note: The title may only be 1 line, and the description a maximum of 3 lines.  </p>
                 </Card>
               </div>
 
@@ -26,7 +36,7 @@ var General = React.createClass({
         return (
         	<div style={{marginLeft: '260px'}}>
               {Introduction}
-              <Drawer zDepth='5'>
+              <Drawer zDepth={5}>
                   <h2 style={{textAlign: 'center', marginBottom: '12px'}}> Documentation </h2>
                   <Divider />
                     <MenuItem containerElement={<Link to='/Reference/Introduction'/>}>Introduction</MenuItem>

@@ -18,7 +18,11 @@ var Content = React.createClass({
                    <h2 style={{textAlign:'center'}}> Content Tab </h2>
                    </Card>
                   <Card className="pageStyle" style={{marginBottom: 20}}>
-                  <p> The Content is the actual content that you want to deliver to your readers.  </p>
+                  <p> The content represents the core of your item. It's everything you want to teach or transfer to your audience. Make sure the content part itself contains all the information a reader needs to reproduce your sample. Therefore always attach datasets (see media upload) and add library calls if neccessary. The idea is that at all times a reader can copy your code and reproduce the content. </p>
+                  <img src="https://firebasestorage.googleapis.com/v0/b/rscriptmarket-66f49.appspot.com/o/statics%2FContent.png?alt=media&token=d4e183ba-67fe-46c5-ad30-e4928df71946" style={{width:'100%'}} />
+                  <br/>
+                  <br/>
+                  <p> At the end of your document, always add some finishing lines to tell your audience how to expand on that knowledge, and include a .zip file with everything done in that part. </p>
                 </Card>
               </div>
 
@@ -26,7 +30,7 @@ var Content = React.createClass({
         return (
         	<div style={{marginLeft: '260px'}}>
               {Introduction}
-              <Drawer zDepth='5'>
+              <Drawer zDepth={5}>
                   <h2 style={{textAlign: 'center', marginBottom: '12px'}}> Documentation </h2>
                   <Divider />
                     <MenuItem containerElement={<Link to='/Reference/Introduction'/>}>Introduction</MenuItem>

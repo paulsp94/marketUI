@@ -17,16 +17,21 @@ var Sidebar = React.createClass({
                   <Card className="pageStyle">
                    <h2 style={{textAlign:'center'}}> Sidebar Tab </h2>
                   </Card>
-                  <Card className="pageStyle" style={{marginBottom: 20}}>
-                  <p> The Sidebar tab </p>
-                </Card>
+                 <Card className="pageStyle" style={{marginBottom: 20}}>
+                  <p>  In the sidebar tab you can specify the requirements of your item. Dont forget to press enter after each tag.</p>
+
+                  <img src="https://firebasestorage.googleapis.com/v0/b/rscriptmarket-66f49.appspot.com/o/statics%2FSidebar2.png?alt=media&token=8ad92fd9-220b-42d5-ab5b-506bd3e1bde9" style={{width:'100%'}} />
+                  <br/>
+                  <br/>
+                  <p> After completing all inputs, submit your item. We will then review your item and publish it to the public.</p>
+                 </Card>
               </div>
 
 
         return (
         	<div style={{marginLeft: '260px'}}>
               {Introduction}
-              <Drawer zDepth='5'>
+              <Drawer zDepth={5}>
                   <h2 style={{textAlign: 'center', marginBottom: '12px'}}> Documentation </h2>
                   <Divider />
 	                  <MenuItem containerElement={<Link to='/Reference/Introduction'/>}>Introduction</MenuItem>

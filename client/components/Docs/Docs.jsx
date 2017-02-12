@@ -28,7 +28,7 @@ var Docs = React.createClass({
         return (
         	<div style={{marginLeft: '260px'}}>
               {Introduction}
-              <Drawer zDepth='5'>
+              <Drawer zDepth={5}>
                   <h2 style={{textAlign: 'center', marginBottom: '12px'}}> Documentation </h2>
                   <Divider />
 	                <MenuItem style={{backgroundColor:'rgb(200,200,200)'}} containerElement={<Link to='/Reference/Introduction'/>}>Introduction</MenuItem>
