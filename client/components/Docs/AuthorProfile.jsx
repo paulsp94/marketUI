@@ -23,11 +23,11 @@ var AuthorProfile = React.createClass({
                         <img src="https://firebasestorage.googleapis.com/v0/b/rscriptmarket-66f49.appspot.com/o/statics%2Fauthor_profile.png?alt=media&token=98d7cd3d-3b71-4e52-9659-73bca4e06508" style={{width:'100%'}} />
                         <br/>
                         <br/>
-                        <p> The description will then appear at the support tab in each of your products </p> 
+                        <p> The description will then appear at the support tab in each of your products </p>
                         <img src="https://firebasestorage.googleapis.com/v0/b/rscriptmarket-66f49.appspot.com/o/statics%2Fsupport.png?alt=media&token=7af82c7a-c8d1-459a-b874-38a7dd8869ce" style={{width:'100%'}} />
                         <br/>
                         <br/>
-                        <p> While we display your email, we made sure that no algorithm can extract that email for collection/spamming purposes. In the next weeks we will further improve the author profile options.</p>
+                        <p> While we display your email, we made sure that no algorithm can extract that email for spamming purposes. In the next weeks we will further improve the author profile options.</p>
                         </Card>
                       </div>
 

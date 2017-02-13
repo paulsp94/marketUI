@@ -18,7 +18,7 @@ var General = React.createClass({
                    <h2 style={{textAlign:'center'}}> General Tab </h2>
                    </Card>
                   <Card className="pageStyle" style={{marginBottom: 20}}>
-                  <p> In the general tab you can set the descriptions/images and titles of your items. For every input there is a live preview on the right, displaying how it will look like in the finished item.</p> 
+                  <p> In the general tab you can set the descriptions/images and titles of your items. For every input there is a live preview on the right, displaying how it will look like in the finished item.</p>
                   <img src="https://firebasestorage.googleapis.com/v0/b/rscriptmarket-66f49.appspot.com/o/statics%2FGeneral.png?alt=media&token=abece355-5ca5-4809-8662-8c30ab1248a7" style={{width:'100%'}} />
 
                   <br/>

@@ -18,7 +18,7 @@ var Content = React.createClass({
                    <h2 style={{textAlign:'center'}}> Content Tab </h2>
                    </Card>
                   <Card className="pageStyle" style={{marginBottom: 20}}>
-                  <p> The content represents the core of your item. It's everything you want to teach or transfer to your audience. Make sure the content part itself contains all the information a reader needs to reproduce your sample. Therefore always attach datasets (see media upload) and add library calls if neccessary. The idea is that at all times a reader can copy your code and reproduce the content. </p>
+                  <p> The content represents the core of your item. Its everything you want to teach or transfer to your audience. Make sure the content part itself contains all the information a reader needs to reproduce your sample. Therefore always attach datasets (see media upload) and add library calls if neccessary. The idea is that at all times a reader can copy your code and reproduce the content. </p>
                   <img src="https://firebasestorage.googleapis.com/v0/b/rscriptmarket-66f49.appspot.com/o/statics%2FContent.png?alt=media&token=d4e183ba-67fe-46c5-ad30-e4928df71946" style={{width:'100%'}} />
                   <br/>
                   <br/>

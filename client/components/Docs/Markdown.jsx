@@ -18,7 +18,7 @@ var Markdown = React.createClass({
                         </Card>
                         <Card className="pageStyle" style={{marginBottom: 20}}>
                           <p> Markdown is a easy to use text based markup language. The content creation and description of each item is evaluated in Markdown, even when html content is added. Here some of the important markdown styles: </p>
-                          
+
                           <div>
                           <Card className="documentCard">
                           <h5>  Code Elements:  </h5>
@@ -42,7 +42,7 @@ var Markdown = React.createClass({
                             </Card>
 
                             <Card className="documentCard">
-                            <span><h5> Videos </h5> 
+                            <span><h5> Videos </h5>
                             <hr/>
                                 <p> To integrate Videos from Youtube/Vimeo, just copy the embedd link over and adjust width and height</p> </span>
                                 <code >
@@ -51,26 +51,25 @@ var Markdown = React.createClass({
                             </Card>
 
                             <Card className="documentCard">
-                            <span><h5> Create Table of Content </h5> 
+                            <span><h5> Create Table of Content </h5>
                              <hr/>
                               <p> Integrating a table of content for your viewer is easy. Just add the following tags in your code: </p> </span>
-
                               <code >
-                              &lt;a name=&quot;Main Heading&quot; level=&quot;title&quot;/&gt; 
+                              &lt;a name=&quot;Main Heading&quot; level=&quot;title&quot;/&gt;
                               &lt;a name=&quot;Sub Heading&quot; level=&quot;subtitle&quot;/&gt;
                               </code>
                               </Card>
                               <Card className="documentCard">
                               <span><h5> Iframes </h5>
-                              <hr/> 
+                              <hr/>
                               <p> To embedd examples such as shiny applications you can embedd pages via Iframes <br/>
                            You can change the height in the tag according to your needs (eg. 300px, 500px, 1000px)</p> </span>
                               <code>
                               &lt;iframe src=&quot;http://www.w3schools.com&quot; style=&quot;width: 100%, height: 300px&quot;&gt;&lt;/iframe&gt;
                           </code>
                           </Card>
-                         
-                          
+
+
                           </div>
                           <Card className="documentCard">
                           <h5> Titles </h5>
