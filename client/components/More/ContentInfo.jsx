@@ -10,16 +10,6 @@ var firebase = require('firebase');
 
 var ContentInfo = React.createClass({
     render(){
-        var style = {
-                      margin: 'auto',
-                      marginBottom: '2px',
-                      paddingTop: 13,
-                      paddingBottom: '1px',
-                      width: '60%',
-                      paddingLeft: '10px',
-                      paddingRight: '10px',
-                      textAlign: 'center'
-                  };
 
         var user = firebase.auth().currentUser;
 
@@ -32,22 +22,18 @@ var ContentInfo = React.createClass({
                   <Card className="pageStyle">
                    <h2 style={{textAlign:'center'}}> Create Content </h2>
                    </Card>
-                   <Card style={style}>
-                    <p> Creating Content on R.Codes is easy. Just create your account and follow this short tutorial. </p>
+                   <Card className="pageStyle">
+                    <p style={{textAlign:'center'}}> Creating Content on R.Codes is easy. Just create your account and follow this short tutorial. </p>
                  </Card>
-                   <div  style={{
-                      margin: 'auto',
-                      marginBottom: '2px',
-                      width: '60%',
-                      }}>
+                   <Card className="pageStyle">
                    <div className="fadeIn">
                    <iframe src="https://player.vimeo.com/video/198436016?title=0&byline=0" width="100%" height="425" allowFullScreen></iframe>
                    </div>
-                 </div>
-                  <Card style={style}>
-                    <p> All actions must be in compliance with our <Link to="/Policy"> terms & policy </Link> </p>
+                 </Card>
+                  <Card className="pageStyle" style={{textAlign:'center'}}>
+                    <p > All actions must be in compliance with our <Link to="/Policy"> terms & policy </Link> </p>
                     {ContentButton}
-                    <p> <b> This is a BETA - make sure to save everything offline! </b>  </p>
+                    <p > <b> This is a BETA - make sure to save everything offline! </b>  </p>
                  </Card>
               </div>
         )
