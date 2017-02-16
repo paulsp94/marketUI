@@ -375,6 +375,10 @@ class Profile extends React.Component{
             <RaisedButton onClick={this.SubmitUserDetails.bind(this)} label="Save Changes"  secondary={true} style={{ margin: 12}} />
           </CardText>
         </Card>
+        <Card style={{marginRight: "2%", marginLeft: "2%", marginTop: 9}}>
+          <p> montarize your content and other services</p>
+          <RaisedButton label="Apply"  secondary={true} style={{ margin: 12}} />
+        </Card>
       </div>
     )
   }

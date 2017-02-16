@@ -75,7 +75,7 @@ class GeneralProfile extends React.Component {
             subtitle: snapshot.val().Subtitle,
             description: snapshot.val().Description,
             price: 'FREE',
-            test: 'test'
+
             category: snapshot.val().category,
             avatarURL: snapshot.val().mainImage,
             avatarURL1: snapshot.val().subImage
