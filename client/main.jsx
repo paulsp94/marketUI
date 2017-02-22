@@ -12,12 +12,12 @@ import ProductSearch from 'components/ProductSearch/ProductSearch.jsx';
 import Root from 'components/Root/Root.js'
 import ProductContent from 'components/ProductContent/ProductContent.jsx';
 import Contact from 'components/More/Contact';
-import MoreInfo from 'components/More/MoreInfo';
 import Policy from 'components/More/Policy.jsx';
 import About from 'components/More/About.jsx';
 import Impressum from 'components/More/Impressum.jsx';
 import ContentInfo from 'components/More/ContentInfo.jsx'
 import AdminContainer from './containers/Admin';
+import SellerConnect from 'components/Profile/SellerConnect.jsx';
 
 import Docs from 'components/Docs/Docs.jsx';
 import DocDescription from 'components/Docs/Description.jsx';
@@ -50,9 +50,9 @@ render(<Provider store={store}>
         <Route path="Market" component={ProductSearch} onUpdate={logPageView}/>
         <Route path="Profile" component={Downloads} onUpdate={logPageView}/>
         <Route path="Support" component={Contact} onUpdate={logPageView}/>
-        <Route path="MoreInfo" component={MoreInfo} onUpdate={logPageView}/>
         <Route path="Policy" component={Policy} onUpdate={logPageView}/>
         <Route path="About" component={About} onUpdate={logPageView}/>
+        <Route path="Connect" component={SellerConnect} onUpdate={logPageView}/>
 
         <Route path="Reference/Introduction" component={Docs} onUpdate={logPageView}/>
         <Route path="Reference/Description" component={DocDescription} onUpdate={logPageView}/>

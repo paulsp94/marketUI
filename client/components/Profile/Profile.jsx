@@ -4,6 +4,8 @@ import { bindActionCreators } from 'redux';
 import { fetchuserdetails, changepassword, changeemaildetails } from '../../action/action.jsx'
 import { browserHistory } from 'react-router'
 var user = require('../../action/action.jsx');
+import {Link} from "react-router";
+
 // Firebase
 var firebase = require('firebase');
 import firebase_details from '../../Firebase/Firebase';
@@ -376,8 +378,11 @@ class Profile extends React.Component{
           </CardText>
         </Card>
         <Card style={{marginRight: "2%", marginLeft: "2%", marginTop: 9}}>
-          <p> montarize your content and other services</p>
-          <RaisedButton label="Apply"  secondary={true} style={{ margin: 12}} />
+          <p> montarize your content and other services
+          <Link to="/Connect" className="">
+          <RaisedButton label="Apply" secondary={true} style={{ margin: 12}} />
+          </Link>
+          </p>
         </Card>
       </div>
     )
