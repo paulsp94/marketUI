@@ -8,8 +8,7 @@ import config from '../../config';
 import * as firebase from 'firebase';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
-
-
+import FileUploader from 'react-firebase-file-uploader';
 
 <meta name="viewport" content="width=device-width" />
 
@@ -23,6 +22,7 @@ import MenuItem from 'material-ui/MenuItem';
           showCheckboxes: false,
           Description:'',
           tags:[''],
+          value:'',
           mail:'',
       };
     }
@@ -60,7 +60,6 @@ import MenuItem from 'material-ui/MenuItem';
       );
     }
 
-
     render(){
         return (
               <div className="container-search" style={{paddingTop:'1px'}}>
@@ -78,9 +77,15 @@ import MenuItem from 'material-ui/MenuItem';
                     <TextField
                       hintText="First Name"
                     />
+                  <br/>
                     <TextField
                       hintText="Last Name"
                     />
+                  <br/>
+                    <TextField
+                      hintText="Adress"
+                    />
+                  <br/>
 
           <SelectField
                   floatingLabelText="Country"
@@ -113,11 +118,23 @@ import MenuItem from 'material-ui/MenuItem';
                   <MenuItem value={"United States"} primaryText="United States" />
           </SelectField>
           <br/>
-          <TextField
-            hintText="Adress"
-          />
-                  <p> Country Dropdown </p>
-                  <p> Upload ID scan </p>
+
+
+
+          <br/>
+          <br/>
+          <p> Upload an ID Scan: <br/>
+                    <FileUploader
+                      accept="pp/*"
+                      name="avatar"
+                      randomizeFilename
+                      storageRef={firebase.storage().ref('pp/' )}
+                      onUploadStart={this.handleUploadStart}
+                      onUploadError={this.handleUploadError}
+                      onUploadSuccess={this.handleUploadSuccess}
+                      onProgress={this.handleProgress}
+                    />
+                </p>
 
                 </Card>
                 <Card className="pageStyle">
