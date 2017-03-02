@@ -29,6 +29,8 @@ var General = React.createClass({
                   <br/>
                   <br/>
                   <p>Note: The title may only be 1 line, and the description a maximum of 3 lines.  </p>
+
+                    
                 </Card>
               </div>
 
