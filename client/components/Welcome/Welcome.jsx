@@ -23,19 +23,60 @@ var Welcome = React.createClass({
                             <RaisedButton label="Explore" style={{}} />
                         </Link>
                     </div>
+                    <div className="welcomeFlexContainer">
+                      <div className="welcomeFlex">
+                        <div className="welcomeFlexItem">
+                          <Card style={{width: '300px', height: '300px'}}>
+                            <CardHeader
+                              title="URL Avatar"
+                            />
+                            <CardMedia>
 
-                    
-                    <Card style={{width: '300px', height: '300px'}}>
-                      <CardHeader
-                        title="URL Avatar"
-                        subtitle="Subtitle"
-                      />
-                      <CardMedia
+                            </CardMedia>
+                          </Card>
+                        </div>
+                        <div className="welcomeFlexItem">
+                          <Card style={{width: '300px', height: '300px'}}>
+                            <CardHeader
+                              title="URL Avatar"
+                            />
+                            <CardMedia>
 
-                      >
-                        <img src="images/nature-600-337.jpg" />
-                      </CardMedia>
-                    </Card>
+                            </CardMedia>
+                          </Card>
+                        </div>
+                        <div className="welcomeFlexItem">
+                          <Card style={{width: '300px', height: '300px'}}>
+                            <CardHeader
+                              title="URL Avatar"
+                            />
+                            <CardMedia>
+
+                            </CardMedia>
+                          </Card>
+                        </div>
+                        <div className="welcomeFlexItem">
+                          <Card style={{width: '300px', height: '300px'}}>
+                            <CardHeader
+                              title="URL Avatar"
+                            />
+                            <CardMedia>
+
+                            </CardMedia>
+                          </Card>
+                        </div>
+                        <div className="welcomeFlexItem">
+                          <Card style={{width: '300px', height: '300px'}}>
+                            <CardHeader
+                              title="URL Avatar"
+                            />
+                            <CardMedia>
+
+                            </CardMedia>
+                          </Card>
+                        </div>
+                      </div>
+                      </div>
                 </div>
             </div>
         )

@@ -530,6 +530,22 @@ kbd kbd {
   padding:  10px;
 }
 
+.welcomeFlexContainer {
+  margin: auto;
+}
+
+.welcomeFlex {
+  display: flex;
+  justify-content: center;
+  margin-top: 300px;
+}
+
+.welcomeFlexItem {
+  flex-direction: row;
+  margin: 10px;
+  align-self: flex-end;
+}
+
 .welcome-info-header {
   padding-right: 3%;
   padding-left: 3%;
