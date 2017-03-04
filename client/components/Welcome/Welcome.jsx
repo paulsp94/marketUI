@@ -13,7 +13,7 @@ var Welcome = React.createClass({
     render(){
         return (
             <div>
-                <div >
+                <div style={{height: '100vh'}} >
                     <div className="welcome-text">
                         <h1> Welcome to R.Codes</h1>
                         <br/>
@@ -23,59 +23,29 @@ var Welcome = React.createClass({
                             <RaisedButton label="Explore" style={{}} />
                         </Link>
                     </div>
-                    <div className="welcomeFlexContainer">
                       <div className="welcomeFlex">
                         <div className="welcomeFlexItem">
-                          <Card style={{width: '300px', height: '300px'}}>
-                            <CardHeader
-                              title="URL Avatar"
-                            />
-                            <CardMedia>
-
-                            </CardMedia>
+                          <Card style={{backgroundColor: 'rgba(0,0,0,0.2)'}} className="welcomeCardBoxes">
+                            <div className="welcomeCardHeader">   <h3> Tutorials </h3> </div>
+                            <div className="welcomeBoxText"><p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                              when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p></div>
                           </Card>
                         </div>
                         <div className="welcomeFlexItem">
-                          <Card style={{width: '300px', height: '300px'}}>
-                            <CardHeader
-                              title="URL Avatar"
-                            />
-                            <CardMedia>
-
-                            </CardMedia>
+                          <Card style={{backgroundColor: 'rgba(0,0,0,0.2)'}} className="welcomeCardBoxes" >
+                            <div className="welcomeCardHeader">   <h3> Templates </h3> </div>
+                              <div className="welcomeBoxText"><p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                                when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p></div>
                           </Card>
                         </div>
                         <div className="welcomeFlexItem">
-                          <Card style={{width: '300px', height: '300px'}}>
-                            <CardHeader
-                              title="URL Avatar"
-                            />
-                            <CardMedia>
-
-                            </CardMedia>
+                          <Card style={{backgroundColor: 'rgba(0,0,0,0.2)'}} className="welcomeCardBoxes" >
+                            <div className="welcomeCardHeader">   <h3> Implementations </h3> </div>
+                              <div className="welcomeBoxText"><p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                                when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p></div>
                           </Card>
-                        </div>
-                        <div className="welcomeFlexItem">
-                          <Card style={{width: '300px', height: '300px'}}>
-                            <CardHeader
-                              title="URL Avatar"
-                            />
-                            <CardMedia>
+                       </div>
 
-                            </CardMedia>
-                          </Card>
-                        </div>
-                        <div className="welcomeFlexItem">
-                          <Card style={{width: '300px', height: '300px'}}>
-                            <CardHeader
-                              title="URL Avatar"
-                            />
-                            <CardMedia>
-
-                            </CardMedia>
-                          </Card>
-                        </div>
-                      </div>
                       </div>
                 </div>
             </div>

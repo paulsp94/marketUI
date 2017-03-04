@@ -532,17 +532,40 @@ kbd kbd {
 
 .welcomeFlexContainer {
   margin: auto;
+  width: 500px;
+}
+
+.welcomeCardBoxes {
+  width: 280px;
+  height: 200px;
+}
+
+.welcomeCardHeader {
+  background-color: rgba(190,190,190,0.9);
+  text-align: center;
+  padding: 5px;
+
+}
+
+.welcomeBoxText {
+  padding: 10px;
+  color: white;
+  text-align: center;
 }
 
 .welcomeFlex {
   display: flex;
+  margin-top: 130px;
+  position: relative;
+  flex-flow: row wrap;
+  flex-wrap: wrap;
   justify-content: center;
-  margin-top: 300px;
+  align-content: flex-start
 }
 
 .welcomeFlexItem {
   flex-direction: row;
-  margin: 10px;
+  margin: 4px;
   align-self: flex-end;
 }
 
@@ -554,7 +577,7 @@ kbd kbd {
   background-color: none;
 }
 
-.documentCard{
+.documentCard {
   padding:  15px;
   margin-bottom:  15px;
 }
