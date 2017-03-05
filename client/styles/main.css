@@ -541,15 +541,16 @@ kbd kbd {
 }
 
 .welcomeCardHeader {
-  background-color: rgba(190,190,190,0.9);
+  background-color: rgba(190,190,190,0.2);
+  color:  #efeadd;
   text-align: center;
   padding: 5px;
 
 }
 
 .welcomeBoxText {
-  padding: 10px;
-  color: white;
+  padding: 15px;
+  color: #eef7f5;
   text-align: center;
 }
 

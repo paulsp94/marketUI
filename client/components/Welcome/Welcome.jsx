@@ -25,21 +25,21 @@ var Welcome = React.createClass({
                     </div>
                       <div className="welcomeFlex">
                         <div className="welcomeFlexItem">
-                          <Card style={{backgroundColor: 'rgba(0,0,0,0.2)'}} className="welcomeCardBoxes">
+                          <Card style={{backgroundColor: 'rgba(0,0,0,0.3)'}} className="welcomeCardBoxes">
                             <div className="welcomeCardHeader">   <h3> Tutorials </h3> </div>
                             <div className="welcomeBoxText"><p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
                               when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p></div>
                           </Card>
                         </div>
                         <div className="welcomeFlexItem">
-                          <Card style={{backgroundColor: 'rgba(0,0,0,0.2)'}} className="welcomeCardBoxes" >
-                            <div className="welcomeCardHeader">   <h3> Templates </h3> </div>
+                          <Card style={{backgroundColor: 'rgba(0,0,0,0.3)'}} className="welcomeCardBoxes" >
+                            <div className="welcomeCardHeader">   <h3> Components </h3> </div>
                               <div className="welcomeBoxText"><p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
                                 when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p></div>
                           </Card>
                         </div>
                         <div className="welcomeFlexItem">
-                          <Card style={{backgroundColor: 'rgba(0,0,0,0.2)'}} className="welcomeCardBoxes" >
+                          <Card style={{backgroundColor: 'rgba(0,0,0,0.3)'}} className="welcomeCardBoxes" >
                             <div className="welcomeCardHeader">   <h3> Implementations </h3> </div>
                               <div className="welcomeBoxText"><p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
                                 when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p></div>

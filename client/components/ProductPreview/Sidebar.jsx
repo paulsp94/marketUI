@@ -283,11 +283,10 @@ class Sidebar extends React.Component {
               </TableRow>
             </TableBody>
           </Table>
-
+          <p> add expanded license text here </p> 
           <RaisedButton label="View Code" onTouchTap={this.ProductContentDownload.bind(this)} secondary={true}
                         style={{margin: 12}} disabled={false} />
-          <RaisedButton label="Download" disabled={true} onTouchTap={this.ProductContentDownload.bind(this)} secondary={true}
-                        style={{margin: 12}}/>
+         
           {/*// TODO feed me real data, amount in cents */}
           {
             /*sellerStripeAccountId ?*/
