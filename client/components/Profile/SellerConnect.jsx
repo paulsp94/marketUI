@@ -167,7 +167,10 @@ class SellerConnect extends React.Component {
           />
           
           <br/>
-          <RaisedButton label="Save Changes" onTouchTap={this.SubmitUserDetails.bind(this)} secondary={true}
+          <RaisedButton label="Save Changes"
+                        onTouchTap={this.SubmitUserDetails.bind(this)}
+                        disabled={!this._userId()}
+                        secondary={true}
                         style={{margin: 12}}/>
         
         </Card>
