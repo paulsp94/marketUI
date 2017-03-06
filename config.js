@@ -4,8 +4,8 @@ exports.config = {
     clientSecretKey: 'sk_test_rdgEiJltfmWQDwthIKHZVfRF'
   },
   firebase: {
-    apiKey: "AIzaSyBbdacDmz3DuXlHSjfu7aoBSXjQircXnQw",
-    authDomain: "rscriptmarket-66f49.firebaseio.com",
-    databaseURL: "https://rscriptmarket-66f49.firebaseio.com"
+    apiKey: "AIzaSyD8l_Tlfkbzj5IobzrtfKdzK9-3XhP9qdk",
+    authDomain: "r-codes-dev-server.firebaseio.com",
+    databaseURL: "https://r-codes-dev-server.firebaseio.com/"
   }
 };
