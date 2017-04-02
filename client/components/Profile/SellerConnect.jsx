@@ -88,71 +88,7 @@ import RaisedButton from 'material-ui/RaisedButton';
                       Our idea is that R has more democratic and monetarily distributed cultures in a competitive environment where contributing ideas to the community is just a click away.
                    </p>
                  </Card>
-                 <Card className="pageStyle">
-                    <TextField
-                      hintText="First Name"
-                      value={this.state.firstName}
-                    />
-                  <br/>
-                    <TextField
-                      hintText="Last Name"
-                      value={this.state.lastName}
-                    />
-                  <br/>
-                    <TextField
-                      hintText="Adress"
-                      value={this.state.Adress}
-                    />
-                  <br/>
-
-                  <SelectField
-                    floatingLabelText="Country"
-                    value={this.state.Country}
-                    onChange={this.handleChange}
-                    maxHeight={200}
-                  >
-                  <MenuItem value={"Australia"} primaryText="Australia" />
-                  <MenuItem value={"Austria"} primaryText="Austria" />
-                  <MenuItem value={"Belgium"} primaryText="Belgium" />
-                  <MenuItem value={"Canada"} primaryText="Canada" />
-                  <MenuItem value={"Denmark"} primaryText="Denmark" />
-                  <MenuItem value={"Finland"} primaryText="Denmark" />
-                  <MenuItem value={"France"} primaryText="France" />
-                  <MenuItem value={"Germany"} primaryText="Germany" />
-                  <MenuItem value={"Hong Kong"} primaryText="Hong Kong" />
-                  <MenuItem value={"Ireland"} primaryText="Ireland" />
-                  <MenuItem value={"Italy"} primaryText="Italy" />
-                  <MenuItem value={"Japan"} primaryText="Japan" />
-                  <MenuItem value={"Luxembourg"} primaryText="Luxembourg" />
-                  <MenuItem value={"Netherlands"} primaryText="Netherlands" />
-                  <MenuItem value={"New Zealand"} primaryText="New Zealand" />
-                  <MenuItem value={"Norway"} primaryText="Norway" />
-                  <MenuItem value={"Portugal"} primaryText="Portugal" />
-                  <MenuItem value={"Singapore"} primaryText="Singapore" />
-                  <MenuItem value={"Spain"} primaryText="Spain" />
-                  <MenuItem value={"Sweden"} primaryText="Sweden" />
-                  <MenuItem value={"Switzerland"} primaryText="Switzerland" />
-                  <MenuItem value={"United Kingdom"} primaryText="United Kingdom" />
-                  <MenuItem value={"United States"} primaryText="United States" />
-                  </SelectField>
-          <br/>
-          <br/>
-                <p> Upload an ID Scan: <br/></p>
-                <FileUploader
-                  accept="pp/*"
-                  name="avatar"
-                  randomizeFilename
-                  storageRef={firebase.storage().ref('pp/' )}
-                  onUploadStart={this.handleUploadStart}
-                  onUploadError={this.handleUploadError}
-                  onUploadSuccess={this.handleUploadSuccess}
-                  onProgress={this.handleProgress}
-                />
-
-          <br/>
-                <RaisedButton label="Save Changes" onTouchTap={this.SubmitUserDetails.bind(this)}  secondary={true} style={{ margin: 12}} />
-
-                </Card>
+                
                 <Card className="pageStyle">
                 <p> We rely on Stripe as trusted partner to handle payments. Stripe Connect offers each sellers to create their own "account".
                   Stripe Connect is a service specificly created for service markets like R.Codes.
@@ -163,13 +99,16 @@ import RaisedButton from 'material-ui/RaisedButton';
                   With the stripe connect any payment goes directly to your account and you can independently manage further transactions from there.
                 </p>
               </Card>
-              <Card className="pageStyle" style={{marginBottom: 20, textAlign: 'center'}}>
+              <Card className="pageStyle" style={{textAlign: 'center'}}>
                    {
                      this._userId() ?
                        <a href={this._stripeUrl()} className="stripe-connect">
                          <span>Connect with Stripe</span>
                        </a> : null
                    }
+              </Card>
+              <Card className="pageStyle" style={{marginBottom: 20, textAlign: 'center'}}>
+                <RaisedButton label="Apply" secondary={true} style={{ margin: 12}} />
               </Card>
               </div>
         )

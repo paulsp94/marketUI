@@ -377,12 +377,11 @@ class Profile extends React.Component{
             <RaisedButton onClick={this.SubmitUserDetails.bind(this)} label="Save Changes"  secondary={true} style={{ margin: 12}} />
           </CardText>
         </Card>
-        <Card style={{marginRight: "2%", marginLeft: "2%", marginTop: 9}}>
-          <p> montarize your content and other services
+        <Card style={{marginRight: "2%", marginLeft: "2%", marginTop: 9, padding:  10}}>
+          <p> Montarize your content and other services (still in development) </p>
           <Link to="/Connect" className="">
-          <RaisedButton label="Apply" secondary={true} style={{ margin: 12}} />
+          <RaisedButton label="Apply" secondary={true} disabled={true} style={{ margin: 12}} />
           </Link>
-          </p>
         </Card>
       </div>
     )
